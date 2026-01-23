@@ -148,7 +148,6 @@ export async function fetchJiraData() {
       headers,
       body: JSON.stringify({
         jql: `project = AV AND issuetype in ("Documentation", "Documentation Sub-Task") AND created >= -30d`,
-        maxResults: 0,
       }),
     })
     
