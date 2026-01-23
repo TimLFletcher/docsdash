@@ -20,7 +20,7 @@ const hasJiraCredentials = process.env.JIRA_BASE_URL && process.env.JIRA_EMAIL &
 
 export async function fetchJiraData() {
   if (!hasJiraCredentials) {
-    console.log('⚠️  No Jira credentials found, using sample data')
+    console.log('⚠️  No Jira credentials found - skipping Jira data fetch')
     return null
   }
 
@@ -525,10 +525,7 @@ export async function fetchJiraData() {
         { sprint: 'Sprint 21', completed: 15, planned: 15 },
         { sprint: 'Sprint 22', completed: 8, planned: 14 },
       ],
-      issuesByType: [],
       avgResolutionDays: parseFloat(avgResolutionDays.toFixed(2)),
-      issuesClosedThisWeek: closedThisWeekData.count || 0,
-      issuesCreatedThisWeek: createdThisWeekData.count || 0,
       monthlyOpened: monthlyOpened,
       monthlyResolved: monthlyResolved,
       burnRate: parseFloat(burnRate),

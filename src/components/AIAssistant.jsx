@@ -54,8 +54,9 @@ ${analytics.searchTerms.map(s => `- "${s.term}": ${s.count} searches${!s.results
 
 ## Jira Summary
 - Open Issues: ${jira.openIssues.total} (${jira.openIssues.byPriority.find(p => p.priority === 'Critical')?.count || 0} critical, ${jira.openIssues.byPriority.find(p => p.priority === 'High')?.count || 0} high)
-- Issues Created This Week: ${jira.issuesCreatedThisWeek}
-- Issues Closed This Week: ${jira.issuesClosedThisWeek}
+- Monthly Opened (DOC): ${jira.monthlyOpened}, (AV): ${jira.monthlyOpenedAV || 0}
+- Monthly Resolved (DOC): ${jira.monthlyResolved}, (AV): ${jira.monthlyResolvedAV || 0}
+- Burn Rate (DOC): ${jira.burnRate}, (AV): ${jira.burnRateAV || 0}
 - Avg Resolution Time: ${jira.avgResolutionDays} days
 
 ## Recent Velocity

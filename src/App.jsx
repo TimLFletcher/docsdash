@@ -15,7 +15,6 @@ import {
 import { MetricCard } from './components/MetricCard'
 import { PageViewsChart } from './components/charts/PageViewsChart'
 import { TopPagesTable } from './components/charts/TopPagesTable'
-import { JiraPriorityChart } from './components/charts/JiraPriorityChart'
 import { JiraLabelsChart } from './components/charts/JiraLabelsChart'
 import { VelocityChart } from './components/charts/VelocityChart'
 import { RecentIssuesTable } from './components/charts/RecentIssuesTable'
@@ -24,14 +23,12 @@ import { PathComparisonTable } from './components/charts/PathComparisonTable'
 import { AIAssistant } from './components/AIAssistant'
 import { PasswordProtection } from './components/PasswordProtection'
 
-// Sample data - this will be replaced by GitHub Actions fetched data
-import sampleData from './data/sample-data.json'
-
 function App() {
   const [data, setData] = useState(null)
   const [activeTab, setActiveTab] = useState('overview')
   const [isLoading, setIsLoading] = useState(true)
   const [isRefreshing, setIsRefreshing] = useState(false)
+  const [error, setError] = useState(null)
 
   const loadData = async (showRefreshing = false) => {
     if (showRefreshing) {
@@ -39,6 +36,7 @@ function App() {
     } else {
       setIsLoading(true)
     }
+    setError(null)
 
     try {
       // Add cache-busting query parameter to force fresh fetch
@@ -48,12 +46,11 @@ function App() {
         const liveData = await response.json()
         setData(liveData)
       } else {
-        // Fall back to sample data
-        setData(sampleData)
+        throw new Error(`Failed to load data: ${response.status} ${response.statusText}`)
       }
-    } catch (error) {
-      // Fall back to sample data
-      setData(sampleData)
+    } catch (err) {
+      setError(err.message || 'Failed to load dashboard data')
+      setData(null)
     } finally {
       setIsLoading(false)
       setIsRefreshing(false)
@@ -68,12 +65,31 @@ function App() {
     loadData(true)
   }
 
-  if (isLoading || !data) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="text-center">
           <RefreshCw className="w-8 h-8 text-primary-600 animate-spin mx-auto mb-4" />
           <p className="text-slate-600">Loading dashboard...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error || !data) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="text-center max-w-md mx-auto p-6">
+          <AlertTriangle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-slate-900 mb-2">Failed to Load Dashboard</h2>
+          <p className="text-slate-600 mb-4">{error || 'No data available'}</p>
+          <button
+            onClick={handleRefresh}
+            className="flex items-center gap-2 px-4 py-2 mx-auto text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
+          >
+            <RefreshCw className="w-4 h-4" />
+            Try Again
+          </button>
         </div>
       </div>
     )

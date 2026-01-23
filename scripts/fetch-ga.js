@@ -17,7 +17,7 @@ const hasGACredentials = process.env.GA_PROPERTY_ID && process.env.GOOGLE_SERVIC
 
 export async function fetchGoogleAnalyticsData() {
   if (!hasGACredentials) {
-    console.log('⚠️  No GA credentials found, using sample data')
+    console.log('⚠️  No GA credentials found - skipping GA data fetch')
     return null
   }
 

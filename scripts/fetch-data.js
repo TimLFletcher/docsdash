@@ -66,21 +66,7 @@ function generateInsights(analytics, jira) {
     )
   }
 
-  if (jira?.issuesCreatedThisWeek > jira?.issuesClosedThisWeek) {
-    insights.performanceNotes.push(
-      `Issue backlog growing: ${jira.issuesCreatedThisWeek} created vs ${jira.issuesClosedThisWeek} closed this week`
-    )
-  }
-
   return insights
-}
-
-/**
- * Load sample data as fallback
- */
-function loadSampleData() {
-  const samplePath = path.join(__dirname, '..', 'src', 'data', 'sample-data.json')
-  return JSON.parse(fs.readFileSync(samplePath, 'utf-8'))
 }
 
 /**
@@ -89,24 +75,48 @@ function loadSampleData() {
 async function main() {
   console.log('🚀 Starting data fetch...\n')
 
-  const sampleData = loadSampleData()
+  const errors = []
   
-  // Fetch real data or use sample data
-  const analyticsData = await fetchGoogleAnalyticsData() || sampleData.analytics
-  const jiraData = await fetchJiraData() || sampleData.jira
+  // Fetch real data - no fallback
+  const analyticsData = await fetchGoogleAnalyticsData()
+  if (!analyticsData) {
+    errors.push('Failed to fetch Google Analytics data')
+  }
+
+  const jiraData = await fetchJiraData()
+  if (!jiraData) {
+    errors.push('Failed to fetch Jira data')
+  }
+
+  // If both failed, exit with error
+  if (!analyticsData && !jiraData) {
+    console.error('\n❌ Failed to fetch any data:')
+    errors.forEach(e => console.error(`   - ${e}`))
+    process.exit(1)
+  }
+
+  // Log warnings for partial failures
+  if (errors.length > 0) {
+    console.warn('\n⚠️  Some data sources failed:')
+    errors.forEach(e => console.warn(`   - ${e}`))
+  }
+
   const insights = generateInsights(analyticsData, jiraData)
 
   // Combine into dashboard data
   const dashboardData = {
     lastUpdated: new Date().toISOString(),
-    analytics: analyticsData,
-    jira: jiraData,
-    insights: insights.contentGaps.length > 0 ? insights : sampleData.insights,
+    analytics: analyticsData || null,
+    jira: jiraData || null,
+    insights: insights,
+    errors: errors.length > 0 ? errors : undefined,
   }
 
   // Ensure output directory exists
-  const outputDir = path.join(__dirname, '..', 'dist', 'data')
   const srcDataDir = path.join(__dirname, '..', 'src', 'data')
+  if (!fs.existsSync(srcDataDir)) {
+    fs.mkdirSync(srcDataDir, { recursive: true })
+  }
   
   // Write to src/data for development
   fs.writeFileSync(
@@ -115,7 +125,7 @@ async function main() {
   )
   console.log('✅ Written to src/data/dashboard-data.json')
 
-  // Also write to public/data if dist exists (for build)
+  // Also write to public/data for build
   const publicDir = path.join(__dirname, '..', 'public', 'data')
   if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir, { recursive: true })
@@ -129,4 +139,7 @@ async function main() {
   console.log('\n✨ Data fetch complete!')
 }
 
-main().catch(console.error)
+main().catch(error => {
+  console.error('❌ Fatal error:', error.message)
+  process.exit(1)
+})
