@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-01-23T15:13:09.931Z",
+  "lastUpdated": "2026-01-23T15:29:17.997Z",
   "analytics": {
     "pageViews": {
       "total": 28594,
-      "trend": 2.9,
+      "trend": 3,
       "daily": [
         {
           "date": "2026-01-16",
@@ -46,7 +46,7 @@
         "pages": [
           {
             "page": "/cloud/management-api-reference/index.html",
-            "views": 267,
+            "views": 268,
             "avgTime": "3:40"
           },
           {
@@ -56,8 +56,8 @@
           },
           {
             "page": "/cloud/release-notes/release-notes.html",
-            "views": 138,
-            "avgTime": "2:12"
+            "views": 140,
+            "avgTime": "2:10"
           },
           {
             "page": "/cloud/get-started/intro.html",
@@ -145,7 +145,7 @@
           {
             "page": "/server/current/release-notes/relnotes.html",
             "views": 330,
-            "avgTime": "2:08"
+            "avgTime": "2:14"
           },
           {
             "page": "/server/current/learn/buckets-memory-and-storage/memory.html",
@@ -154,7 +154,7 @@
           },
           {
             "page": "/server/current/introduction/whats-new.html",
-            "views": 269,
+            "views": 270,
             "avgTime": "2:45"
           },
           {
@@ -175,13 +175,13 @@
           },
           {
             "page": "/operator/current/prerequisite-and-setup.html",
-            "views": 87,
-            "avgTime": "1:42"
+            "views": 88,
+            "avgTime": "1:47"
           },
           {
             "page": "/operator/current/install-kubernetes.html",
-            "views": 78,
-            "avgTime": "4:36"
+            "views": 79,
+            "avgTime": "4:40"
           },
           {
             "page": "/operator/current/resource/couchbasecluster.html",
@@ -190,8 +190,8 @@
           },
           {
             "page": "/operator/current/howto-couchbase-create.html",
-            "views": 72,
-            "avgTime": "1:57"
+            "views": 73,
+            "avgTime": "2:01"
           }
         ]
       },
@@ -242,8 +242,8 @@
           },
           {
             "page": "/couchbase-lite/current/android/quickstart.html",
-            "views": 187,
-            "avgTime": "1:28"
+            "views": 188,
+            "avgTime": "1:27"
           },
           {
             "page": "/couchbase-lite/current/csharp/gs-install.html",
@@ -273,8 +273,8 @@
           },
           {
             "page": "/sync-gateway/current/configuration/configuration-schema-bootstrap.html",
-            "views": 82,
-            "avgTime": "5:16"
+            "views": 83,
+            "avgTime": "5:19"
           },
           {
             "page": "/sync-gateway/current/configuration/configuration-schema-database.html",
@@ -373,8 +373,8 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54257,
-      "avgSessionDuration": "2:16",
+      "uniqueVisitors": 54294,
+      "avgSessionDuration": "2:17",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
     },
@@ -386,17 +386,17 @@
       },
       {
         "source": "Organic Search",
-        "sessions": 12879,
+        "sessions": 12885,
         "percentage": 19
       },
       {
         "source": "Referral",
-        "sessions": 3183,
+        "sessions": 3187,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2620,
+        "sessions": 2659,
         "percentage": 4
       },
       {
@@ -436,7 +436,7 @@
         "displayPath": "/analytics/",
         "totalViews": 722,
         "bounceRate": "0.4",
-        "avgSessionDuration": "3:00",
+        "avgSessionDuration": "3:02",
         "trafficBalance": {
           "direct": 38,
           "search": 43
@@ -449,7 +449,7 @@
         "bounceRate": "0.3",
         "avgSessionDuration": "4:49",
         "trafficBalance": {
-          "direct": 17,
+          "direct": 16,
           "search": 48
         }
       },
@@ -458,7 +458,7 @@
         "displayPath": "/server/",
         "totalViews": 28862,
         "bounceRate": "0.5",
-        "avgSessionDuration": "3:50",
+        "avgSessionDuration": "3:51",
         "trafficBalance": {
           "direct": 44,
           "search": 40
@@ -469,7 +469,7 @@
         "displayPath": "/operator/",
         "totalViews": 2646,
         "bounceRate": "0.6",
-        "avgSessionDuration": "2:48",
+        "avgSessionDuration": "2:51",
         "trafficBalance": {
           "direct": 49,
           "search": 35
@@ -491,9 +491,9 @@
         "displayPath": "/couchbase-lite/",
         "totalViews": 5737,
         "bounceRate": "0.6",
-        "avgSessionDuration": "2:52",
+        "avgSessionDuration": "2:53",
         "trafficBalance": {
-          "direct": 51,
+          "direct": 50,
           "search": 35
         }
       },
