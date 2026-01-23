@@ -157,7 +157,7 @@ export async function fetchJiraData() {
     }
     
     const avMonthlyOpenedData = await avMonthlyOpenedResponse.json()
-    console.log(`   ✅ Found ${avMonthlyOpenedData.total || 0} AV issues opened in last 30 days`)
+    console.log(`   ✅ Found ${avMonthlyOpenedData.count || 0} AV issues opened in last 30 days`)
 
     // Fetch monthly resolved count
     const monthlyResolvedResponse = await fetch(
@@ -181,7 +181,7 @@ export async function fetchJiraData() {
 
     // Fetch AV monthly resolved count
     const avMonthlyResolvedResponse = await fetch(
-      `${baseUrl}/rest/api/3/search/jql`,
+      `${baseUrl}/rest/api/3/search/approximate-count`,
       {
         method: 'POST',
         headers,
@@ -197,7 +197,7 @@ export async function fetchJiraData() {
     }
     
     const avMonthlyResolvedData = await avMonthlyResolvedResponse.json()
-    console.log(`   ✅ Found ${avMonthlyResolvedData.total || 0} AV issues resolved in last 30 days`)
+    console.log(`   ✅ Found ${avMonthlyResolvedData.count || 0} AV issues resolved in last 30 days`)
 
     // Fetch previous month opened count (60-30 days ago)
     const previousMonthOpenedResponse = await fetch(
@@ -221,7 +221,7 @@ export async function fetchJiraData() {
 
     // Fetch AV previous month opened count (60-30 days ago)
     const avPreviousMonthOpenedResponse = await fetch(
-      `${baseUrl}/rest/api/3/search/jql`,
+      `${baseUrl}/rest/api/3/search/approximate-count`,
       {
         method: 'POST',
         headers,
@@ -237,7 +237,7 @@ export async function fetchJiraData() {
     }
     
     const avPreviousMonthOpenedData = await avPreviousMonthOpenedResponse.json()
-    console.log(`   ✅ Found ${avPreviousMonthOpenedData.total || 0} AV issues opened in previous month`)
+    console.log(`   ✅ Found ${avPreviousMonthOpenedData.count || 0} AV issues opened in previous month`)
 
     // Fetch previous month resolved count (60-30 days ago)
     const previousMonthResolvedResponse = await fetch(
@@ -261,7 +261,7 @@ export async function fetchJiraData() {
 
     // Fetch AV previous month resolved count (60-30 days ago)
     const avPreviousMonthResolvedResponse = await fetch(
-      `${baseUrl}/rest/api/3/search/jql`,
+      `${baseUrl}/rest/api/3/search/approximate-count`,
       {
         method: 'POST',
         headers,
@@ -277,7 +277,7 @@ export async function fetchJiraData() {
     }
     
     const avPreviousMonthResolvedData = await avPreviousMonthResolvedResponse.json()
-    console.log(`   ✅ Found ${avPreviousMonthResolvedData.total || 0} AV issues resolved in previous month`)
+    console.log(`   ✅ Found ${avPreviousMonthResolvedData.count || 0} AV issues resolved in previous month`)
 
     // Fetch resolved issues for previous month to calculate average resolution time
     const previousMonthResolvedIssuesResponse = await fetch(
@@ -490,13 +490,13 @@ export async function fetchJiraData() {
     const burnRate = monthlyResolved > 0 ? (monthlyOpened / monthlyResolved).toFixed(2) : '0.00'
 
     // Calculate AV burn rate
-    const avMonthlyOpened = avMonthlyOpenedData.total || 0
-    const avMonthlyResolved = avMonthlyResolvedData.total || 0
+    const avMonthlyOpened = avMonthlyOpenedData.count || 0
+    const avMonthlyResolved = avMonthlyResolvedData.count || 0
     const avBurnRate = avMonthlyResolved > 0 ? (avMonthlyOpened / avMonthlyResolved).toFixed(2) : '0.00'
 
     // Calculate AV previous month burn rate
-    const avPreviousMonthOpened = avPreviousMonthOpenedData.total || 0
-    const avPreviousMonthResolved = avPreviousMonthResolvedData.total || 0
+    const avPreviousMonthOpened = avPreviousMonthOpenedData.count || 0
+    const avPreviousMonthResolved = avPreviousMonthResolvedData.count || 0
     const avPreviousMonthBurnRate = avPreviousMonthResolved > 0 ? (avPreviousMonthOpened / avPreviousMonthResolved).toFixed(2) : '0.00'
 
     return {
