@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-01-23T12:11:15.106Z",
+  "lastUpdated": "2026-01-23T12:53:16.746Z",
   "analytics": {
     "pageViews": {
       "total": 28348,
-      "trend": 2.5,
+      "trend": 2.7,
       "daily": [
         {
           "date": "2026-01-16",
@@ -61,7 +61,7 @@
           },
           {
             "page": "/cloud/get-started/intro.html",
-            "views": 95,
+            "views": 98,
             "avgTime": "0:57"
           },
           {
@@ -83,12 +83,12 @@
           {
             "page": "/analytics/intro/intro.html",
             "views": 36,
-            "avgTime": "3:46"
+            "avgTime": "3:50"
           },
           {
             "page": "/analytics/sources/manage-external.html",
             "views": 29,
-            "avgTime": "0:46"
+            "avgTime": "0:45"
           },
           {
             "page": "/analytics/sqlpp/5_ddl_external.html",
@@ -108,12 +108,12 @@
         "pages": [
           {
             "page": "/ai/get-started/intro.html",
-            "views": 97,
-            "avgTime": "1:08"
+            "views": 99,
+            "avgTime": "1:37"
           },
           {
             "page": "/ai/build/model-service/model-service.html",
-            "views": 89,
+            "views": 90,
             "avgTime": "1:43"
           },
           {
@@ -124,7 +124,7 @@
           {
             "page": "/ai/build/integrate-agent-with-catalog.html",
             "views": 56,
-            "avgTime": "4:40"
+            "avgTime": "4:43"
           },
           {
             "page": "/ai/build/model-service/deploy-llm-model.html",
@@ -171,7 +171,7 @@
           {
             "page": "/operator/current/overview.html",
             "views": 319,
-            "avgTime": "0:51"
+            "avgTime": "0:54"
           },
           {
             "page": "/operator/current/prerequisite-and-setup.html",
@@ -201,13 +201,13 @@
         "pages": [
           {
             "page": "/enterprise-analytics/current/intro/intro.html",
-            "views": 104,
-            "avgTime": "3:26"
+            "views": 105,
+            "avgTime": "3:25"
           },
           {
             "page": "/enterprise-analytics/current/manage/manage-nodes/s3-compatible-storage.html",
             "views": 37,
-            "avgTime": "1:46"
+            "avgTime": "1:52"
           },
           {
             "page": "/enterprise-analytics/current/intro/do-a-quick-install.html",
@@ -232,7 +232,7 @@
         "pages": [
           {
             "page": "/couchbase-lite/current/index.html",
-            "views": 387,
+            "views": 389,
             "avgTime": "1:18"
           },
           {
@@ -263,7 +263,7 @@
         "pages": [
           {
             "page": "/sync-gateway/current/introduction.html",
-            "views": 138,
+            "views": 142,
             "avgTime": "1:54"
           },
           {
@@ -272,19 +272,19 @@
             "avgTime": "3:23"
           },
           {
-            "page": "/sync-gateway/current/rest-api/rest-api-admin.html",
+            "page": "/sync-gateway/current/configuration/configuration-schema-bootstrap.html",
             "views": 82,
-            "avgTime": "3:34"
+            "avgTime": "5:21"
           },
           {
             "page": "/sync-gateway/current/configuration/configuration-schema-database.html",
-            "views": 81,
-            "avgTime": "3:31"
+            "views": 82,
+            "avgTime": "3:30"
           },
           {
-            "page": "/sync-gateway/current/configuration/configuration-schema-bootstrap.html",
-            "views": 80,
-            "avgTime": "5:03"
+            "page": "/sync-gateway/current/rest-api/rest-api-admin.html",
+            "views": 82,
+            "avgTime": "3:34"
           }
         ]
       },
@@ -373,30 +373,30 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54088,
-      "avgSessionDuration": "2:14",
+      "uniqueVisitors": 54151,
+      "avgSessionDuration": "2:15",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
     },
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 48360,
+        "sessions": 48418,
         "percentage": 72
       },
       {
         "source": "Organic Search",
-        "sessions": 12840,
+        "sessions": 12845,
         "percentage": 19
       },
       {
         "source": "Referral",
-        "sessions": 3171,
+        "sessions": 3172,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2392,
+        "sessions": 2475,
         "percentage": 4
       },
       {
@@ -425,7 +425,7 @@
         "displayPath": "/cloud/",
         "totalViews": 7117,
         "bounceRate": "0.4",
-        "avgSessionDuration": "4:38",
+        "avgSessionDuration": "4:45",
         "trafficBalance": {
           "direct": 27,
           "search": 48
@@ -447,10 +447,10 @@
         "displayPath": "/ai/",
         "totalViews": 733,
         "bounceRate": "0.3",
-        "avgSessionDuration": "4:38",
+        "avgSessionDuration": "4:46",
         "trafficBalance": {
           "direct": 16,
-          "search": 49
+          "search": 48
         }
       },
       {
@@ -458,9 +458,9 @@
         "displayPath": "/server/",
         "totalViews": 28802,
         "bounceRate": "0.5",
-        "avgSessionDuration": "3:49",
+        "avgSessionDuration": "3:50",
         "trafficBalance": {
-          "direct": 45,
+          "direct": 44,
           "search": 40
         }
       },
@@ -480,7 +480,7 @@
         "displayPath": "/enterprise-analytics/",
         "totalViews": 1416,
         "bounceRate": "0.4",
-        "avgSessionDuration": "1:52",
+        "avgSessionDuration": "1:53",
         "trafficBalance": {
           "direct": 63,
           "search": 28
@@ -502,7 +502,7 @@
         "displayPath": "/sync-gateway/",
         "totalViews": 2908,
         "bounceRate": "0.5",
-        "avgSessionDuration": "3:38",
+        "avgSessionDuration": "3:39",
         "trafficBalance": {
           "direct": 42,
           "search": 39
@@ -600,22 +600,27 @@
     "avgResolutionDays": 599.37,
     "issuesClosedThisWeek": 0,
     "issuesCreatedThisWeek": 15,
-    "monthlyOpened": 63,
+    "monthlyOpened": 62,
     "monthlyResolved": 84,
-    "burnRate": 0.75,
-    "previousMonthOpened": 110,
+    "burnRate": 0.74,
+    "previousMonthOpened": 111,
     "previousMonthResolved": 210,
-    "previousMonthBurnRate": 0.52,
+    "previousMonthBurnRate": 0.53,
     "previousMonthAvgResolutionDays": 158.98,
     "topLabels": [
+      {
+        "label": "No Labels",
+        "count": 346,
+        "color": "#6b7280"
+      },
       {
         "label": "Totoro",
         "count": 8,
         "color": "#ef4444"
       },
       {
-        "label": "Non-Totoro",
-        "count": 1185,
+        "label": "Other Labels",
+        "count": 839,
         "color": "#3b82f6"
       }
     ]
