@@ -184,6 +184,36 @@ export async function fetchJiraData() {
       console.log(`   🔍 DEBUG: AV JQL request failed: ${avDebugResponse.status}`)
     }
 
+    // DEBUG: Discover available projects and issue types
+    const discoverResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/jql`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project IS NOT EMPTY AND issuetype IS NOT EMPTY AND created >= -30d`,
+          maxResults: 20,
+          fields: ['summary', 'issuetype', 'project'],
+        }),
+      }
+    )
+    if (discoverResponse.ok) {
+      const discoverData = await discoverResponse.json()
+      const projects = {}
+      discoverData.issues?.forEach(issue => {
+        const projKey = issue.fields.project.key
+        const typeName = issue.fields.issuetype.name
+        if (!projects[projKey]) projects[projKey] = new Set()
+        projects[projKey].add(typeName)
+      })
+      console.log(`   🔍 DISCOVER: Projects and issue types seen in last 30 days:`)
+      Object.entries(projects).forEach(([proj, types]) => {
+        console.log(`   - ${proj}: ${Array.from(types).join(', ')}`)
+      })
+    } else {
+      console.log(`   🔍 DISCOVER: request failed: ${discoverResponse.status}`)
+    }
+
     // Fetch monthly resolved count
     const monthlyResolvedResponse = await fetch(
       `${baseUrl}/rest/api/3/search/approximate-count`,
