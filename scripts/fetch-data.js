@@ -587,7 +587,27 @@ async function fetchJiraData() {
     }
     
     const monthlyOpenedData = await monthlyOpenedResponse.json()
-    console.log(`   ✅ Found ${monthlyOpenedData.count || 0} issues opened in last 30 days`)
+    console.log(`   ✅ Found ${monthlyOpenedData.count || 0} DOC issues opened in last 30 days`)
+
+    // Fetch AV monthly opened count (last 30 days)
+    const avMonthlyOpenedResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND created >= -30d`,
+        }),
+      }
+    )
+    
+    if (!avMonthlyOpenedResponse.ok) {
+      const errorText = await avMonthlyOpenedResponse.text()
+      throw new Error(`Jira API error (${avMonthlyOpenedResponse.status}): ${errorText}`)
+    }
+    
+    const avMonthlyOpenedData = await avMonthlyOpenedResponse.json()
+    console.log(`   ✅ Found ${avMonthlyOpenedData.count || 0} AV issues opened in last 30 days`)
 
     // Fetch monthly resolved count
     const monthlyResolvedResponse = await fetch(
@@ -607,7 +627,27 @@ async function fetchJiraData() {
     }
     
     const monthlyResolvedData = await monthlyResolvedResponse.json()
-    console.log(`   ✅ Found ${monthlyResolvedData.count || 0} issues resolved in last 30 days`)
+    console.log(`   ✅ Found ${monthlyResolvedData.count || 0} DOC issues resolved in last 30 days`)
+
+    // Fetch AV monthly resolved count
+    const avMonthlyResolvedResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND resolved >= -30d`,
+        }),
+      }
+    )
+    
+    if (!avMonthlyResolvedResponse.ok) {
+      const errorText = await avMonthlyResolvedResponse.text()
+      throw new Error(`Jira API error (${avMonthlyResolvedResponse.status}): ${errorText}`)
+    }
+    
+    const avMonthlyResolvedData = await avMonthlyResolvedResponse.json()
+    console.log(`   ✅ Found ${avMonthlyResolvedData.count || 0} AV issues resolved in last 30 days`)
 
     // Fetch previous month opened count (60-30 days ago)
     const previousMonthOpenedResponse = await fetch(
@@ -627,7 +667,27 @@ async function fetchJiraData() {
     }
     
     const previousMonthOpenedData = await previousMonthOpenedResponse.json()
-    console.log(`   ✅ Found ${previousMonthOpenedData.count || 0} issues opened in previous month`)
+    console.log(`   ✅ Found ${previousMonthOpenedData.count || 0} DOC issues opened in previous month`)
+
+    // Fetch AV previous month opened count (60-30 days ago)
+    const avPreviousMonthOpenedResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND created >= -60d AND created <= -30d`,
+        }),
+      }
+    )
+    
+    if (!avPreviousMonthOpenedResponse.ok) {
+      const errorText = await avPreviousMonthOpenedResponse.text()
+      throw new Error(`Jira API error (${avPreviousMonthOpenedResponse.status}): ${errorText}`)
+    }
+    
+    const avPreviousMonthOpenedData = await avPreviousMonthOpenedResponse.json()
+    console.log(`   ✅ Found ${avPreviousMonthOpenedData.count || 0} AV issues opened in previous month`)
 
     // Fetch previous month resolved count (60-30 days ago)
     const previousMonthResolvedResponse = await fetch(
@@ -647,7 +707,27 @@ async function fetchJiraData() {
     }
     
     const previousMonthResolvedData = await previousMonthResolvedResponse.json()
-    console.log(`   ✅ Found ${previousMonthResolvedData.count || 0} issues resolved in previous month`)
+    console.log(`   ✅ Found ${previousMonthResolvedData.count || 0} DOC issues resolved in previous month`)
+
+    // Fetch AV previous month resolved count (60-30 days ago)
+    const avPreviousMonthResolvedResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND resolved >= -60d AND resolved <= -30d`,
+        }),
+      }
+    )
+    
+    if (!avPreviousMonthResolvedResponse.ok) {
+      const errorText = await avPreviousMonthResolvedResponse.text()
+      throw new Error(`Jira API error (${avPreviousMonthResolvedResponse.status}): ${errorText}`)
+    }
+    
+    const avPreviousMonthResolvedData = await avPreviousMonthResolvedResponse.json()
+    console.log(`   ✅ Found ${avPreviousMonthResolvedData.count || 0} AV issues resolved in previous month`)
 
     // Fetch resolved issues for previous month to calculate average resolution time
     const previousMonthResolvedIssuesResponse = await fetch(
@@ -677,7 +757,38 @@ async function fetchJiraData() {
       if (previousMonthResolutionTimes.length > 0) {
         previousMonthAvgResolutionDays = previousMonthResolutionTimes.reduce((sum, days) => sum + days, 0) / previousMonthResolutionTimes.length
       }
-      console.log(`   ✅ Calculated previous month avg resolution time: ${previousMonthAvgResolutionDays.toFixed(2)} days`)
+      console.log(`   ✅ Calculated DOC previous month avg resolution time: ${previousMonthAvgResolutionDays.toFixed(2)} days`)
+    }
+
+    // Fetch AV resolved issues for previous month to calculate average resolution time
+    const avPreviousMonthResolvedIssuesResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/jql`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND resolved >= -60d AND resolved <= -30d AND resolutiondate IS NOT NULL`,
+          maxResults: 100,
+          fields: ['created', 'resolutiondate'],
+        }),
+      }
+    )
+    
+    let avPreviousMonthAvgResolutionDays = 0
+    if (avPreviousMonthResolvedIssuesResponse.ok) {
+      const avPreviousMonthResolvedIssuesData = await avPreviousMonthResolvedIssuesResponse.json()
+      const avPreviousMonthResolutionTimes = avPreviousMonthResolvedIssuesData.issues
+        ?.filter(issue => issue.fields.created && issue.fields.resolutiondate)
+        .map(issue => {
+          const created = new Date(issue.fields.created)
+          const resolved = new Date(issue.fields.resolutiondate)
+          return (resolved - created) / (1000 * 60 * 60 * 24) // Convert to days
+        }) || []
+      
+      if (avPreviousMonthResolutionTimes.length > 0) {
+        avPreviousMonthAvgResolutionDays = avPreviousMonthResolutionTimes.reduce((sum, days) => sum + days, 0) / avPreviousMonthResolutionTimes.length
+      }
+      console.log(`   ✅ Calculated AV previous month avg resolution time: ${avPreviousMonthAvgResolutionDays.toFixed(2)} days`)
     }
 
     // Calculate previous month burn rate
@@ -793,13 +904,54 @@ async function fetchJiraData() {
       if (resolutionTimes.length > 0) {
         avgResolutionDays = resolutionTimes.reduce((sum, days) => sum + days, 0) / resolutionTimes.length
       }
-      console.log(`   ✅ Calculated avg resolution time: ${avgResolutionDays.toFixed(2)} days`)
+      console.log(`   ✅ Calculated DOC avg resolution time: ${avgResolutionDays.toFixed(2)} days`)
+    }
+
+    // Fetch AV resolved issues to calculate average resolution time (last 30 days)
+    const avResolvedIssuesResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/jql`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND resolved >= -30d AND resolutiondate IS NOT NULL`,
+          maxResults: 100,
+          fields: ['created', 'resolutiondate'],
+        }),
+      }
+    )
+    
+    let avAvgResolutionDays = 0
+    if (avResolvedIssuesResponse.ok) {
+      const avResolvedIssuesData = await avResolvedIssuesResponse.json()
+      const avResolutionTimes = avResolvedIssuesData.issues
+        ?.filter(issue => issue.fields.created && issue.fields.resolutiondate)
+        .map(issue => {
+          const created = new Date(issue.fields.created)
+          const resolved = new Date(issue.fields.resolutiondate)
+          return (resolved - created) / (1000 * 60 * 60 * 24) // Convert to days
+        }) || []
+      
+      if (avResolutionTimes.length > 0) {
+        avAvgResolutionDays = avResolutionTimes.reduce((sum, days) => sum + days, 0) / avResolutionTimes.length
+      }
+      console.log(`   ✅ Calculated AV avg resolution time: ${avAvgResolutionDays.toFixed(2)} days`)
     }
 
     // Calculate burn rate (opened/resolved)
     const monthlyOpened = monthlyOpenedData.count || 0
     const monthlyResolved = monthlyResolvedData.count || 0
     const burnRate = monthlyResolved > 0 ? (monthlyOpened / monthlyResolved).toFixed(2) : '0.00'
+
+    // Calculate AV burn rate
+    const avMonthlyOpened = avMonthlyOpenedData.count || 0
+    const avMonthlyResolved = avMonthlyResolvedData.count || 0
+    const avBurnRate = avMonthlyResolved > 0 ? (avMonthlyOpened / avMonthlyResolved).toFixed(2) : '0.00'
+
+    // Calculate AV previous month burn rate
+    const avPreviousMonthOpened = avPreviousMonthOpenedData.count || 0
+    const avPreviousMonthResolved = avPreviousMonthResolvedData.count || 0
+    const avPreviousMonthBurnRate = avPreviousMonthResolved > 0 ? (avPreviousMonthOpened / avPreviousMonthResolved).toFixed(2) : '0.00'
 
     return {
       openIssues: {
@@ -837,6 +989,15 @@ async function fetchJiraData() {
       previousMonthResolved: previousMonthResolved,
       previousMonthBurnRate: parseFloat(previousMonthBurnRate),
       previousMonthAvgResolutionDays: parseFloat(previousMonthAvgResolutionDays.toFixed(2)),
+      // AV project metrics
+      monthlyOpenedAV: avMonthlyOpened,
+      monthlyResolvedAV: avMonthlyResolved,
+      burnRateAV: parseFloat(avBurnRate),
+      previousMonthOpenedAV: avPreviousMonthOpened,
+      previousMonthResolvedAV: avPreviousMonthResolved,
+      previousMonthBurnRateAV: parseFloat(avPreviousMonthBurnRate),
+      avgResolutionDaysAV: parseFloat(avAvgResolutionDays.toFixed(2)),
+      previousMonthAvgResolutionDaysAV: parseFloat(avPreviousMonthAvgResolutionDays.toFixed(2)),
       topLabels: topLabels,
     }
   } catch (error) {

@@ -257,22 +257,27 @@ function App() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <MetricCard
                   title="Monthly Opened"
-                  value={jira.monthlyOpened || 0}
+                  docValue={jira.monthlyOpened || 0}
+                  avValue={jira.monthlyOpenedAV || 0}
                   icon={<ArrowUpRight className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Monthly Resolved"
-                  value={jira.monthlyResolved || 0}
+                  docValue={jira.monthlyResolved || 0}
+                  avValue={jira.monthlyResolvedAV || 0}
                   icon={<CheckCircle className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Burn Rate"
-                  value={jira.burnRate || '0.00'}
+                  docValue={parseFloat(jira.burnRate || 0).toFixed(2)}
+                  avValue={parseFloat(jira.burnRateAV || 0).toFixed(2)}
                   icon={<TrendingUp className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Avg. Resolution"
-                  value={`${jira.avgResolutionDays || 0} days`}
+                  docValue={Math.round(jira.avgResolutionDays || 0)}
+                  avValue={Math.round(jira.avgResolutionDaysAV || 0)}
+                  subtitle="days"
                   icon={<Clock className="w-6 h-6" />}
                 />
               </div>
@@ -284,22 +289,27 @@ function App() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <MetricCard
                   title="Previous Month Opened"
-                  value={jira.previousMonthOpened || 0}
+                  docValue={jira.previousMonthOpened || 0}
+                  avValue={jira.previousMonthOpenedAV || 0}
                   icon={<ArrowUpRight className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Previous Month Resolved"
-                  value={jira.previousMonthResolved || 0}
+                  docValue={jira.previousMonthResolved || 0}
+                  avValue={jira.previousMonthResolvedAV || 0}
                   icon={<CheckCircle className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Previous Month Burn Rate"
-                  value={jira.previousMonthBurnRate || '0.00'}
+                  docValue={parseFloat(jira.previousMonthBurnRate || 0).toFixed(2)}
+                  avValue={parseFloat(jira.previousMonthBurnRateAV || 0).toFixed(2)}
                   icon={<TrendingUp className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Previous Month Avg. Resolution"
-                  value={`${jira.previousMonthAvgResolutionDays || 0} days`}
+                  docValue={Math.round(jira.previousMonthAvgResolutionDays || 0)}
+                  avValue={Math.round(jira.previousMonthAvgResolutionDaysAV || 0)}
+                  subtitle="days"
                   icon={<Clock className="w-6 h-6" />}
                 />
               </div>
