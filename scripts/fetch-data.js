@@ -685,60 +685,85 @@ async function fetchJiraData() {
     const previousMonthResolved = previousMonthResolvedData.count || 0
     const previousMonthBurnRate = previousMonthResolved > 0 ? (previousMonthOpened / previousMonthResolved).toFixed(2) : '0.00'
 
-    // Fetch labels data - Totoro vs Non-Totoro
-    const totoroLabelsResponse = await fetch(
-      `${baseUrl}/rest/api/3/search/approximate-count`,
-      {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          jql: `project = "Couchbase Documentation" AND labels IN (totoro-planned, Totoro) AND status IN ("In Progress", "In Review", Open)`,
-        }),
-      }
-    )
+        // Fetch labels data - 3 categories: No Labels, Totoro, Other Labels
+        const noLabelsResponse = await fetch(
+          `${baseUrl}/rest/api/3/search/approximate-count`,
+          {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+              jql: `project = "Couchbase Documentation" AND status IN ("In Progress", "In Review", Open) AND labels IS EMPTY`,
+            }),
+          }
+        )
+        
+        if (!noLabelsResponse.ok) {
+          const errorText = await noLabelsResponse.text()
+          throw new Error(`Jira API error (${noLabelsResponse.status}): ${errorText}`)
+        }
+        
+        const noLabelsData = await noLabelsResponse.json()
+        const noLabelsCount = noLabelsData.count || 0
+        console.log(`   ✅ Found ${noLabelsCount} issues with no labels`)
     
-    if (!totoroLabelsResponse.ok) {
-      const errorText = await totoroLabelsResponse.text()
-      throw new Error(`Jira API error (${totoroLabelsResponse.status}): ${errorText}`)
-    }
+        const totoroLabelsResponse = await fetch(
+          `${baseUrl}/rest/api/3/search/approximate-count`,
+          {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+              jql: `project = "Couchbase Documentation" AND status IN ("In Progress", "In Review", Open) AND labels IN (totoro-planned, Totoro)`,
+            }),
+          }
+        )
+        
+        if (!totoroLabelsResponse.ok) {
+          const errorText = await totoroLabelsResponse.text()
+          throw new Error(`Jira API error (${totoroLabelsResponse.status}): ${errorText}`)
+        }
+        
+        const totoroLabelsData = await totoroLabelsResponse.json()
+        const totoroCount = totoroLabelsData.count || 0
+        console.log(`   ✅ Found ${totoroCount} Totoro issues`)
     
-    const totoroLabelsData = await totoroLabelsResponse.json()
-    const totoroCount = totoroLabelsData.count || 0
-    console.log(`   ✅ Found ${totoroCount} Totoro issues`)
-
-    const nonTotoroLabelsResponse = await fetch(
-      `${baseUrl}/rest/api/3/search/approximate-count`,
-      {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          jql: `project = "Couchbase Documentation" AND status IN ("In Progress", "In Review", Open) AND (labels NOT IN (Totoro, totoro-planned) OR labels IS EMPTY)`,
-        }),
-      }
-    )
+        const otherLabelsResponse = await fetch(
+          `${baseUrl}/rest/api/3/search/approximate-count`,
+          {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+              jql: `project = "Couchbase Documentation" AND status IN ("In Progress", "In Review", Open) AND labels NOT IN (totoro-planned, Totoro)`,
+            }),
+          }
+        )
+        
+        if (!otherLabelsResponse.ok) {
+          const errorText = await otherLabelsResponse.text()
+          throw new Error(`Jira API error (${otherLabelsResponse.status}): ${errorText}`)
+        }
+        
+        const otherLabelsData = await otherLabelsResponse.json()
+        const otherLabelsCount = otherLabelsData.count || 0
+        console.log(`   ✅ Found ${otherLabelsCount} issues with other labels`)
     
-    if (!nonTotoroLabelsResponse.ok) {
-      const errorText = await nonTotoroLabelsResponse.text()
-      throw new Error(`Jira API error (${nonTotoroLabelsResponse.status}): ${errorText}`)
-    }
-    
-    const nonTotoroLabelsData = await nonTotoroLabelsResponse.json()
-    const nonTotoroCount = nonTotoroLabelsData.count || 0
-    console.log(`   ✅ Found ${nonTotoroCount} Non-Totoro issues`)
-
-    // Create labels chart data
-    const topLabels = [
-      {
-        label: 'Totoro',
-        count: totoroCount,
-        color: '#ef4444',
-      },
-      {
-        label: 'Non-Totoro',
-        count: nonTotoroCount,
-        color: '#3b82f6',
-      },
-    ]
+        // Create labels chart data
+        const topLabels = [
+          {
+            label: 'No Labels',
+            count: noLabelsCount,
+            color: '#6b7280',
+          },
+          {
+            label: 'Totoro',
+            count: totoroCount,
+            color: '#ef4444',
+          },
+          {
+            label: 'Other Labels',
+            count: otherLabelsCount,
+            color: '#3b82f6',
+          },
+        ]
 
     // Fetch resolved issues to calculate average resolution time (last 30 days)
     const resolvedIssuesResponse = await fetch(
