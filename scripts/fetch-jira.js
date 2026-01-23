@@ -159,6 +159,31 @@ export async function fetchJiraData() {
     const avMonthlyOpenedData = await avMonthlyOpenedResponse.json()
     console.log(`   ✅ Found ${avMonthlyOpenedData.count || 0} AV issues opened in last 30 days`)
 
+    // DEBUG: Fetch a few AV issues to verify the JQL matches anything
+    const avDebugResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/jql`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = AV AND issuetype in ("Documentation", "Documentation Sub-Task") AND created >= -30d`,
+          maxResults: 5,
+          fields: ['summary', 'issuetype', 'created'],
+        }),
+      }
+    )
+    if (avDebugResponse.ok) {
+      const avDebugData = await avDebugResponse.json()
+      console.log(`   🔍 DEBUG AV JQL returned ${avDebugData.total || 0} total issues`)
+      if (avDebugData.issues && avDebugData.issues.length > 0) {
+        console.log(`   🔍 Sample AV issue keys: ${avDebugData.issues.map(i => i.key).join(', ')}`)
+      } else {
+        console.log(`   🔍 DEBUG: No AV issues returned by JQL`)
+      }
+    } else {
+      console.log(`   🔍 DEBUG: AV JQL request failed: ${avDebugResponse.status}`)
+    }
+
     // Fetch monthly resolved count
     const monthlyResolvedResponse = await fetch(
       `${baseUrl}/rest/api/3/search/approximate-count`,
