@@ -141,16 +141,14 @@ export async function fetchJiraData() {
     console.log(`   ✅ Found ${monthlyOpenedData.count || 0} DOC issues opened in last 30 days`)
 
     // Fetch AV monthly opened count (last 30 days)
-    const avMonthlyOpenedResponse = await fetch(
-      `${baseUrl}/rest/api/3/search/jql`,
-      {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND created >= -30d`,
-        }),
-      }
-    )
+    const avMonthlyOpenedResponse = await fetch(`${baseUrl}/rest/api/3/search`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        jql: `project = AV AND issuetype in ("Documentation", "Documentation Sub-Task") AND created >= -30d`,
+        maxResults: 0,
+      }),
+    })
     
     if (!avMonthlyOpenedResponse.ok) {
       const errorText = await avMonthlyOpenedResponse.text()
