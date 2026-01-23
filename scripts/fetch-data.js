@@ -952,10 +952,6 @@ async function fetchJiraData() {
     const avPreviousMonthResolved = avPreviousMonthResolvedData.total || 0
     const avPreviousMonthBurnRate = avPreviousMonthResolved > 0 ? (avPreviousMonthOpened / avPreviousMonthResolved).toFixed(2) : '0.00'
 
-    // Calculate AV previous month burn rate
-    const avPreviousMonthOpened = avPreviousMonthOpenedData.count || 0
-    const avPreviousMonthResolved = avPreviousMonthResolvedData.count || 0
-    const avPreviousMonthBurnRate = avPreviousMonthResolved > 0 ? (avPreviousMonthOpened / avPreviousMonthResolved).toFixed(2) : '0.00'
 
     return {
       openIssues: {
