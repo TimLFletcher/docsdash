@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-23T10:13:20.063Z",
+  "lastUpdated": "2026-01-23T10:31:36.784Z",
   "analytics": {
     "pageViews": {
       "total": 28008,
@@ -42,7 +42,7 @@
     "topPages": [
       {
         "page": "/home/index.html",
-        "views": 24541,
+        "views": 24542,
         "avgTime": "0:30"
       },
       {
@@ -62,8 +62,8 @@
       },
       {
         "page": "/server/current/install/install-ports.html",
-        "views": 405,
-        "avgTime": "2:50"
+        "views": 406,
+        "avgTime": "2:53"
       },
       {
         "page": "/home/mobile.html",
@@ -144,7 +144,7 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54022,
+      "uniqueVisitors": 54040,
       "avgSessionDuration": "2:14",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
@@ -167,7 +167,7 @@
       },
       {
         "source": "Unassigned",
-        "sessions": 2298,
+        "sessions": 2304,
         "percentage": 3
       },
       {
@@ -270,60 +270,23 @@
     "avgResolutionDays": 597.03,
     "issuesClosedThisWeek": 0,
     "issuesCreatedThisWeek": 15,
-    "monthlyClosure": 83,
     "monthlyOpened": 63,
     "monthlyResolved": 83,
     "burnRate": 0.76,
+    "previousMonthOpened": 111,
+    "previousMonthResolved": 211,
+    "previousMonthBurnRate": 0.53,
+    "previousMonthAvgResolutionDays": 158.98,
     "topLabels": [
       {
-        "label": "collector-a3a07512",
-        "count": 4,
+        "label": "Totoro",
+        "count": 8,
         "color": "#ef4444"
       },
       {
-        "label": "docs-release-tracker",
-        "count": 2,
-        "color": "#f97316"
-      },
-      {
-        "label": "rust",
-        "count": 2,
-        "color": "#eab308"
-      },
-      {
-        "label": "columnar",
-        "count": 1,
-        "color": "#22c55e"
-      },
-      {
-        "label": "server-docs-backlog",
-        "count": 1,
+        "label": "Non-Totoro",
+        "count": 840,
         "color": "#3b82f6"
-      },
-      {
-        "label": "eventing",
-        "count": 1,
-        "color": "#8b5cf6"
-      },
-      {
-        "label": "c",
-        "count": 1,
-        "color": "#ec4899"
-      },
-      {
-        "label": "ruby",
-        "count": 1,
-        "color": "#06b6d4"
-      },
-      {
-        "label": "approved-for-morpheus",
-        "count": 1,
-        "color": "#84cc16"
-      },
-      {
-        "label": "ok-behavior-change",
-        "count": 1,
-        "color": "#f59e0b"
       }
     ]
   },
