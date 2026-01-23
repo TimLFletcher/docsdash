@@ -17,6 +17,7 @@ import { PageViewsChart } from './components/charts/PageViewsChart'
 import { TopPagesTable } from './components/charts/TopPagesTable'
 import { SearchTermsChart } from './components/charts/SearchTermsChart'
 import { JiraPriorityChart } from './components/charts/JiraPriorityChart'
+import { JiraLabelsChart } from './components/charts/JiraLabelsChart'
 import { VelocityChart } from './components/charts/VelocityChart'
 import { RecentIssuesTable } from './components/charts/RecentIssuesTable'
 import { TrafficSourcesChart } from './components/charts/TrafficSourcesChart'
@@ -184,10 +185,7 @@ function App() {
             {/* Charts Row 2 */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <SearchTermsChart data={analytics.searchTerms} />
-              <JiraPriorityChart 
-                data={jira.openIssues.byPriority} 
-                total={jira.openIssues.total}
-              />
+              <JiraLabelsChart data={jira.topLabels || []} />
             </div>
 
             {/* Quick Insights */}
@@ -251,34 +249,41 @@ function App() {
         {/* Jira Tab */}
         {activeTab === 'jira' && (
           <div className="space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
               <MetricCard
                 title="Open Issues"
                 value={jira.openIssues.total}
                 icon={<AlertTriangle className="w-6 h-6" />}
               />
               <MetricCard
-                title="Created This Week"
-                value={jira.issuesCreatedThisWeek}
-                icon={<ArrowUpRight className="w-6 h-6" />}
-              />
-              <MetricCard
-                title="Closed This Week"
-                value={jira.issuesClosedThisWeek}
+                title="Monthly Closure"
+                value={jira.monthlyClosure || 0}
                 icon={<CheckCircle className="w-6 h-6" />}
               />
               <MetricCard
+                title="Monthly Opened"
+                value={jira.monthlyOpened || 0}
+                icon={<ArrowUpRight className="w-6 h-6" />}
+              />
+              <MetricCard
+                title="Monthly Resolved"
+                value={jira.monthlyResolved || 0}
+                icon={<CheckCircle className="w-6 h-6" />}
+              />
+              <MetricCard
+                title="Burn Rate"
+                value={jira.burnRate || '0.00'}
+                icon={<TrendingUp className="w-6 h-6" />}
+              />
+              <MetricCard
                 title="Avg. Resolution"
-                value={`${jira.avgResolutionDays} days`}
+                value={`${jira.avgResolutionDays || 0} days`}
                 icon={<Clock className="w-6 h-6" />}
               />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <JiraPriorityChart 
-                data={jira.openIssues.byPriority} 
-                total={jira.openIssues.total}
-              />
+              <JiraLabelsChart data={jira.topLabels || []} />
               <VelocityChart data={jira.velocityTrend} />
             </div>
 

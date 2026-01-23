@@ -371,6 +371,152 @@ async function fetchJiraData() {
     const closedThisWeekData = await closedThisWeekResponse.json()
     console.log(`   ✅ Found ${closedThisWeekData.count || 0} issues closed this week`)
 
+    // Fetch monthly closure count
+    const monthlyClosureResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = "Couchbase Documentation" AND statusCategory = Done AND resolved >= -30d`,
+        }),
+      }
+    )
+    
+    if (!monthlyClosureResponse.ok) {
+      const errorText = await monthlyClosureResponse.text()
+      throw new Error(`Jira API error (${monthlyClosureResponse.status}): ${errorText}`)
+    }
+    
+    const monthlyClosureData = await monthlyClosureResponse.json()
+    console.log(`   ✅ Found ${monthlyClosureData.count || 0} issues closed in last 30 days`)
+
+    // Fetch monthly opened count
+    const monthlyOpenedResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = DOC AND created >= -30d`,
+        }),
+      }
+    )
+    
+    if (!monthlyOpenedResponse.ok) {
+      const errorText = await monthlyOpenedResponse.text()
+      throw new Error(`Jira API error (${monthlyOpenedResponse.status}): ${errorText}`)
+    }
+    
+    const monthlyOpenedData = await monthlyOpenedResponse.json()
+    console.log(`   ✅ Found ${monthlyOpenedData.count || 0} issues opened in last 30 days`)
+
+    // Fetch monthly resolved count
+    const monthlyResolvedResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = DOC AND resolved >= -30d`,
+        }),
+      }
+    )
+    
+    if (!monthlyResolvedResponse.ok) {
+      const errorText = await monthlyResolvedResponse.text()
+      throw new Error(`Jira API error (${monthlyResolvedResponse.status}): ${errorText}`)
+    }
+    
+    const monthlyResolvedData = await monthlyResolvedResponse.json()
+    console.log(`   ✅ Found ${monthlyResolvedData.count || 0} issues resolved in last 30 days`)
+
+    // Fetch issues with labels for the last 30 days to calculate top labels
+    const labelsResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/jql`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = DOC AND created >= -30d`,
+          maxResults: 1000, // Get more issues to have better label statistics
+          fields: ['labels'],
+        }),
+      }
+    )
+    
+    if (!labelsResponse.ok) {
+      const errorText = await labelsResponse.text()
+      throw new Error(`Jira API error (${labelsResponse.status}): ${errorText}`)
+    }
+    
+    const labelsData = await labelsResponse.json()
+    
+    // Count labels
+    const labelCounts = {}
+    labelsData.issues?.forEach(issue => {
+      if (issue.fields.labels && Array.isArray(issue.fields.labels)) {
+        issue.fields.labels.forEach(label => {
+          labelCounts[label] = (labelCounts[label] || 0) + 1
+        })
+      }
+    })
+    
+    // Get top 10 labels
+    const topLabels = Object.entries(labelCounts)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 10)
+      .map(([label, count], index) => {
+        // Generate colors for labels
+        const colors = [
+          '#ef4444', '#f97316', '#eab308', '#22c55e', '#3b82f6',
+          '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f59e0b'
+        ]
+        return {
+          label,
+          count,
+          color: colors[index % colors.length],
+        }
+      })
+    
+    console.log(`   ✅ Found ${topLabels.length} top labels`)
+
+    // Fetch resolved issues to calculate average resolution time (last 30 days)
+    const resolvedIssuesResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/jql`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = DOC AND resolved >= -30d AND resolutiondate IS NOT NULL`,
+          maxResults: 100,
+          fields: ['created', 'resolutiondate'],
+        }),
+      }
+    )
+    
+    let avgResolutionDays = 0
+    if (resolvedIssuesResponse.ok) {
+      const resolvedIssuesData = await resolvedIssuesResponse.json()
+      const resolutionTimes = resolvedIssuesData.issues
+        ?.filter(issue => issue.fields.created && issue.fields.resolutiondate)
+        .map(issue => {
+          const created = new Date(issue.fields.created)
+          const resolved = new Date(issue.fields.resolutiondate)
+          return (resolved - created) / (1000 * 60 * 60 * 24) // Convert to days
+        }) || []
+      
+      if (resolutionTimes.length > 0) {
+        avgResolutionDays = resolutionTimes.reduce((sum, days) => sum + days, 0) / resolutionTimes.length
+      }
+      console.log(`   ✅ Calculated avg resolution time: ${avgResolutionDays.toFixed(2)} days`)
+    }
+
+    // Calculate burn rate (opened/resolved)
+    const monthlyOpened = monthlyOpenedData.count || 0
+    const monthlyResolved = monthlyResolvedData.count || 0
+    const burnRate = monthlyResolved > 0 ? (monthlyOpened / monthlyResolved).toFixed(2) : '0.00'
+
     return {
       openIssues: {
         total: totalOpenIssues,
@@ -397,9 +543,14 @@ async function fetchJiraData() {
         { sprint: 'Sprint 22', completed: 8, planned: 14 },
       ],
       issuesByType: [],
-      avgResolutionDays: 4.2,
+      avgResolutionDays: parseFloat(avgResolutionDays.toFixed(2)),
       issuesClosedThisWeek: closedThisWeekData.count || 0,
       issuesCreatedThisWeek: createdThisWeekData.count || 0,
+      monthlyClosure: monthlyClosureData.count || 0,
+      monthlyOpened: monthlyOpened,
+      monthlyResolved: monthlyResolved,
+      burnRate: parseFloat(burnRate),
+      topLabels: topLabels,
     }
   } catch (error) {
     console.error('❌ Error fetching Jira data:', error.message)
