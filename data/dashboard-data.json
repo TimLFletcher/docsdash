@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-01-23T10:46:14.443Z",
+  "lastUpdated": "2026-01-23T11:22:03.841Z",
   "analytics": {
     "pageViews": {
       "total": 28008,
-      "trend": 2.4,
+      "trend": 2.5,
       "daily": [
         {
           "date": "2026-01-16",
@@ -42,7 +42,7 @@
     "topPages": [
       {
         "page": "/home/index.html",
-        "views": 24544,
+        "views": 24565,
         "avgTime": "0:30"
       },
       {
@@ -52,18 +52,18 @@
       },
       {
         "page": "/home/cloud.html",
-        "views": 758,
+        "views": 759,
         "avgTime": "2:11"
       },
       {
         "page": "/java-sdk/current/project-docs/compatibility.html",
-        "views": 512,
-        "avgTime": "1:02"
+        "views": 513,
+        "avgTime": "1:03"
       },
       {
         "page": "/server/current/install/install-ports.html",
-        "views": 406,
-        "avgTime": "2:53"
+        "views": 407,
+        "avgTime": "2:52"
       },
       {
         "page": "/home/mobile.html",
@@ -77,7 +77,7 @@
       },
       {
         "page": "/home/sdk.html",
-        "views": 365,
+        "views": 366,
         "avgTime": "1:37"
       },
       {
@@ -144,7 +144,7 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54044,
+      "uniqueVisitors": 54061,
       "avgSessionDuration": "2:14",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
@@ -152,27 +152,27 @@
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 48281,
+        "sessions": 48351,
         "percentage": 72
       },
       {
         "source": "Organic Search",
-        "sessions": 12792,
+        "sessions": 12838,
         "percentage": 19
       },
       {
         "source": "Referral",
-        "sessions": 3167,
+        "sessions": 3170,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2305,
-        "percentage": 3
+        "sessions": 2361,
+        "percentage": 4
       },
       {
         "source": "Paid Search",
-        "sessions": 292,
+        "sessions": 294,
         "percentage": 0
       }
     ],
@@ -188,6 +188,107 @@
       {
         "device": "Tablet",
         "percentage": 6
+      }
+    ],
+    "pathComparison": [
+      {
+        "path": "cloud",
+        "displayPath": "/cloud/",
+        "totalViews": 7113,
+        "bounceRate": "0.4",
+        "avgSessionDuration": "4:38",
+        "trafficBalance": {
+          "direct": 27,
+          "search": 48
+        }
+      },
+      {
+        "path": "analytics",
+        "displayPath": "/analytics/",
+        "totalViews": 721,
+        "bounceRate": "0.4",
+        "avgSessionDuration": "2:53",
+        "trafficBalance": {
+          "direct": 38,
+          "search": 44
+        }
+      },
+      {
+        "path": "ai",
+        "displayPath": "/ai/",
+        "totalViews": 733,
+        "bounceRate": "0.3",
+        "avgSessionDuration": "4:38",
+        "trafficBalance": {
+          "direct": 16,
+          "search": 49
+        }
+      },
+      {
+        "path": "server",
+        "displayPath": "/server/",
+        "totalViews": 28788,
+        "bounceRate": "0.5",
+        "avgSessionDuration": "3:49",
+        "trafficBalance": {
+          "direct": 45,
+          "search": 40
+        }
+      },
+      {
+        "path": "operator",
+        "displayPath": "/operator/",
+        "totalViews": 2644,
+        "bounceRate": "0.6",
+        "avgSessionDuration": "2:48",
+        "trafficBalance": {
+          "direct": 50,
+          "search": 35
+        }
+      },
+      {
+        "path": "enterprise analytics",
+        "displayPath": "/enterprise-analytics/",
+        "totalViews": 1416,
+        "bounceRate": "0.4",
+        "avgSessionDuration": "1:51",
+        "trafficBalance": {
+          "direct": 63,
+          "search": 28
+        }
+      },
+      {
+        "path": "couchbase lite",
+        "displayPath": "/couchbase-lite/",
+        "totalViews": 5716,
+        "bounceRate": "0.6",
+        "avgSessionDuration": "2:52",
+        "trafficBalance": {
+          "direct": 51,
+          "search": 35
+        }
+      },
+      {
+        "path": "sync gateway",
+        "displayPath": "/sync-gateway/",
+        "totalViews": 2905,
+        "bounceRate": "0.5",
+        "avgSessionDuration": "3:38",
+        "trafficBalance": {
+          "direct": 42,
+          "search": 39
+        }
+      },
+      {
+        "path": "couchbase edge server",
+        "displayPath": "/couchbase-edge-server/",
+        "totalViews": 341,
+        "bounceRate": "0.8",
+        "avgSessionDuration": "0:50",
+        "trafficBalance": {
+          "direct": 68,
+          "search": 16
+        }
       }
     ]
   },
