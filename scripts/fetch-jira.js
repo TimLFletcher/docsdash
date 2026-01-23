@@ -141,7 +141,9 @@ export async function fetchJiraData() {
     console.log(`   ✅ Found ${monthlyOpenedData.count || 0} DOC issues opened in last 30 days`)
 
     // Fetch AV monthly opened count (last 30 days)
-    const avMonthlyOpenedResponse = await fetch(`${baseUrl}/rest/api/3/search`, {
+    const avMonthlyOpenedResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
       method: "POST",
       headers,
       body: JSON.stringify({
