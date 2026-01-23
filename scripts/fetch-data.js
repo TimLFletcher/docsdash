@@ -596,7 +596,7 @@ async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND created >= -30d`,
+          jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND created >= -30d`,
         }),
       }
     )
@@ -636,7 +636,7 @@ async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `project = AV AND type IN (Documentation, "Documentation Sub-Task") AND resolved >= -30d`,
+          jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND resolved >= -30d`,
         }),
       }
     )
@@ -676,7 +676,7 @@ async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `project = AV AND type IN (Documentation, "Documentation Sub-Task") AND created >= -60d AND created <= -30d`,
+          jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND created >= -60d AND created <= -30d`,
         }),
       }
     )
@@ -716,7 +716,7 @@ async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND resolved >= -60d AND resolved <= -30d`,
+          jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND resolved >= -60d AND resolved <= -30d`,
         }),
       }
     )
@@ -767,7 +767,7 @@ async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND resolved >= -60d AND resolved <= -30d AND resolutiondate IS NOT NULL`,
+          jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND resolved >= -60d AND resolved <= -30d AND resolutiondate IS NOT NULL`,
           maxResults: 100,
           fields: ['created', 'resolutiondate'],
         }),
@@ -914,7 +914,7 @@ async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `status IN ("In Progress", "In Review", Open) AND project = AV AND type IN (Documentation, "Documentation Sub-Task") AND resolved >= -30d AND resolutiondate IS NOT NULL`,
+          jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND resolved >= -30d AND resolutiondate IS NOT NULL`,
           maxResults: 100,
           fields: ['created', 'resolutiondate'],
         }),
