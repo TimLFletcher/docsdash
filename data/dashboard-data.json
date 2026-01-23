@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-01-23T17:20:46.271Z",
+  "lastUpdated": "2026-01-23T17:25:14.315Z",
   "analytics": {
     "pageViews": {
-      "total": 28978,
+      "total": 29022,
       "trend": 3.1,
       "daily": [
         {
@@ -31,11 +31,11 @@
         },
         {
           "date": "2026-01-22",
-          "views": 2876
+          "views": 2880
         },
         {
           "date": "2026-01-23",
-          "views": 823
+          "views": 863
         }
       ]
     },
@@ -489,7 +489,7 @@
       {
         "path": "couchbase lite",
         "displayPath": "/couchbase-lite/",
-        "totalViews": 5777,
+        "totalViews": 5781,
         "bounceRate": "0.6",
         "avgSessionDuration": "2:53",
         "trafficBalance": {
@@ -521,12 +521,122 @@
       }
     ]
   },
-  "jira": null,
+  "jira": {
+    "openIssues": {
+      "total": 1219,
+      "byPriority": [
+        {
+          "priority": "Major",
+          "count": 46,
+          "color": "#6b7280"
+        },
+        {
+          "priority": "Medium",
+          "count": 4,
+          "color": "#eab308"
+        }
+      ]
+    },
+    "recentIssues": [
+      {
+        "key": "DOC-13935",
+        "summary": "Add new capella-type for AI and app-services",
+        "priority": "Major",
+        "status": "Open",
+        "created": "2026-01-23"
+      },
+      {
+        "key": "DOC-13934",
+        "summary": "Standardize RBAC Role String Syntax Documentation",
+        "priority": "Major",
+        "status": "Open",
+        "created": "2026-01-22"
+      },
+      {
+        "key": "DOC-13933",
+        "summary": "Installing Couchbase Lite JavaScript — specify browser-only",
+        "priority": "Medium",
+        "status": "Open",
+        "created": "2026-01-22"
+      },
+      {
+        "key": "DOC-13932",
+        "summary": "Couchbase Operator - Prerequisites and System Requirements Updates",
+        "priority": "Major",
+        "status": "Open",
+        "created": "2026-01-22"
+      },
+      {
+        "key": "DOC-13930",
+        "summary": "Feedback on Sync Gateway | Couchbase Docs",
+        "priority": "Medium",
+        "status": "Open",
+        "created": "2026-01-21"
+      }
+    ],
+    "velocityTrend": [
+      {
+        "sprint": "Sprint 18",
+        "completed": 12,
+        "planned": 15
+      },
+      {
+        "sprint": "Sprint 19",
+        "completed": 14,
+        "planned": 14
+      },
+      {
+        "sprint": "Sprint 20",
+        "completed": 11,
+        "planned": 16
+      },
+      {
+        "sprint": "Sprint 21",
+        "completed": 15,
+        "planned": 15
+      },
+      {
+        "sprint": "Sprint 22",
+        "completed": 8,
+        "planned": 14
+      }
+    ],
+    "avgResolutionDays": 216.19,
+    "monthlyOpened": 63,
+    "monthlyResolved": 85,
+    "burnRate": 0.74,
+    "previousMonthOpened": 111,
+    "previousMonthResolved": 208,
+    "previousMonthBurnRate": 0.53,
+    "previousMonthAvgResolutionDays": 14.93,
+    "monthlyOpenedAV": 0,
+    "monthlyResolvedAV": 0,
+    "burnRateAV": 0,
+    "previousMonthOpenedAV": 0,
+    "previousMonthResolvedAV": 0,
+    "previousMonthBurnRateAV": 0,
+    "avgResolutionDaysAV": 0,
+    "previousMonthAvgResolutionDaysAV": 0,
+    "topLabels": [
+      {
+        "label": "No Labels",
+        "count": 346,
+        "color": "#6b7280"
+      },
+      {
+        "label": "Totoro",
+        "count": 8,
+        "color": "#ef4444"
+      },
+      {
+        "label": "Other Labels",
+        "count": 839,
+        "color": "#3b82f6"
+      }
+    ]
+  },
   "insights": {
     "contentGaps": [],
     "performanceNotes": []
-  },
-  "errors": [
-    "Failed to fetch Jira data"
-  ]
+  }
 }
