@@ -1,14 +1,10 @@
 {
-  "lastUpdated": "2026-01-23T07:51:53.900Z",
+  "lastUpdated": "2026-01-23T09:06:25.900Z",
   "analytics": {
     "pageViews": {
-      "total": 32790,
-      "trend": 7.8,
+      "total": 28008,
+      "trend": 2.1,
       "daily": [
-        {
-          "date": "2026-01-15",
-          "views": 4917
-        },
         {
           "date": "2026-01-16",
           "views": 3299
@@ -35,60 +31,64 @@
         },
         {
           "date": "2026-01-22",
-          "views": 2594
+          "views": 2718
+        },
+        {
+          "date": "2026-01-23",
+          "views": 11
         }
       ]
     },
     "topPages": [
       {
         "page": "/home/index.html",
-        "views": 24802,
+        "views": 24518,
         "avgTime": "0:30"
       },
       {
         "page": "/home/server.html",
-        "views": 905,
-        "avgTime": "1:35"
+        "views": 886,
+        "avgTime": "1:34"
       },
       {
         "page": "/home/cloud.html",
-        "views": 770,
-        "avgTime": "2:13"
+        "views": 757,
+        "avgTime": "2:11"
       },
       {
         "page": "/java-sdk/current/project-docs/compatibility.html",
-        "views": 514,
+        "views": 512,
         "avgTime": "1:02"
       },
       {
         "page": "/server/current/install/install-ports.html",
-        "views": 411,
-        "avgTime": "2:47"
+        "views": 404,
+        "avgTime": "2:50"
       },
       {
         "page": "/home/mobile.html",
-        "views": 403,
-        "avgTime": "1:04"
+        "views": 394,
+        "avgTime": "1:07"
       },
       {
         "page": "/couchbase-lite/current/index.html",
-        "views": 399,
-        "avgTime": "1:20"
+        "views": 387,
+        "avgTime": "1:17"
       },
       {
         "page": "/home/sdk.html",
-        "views": 371,
-        "avgTime": "1:43"
+        "views": 363,
+        "avgTime": "1:37"
       },
       {
         "page": "/server/current/release-notes/relnotes.html",
-        "views": 346,
-        "avgTime": "1:52"
+        "views": 329,
+        "avgTime": "2:06"
       },
       {
         "page": "/operator/current/overview.html",
-        "views": 336,
-        "avgTime": "0:55"
+        "views": 318,
+        "avgTime": "0:50"
       }
     ],
     "searchTerms": [
@@ -144,35 +144,35 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 56370,
-      "avgSessionDuration": "2:10",
+      "uniqueVisitors": 53862,
+      "avgSessionDuration": "2:13",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
     },
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 50701,
-        "percentage": 73
+        "sessions": 48215,
+        "percentage": 72
       },
       {
         "source": "Organic Search",
-        "sessions": 13211,
+        "sessions": 12751,
         "percentage": 19
       },
       {
         "source": "Referral",
-        "sessions": 3282,
+        "sessions": 3160,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2215,
+        "sessions": 2201,
         "percentage": 3
       },
       {
         "source": "Paid Search",
-        "sessions": 308,
+        "sessions": 292,
         "percentage": 0
       }
     ],
@@ -193,7 +193,7 @@
   },
   "jira": {
     "openIssues": {
-      "total": 12504,
+      "total": 1221,
       "byPriority": [
         {
           "priority": "Medium",
@@ -206,36 +206,36 @@
       {
         "key": "DOC-13934",
         "summary": "Standardize RBAC Role String Syntax Documentation",
-        "priority": "重要",
-        "status": "打开",
+        "priority": "Major",
+        "status": "Open",
         "created": "2026-01-22"
       },
       {
         "key": "DOC-13933",
         "summary": "Installing Couchbase Lite JavaScript — specify browser-only",
         "priority": "Medium",
-        "status": "打开",
+        "status": "Open",
         "created": "2026-01-22"
       },
       {
         "key": "DOC-13932",
         "summary": "Couchbase Operator - Prerequisites and System Requirements Updates",
-        "priority": "重要",
-        "status": "打开",
+        "priority": "Major",
+        "status": "Open",
         "created": "2026-01-22"
       },
       {
         "key": "DOC-13930",
         "summary": "Feedback on Sync Gateway | Couchbase Docs",
         "priority": "Medium",
-        "status": "打开",
+        "status": "Open",
         "created": "2026-01-21"
       },
       {
         "key": "DOC-13929",
         "summary": "Accesso: Add support for .NET10 in CBLite",
-        "priority": "重要",
-        "status": "打开",
+        "priority": "Major",
+        "status": "Open",
         "created": "2026-01-21"
       }
     ],
