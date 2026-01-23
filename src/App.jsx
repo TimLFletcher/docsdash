@@ -15,7 +15,6 @@ import {
 import { MetricCard } from './components/MetricCard'
 import { PageViewsChart } from './components/charts/PageViewsChart'
 import { TopPagesTable } from './components/charts/TopPagesTable'
-import { SearchTermsChart } from './components/charts/SearchTermsChart'
 import { JiraPriorityChart } from './components/charts/JiraPriorityChart'
 import { JiraLabelsChart } from './components/charts/JiraLabelsChart'
 import { VelocityChart } from './components/charts/VelocityChart'
@@ -180,12 +179,11 @@ function App() {
             {/* Charts Row 1 */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <PageViewsChart data={analytics.pageViews.daily} />
-              <TopPagesTable data={analytics.topPages} />
+              <TopPagesTable data={analytics.topPagesByPath || []} />
             </div>
 
             {/* Charts Row 2 */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <SearchTermsChart data={analytics.searchTerms} />
               <JiraLabelsChart data={jira.topLabels || []} />
             </div>
 
@@ -236,16 +234,16 @@ function App() {
               />
             </div>
 
-            <PageViewsChart data={analytics.pageViews.daily} />
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <TopPagesTable data={analytics.topPages} />
+              <TopPagesTable data={analytics.topPagesByPath || []} />
               <TrafficSourcesChart data={analytics.trafficSources} />
             </div>
 
-            <PathComparisonTable data={analytics.pathComparison || []} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <PageViewsChart data={analytics.pageViews.daily} />
+            </div>
 
-            <SearchTermsChart data={analytics.searchTerms} />
+            <PathComparisonTable data={analytics.pathComparison || []} />
           </div>
         )}
 
@@ -359,9 +357,6 @@ function App() {
                 ))}
               </div>
             </div>
-
-            {/* Search Terms Analysis */}
-            <SearchTermsChart data={analytics.searchTerms} />
 
             {/* Velocity Analysis */}
             <VelocityChart data={jira.velocityTrend} />

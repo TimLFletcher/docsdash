@@ -15,15 +15,106 @@
         { "date": "2026-01-22", "views": 4000 }
       ]
     },
-    "topPages": [
-      { "page": "/docs/getting-started", "views": 8420, "avgTime": "3:45" },
-      { "page": "/docs/api-reference", "views": 6230, "avgTime": "5:12" },
-      { "page": "/docs/installation", "views": 5890, "avgTime": "2:30" },
-      { "page": "/docs/authentication", "views": 4560, "avgTime": "4:20" },
-      { "page": "/docs/quickstart", "views": 4120, "avgTime": "2:15" },
-      { "page": "/docs/configuration", "views": 3890, "avgTime": "3:50" },
-      { "page": "/docs/troubleshooting", "views": 3450, "avgTime": "6:30" },
-      { "page": "/docs/faq", "views": 2980, "avgTime": "1:45" }
+    "topPagesByPath": [
+      {
+        "path": "cloud",
+        "displayPath": "/cloud/",
+        "pages": [
+          { "page": "/cloud/getting-started", "views": 5420, "avgTime": "3:45" },
+          { "page": "/cloud/installation", "views": 4230, "avgTime": "2:30" },
+          { "page": "/cloud/authentication", "views": 3560, "avgTime": "4:20" },
+          { "page": "/cloud/configuration", "views": 2890, "avgTime": "3:50" },
+          { "page": "/cloud/quickstart", "views": 2120, "avgTime": "2:15" }
+        ]
+      },
+      {
+        "path": "analytics",
+        "displayPath": "/analytics/",
+        "pages": [
+          { "page": "/analytics/overview", "views": 3420, "avgTime": "4:15" },
+          { "page": "/analytics/query-guide", "views": 2230, "avgTime": "5:30" },
+          { "page": "/analytics/setup", "views": 1890, "avgTime": "3:20" },
+          { "page": "/analytics/examples", "views": 1560, "avgTime": "6:10" },
+          { "page": "/analytics/troubleshooting", "views": 1120, "avgTime": "4:45" }
+        ]
+      },
+      {
+        "path": "ai",
+        "displayPath": "/ai/",
+        "pages": [
+          { "page": "/ai/introduction", "views": 2820, "avgTime": "3:25" },
+          { "page": "/ai/getting-started", "views": 1930, "avgTime": "4:10" },
+          { "page": "/ai/api-reference", "views": 1490, "avgTime": "5:20" },
+          { "page": "/ai/examples", "views": 1260, "avgTime": "4:30" },
+          { "page": "/ai/configuration", "views": 920, "avgTime": "3:15" }
+        ]
+      },
+      {
+        "path": "server",
+        "displayPath": "/server/",
+        "pages": [
+          { "page": "/server/installation", "views": 6420, "avgTime": "5:45" },
+          { "page": "/server/configuration", "views": 5230, "avgTime": "4:30" },
+          { "page": "/server/admin-guide", "views": 4890, "avgTime": "6:20" },
+          { "page": "/server/upgrade", "views": 3560, "avgTime": "4:15" },
+          { "page": "/server/troubleshooting", "views": 3120, "avgTime": "5:30" }
+        ]
+      },
+      {
+        "path": "operator",
+        "displayPath": "/operator/",
+        "pages": [
+          { "page": "/operator/overview", "views": 1820, "avgTime": "3:40" },
+          { "page": "/operator/installation", "views": 1230, "avgTime": "4:20" },
+          { "page": "/operator/configuration", "views": 990, "avgTime": "3:50" },
+          { "page": "/operator/examples", "views": 760, "avgTime": "4:10" },
+          { "page": "/operator/troubleshooting", "views": 620, "avgTime": "3:30" }
+        ]
+      },
+      {
+        "path": "enterprise analytics",
+        "displayPath": "/enterprise-analytics/",
+        "pages": [
+          { "page": "/enterprise-analytics/overview", "views": 1420, "avgTime": "4:25" },
+          { "page": "/enterprise-analytics/setup", "views": 930, "avgTime": "5:10" },
+          { "page": "/enterprise-analytics/features", "views": 790, "avgTime": "4:40" },
+          { "page": "/enterprise-analytics/examples", "views": 660, "avgTime": "5:20" },
+          { "page": "/enterprise-analytics/configuration", "views": 520, "avgTime": "3:50" }
+        ]
+      },
+      {
+        "path": "couchbase lite",
+        "displayPath": "/couchbase-lite/",
+        "pages": [
+          { "page": "/couchbase-lite/getting-started", "views": 3420, "avgTime": "4:15" },
+          { "page": "/couchbase-lite/installation", "views": 2230, "avgTime": "3:30" },
+          { "page": "/couchbase-lite/api-reference", "views": 1890, "avgTime": "5:45" },
+          { "page": "/couchbase-lite/examples", "views": 1560, "avgTime": "4:20" },
+          { "page": "/couchbase-lite/sync", "views": 1120, "avgTime": "5:10" }
+        ]
+      },
+      {
+        "path": "sync gateway",
+        "displayPath": "/sync-gateway/",
+        "pages": [
+          { "page": "/sync-gateway/overview", "views": 2220, "avgTime": "4:30" },
+          { "page": "/sync-gateway/installation", "views": 1630, "avgTime": "3:45" },
+          { "page": "/sync-gateway/configuration", "views": 1290, "avgTime": "5:20" },
+          { "page": "/sync-gateway/api-reference", "views": 960, "avgTime": "4:50" },
+          { "page": "/sync-gateway/troubleshooting", "views": 720, "avgTime": "4:15" }
+        ]
+      },
+      {
+        "path": "couchbase edge server",
+        "displayPath": "/couchbase-edge-server/",
+        "pages": [
+          { "page": "/couchbase-edge-server/overview", "views": 820, "avgTime": "3:20" },
+          { "page": "/couchbase-edge-server/installation", "views": 630, "avgTime": "4:10" },
+          { "page": "/couchbase-edge-server/configuration", "views": 490, "avgTime": "3:50" },
+          { "page": "/couchbase-edge-server/features", "views": 360, "avgTime": "4:25" },
+          { "page": "/couchbase-edge-server/troubleshooting", "views": 220, "avgTime": "3:30" }
+        ]
+      }
     ],
     "searchTerms": [
       { "term": "authentication", "count": 890, "resultsFound": true },

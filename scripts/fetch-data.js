@@ -67,24 +67,73 @@ async function fetchGoogleAnalyticsData() {
       orderBys: [{ dimension: { dimensionName: 'date' } }],
     })
 
-    // Fetch top pages (filtered to docs.couchbase.com)
-    const [topPagesResponse] = await analyticsDataClient.runReport({
-      property: `properties/${propertyId}`,
-      dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
-      dimensions: [{ name: 'pagePath' }],
-      metrics: [
-        { name: 'screenPageViews' },
-        { name: 'averageSessionDuration' },
-      ],
-      dimensionFilter: {
-        filter: {
-          fieldName: 'hostName',
-          stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
-        },
-      },
-      orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
-      limit: 10,
-    })
+    // Fetch top 5 pages for each documentation path
+    const documentationPaths = [
+      '/cloud/',
+      '/analytics/',
+      '/ai/',
+      '/server/',
+      '/operator/',
+      '/enterprise-analytics/',
+      '/couchbase-lite/',
+      '/sync-gateway/',
+      '/couchbase-edge-server/',
+    ]
+
+    const topPagesByPath = await Promise.all(
+      documentationPaths.map(async (path) => {
+        try {
+          const [pathPagesResponse] = await analyticsDataClient.runReport({
+            property: `properties/${propertyId}`,
+            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            dimensions: [{ name: 'pagePath' }],
+            metrics: [
+              { name: 'screenPageViews' },
+              { name: 'averageSessionDuration' },
+            ],
+            dimensionFilter: {
+              andGroup: {
+                expressions: [
+                  {
+                    filter: {
+                      fieldName: 'hostName',
+                      stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+                    },
+                  },
+                  {
+                    filter: {
+                      fieldName: 'pagePath',
+                      stringFilter: { matchType: 'BEGINS_WITH', value: path },
+                    },
+                  },
+                ],
+              },
+            },
+            orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
+            limit: 5,
+          })
+
+          return {
+            path: path.replace(/\//g, '').replace(/-/g, ' ') || 'root',
+            displayPath: path,
+            pages: pathPagesResponse.rows?.map(row => ({
+              page: row.dimensionValues[0].value,
+              views: parseInt(row.metricValues[0].value),
+              avgTime: formatDuration(parseFloat(row.metricValues[1].value)),
+            })) || [],
+          }
+        } catch (error) {
+          console.error(`   ⚠️  Error fetching top pages for path ${path}:`, error.message)
+          return {
+            path: path.replace(/\//g, '').replace(/-/g, ' ') || 'root',
+            displayPath: path,
+            pages: [],
+          }
+        }
+      })
+    )
+
+    console.log(`   ✅ Fetched top pages for ${topPagesByPath.length} documentation paths`)
 
     // Fetch search terms (requires Site Search to be configured, filtered to docs.couchbase.com)
     const [searchTermsResponse] = await analyticsDataClient.runReport({
@@ -159,19 +208,7 @@ async function fetchGoogleAnalyticsData() {
       return `${mins}:${secs.toString().padStart(2, '0')}`
     }
 
-    // Fetch metrics for each documentation path
-    const documentationPaths = [
-      '/cloud/',
-      '/analytics/',
-      '/ai/',
-      '/server/',
-      '/operator/',
-      '/enterprise-analytics/',
-      '/couchbase-lite/',
-      '/sync-gateway/',
-      '/couchbase-edge-server/',
-    ]
-
+    // Fetch metrics for each documentation path (reuse paths array)
     const pathMetrics = await Promise.all(
       documentationPaths.map(async (path) => {
         try {
@@ -343,11 +380,7 @@ async function fetchGoogleAnalyticsData() {
         trend: parseFloat(trend),
         daily,
       },
-      topPages: topPagesResponse.rows.map(row => ({
-        page: row.dimensionValues[0].value,
-        views: parseInt(row.metricValues[0].value),
-        avgTime: formatDuration(parseFloat(row.metricValues[1].value)),
-      })),
+      topPagesByPath: topPagesByPath,
       searchTerms: searchTermsResponse.rows?.map(row => ({
         term: row.dimensionValues[0].value,
         count: parseInt(row.metricValues[0].value),

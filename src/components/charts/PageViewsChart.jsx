@@ -29,7 +29,7 @@ export function PageViewsChart({ data }) {
       title="Page Views" 
       subtitle="Daily documentation traffic over time"
     >
-      <div className="h-72">
+      <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
             <defs>
