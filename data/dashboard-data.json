@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-01-23T09:06:25.900Z",
+  "lastUpdated": "2026-01-23T10:13:20.063Z",
   "analytics": {
     "pageViews": {
       "total": 28008,
-      "trend": 2.1,
+      "trend": 2.4,
       "daily": [
         {
           "date": "2026-01-16",
@@ -42,17 +42,17 @@
     "topPages": [
       {
         "page": "/home/index.html",
-        "views": 24518,
+        "views": 24541,
         "avgTime": "0:30"
       },
       {
         "page": "/home/server.html",
-        "views": 886,
+        "views": 890,
         "avgTime": "1:34"
       },
       {
         "page": "/home/cloud.html",
-        "views": 757,
+        "views": 758,
         "avgTime": "2:11"
       },
       {
@@ -62,13 +62,13 @@
       },
       {
         "page": "/server/current/install/install-ports.html",
-        "views": 404,
+        "views": 405,
         "avgTime": "2:50"
       },
       {
         "page": "/home/mobile.html",
-        "views": 394,
-        "avgTime": "1:07"
+        "views": 396,
+        "avgTime": "1:08"
       },
       {
         "page": "/couchbase-lite/current/index.html",
@@ -77,18 +77,18 @@
       },
       {
         "page": "/home/sdk.html",
-        "views": 363,
+        "views": 365,
         "avgTime": "1:37"
       },
       {
         "page": "/server/current/release-notes/relnotes.html",
-        "views": 329,
-        "avgTime": "2:06"
+        "views": 330,
+        "avgTime": "2:08"
       },
       {
         "page": "/operator/current/overview.html",
-        "views": 318,
-        "avgTime": "0:50"
+        "views": 319,
+        "avgTime": "0:51"
       }
     ],
     "searchTerms": [
@@ -144,30 +144,30 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 53862,
-      "avgSessionDuration": "2:13",
+      "uniqueVisitors": 54022,
+      "avgSessionDuration": "2:14",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
     },
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 48215,
+        "sessions": 48281,
         "percentage": 72
       },
       {
         "source": "Organic Search",
-        "sessions": 12751,
+        "sessions": 12792,
         "percentage": 19
       },
       {
         "source": "Referral",
-        "sessions": 3160,
+        "sessions": 3167,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2201,
+        "sessions": 2298,
         "percentage": 3
       },
       {
@@ -193,7 +193,7 @@
   },
   "jira": {
     "openIssues": {
-      "total": 1221,
+      "total": 1220,
       "byPriority": [
         {
           "priority": "Medium",
@@ -267,9 +267,65 @@
       }
     ],
     "issuesByType": [],
-    "avgResolutionDays": 4.2,
+    "avgResolutionDays": 597.03,
     "issuesClosedThisWeek": 0,
-    "issuesCreatedThisWeek": 15
+    "issuesCreatedThisWeek": 15,
+    "monthlyClosure": 83,
+    "monthlyOpened": 63,
+    "monthlyResolved": 83,
+    "burnRate": 0.76,
+    "topLabels": [
+      {
+        "label": "collector-a3a07512",
+        "count": 4,
+        "color": "#ef4444"
+      },
+      {
+        "label": "docs-release-tracker",
+        "count": 2,
+        "color": "#f97316"
+      },
+      {
+        "label": "rust",
+        "count": 2,
+        "color": "#eab308"
+      },
+      {
+        "label": "columnar",
+        "count": 1,
+        "color": "#22c55e"
+      },
+      {
+        "label": "server-docs-backlog",
+        "count": 1,
+        "color": "#3b82f6"
+      },
+      {
+        "label": "eventing",
+        "count": 1,
+        "color": "#8b5cf6"
+      },
+      {
+        "label": "c",
+        "count": 1,
+        "color": "#ec4899"
+      },
+      {
+        "label": "ruby",
+        "count": 1,
+        "color": "#06b6d4"
+      },
+      {
+        "label": "approved-for-morpheus",
+        "count": 1,
+        "color": "#84cc16"
+      },
+      {
+        "label": "ok-behavior-change",
+        "count": 1,
+        "color": "#f59e0b"
+      }
+    ]
   },
   "insights": {
     "contentGaps": [
