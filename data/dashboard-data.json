@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-23T11:40:21.148Z",
+  "lastUpdated": "2026-01-23T12:11:15.106Z",
   "analytics": {
     "pageViews": {
       "total": 28348,
@@ -83,7 +83,7 @@
           {
             "page": "/analytics/intro/intro.html",
             "views": 36,
-            "avgTime": "3:49"
+            "avgTime": "3:46"
           },
           {
             "page": "/analytics/sources/manage-external.html",
@@ -233,7 +233,7 @@
           {
             "page": "/couchbase-lite/current/index.html",
             "views": 387,
-            "avgTime": "1:17"
+            "avgTime": "1:18"
           },
           {
             "page": "/couchbase-lite/current/swift/gs-install.html",
@@ -264,7 +264,7 @@
           {
             "page": "/sync-gateway/current/introduction.html",
             "views": 138,
-            "avgTime": "1:55"
+            "avgTime": "1:54"
           },
           {
             "page": "/sync-gateway/current/rest-api/rest_api_admin.html",
@@ -305,7 +305,7 @@
           {
             "page": "/couchbase-edge-server/current/introduction/intro.html",
             "views": 43,
-            "avgTime": "2:06"
+            "avgTime": "2:03"
           },
           {
             "page": "/couchbase-edge-server/current/sync/edge-to-edge-sync.html",
@@ -373,7 +373,7 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54086,
+      "uniqueVisitors": 54088,
       "avgSessionDuration": "2:14",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
@@ -396,7 +396,7 @@
       },
       {
         "source": "Unassigned",
-        "sessions": 2380,
+        "sessions": 2392,
         "percentage": 4
       },
       {
@@ -439,7 +439,7 @@
         "avgSessionDuration": "2:53",
         "trafficBalance": {
           "direct": 38,
-          "search": 44
+          "search": 43
         }
       },
       {
@@ -472,7 +472,7 @@
         "avgSessionDuration": "2:48",
         "trafficBalance": {
           "direct": 50,
-          "search": 36
+          "search": 35
         }
       },
       {
@@ -480,7 +480,7 @@
         "displayPath": "/enterprise-analytics/",
         "totalViews": 1416,
         "bounceRate": "0.4",
-        "avgSessionDuration": "1:51",
+        "avgSessionDuration": "1:52",
         "trafficBalance": {
           "direct": 63,
           "search": 28
@@ -523,7 +523,7 @@
   },
   "jira": {
     "openIssues": {
-      "total": 1220,
+      "total": 1219,
       "byPriority": [
         {
           "priority": "Medium",
@@ -597,15 +597,15 @@
       }
     ],
     "issuesByType": [],
-    "avgResolutionDays": 597.03,
+    "avgResolutionDays": 599.37,
     "issuesClosedThisWeek": 0,
     "issuesCreatedThisWeek": 15,
     "monthlyOpened": 63,
-    "monthlyResolved": 83,
-    "burnRate": 0.76,
-    "previousMonthOpened": 111,
-    "previousMonthResolved": 211,
-    "previousMonthBurnRate": 0.53,
+    "monthlyResolved": 84,
+    "burnRate": 0.75,
+    "previousMonthOpened": 110,
+    "previousMonthResolved": 210,
+    "previousMonthBurnRate": 0.52,
     "previousMonthAvgResolutionDays": 158.98,
     "topLabels": [
       {
@@ -615,7 +615,7 @@
       },
       {
         "label": "Non-Totoro",
-        "count": 1186,
+        "count": 1185,
         "color": "#3b82f6"
       }
     ]
