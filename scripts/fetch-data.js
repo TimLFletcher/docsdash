@@ -514,7 +514,7 @@ async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `project = "Couchbase Documentation" AND status IN ("In Progress", "In Review", Open) AND labels NOT IN (Totoro, totoro-planned)`,
+          jql: `project = "Couchbase Documentation" AND status IN ("In Progress", "In Review", Open) AND (labels NOT IN (Totoro, totoro-planned) OR labels IS EMPTY)`,
         }),
       }
     )

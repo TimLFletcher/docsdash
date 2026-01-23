@@ -40,7 +40,7 @@ export function JiraLabelsChart({ data }) {
 
   return (
     <ChartCard 
-      title="Open Issues by Label Category" 
+      title="Open Issues and Totoro" 
       subtitle={`${total} total open issues`}
     >
       <div className="h-64">
