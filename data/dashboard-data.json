@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-01-23T14:09:24.583Z",
+  "lastUpdated": "2026-01-23T14:51:54.333Z",
   "analytics": {
     "pageViews": {
-      "total": 28348,
+      "total": 28756,
       "trend": 2.9,
       "daily": [
         {
@@ -31,11 +31,11 @@
         },
         {
           "date": "2026-01-22",
-          "views": 2797
+          "views": 2845
         },
         {
           "date": "2026-01-23",
-          "views": 272
+          "views": 632
         }
       ]
     },
@@ -61,8 +61,8 @@
           },
           {
             "page": "/cloud/get-started/intro.html",
-            "views": 98,
-            "avgTime": "0:57"
+            "views": 99,
+            "avgTime": "0:56"
           },
           {
             "page": "/cloud/clusters/scale-database.html",
@@ -97,8 +97,8 @@
           },
           {
             "page": "/analytics/intro/examples.html",
-            "views": 21,
-            "avgTime": "6:25"
+            "views": 22,
+            "avgTime": "6:05"
           }
         ]
       },
@@ -140,7 +140,7 @@
           {
             "page": "/server/current/install/install-ports.html",
             "views": 407,
-            "avgTime": "2:51"
+            "avgTime": "2:52"
           },
           {
             "page": "/server/current/release-notes/relnotes.html",
@@ -175,13 +175,13 @@
           },
           {
             "page": "/operator/current/prerequisite-and-setup.html",
-            "views": 86,
-            "avgTime": "1:43"
+            "views": 87,
+            "avgTime": "1:42"
           },
           {
             "page": "/operator/current/install-kubernetes.html",
-            "views": 77,
-            "avgTime": "4:39"
+            "views": 78,
+            "avgTime": "4:36"
           },
           {
             "page": "/operator/current/resource/couchbasecluster.html",
@@ -202,7 +202,7 @@
           {
             "page": "/enterprise-analytics/current/intro/intro.html",
             "views": 105,
-            "avgTime": "3:22"
+            "avgTime": "3:35"
           },
           {
             "page": "/enterprise-analytics/current/manage/manage-nodes/s3-compatible-storage.html",
@@ -373,7 +373,7 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54218,
+      "uniqueVisitors": 54251,
       "avgSessionDuration": "2:16",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
@@ -386,17 +386,17 @@
       },
       {
         "source": "Organic Search",
-        "sessions": 12866,
+        "sessions": 12874,
         "percentage": 19
       },
       {
         "source": "Referral",
-        "sessions": 3180,
+        "sessions": 3182,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2576,
+        "sessions": 2607,
         "percentage": 4
       },
       {
@@ -423,18 +423,18 @@
       {
         "path": "cloud",
         "displayPath": "/cloud/",
-        "totalViews": 7139,
+        "totalViews": 7152,
         "bounceRate": "0.4",
         "avgSessionDuration": "4:46",
         "trafficBalance": {
-          "direct": 27,
+          "direct": 26,
           "search": 47
         }
       },
       {
         "path": "analytics",
         "displayPath": "/analytics/",
-        "totalViews": 722,
+        "totalViews": 726,
         "bounceRate": "0.4",
         "avgSessionDuration": "3:00",
         "trafficBalance": {
@@ -456,9 +456,9 @@
       {
         "path": "server",
         "displayPath": "/server/",
-        "totalViews": 28862,
+        "totalViews": 28918,
         "bounceRate": "0.5",
-        "avgSessionDuration": "3:50",
+        "avgSessionDuration": "3:51",
         "trafficBalance": {
           "direct": 44,
           "search": 40
@@ -467,7 +467,7 @@
       {
         "path": "operator",
         "displayPath": "/operator/",
-        "totalViews": 2646,
+        "totalViews": 2649,
         "bounceRate": "0.6",
         "avgSessionDuration": "2:47",
         "trafficBalance": {
@@ -478,9 +478,9 @@
       {
         "path": "enterprise analytics",
         "displayPath": "/enterprise-analytics/",
-        "totalViews": 1418,
+        "totalViews": 1419,
         "bounceRate": "0.4",
-        "avgSessionDuration": "1:54",
+        "avgSessionDuration": "1:55",
         "trafficBalance": {
           "direct": 63,
           "search": 28
@@ -489,7 +489,7 @@
       {
         "path": "couchbase lite",
         "displayPath": "/couchbase-lite/",
-        "totalViews": 5737,
+        "totalViews": 5764,
         "bounceRate": "0.6",
         "avgSessionDuration": "2:52",
         "trafficBalance": {
@@ -500,7 +500,7 @@
       {
         "path": "sync gateway",
         "displayPath": "/sync-gateway/",
-        "totalViews": 2923,
+        "totalViews": 2924,
         "bounceRate": "0.5",
         "avgSessionDuration": "3:39",
         "trafficBalance": {
