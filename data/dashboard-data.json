@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-01-23T07:33:33.931Z",
+  "lastUpdated": "2026-01-23T07:51:53.900Z",
   "analytics": {
     "pageViews": {
-      "total": 32739,
-      "trend": 7.7,
+      "total": 32790,
+      "trend": 7.8,
       "daily": [
         {
           "date": "2026-01-15",
@@ -35,24 +35,24 @@
         },
         {
           "date": "2026-01-22",
-          "views": 2543
+          "views": 2594
         }
       ]
     },
     "topPages": [
       {
         "page": "/home/index.html",
-        "views": 24791,
+        "views": 24802,
         "avgTime": "0:30"
       },
       {
         "page": "/home/server.html",
-        "views": 904,
+        "views": 905,
         "avgTime": "1:35"
       },
       {
         "page": "/home/cloud.html",
-        "views": 769,
+        "views": 770,
         "avgTime": "2:13"
       },
       {
@@ -144,15 +144,15 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 56342,
-      "avgSessionDuration": "2:09",
+      "uniqueVisitors": 56370,
+      "avgSessionDuration": "2:10",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
     },
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 50694,
+        "sessions": 50701,
         "percentage": 73
       },
       {
@@ -162,12 +162,12 @@
       },
       {
         "source": "Referral",
-        "sessions": 3278,
+        "sessions": 3282,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2192,
+        "sessions": 2215,
         "percentage": 3
       },
       {
@@ -193,65 +193,50 @@
   },
   "jira": {
     "openIssues": {
-      "total": 47,
+      "total": 12504,
       "byPriority": [
         {
-          "priority": "Critical",
-          "count": 3,
-          "color": "#ef4444"
-        },
-        {
-          "priority": "High",
-          "count": 12,
-          "color": "#f97316"
-        },
-        {
           "priority": "Medium",
-          "count": 22,
+          "count": 100,
           "color": "#eab308"
-        },
-        {
-          "priority": "Low",
-          "count": 10,
-          "color": "#22c55e"
         }
       ]
     },
     "recentIssues": [
       {
-        "key": "DOC-234",
-        "summary": "Update API authentication docs for v2",
-        "priority": "High",
-        "status": "In Progress",
-        "created": "2026-01-20"
+        "key": "DOC-13934",
+        "summary": "Standardize RBAC Role String Syntax Documentation",
+        "priority": "重要",
+        "status": "打开",
+        "created": "2026-01-22"
       },
       {
-        "key": "DOC-233",
-        "summary": "Add WebSocket documentation section",
-        "priority": "Critical",
-        "status": "To Do",
-        "created": "2026-01-19"
-      },
-      {
-        "key": "DOC-232",
-        "summary": "Fix broken links in installation guide",
+        "key": "DOC-13933",
+        "summary": "Installing Couchbase Lite JavaScript — specify browser-only",
         "priority": "Medium",
-        "status": "In Review",
-        "created": "2026-01-18"
+        "status": "打开",
+        "created": "2026-01-22"
       },
       {
-        "key": "DOC-231",
-        "summary": "Create Docker deployment guide",
-        "priority": "High",
-        "status": "To Do",
-        "created": "2026-01-17"
+        "key": "DOC-13932",
+        "summary": "Couchbase Operator - Prerequisites and System Requirements Updates",
+        "priority": "重要",
+        "status": "打开",
+        "created": "2026-01-22"
       },
       {
-        "key": "DOC-230",
-        "summary": "Update screenshots for new UI",
-        "priority": "Low",
-        "status": "To Do",
-        "created": "2026-01-16"
+        "key": "DOC-13930",
+        "summary": "Feedback on Sync Gateway | Couchbase Docs",
+        "priority": "Medium",
+        "status": "打开",
+        "created": "2026-01-21"
+      },
+      {
+        "key": "DOC-13929",
+        "summary": "Accesso: Add support for .NET10 in CBLite",
+        "priority": "重要",
+        "status": "打开",
+        "created": "2026-01-21"
       }
     ],
     "velocityTrend": [
@@ -281,27 +266,10 @@
         "planned": 14
       }
     ],
-    "issuesByType": [
-      {
-        "type": "New Content",
-        "count": 18
-      },
-      {
-        "type": "Update",
-        "count": 15
-      },
-      {
-        "type": "Bug Fix",
-        "count": 8
-      },
-      {
-        "type": "Improvement",
-        "count": 6
-      }
-    ],
+    "issuesByType": [],
     "avgResolutionDays": 4.2,
-    "issuesClosedThisWeek": 8,
-    "issuesCreatedThisWeek": 11
+    "issuesClosedThisWeek": 0,
+    "issuesCreatedThisWeek": 15
   },
   "insights": {
     "contentGaps": [
