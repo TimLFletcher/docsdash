@@ -274,10 +274,9 @@ function App() {
                   icon={<TrendingUp className="w-6 h-6" />}
                 />
                 <MetricCard
-                  title="Avg. Resolution"
+                  title="Avg. Resolution (Days)"
                   docValue={Math.round(jira.avgResolutionDays || 0)}
                   avValue={Math.round(jira.avgResolutionDaysAV || 0)}
-                  subtitle="days"
                   icon={<Clock className="w-6 h-6" />}
                 />
               </div>
@@ -306,10 +305,9 @@ function App() {
                   icon={<TrendingUp className="w-6 h-6" />}
                 />
                 <MetricCard
-                  title="Previous Month Avg. Resolution"
+                  title="Previous Month Avg. Resolution (Days)"
                   docValue={Math.round(jira.previousMonthAvgResolutionDays || 0)}
                   avValue={Math.round(jira.previousMonthAvgResolutionDaysAV || 0)}
-                  subtitle="days"
                   icon={<Clock className="w-6 h-6" />}
                 />
               </div>
