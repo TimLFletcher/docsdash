@@ -51,6 +51,17 @@
       { "source": "Direct", "sessions": 3120, "percentage": 25 },
       { "source": "Referral", "sessions": 2480, "percentage": 20 },
       { "source": "Social", "sessions": 1620, "percentage": 13 }
+    ],
+    "pathComparison": [
+      { "path": "cloud", "displayPath": "/cloud/", "totalViews": 15230, "bounceRate": "32.5", "avgSessionDuration": "4:15", "trafficBalance": { "direct": 28, "search": 45 } },
+      { "path": "analytics", "displayPath": "/analytics/", "totalViews": 12340, "bounceRate": "28.3", "avgSessionDuration": "5:20", "trafficBalance": { "direct": 22, "search": 52 } },
+      { "path": "ai", "displayPath": "/ai/", "totalViews": 8920, "bounceRate": "35.1", "avgSessionDuration": "3:45", "trafficBalance": { "direct": 35, "search": 38 } },
+      { "path": "server", "displayPath": "/server/", "totalViews": 23450, "bounceRate": "25.8", "avgSessionDuration": "6:10", "trafficBalance": { "direct": 18, "search": 58 } },
+      { "path": "operator", "displayPath": "/operator/", "totalViews": 5670, "bounceRate": "42.3", "avgSessionDuration": "3:20", "trafficBalance": { "direct": 45, "search": 32 } },
+      { "path": "enterprise-analytics", "displayPath": "/enterprise-analytics/", "totalViews": 3450, "bounceRate": "38.7", "avgSessionDuration": "4:05", "trafficBalance": { "direct": 32, "search": 41 } },
+      { "path": "couchbase-lite", "displayPath": "/couchbase-lite/", "totalViews": 12340, "bounceRate": "29.2", "avgSessionDuration": "5:45", "trafficBalance": { "direct": 25, "search": 48 } },
+      { "path": "sync-gateway", "displayPath": "/sync-gateway/", "totalViews": 7890, "bounceRate": "33.4", "avgSessionDuration": "4:30", "trafficBalance": { "direct": 30, "search": 42 } },
+      { "path": "couchbase-edge-server", "displayPath": "/couchbase-edge-server/", "totalViews": 2340, "bounceRate": "41.2", "avgSessionDuration": "3:15", "trafficBalance": { "direct": 38, "search": 35 } }
     ]
   },
   "jira": {

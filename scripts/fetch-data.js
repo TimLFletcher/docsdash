@@ -152,6 +152,176 @@ async function fetchGoogleAnalyticsData() {
       limit: 5,
     })
 
+    // Helper function to format duration
+    const formatDuration = (seconds) => {
+      const mins = Math.floor(seconds / 60)
+      const secs = Math.floor(seconds % 60)
+      return `${mins}:${secs.toString().padStart(2, '0')}`
+    }
+
+    // Fetch metrics for each documentation path
+    const documentationPaths = [
+      '/cloud/',
+      '/analytics/',
+      '/ai/',
+      '/server/',
+      '/operator/',
+      '/enterprise-analytics/',
+      '/couchbase-lite/',
+      '/sync-gateway/',
+      '/couchbase-edge-server/',
+    ]
+
+    const pathMetrics = await Promise.all(
+      documentationPaths.map(async (path) => {
+        try {
+          // Fetch page views for this path
+          const [pathViewsResponse] = await analyticsDataClient.runReport({
+            property: `properties/${propertyId}`,
+            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            dimensions: [{ name: 'pagePath' }],
+            metrics: [{ name: 'screenPageViews' }],
+            dimensionFilter: {
+              andGroup: {
+                expressions: [
+                  {
+                    filter: {
+                      fieldName: 'hostName',
+                      stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+                    },
+                  },
+                  {
+                    filter: {
+                      fieldName: 'pagePath',
+                      stringFilter: { matchType: 'BEGINS_WITH', value: path },
+                    },
+                  },
+                ],
+              },
+            },
+          })
+
+          // Fetch session metrics for this path
+          const [pathSessionResponse] = await analyticsDataClient.runReport({
+            property: `properties/${propertyId}`,
+            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            metrics: [
+              { name: 'sessions' },
+              { name: 'bounceRate' },
+              { name: 'averageSessionDuration' },
+            ],
+            dimensionFilter: {
+              andGroup: {
+                expressions: [
+                  {
+                    filter: {
+                      fieldName: 'hostName',
+                      stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+                    },
+                  },
+                  {
+                    filter: {
+                      fieldName: 'pagePath',
+                      stringFilter: { matchType: 'BEGINS_WITH', value: path },
+                    },
+                  },
+                ],
+              },
+            },
+          })
+
+          // Fetch traffic sources for this path
+          const [pathTrafficResponse] = await analyticsDataClient.runReport({
+            property: `properties/${propertyId}`,
+            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            dimensions: [{ name: 'sessionDefaultChannelGroup' }],
+            metrics: [{ name: 'sessions' }],
+            dimensionFilter: {
+              andGroup: {
+                expressions: [
+                  {
+                    filter: {
+                      fieldName: 'hostName',
+                      stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+                    },
+                  },
+                  {
+                    filter: {
+                      fieldName: 'pagePath',
+                      stringFilter: { matchType: 'BEGINS_WITH', value: path },
+                    },
+                  },
+                ],
+              },
+            },
+          })
+
+          // Calculate totals
+          const totalViews = pathViewsResponse.rows?.reduce(
+            (sum, row) => sum + parseInt(row.metricValues[0].value),
+            0
+          ) || 0
+
+          const bounceRate = pathSessionResponse.rows?.[0]
+            ? parseFloat(pathSessionResponse.rows[0].metricValues[1].value)
+            : 0
+
+          const avgSessionDuration = pathSessionResponse.rows?.[0]
+            ? parseFloat(pathSessionResponse.rows[0].metricValues[2].value)
+            : 0
+
+          // Calculate traffic balance (direct vs search)
+          const trafficRows = pathTrafficResponse.rows || []
+          const directSessions = trafficRows
+            .filter(row => row.dimensionValues[0].value === 'Direct')
+            .reduce((sum, row) => sum + parseInt(row.metricValues[0].value), 0)
+          
+          const searchSessions = trafficRows
+            .filter(row => row.dimensionValues[0].value === 'Organic Search')
+            .reduce((sum, row) => sum + parseInt(row.metricValues[0].value), 0)
+          
+          const totalSessions = trafficRows.reduce(
+            (sum, row) => sum + parseInt(row.metricValues[0].value),
+            0
+          )
+
+          const directPercentage = totalSessions > 0
+            ? Math.round((directSessions / totalSessions) * 100)
+            : 0
+          const searchPercentage = totalSessions > 0
+            ? Math.round((searchSessions / totalSessions) * 100)
+            : 0
+
+          return {
+            path: path.replace(/\//g, '').replace(/-/g, ' ') || 'root',
+            displayPath: path,
+            totalViews,
+            bounceRate: bounceRate.toFixed(1),
+            avgSessionDuration: formatDuration(avgSessionDuration),
+            trafficBalance: {
+              direct: directPercentage,
+              search: searchPercentage,
+            },
+          }
+        } catch (error) {
+          console.error(`   ⚠️  Error fetching metrics for path ${path}:`, error.message)
+          return {
+            path: path.replace(/\//g, '').replace(/-/g, ' ') || 'root',
+            displayPath: path,
+            totalViews: 0,
+            bounceRate: '0.0',
+            avgSessionDuration: '0:00',
+            trafficBalance: {
+              direct: 0,
+              search: 0,
+            },
+          }
+        }
+      })
+    )
+
+    console.log(`   ✅ Fetched metrics for ${pathMetrics.length} documentation paths`)
+
     // Process responses into dashboard format
     const daily = pageViewsResponse.rows.map(row => ({
       date: row.dimensionValues[0].value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'),
@@ -166,12 +336,6 @@ async function fetchGoogleAnalyticsData() {
     const trend = previousPeriodViews > 0 
       ? ((currentPeriodViews - previousPeriodViews) / previousPeriodViews * 100).toFixed(1)
       : 0
-
-    const formatDuration = (seconds) => {
-      const mins = Math.floor(seconds / 60)
-      const secs = Math.floor(seconds % 60)
-      return `${mins}:${secs.toString().padStart(2, '0')}`
-    }
 
     return {
       pageViews: {
@@ -211,6 +375,7 @@ async function fetchGoogleAnalyticsData() {
         { device: 'Mobile', percentage: 22 },
         { device: 'Tablet', percentage: 6 },
       ], // Requires additional query
+      pathComparison: pathMetrics,
     }
   } catch (error) {
     console.error('❌ Error fetching GA data:', error.message)

@@ -21,6 +21,7 @@ import { JiraLabelsChart } from './components/charts/JiraLabelsChart'
 import { VelocityChart } from './components/charts/VelocityChart'
 import { RecentIssuesTable } from './components/charts/RecentIssuesTable'
 import { TrafficSourcesChart } from './components/charts/TrafficSourcesChart'
+import { PathComparisonTable } from './components/charts/PathComparisonTable'
 import { AIAssistant } from './components/AIAssistant'
 import { PasswordProtection } from './components/PasswordProtection'
 
@@ -242,6 +243,8 @@ function App() {
               <TrafficSourcesChart data={analytics.trafficSources} />
             </div>
 
+            <PathComparisonTable data={analytics.pathComparison || []} />
+
             <SearchTermsChart data={analytics.searchTerms} />
           </div>
         )}
@@ -253,11 +256,6 @@ function App() {
             <div>
               <h3 className="text-lg font-semibold text-slate-900 mb-4">Current Month (Last 30 Days)</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-                <MetricCard
-                  title="Open Issues"
-                  value={jira.openIssues.total}
-                  icon={<AlertTriangle className="w-6 h-6" />}
-                />
                 <MetricCard
                   title="Monthly Opened"
                   value={jira.monthlyOpened || 0}
