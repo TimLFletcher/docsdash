@@ -52,16 +52,22 @@ async function fetchGoogleAnalyticsData() {
     
     const propertyId = process.env.GA_PROPERTY_ID
 
-    // Fetch page views for last 7 days
+    // Fetch page views for last 7 days (filtered to docs.couchbase.com)
     const [pageViewsResponse] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [{ startDate: '7daysAgo', endDate: 'today' }],
       dimensions: [{ name: 'date' }],
       metrics: [{ name: 'screenPageViews' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'hostName',
+          stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+        },
+      },
       orderBys: [{ dimension: { dimensionName: 'date' } }],
     })
 
-    // Fetch top pages
+    // Fetch top pages (filtered to docs.couchbase.com)
     const [topPagesResponse] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
@@ -70,27 +76,45 @@ async function fetchGoogleAnalyticsData() {
         { name: 'screenPageViews' },
         { name: 'averageSessionDuration' },
       ],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'hostName',
+          stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+        },
+      },
       orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
       limit: 10,
     })
 
-    // Fetch search terms (requires Site Search to be configured)
+    // Fetch search terms (requires Site Search to be configured, filtered to docs.couchbase.com)
     const [searchTermsResponse] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
       dimensions: [{ name: 'searchTerm' }],
       metrics: [{ name: 'eventCount' }],
       dimensionFilter: {
-        filter: {
-          fieldName: 'searchTerm',
-          stringFilter: { matchType: 'FULL_REGEXP', value: '.+' },
+        andGroup: {
+          expressions: [
+            {
+              filter: {
+                fieldName: 'hostName',
+                stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+              },
+            },
+            {
+              filter: {
+                fieldName: 'searchTerm',
+                stringFilter: { matchType: 'FULL_REGEXP', value: '.+' },
+              },
+            },
+          ],
         },
       },
       orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }],
       limit: 10,
     })
 
-    // Fetch user metrics
+    // Fetch user metrics (filtered to docs.couchbase.com)
     const [userMetricsResponse] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [
@@ -104,14 +128,26 @@ async function fetchGoogleAnalyticsData() {
         { name: 'bounceRate' },
         { name: 'screenPageViews' },
       ],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'hostName',
+          stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+        },
+      },
     })
 
-    // Fetch traffic sources
+    // Fetch traffic sources (filtered to docs.couchbase.com)
     const [trafficSourcesResponse] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
       dimensions: [{ name: 'sessionDefaultChannelGroup' }],
       metrics: [{ name: 'sessions' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'hostName',
+          stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+        },
+      },
       orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
       limit: 5,
     })
@@ -204,6 +240,9 @@ async function fetchJiraData() {
     const apiToken = process.env.JIRA_API_TOKEN
     const projectKey = process.env.JIRA_PROJECT_KEY || 'DOC'
     
+    console.log(`   Using Jira base URL: ${baseUrl}`)
+    console.log(`   Using project key: ${projectKey}`)
+    
     const auth = Buffer.from(`${email}:${apiToken}`).toString('base64')
     const headers = {
       'Authorization': `Basic ${auth}`,
@@ -215,7 +254,14 @@ async function fetchJiraData() {
       `${baseUrl}/rest/api/3/search?jql=project=${projectKey} AND status != Done ORDER BY priority DESC&maxResults=100`,
       { headers }
     )
+    
+    if (!openIssuesResponse.ok) {
+      const errorText = await openIssuesResponse.text()
+      throw new Error(`Jira API error (${openIssuesResponse.status}): ${errorText}`)
+    }
+    
     const openIssuesData = await openIssuesResponse.json()
+    console.log(`   ✅ Fetched ${openIssuesData.total || 0} open issues`)
 
     // Count by priority
     const priorityCounts = {}
@@ -237,21 +283,42 @@ async function fetchJiraData() {
       `${baseUrl}/rest/api/3/search?jql=project=${projectKey} ORDER BY created DESC&maxResults=5`,
       { headers }
     )
+    
+    if (!recentIssuesResponse.ok) {
+      const errorText = await recentIssuesResponse.text()
+      throw new Error(`Jira API error (${recentIssuesResponse.status}): ${errorText}`)
+    }
+    
     const recentIssuesData = await recentIssuesResponse.json()
+    console.log(`   ✅ Fetched ${recentIssuesData.issues?.length || 0} recent issues`)
 
     // Fetch issues created this week
     const createdThisWeekResponse = await fetch(
       `${baseUrl}/rest/api/3/search?jql=project=${projectKey} AND created >= -7d&maxResults=0`,
       { headers }
     )
+    
+    if (!createdThisWeekResponse.ok) {
+      const errorText = await createdThisWeekResponse.text()
+      throw new Error(`Jira API error (${createdThisWeekResponse.status}): ${errorText}`)
+    }
+    
     const createdThisWeekData = await createdThisWeekResponse.json()
+    console.log(`   ✅ Found ${createdThisWeekData.total || 0} issues created this week`)
 
     // Fetch issues closed this week
     const closedThisWeekResponse = await fetch(
       `${baseUrl}/rest/api/3/search?jql=project=${projectKey} AND status = Done AND updated >= -7d&maxResults=0`,
       { headers }
     )
+    
+    if (!closedThisWeekResponse.ok) {
+      const errorText = await closedThisWeekResponse.text()
+      throw new Error(`Jira API error (${closedThisWeekResponse.status}): ${errorText}`)
+    }
+    
     const closedThisWeekData = await closedThisWeekResponse.json()
+    console.log(`   ✅ Found ${closedThisWeekData.total || 0} issues closed this week`)
 
     return {
       openIssues: {
@@ -285,6 +352,11 @@ async function fetchJiraData() {
     }
   } catch (error) {
     console.error('❌ Error fetching Jira data:', error.message)
+    console.error('   Stack:', error.stack)
+    if (error.response) {
+      console.error('   Response status:', error.response.status)
+      console.error('   Response body:', error.response.body)
+    }
     return null
   }
 }
