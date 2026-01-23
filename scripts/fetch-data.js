@@ -249,10 +249,18 @@ async function fetchJiraData() {
       'Content-Type': 'application/json',
     }
 
-    // Fetch open issues
+    // Fetch open issues using new /search/jql endpoint
     const openIssuesResponse = await fetch(
-      `${baseUrl}/rest/api/3/search?jql=project=${projectKey} AND status != Done ORDER BY priority DESC&maxResults=100`,
-      { headers }
+      `${baseUrl}/rest/api/3/search/jql`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project=${projectKey} AND status != Done ORDER BY priority DESC`,
+          maxResults: 100,
+          fields: ['summary', 'priority', 'status', 'created'],
+        }),
+      }
     )
     
     if (!openIssuesResponse.ok) {
@@ -261,7 +269,28 @@ async function fetchJiraData() {
     }
     
     const openIssuesData = await openIssuesResponse.json()
-    console.log(`   ✅ Fetched ${openIssuesData.total || 0} open issues`)
+    const openIssuesCount = openIssuesData.issues?.length || 0
+    console.log(`   ✅ Fetched ${openIssuesCount} open issues`)
+
+    // Get total count of open issues using approximate-count endpoint
+    const openIssuesCountResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project=${projectKey} AND status != Done`,
+        }),
+      }
+    )
+    
+    if (!openIssuesCountResponse.ok) {
+      const errorText = await openIssuesCountResponse.text()
+      throw new Error(`Jira API error (${openIssuesCountResponse.status}): ${errorText}`)
+    }
+    
+    const openIssuesCountData = await openIssuesCountResponse.json()
+    const totalOpenIssues = openIssuesCountData.count || openIssuesCount
 
     // Count by priority
     const priorityCounts = {}
@@ -278,10 +307,18 @@ async function fetchJiraData() {
       priorityCounts[priority] = (priorityCounts[priority] || 0) + 1
     })
 
-    // Fetch recent issues
+    // Fetch recent issues using new /search/jql endpoint
     const recentIssuesResponse = await fetch(
-      `${baseUrl}/rest/api/3/search?jql=project=${projectKey} ORDER BY created DESC&maxResults=5`,
-      { headers }
+      `${baseUrl}/rest/api/3/search/jql`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project=${projectKey} ORDER BY created DESC`,
+          maxResults: 5,
+          fields: ['summary', 'priority', 'status', 'created'],
+        }),
+      }
     )
     
     if (!recentIssuesResponse.ok) {
@@ -292,10 +329,16 @@ async function fetchJiraData() {
     const recentIssuesData = await recentIssuesResponse.json()
     console.log(`   ✅ Fetched ${recentIssuesData.issues?.length || 0} recent issues`)
 
-    // Fetch issues created this week
+    // Fetch issues created this week using approximate-count endpoint
     const createdThisWeekResponse = await fetch(
-      `${baseUrl}/rest/api/3/search?jql=project=${projectKey} AND created >= -7d&maxResults=0`,
-      { headers }
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project=${projectKey} AND created >= -7d`,
+        }),
+      }
     )
     
     if (!createdThisWeekResponse.ok) {
@@ -304,12 +347,18 @@ async function fetchJiraData() {
     }
     
     const createdThisWeekData = await createdThisWeekResponse.json()
-    console.log(`   ✅ Found ${createdThisWeekData.total || 0} issues created this week`)
+    console.log(`   ✅ Found ${createdThisWeekData.count || 0} issues created this week`)
 
-    // Fetch issues closed this week
+    // Fetch issues closed this week using approximate-count endpoint
     const closedThisWeekResponse = await fetch(
-      `${baseUrl}/rest/api/3/search?jql=project=${projectKey} AND status = Done AND updated >= -7d&maxResults=0`,
-      { headers }
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project=${projectKey} AND status = Done AND updated >= -7d`,
+        }),
+      }
     )
     
     if (!closedThisWeekResponse.ok) {
@@ -318,11 +367,11 @@ async function fetchJiraData() {
     }
     
     const closedThisWeekData = await closedThisWeekResponse.json()
-    console.log(`   ✅ Found ${closedThisWeekData.total || 0} issues closed this week`)
+    console.log(`   ✅ Found ${closedThisWeekData.count || 0} issues closed this week`)
 
     return {
       openIssues: {
-        total: openIssuesData.total || 0,
+        total: totalOpenIssues,
         byPriority: Object.entries(priorityCounts).map(([priority, count]) => ({
           priority: priority === 'Highest' ? 'Critical' : priority,
           count,
@@ -347,8 +396,8 @@ async function fetchJiraData() {
       ],
       issuesByType: [],
       avgResolutionDays: 4.2,
-      issuesClosedThisWeek: closedThisWeekData.total || 0,
-      issuesCreatedThisWeek: createdThisWeekData.total || 0,
+      issuesClosedThisWeek: closedThisWeekData.count || 0,
+      issuesCreatedThisWeek: createdThisWeekData.count || 0,
     }
   } catch (error) {
     console.error('❌ Error fetching Jira data:', error.message)
