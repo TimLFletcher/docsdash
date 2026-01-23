@@ -36,7 +36,24 @@ export function AIAssistant({ dashboardData }) {
   }
 
   const buildContext = () => {
-    const { analytics, jira, insights } = dashboardData
+    const analytics = dashboardData?.analytics || {
+      pageViews: { total: 0, trend: 0 },
+      userMetrics: { uniqueVisitors: 0, bounceRate: 0, avgSessionDuration: '0:00' },
+      topPages: [],
+      searchTerms: [],
+    }
+    const jira = dashboardData?.jira || {
+      openIssues: { total: 0, byPriority: [] },
+      monthlyOpened: 0,
+      monthlyOpenedAV: 0,
+      monthlyResolved: 0,
+      monthlyResolvedAV: 0,
+      burnRate: 0,
+      burnRateAV: 0,
+      avgResolutionDays: 0,
+      velocityTrend: [],
+    }
+    const insights = dashboardData?.insights || { contentGaps: [], performanceNotes: [] }
 
     return `You are a documentation metrics analyst. Here's the current data:
 
@@ -47,10 +64,10 @@ export function AIAssistant({ dashboardData }) {
 - Avg Session Duration: ${analytics.userMetrics.avgSessionDuration}
 
 ## Top Pages
-${analytics.topPages.slice(0, 5).map(p => `- ${p.page}: ${p.views.toLocaleString()} views, ${p.avgTime} avg time`).join('\n')}
+${(analytics.topPages || []).slice(0, 5).map(p => `- ${p.page}: ${p.views.toLocaleString()} views, ${p.avgTime} avg time`).join('\n')}
 
 ## Search Terms (Content Gaps shown with *)
-${analytics.searchTerms.map(s => `- "${s.term}": ${s.count} searches${!s.resultsFound ? ' *NO RESULTS*' : ''}`).join('\n')}
+${(analytics.searchTerms || []).map(s => `- "${s.term}": ${s.count} searches${!s.resultsFound ? ' *NO RESULTS*' : ''}`).join('\n')}
 
 ## Jira Summary
 - Open Issues: ${jira.openIssues.total} (${jira.openIssues.byPriority.find(p => p.priority === 'Critical')?.count || 0} critical, ${jira.openIssues.byPriority.find(p => p.priority === 'High')?.count || 0} high)
@@ -60,13 +77,13 @@ ${analytics.searchTerms.map(s => `- "${s.term}": ${s.count} searches${!s.results
 - Avg Resolution Time: ${jira.avgResolutionDays} days
 
 ## Recent Velocity
-${jira.velocityTrend.slice(-3).map(v => `- ${v.sprint}: ${v.completed}/${v.planned} completed`).join('\n')}
+${(jira.velocityTrend || []).slice(-3).map(v => `- ${v.sprint}: ${v.completed}/${v.planned} completed`).join('\n')}
 
 ## Known Content Gaps
-${insights.contentGaps.join('\n- ')}
+${(insights.contentGaps || []).join('\n- ')}
 
 ## Performance Notes
-${insights.performanceNotes.join('\n- ')}
+${(insights.performanceNotes || []).join('\n- ')}
 
 Based on this data, provide actionable insights and recommendations. Be specific and prioritize high-impact suggestions. Keep responses concise but helpful.`
   }

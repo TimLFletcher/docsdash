@@ -23,6 +23,56 @@ import { PathComparisonTable } from './components/charts/PathComparisonTable'
 import { AIAssistant } from './components/AIAssistant'
 import { PasswordProtection } from './components/PasswordProtection'
 
+ const DEFAULT_ANALYTICS = {
+   pageViews: {
+     total: 0,
+     trend: 0,
+     daily: [],
+   },
+   userMetrics: {
+     uniqueVisitors: 0,
+     returningVisitors: 0,
+     bounceRate: 0,
+     avgSessionDuration: '0:00',
+   },
+   topPages: [],
+   topPagesByPath: [],
+   searchTerms: [],
+   trafficSources: [],
+   pathComparison: [],
+ }
+
+ const DEFAULT_JIRA = {
+   openIssues: {
+     total: 0,
+     byPriority: [],
+   },
+   recentIssues: [],
+   velocityTrend: [],
+   avgResolutionDays: 0,
+   monthlyOpened: 0,
+   monthlyResolved: 0,
+   burnRate: 0,
+   previousMonthOpened: 0,
+   previousMonthResolved: 0,
+   previousMonthBurnRate: 0,
+   previousMonthAvgResolutionDays: 0,
+   monthlyOpenedAV: 0,
+   monthlyResolvedAV: 0,
+   burnRateAV: 0,
+   previousMonthOpenedAV: 0,
+   previousMonthResolvedAV: 0,
+   previousMonthBurnRateAV: 0,
+   avgResolutionDaysAV: 0,
+   previousMonthAvgResolutionDaysAV: 0,
+   topLabels: [],
+ }
+
+ const DEFAULT_INSIGHTS = {
+   contentGaps: [],
+   performanceNotes: [],
+ }
+
 function App() {
   const [data, setData] = useState(null)
   const [activeTab, setActiveTab] = useState('overview')
@@ -95,7 +145,10 @@ function App() {
     )
   }
 
-  const { analytics, jira, insights } = data
+  const analytics = data.analytics || DEFAULT_ANALYTICS
+  const jira = data.jira || DEFAULT_JIRA
+  const insights = data.insights || DEFAULT_INSIGHTS
+  const lastUpdated = data.lastUpdated || new Date().toISOString()
 
   const tabs = [
     { id: 'overview', label: 'Overview' },
@@ -122,7 +175,7 @@ function App() {
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-sm text-slate-500">
-                  Last updated: {new Date(data.lastUpdated).toLocaleString()}
+                  Last updated: {new Date(lastUpdated).toLocaleString()}
                 </span>
                 <button
                   onClick={handleRefresh}
