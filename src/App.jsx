@@ -249,37 +249,63 @@ function App() {
         {/* Jira Tab */}
         {activeTab === 'jira' && (
           <div className="space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
-              <MetricCard
-                title="Open Issues"
-                value={jira.openIssues.total}
-                icon={<AlertTriangle className="w-6 h-6" />}
-              />
-              <MetricCard
-                title="Monthly Closure"
-                value={jira.monthlyClosure || 0}
-                icon={<CheckCircle className="w-6 h-6" />}
-              />
-              <MetricCard
-                title="Monthly Opened"
-                value={jira.monthlyOpened || 0}
-                icon={<ArrowUpRight className="w-6 h-6" />}
-              />
-              <MetricCard
-                title="Monthly Resolved"
-                value={jira.monthlyResolved || 0}
-                icon={<CheckCircle className="w-6 h-6" />}
-              />
-              <MetricCard
-                title="Burn Rate"
-                value={jira.burnRate || '0.00'}
-                icon={<TrendingUp className="w-6 h-6" />}
-              />
-              <MetricCard
-                title="Avg. Resolution"
-                value={`${jira.avgResolutionDays || 0} days`}
-                icon={<Clock className="w-6 h-6" />}
-              />
+            {/* Current Month (Last 30 Days) */}
+            <div>
+              <h3 className="text-lg font-semibold text-slate-900 mb-4">Current Month (Last 30 Days)</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <MetricCard
+                  title="Open Issues"
+                  value={jira.openIssues.total}
+                  icon={<AlertTriangle className="w-6 h-6" />}
+                />
+                <MetricCard
+                  title="Monthly Opened"
+                  value={jira.monthlyOpened || 0}
+                  icon={<ArrowUpRight className="w-6 h-6" />}
+                />
+                <MetricCard
+                  title="Monthly Resolved"
+                  value={jira.monthlyResolved || 0}
+                  icon={<CheckCircle className="w-6 h-6" />}
+                />
+                <MetricCard
+                  title="Burn Rate"
+                  value={jira.burnRate || '0.00'}
+                  icon={<TrendingUp className="w-6 h-6" />}
+                />
+                <MetricCard
+                  title="Avg. Resolution"
+                  value={`${jira.avgResolutionDays || 0} days`}
+                  icon={<Clock className="w-6 h-6" />}
+                />
+              </div>
+            </div>
+
+            {/* Previous Month (60-30 Days Ago) */}
+            <div>
+              <h3 className="text-lg font-semibold text-slate-900 mb-4">Previous Month (60-30 Days Ago)</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <MetricCard
+                  title="Previous Month Opened"
+                  value={jira.previousMonthOpened || 0}
+                  icon={<ArrowUpRight className="w-6 h-6" />}
+                />
+                <MetricCard
+                  title="Previous Month Resolved"
+                  value={jira.previousMonthResolved || 0}
+                  icon={<CheckCircle className="w-6 h-6" />}
+                />
+                <MetricCard
+                  title="Previous Month Burn Rate"
+                  value={jira.previousMonthBurnRate || '0.00'}
+                  icon={<TrendingUp className="w-6 h-6" />}
+                />
+                <MetricCard
+                  title="Previous Month Avg. Resolution"
+                  value={`${jira.previousMonthAvgResolutionDays || 0} days`}
+                  icon={<Clock className="w-6 h-6" />}
+                />
+              </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

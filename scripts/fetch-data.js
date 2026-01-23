@@ -371,27 +371,7 @@ async function fetchJiraData() {
     const closedThisWeekData = await closedThisWeekResponse.json()
     console.log(`   ✅ Found ${closedThisWeekData.count || 0} issues closed this week`)
 
-    // Fetch monthly closure count
-    const monthlyClosureResponse = await fetch(
-      `${baseUrl}/rest/api/3/search/approximate-count`,
-      {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          jql: `project = "Couchbase Documentation" AND statusCategory = Done AND resolved >= -30d`,
-        }),
-      }
-    )
-    
-    if (!monthlyClosureResponse.ok) {
-      const errorText = await monthlyClosureResponse.text()
-      throw new Error(`Jira API error (${monthlyClosureResponse.status}): ${errorText}`)
-    }
-    
-    const monthlyClosureData = await monthlyClosureResponse.json()
-    console.log(`   ✅ Found ${monthlyClosureData.count || 0} issues closed in last 30 days`)
-
-    // Fetch monthly opened count
+    // Fetch monthly opened count (last 30 days)
     const monthlyOpenedResponse = await fetch(
       `${baseUrl}/rest/api/3/search/approximate-count`,
       {
@@ -431,55 +411,136 @@ async function fetchJiraData() {
     const monthlyResolvedData = await monthlyResolvedResponse.json()
     console.log(`   ✅ Found ${monthlyResolvedData.count || 0} issues resolved in last 30 days`)
 
-    // Fetch issues with labels for the last 30 days to calculate top labels
-    const labelsResponse = await fetch(
+    // Fetch previous month opened count (60-30 days ago)
+    const previousMonthOpenedResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = DOC AND created >= -60d AND created <= -30d`,
+        }),
+      }
+    )
+    
+    if (!previousMonthOpenedResponse.ok) {
+      const errorText = await previousMonthOpenedResponse.text()
+      throw new Error(`Jira API error (${previousMonthOpenedResponse.status}): ${errorText}`)
+    }
+    
+    const previousMonthOpenedData = await previousMonthOpenedResponse.json()
+    console.log(`   ✅ Found ${previousMonthOpenedData.count || 0} issues opened in previous month`)
+
+    // Fetch previous month resolved count (60-30 days ago)
+    const previousMonthResolvedResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = DOC AND resolved >= -60d AND resolved <= -30d`,
+        }),
+      }
+    )
+    
+    if (!previousMonthResolvedResponse.ok) {
+      const errorText = await previousMonthResolvedResponse.text()
+      throw new Error(`Jira API error (${previousMonthResolvedResponse.status}): ${errorText}`)
+    }
+    
+    const previousMonthResolvedData = await previousMonthResolvedResponse.json()
+    console.log(`   ✅ Found ${previousMonthResolvedData.count || 0} issues resolved in previous month`)
+
+    // Fetch resolved issues for previous month to calculate average resolution time
+    const previousMonthResolvedIssuesResponse = await fetch(
       `${baseUrl}/rest/api/3/search/jql`,
       {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `project = DOC AND created >= -30d`,
-          maxResults: 1000, // Get more issues to have better label statistics
-          fields: ['labels'],
+          jql: `project = DOC AND resolved >= -60d AND resolved <= -30d AND resolutiondate IS NOT NULL`,
+          maxResults: 100,
+          fields: ['created', 'resolutiondate'],
         }),
       }
     )
     
-    if (!labelsResponse.ok) {
-      const errorText = await labelsResponse.text()
-      throw new Error(`Jira API error (${labelsResponse.status}): ${errorText}`)
+    let previousMonthAvgResolutionDays = 0
+    if (previousMonthResolvedIssuesResponse.ok) {
+      const previousMonthResolvedIssuesData = await previousMonthResolvedIssuesResponse.json()
+      const previousMonthResolutionTimes = previousMonthResolvedIssuesData.issues
+        ?.filter(issue => issue.fields.created && issue.fields.resolutiondate)
+        .map(issue => {
+          const created = new Date(issue.fields.created)
+          const resolved = new Date(issue.fields.resolutiondate)
+          return (resolved - created) / (1000 * 60 * 60 * 24) // Convert to days
+        }) || []
+      
+      if (previousMonthResolutionTimes.length > 0) {
+        previousMonthAvgResolutionDays = previousMonthResolutionTimes.reduce((sum, days) => sum + days, 0) / previousMonthResolutionTimes.length
+      }
+      console.log(`   ✅ Calculated previous month avg resolution time: ${previousMonthAvgResolutionDays.toFixed(2)} days`)
+    }
+
+    // Calculate previous month burn rate
+    const previousMonthOpened = previousMonthOpenedData.count || 0
+    const previousMonthResolved = previousMonthResolvedData.count || 0
+    const previousMonthBurnRate = previousMonthResolved > 0 ? (previousMonthOpened / previousMonthResolved).toFixed(2) : '0.00'
+
+    // Fetch labels data - Totoro vs Non-Totoro
+    const totoroLabelsResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = "Couchbase Documentation" AND labels IN (totoro-planned, Totoro) AND status IN ("In Progress", "In Review", Open)`,
+        }),
+      }
+    )
+    
+    if (!totoroLabelsResponse.ok) {
+      const errorText = await totoroLabelsResponse.text()
+      throw new Error(`Jira API error (${totoroLabelsResponse.status}): ${errorText}`)
     }
     
-    const labelsData = await labelsResponse.json()
-    
-    // Count labels
-    const labelCounts = {}
-    labelsData.issues?.forEach(issue => {
-      if (issue.fields.labels && Array.isArray(issue.fields.labels)) {
-        issue.fields.labels.forEach(label => {
-          labelCounts[label] = (labelCounts[label] || 0) + 1
-        })
+    const totoroLabelsData = await totoroLabelsResponse.json()
+    const totoroCount = totoroLabelsData.count || 0
+    console.log(`   ✅ Found ${totoroCount} Totoro issues`)
+
+    const nonTotoroLabelsResponse = await fetch(
+      `${baseUrl}/rest/api/3/search/approximate-count`,
+      {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          jql: `project = "Couchbase Documentation" AND status IN ("In Progress", "In Review", Open) AND labels NOT IN (Totoro, totoro-planned)`,
+        }),
       }
-    })
+    )
     
-    // Get top 10 labels
-    const topLabels = Object.entries(labelCounts)
-      .sort(([, a], [, b]) => b - a)
-      .slice(0, 10)
-      .map(([label, count], index) => {
-        // Generate colors for labels
-        const colors = [
-          '#ef4444', '#f97316', '#eab308', '#22c55e', '#3b82f6',
-          '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f59e0b'
-        ]
-        return {
-          label,
-          count,
-          color: colors[index % colors.length],
-        }
-      })
+    if (!nonTotoroLabelsResponse.ok) {
+      const errorText = await nonTotoroLabelsResponse.text()
+      throw new Error(`Jira API error (${nonTotoroLabelsResponse.status}): ${errorText}`)
+    }
     
-    console.log(`   ✅ Found ${topLabels.length} top labels`)
+    const nonTotoroLabelsData = await nonTotoroLabelsResponse.json()
+    const nonTotoroCount = nonTotoroLabelsData.count || 0
+    console.log(`   ✅ Found ${nonTotoroCount} Non-Totoro issues`)
+
+    // Create labels chart data
+    const topLabels = [
+      {
+        label: 'Totoro',
+        count: totoroCount,
+        color: '#ef4444',
+      },
+      {
+        label: 'Non-Totoro',
+        count: nonTotoroCount,
+        color: '#3b82f6',
+      },
+    ]
 
     // Fetch resolved issues to calculate average resolution time (last 30 days)
     const resolvedIssuesResponse = await fetch(
@@ -546,10 +607,13 @@ async function fetchJiraData() {
       avgResolutionDays: parseFloat(avgResolutionDays.toFixed(2)),
       issuesClosedThisWeek: closedThisWeekData.count || 0,
       issuesCreatedThisWeek: createdThisWeekData.count || 0,
-      monthlyClosure: monthlyClosureData.count || 0,
       monthlyOpened: monthlyOpened,
       monthlyResolved: monthlyResolved,
       burnRate: parseFloat(burnRate),
+      previousMonthOpened: previousMonthOpened,
+      previousMonthResolved: previousMonthResolved,
+      previousMonthBurnRate: parseFloat(previousMonthBurnRate),
+      previousMonthAvgResolutionDays: parseFloat(previousMonthAvgResolutionDays.toFixed(2)),
       topLabels: topLabels,
     }
   } catch (error) {
