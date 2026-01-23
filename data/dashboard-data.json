@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-23T06:11:03.546Z",
+  "lastUpdated": "2026-01-23T06:18:53.365Z",
   "analytics": {
     "pageViews": {
       "total": 45230,
@@ -168,67 +168,10 @@
   },
   "jira": {
     "openIssues": {
-      "total": 47,
-      "byPriority": [
-        {
-          "priority": "Critical",
-          "count": 3,
-          "color": "#ef4444"
-        },
-        {
-          "priority": "High",
-          "count": 12,
-          "color": "#f97316"
-        },
-        {
-          "priority": "Medium",
-          "count": 22,
-          "color": "#eab308"
-        },
-        {
-          "priority": "Low",
-          "count": 10,
-          "color": "#22c55e"
-        }
-      ]
+      "total": 0,
+      "byPriority": []
     },
-    "recentIssues": [
-      {
-        "key": "DOC-234",
-        "summary": "Update API authentication docs for v2",
-        "priority": "High",
-        "status": "In Progress",
-        "created": "2026-01-20"
-      },
-      {
-        "key": "DOC-233",
-        "summary": "Add WebSocket documentation section",
-        "priority": "Critical",
-        "status": "To Do",
-        "created": "2026-01-19"
-      },
-      {
-        "key": "DOC-232",
-        "summary": "Fix broken links in installation guide",
-        "priority": "Medium",
-        "status": "In Review",
-        "created": "2026-01-18"
-      },
-      {
-        "key": "DOC-231",
-        "summary": "Create Docker deployment guide",
-        "priority": "High",
-        "status": "To Do",
-        "created": "2026-01-17"
-      },
-      {
-        "key": "DOC-230",
-        "summary": "Update screenshots for new UI",
-        "priority": "Low",
-        "status": "To Do",
-        "created": "2026-01-16"
-      }
-    ],
+    "recentIssues": [],
     "velocityTrend": [
       {
         "sprint": "Sprint 18",
@@ -256,27 +199,10 @@
         "planned": 14
       }
     ],
-    "issuesByType": [
-      {
-        "type": "New Content",
-        "count": 18
-      },
-      {
-        "type": "Update",
-        "count": 15
-      },
-      {
-        "type": "Bug Fix",
-        "count": 8
-      },
-      {
-        "type": "Improvement",
-        "count": 6
-      }
-    ],
+    "issuesByType": [],
     "avgResolutionDays": 4.2,
-    "issuesClosedThisWeek": 8,
-    "issuesCreatedThisWeek": 11
+    "issuesClosedThisWeek": 0,
+    "issuesCreatedThisWeek": 0
   },
   "insights": {
     "contentGaps": [
@@ -285,8 +211,7 @@
       "\"migration guide\" (350 searches, no results)"
     ],
     "performanceNotes": [
-      "/docs/api-reference has high avg. time (5:12) - users may be struggling",
-      "Issue backlog growing: 11 created vs 8 closed this week"
+      "/docs/api-reference has high avg. time (5:12) - users may be struggling"
     ]
   }
 }
