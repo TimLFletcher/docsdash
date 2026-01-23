@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-01-23T15:35:45.490Z",
+  "lastUpdated": "2026-01-23T15:59:27.337Z",
   "analytics": {
     "pageViews": {
-      "total": 28884,
-      "trend": 3,
+      "total": 28594,
+      "trend": 3.1,
       "daily": [
         {
           "date": "2026-01-16",
@@ -31,11 +31,11 @@
         },
         {
           "date": "2026-01-22",
-          "views": 2862
+          "views": 2825
         },
         {
           "date": "2026-01-23",
-          "views": 743
+          "views": 490
         }
       ]
     },
@@ -113,8 +113,8 @@
           },
           {
             "page": "/ai/build/model-service/model-service.html",
-            "views": 90,
-            "avgTime": "1:43"
+            "views": 91,
+            "avgTime": "1:42"
           },
           {
             "page": "/ai/build/vectorization-service/data-processing.html",
@@ -129,7 +129,7 @@
           {
             "page": "/ai/build/model-service/deploy-llm-model.html",
             "views": 46,
-            "avgTime": "2:18"
+            "avgTime": "2:20"
           }
         ]
       },
@@ -191,7 +191,7 @@
           {
             "page": "/operator/current/howto-couchbase-create.html",
             "views": 74,
-            "avgTime": "2:17"
+            "avgTime": "2:33"
           }
         ]
       },
@@ -373,7 +373,7 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54304,
+      "uniqueVisitors": 54327,
       "avgSessionDuration": "2:17",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
@@ -386,7 +386,7 @@
       },
       {
         "source": "Organic Search",
-        "sessions": 12885,
+        "sessions": 12890,
         "percentage": 19
       },
       {
@@ -396,7 +396,7 @@
       },
       {
         "source": "Unassigned",
-        "sessions": 2667,
+        "sessions": 2689,
         "percentage": 4
       },
       {
@@ -423,7 +423,7 @@
       {
         "path": "cloud",
         "displayPath": "/cloud/",
-        "totalViews": 7165,
+        "totalViews": 7139,
         "bounceRate": "0.4",
         "avgSessionDuration": "4:46",
         "trafficBalance": {
@@ -434,7 +434,7 @@
       {
         "path": "analytics",
         "displayPath": "/analytics/",
-        "totalViews": 727,
+        "totalViews": 722,
         "bounceRate": "0.4",
         "avgSessionDuration": "3:03",
         "trafficBalance": {
@@ -445,9 +445,9 @@
       {
         "path": "ai",
         "displayPath": "/ai/",
-        "totalViews": 741,
+        "totalViews": 739,
         "bounceRate": "0.3",
-        "avgSessionDuration": "4:52",
+        "avgSessionDuration": "4:54",
         "trafficBalance": {
           "direct": 16,
           "search": 48
@@ -456,7 +456,7 @@
       {
         "path": "server",
         "displayPath": "/server/",
-        "totalViews": 28949,
+        "totalViews": 28862,
         "bounceRate": "0.5",
         "avgSessionDuration": "3:51",
         "trafficBalance": {
@@ -467,9 +467,9 @@
       {
         "path": "operator",
         "displayPath": "/operator/",
-        "totalViews": 2664,
+        "totalViews": 2646,
         "bounceRate": "0.6",
-        "avgSessionDuration": "2:52",
+        "avgSessionDuration": "2:53",
         "trafficBalance": {
           "direct": 49,
           "search": 35
@@ -478,7 +478,7 @@
       {
         "path": "enterprise analytics",
         "displayPath": "/enterprise-analytics/",
-        "totalViews": 1419,
+        "totalViews": 1418,
         "bounceRate": "0.4",
         "avgSessionDuration": "1:55",
         "trafficBalance": {
@@ -489,7 +489,7 @@
       {
         "path": "couchbase lite",
         "displayPath": "/couchbase-lite/",
-        "totalViews": 5771,
+        "totalViews": 5737,
         "bounceRate": "0.6",
         "avgSessionDuration": "2:53",
         "trafficBalance": {
@@ -500,9 +500,9 @@
       {
         "path": "sync gateway",
         "displayPath": "/sync-gateway/",
-        "totalViews": 2931,
+        "totalViews": 2923,
         "bounceRate": "0.5",
-        "avgSessionDuration": "3:39",
+        "avgSessionDuration": "3:40",
         "trafficBalance": {
           "direct": 42,
           "search": 39
@@ -521,122 +521,12 @@
       }
     ]
   },
-  "jira": {
-    "openIssues": {
-      "total": 1218,
-      "byPriority": [
-        {
-          "priority": "Major",
-          "count": 46,
-          "color": "#6b7280"
-        },
-        {
-          "priority": "Medium",
-          "count": 4,
-          "color": "#eab308"
-        }
-      ]
-    },
-    "recentIssues": [
-      {
-        "key": "DOC-13934",
-        "summary": "Standardize RBAC Role String Syntax Documentation",
-        "priority": "Major",
-        "status": "Open",
-        "created": "2026-01-22"
-      },
-      {
-        "key": "DOC-13933",
-        "summary": "Installing Couchbase Lite JavaScript — specify browser-only",
-        "priority": "Medium",
-        "status": "Open",
-        "created": "2026-01-22"
-      },
-      {
-        "key": "DOC-13932",
-        "summary": "Couchbase Operator - Prerequisites and System Requirements Updates",
-        "priority": "Major",
-        "status": "Open",
-        "created": "2026-01-22"
-      },
-      {
-        "key": "DOC-13930",
-        "summary": "Feedback on Sync Gateway | Couchbase Docs",
-        "priority": "Medium",
-        "status": "Open",
-        "created": "2026-01-21"
-      },
-      {
-        "key": "DOC-13929",
-        "summary": "Accesso: Add support for .NET10 in CBLite",
-        "priority": "Major",
-        "status": "Open",
-        "created": "2026-01-21"
-      }
-    ],
-    "velocityTrend": [
-      {
-        "sprint": "Sprint 18",
-        "completed": 12,
-        "planned": 15
-      },
-      {
-        "sprint": "Sprint 19",
-        "completed": 14,
-        "planned": 14
-      },
-      {
-        "sprint": "Sprint 20",
-        "completed": 11,
-        "planned": 16
-      },
-      {
-        "sprint": "Sprint 21",
-        "completed": 15,
-        "planned": 15
-      },
-      {
-        "sprint": "Sprint 22",
-        "completed": 8,
-        "planned": 14
-      }
-    ],
-    "avgResolutionDays": 216.19,
-    "monthlyOpened": 62,
-    "monthlyResolved": 85,
-    "burnRate": 0.73,
-    "previousMonthOpened": 111,
-    "previousMonthResolved": 209,
-    "previousMonthBurnRate": 0.53,
-    "previousMonthAvgResolutionDays": 14.93,
-    "monthlyOpenedAV": 0,
-    "monthlyResolvedAV": 0,
-    "burnRateAV": 0,
-    "previousMonthOpenedAV": 0,
-    "previousMonthResolvedAV": 0,
-    "previousMonthBurnRateAV": 0,
-    "avgResolutionDaysAV": 0,
-    "previousMonthAvgResolutionDaysAV": 0,
-    "topLabels": [
-      {
-        "label": "No Labels",
-        "count": 345,
-        "color": "#6b7280"
-      },
-      {
-        "label": "Totoro",
-        "count": 8,
-        "color": "#ef4444"
-      },
-      {
-        "label": "Other Labels",
-        "count": 839,
-        "color": "#3b82f6"
-      }
-    ]
-  },
+  "jira": null,
   "insights": {
     "contentGaps": [],
     "performanceNotes": []
-  }
+  },
+  "errors": [
+    "Failed to fetch Jira data"
+  ]
 }
