@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-01-23T11:33:32.062Z",
+  "lastUpdated": "2026-01-23T11:40:21.148Z",
   "analytics": {
     "pageViews": {
-      "total": 28008,
+      "total": 28348,
       "trend": 2.5,
       "daily": [
         {
@@ -31,11 +31,11 @@
         },
         {
           "date": "2026-01-22",
-          "views": 2718
+          "views": 2797
         },
         {
           "date": "2026-01-23",
-          "views": 11
+          "views": 272
         }
       ]
     },
@@ -43,47 +43,281 @@
       {
         "path": "cloud",
         "displayPath": "/cloud/",
-        "pages": []
+        "pages": [
+          {
+            "page": "/cloud/management-api-reference/index.html",
+            "views": 266,
+            "avgTime": "3:41"
+          },
+          {
+            "page": "/cloud/get-started/capella-iq/work-with-capellaiq.html",
+            "views": 168,
+            "avgTime": "2:02"
+          },
+          {
+            "page": "/cloud/release-notes/release-notes.html",
+            "views": 138,
+            "avgTime": "2:12"
+          },
+          {
+            "page": "/cloud/get-started/intro.html",
+            "views": 95,
+            "avgTime": "0:57"
+          },
+          {
+            "page": "/cloud/clusters/scale-database.html",
+            "views": 93,
+            "avgTime": "1:48"
+          }
+        ]
       },
       {
         "path": "analytics",
         "displayPath": "/analytics/",
-        "pages": []
+        "pages": [
+          {
+            "page": "/analytics/sources/external-s3.html",
+            "views": 37,
+            "avgTime": "3:06"
+          },
+          {
+            "page": "/analytics/intro/intro.html",
+            "views": 36,
+            "avgTime": "3:49"
+          },
+          {
+            "page": "/analytics/sources/manage-external.html",
+            "views": 29,
+            "avgTime": "0:46"
+          },
+          {
+            "page": "/analytics/sqlpp/5_ddl_external.html",
+            "views": 25,
+            "avgTime": "4:02"
+          },
+          {
+            "page": "/analytics/intro/examples.html",
+            "views": 21,
+            "avgTime": "6:25"
+          }
+        ]
       },
       {
         "path": "ai",
         "displayPath": "/ai/",
-        "pages": []
+        "pages": [
+          {
+            "page": "/ai/get-started/intro.html",
+            "views": 97,
+            "avgTime": "1:08"
+          },
+          {
+            "page": "/ai/build/model-service/model-service.html",
+            "views": 89,
+            "avgTime": "1:43"
+          },
+          {
+            "page": "/ai/build/vectorization-service/data-processing.html",
+            "views": 66,
+            "avgTime": "1:35"
+          },
+          {
+            "page": "/ai/build/integrate-agent-with-catalog.html",
+            "views": 56,
+            "avgTime": "4:40"
+          },
+          {
+            "page": "/ai/build/model-service/deploy-llm-model.html",
+            "views": 46,
+            "avgTime": "2:18"
+          }
+        ]
       },
       {
         "path": "server",
         "displayPath": "/server/",
-        "pages": []
+        "pages": [
+          {
+            "page": "/server/current/install/install-ports.html",
+            "views": 407,
+            "avgTime": "2:52"
+          },
+          {
+            "page": "/server/current/release-notes/relnotes.html",
+            "views": 330,
+            "avgTime": "2:08"
+          },
+          {
+            "page": "/server/current/learn/buckets-memory-and-storage/memory.html",
+            "views": 299,
+            "avgTime": "1:37"
+          },
+          {
+            "page": "/server/current/introduction/whats-new.html",
+            "views": 269,
+            "avgTime": "2:44"
+          },
+          {
+            "page": "/server/current/install/rhel-suse-install-intro.html",
+            "views": 232,
+            "avgTime": "2:14"
+          }
+        ]
       },
       {
         "path": "operator",
         "displayPath": "/operator/",
-        "pages": []
+        "pages": [
+          {
+            "page": "/operator/current/overview.html",
+            "views": 319,
+            "avgTime": "0:51"
+          },
+          {
+            "page": "/operator/current/prerequisite-and-setup.html",
+            "views": 86,
+            "avgTime": "1:44"
+          },
+          {
+            "page": "/operator/current/install-kubernetes.html",
+            "views": 77,
+            "avgTime": "4:39"
+          },
+          {
+            "page": "/operator/current/resource/couchbasecluster.html",
+            "views": 75,
+            "avgTime": "4:07"
+          },
+          {
+            "page": "/operator/current/howto-couchbase-create.html",
+            "views": 72,
+            "avgTime": "1:57"
+          }
+        ]
       },
       {
         "path": "enterprise analytics",
         "displayPath": "/enterprise-analytics/",
-        "pages": []
+        "pages": [
+          {
+            "page": "/enterprise-analytics/current/intro/intro.html",
+            "views": 104,
+            "avgTime": "3:26"
+          },
+          {
+            "page": "/enterprise-analytics/current/manage/manage-nodes/s3-compatible-storage.html",
+            "views": 37,
+            "avgTime": "1:46"
+          },
+          {
+            "page": "/enterprise-analytics/current/intro/do-a-quick-install.html",
+            "views": 27,
+            "avgTime": "2:07"
+          },
+          {
+            "page": "/enterprise-analytics/current/install/system-requirements.html",
+            "views": 26,
+            "avgTime": "0:19"
+          },
+          {
+            "page": "/enterprise-analytics/current/install/supported-platform.html",
+            "views": 25,
+            "avgTime": "2:11"
+          }
+        ]
       },
       {
         "path": "couchbase lite",
         "displayPath": "/couchbase-lite/",
-        "pages": []
+        "pages": [
+          {
+            "page": "/couchbase-lite/current/index.html",
+            "views": 387,
+            "avgTime": "1:17"
+          },
+          {
+            "page": "/couchbase-lite/current/swift/gs-install.html",
+            "views": 204,
+            "avgTime": "2:02"
+          },
+          {
+            "page": "/couchbase-lite/current/android/quickstart.html",
+            "views": 187,
+            "avgTime": "1:28"
+          },
+          {
+            "page": "/couchbase-lite/current/csharp/gs-install.html",
+            "views": 173,
+            "avgTime": "0:22"
+          },
+          {
+            "page": "/couchbase-lite/current/swift/quickstart.html",
+            "views": 162,
+            "avgTime": "0:36"
+          }
+        ]
       },
       {
         "path": "sync gateway",
         "displayPath": "/sync-gateway/",
-        "pages": []
+        "pages": [
+          {
+            "page": "/sync-gateway/current/introduction.html",
+            "views": 138,
+            "avgTime": "1:55"
+          },
+          {
+            "page": "/sync-gateway/current/rest-api/rest_api_admin.html",
+            "views": 105,
+            "avgTime": "3:23"
+          },
+          {
+            "page": "/sync-gateway/current/rest-api/rest-api-admin.html",
+            "views": 82,
+            "avgTime": "3:34"
+          },
+          {
+            "page": "/sync-gateway/current/configuration/configuration-schema-database.html",
+            "views": 81,
+            "avgTime": "3:31"
+          },
+          {
+            "page": "/sync-gateway/current/configuration/configuration-schema-bootstrap.html",
+            "views": 80,
+            "avgTime": "5:03"
+          }
+        ]
       },
       {
         "path": "couchbase edge server",
         "displayPath": "/couchbase-edge-server/",
-        "pages": []
+        "pages": [
+          {
+            "page": "/couchbase-edge-server/current/product-notes/release-notes.html",
+            "views": 101,
+            "avgTime": "0:05"
+          },
+          {
+            "page": "/couchbase-edge-server/current/introduction/whats-new.html",
+            "views": 71,
+            "avgTime": "0:03"
+          },
+          {
+            "page": "/couchbase-edge-server/current/introduction/intro.html",
+            "views": 43,
+            "avgTime": "2:06"
+          },
+          {
+            "page": "/couchbase-edge-server/current/sync/edge-to-edge-sync.html",
+            "views": 14,
+            "avgTime": "0:46"
+          },
+          {
+            "page": "/couchbase-edge-server/current/sync/edge-sync-cbl.html",
+            "views": 11,
+            "avgTime": "0:41"
+          }
+        ]
       }
     ],
     "searchTerms": [
@@ -139,7 +373,7 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54084,
+      "uniqueVisitors": 54086,
       "avgSessionDuration": "2:14",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
@@ -147,12 +381,12 @@
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 48351,
+        "sessions": 48360,
         "percentage": 72
       },
       {
         "source": "Organic Search",
-        "sessions": 12838,
+        "sessions": 12840,
         "percentage": 19
       },
       {
@@ -162,7 +396,7 @@
       },
       {
         "source": "Unassigned",
-        "sessions": 2370,
+        "sessions": 2380,
         "percentage": 4
       },
       {
@@ -189,7 +423,7 @@
       {
         "path": "cloud",
         "displayPath": "/cloud/",
-        "totalViews": 7113,
+        "totalViews": 7117,
         "bounceRate": "0.4",
         "avgSessionDuration": "4:38",
         "trafficBalance": {
@@ -222,7 +456,7 @@
       {
         "path": "server",
         "displayPath": "/server/",
-        "totalViews": 28788,
+        "totalViews": 28802,
         "bounceRate": "0.5",
         "avgSessionDuration": "3:49",
         "trafficBalance": {
@@ -233,7 +467,7 @@
       {
         "path": "operator",
         "displayPath": "/operator/",
-        "totalViews": 2644,
+        "totalViews": 2645,
         "bounceRate": "0.6",
         "avgSessionDuration": "2:48",
         "trafficBalance": {
@@ -255,9 +489,9 @@
       {
         "path": "couchbase lite",
         "displayPath": "/couchbase-lite/",
-        "totalViews": 5716,
+        "totalViews": 5718,
         "bounceRate": "0.6",
-        "avgSessionDuration": "2:52",
+        "avgSessionDuration": "2:53",
         "trafficBalance": {
           "direct": 51,
           "search": 35
@@ -266,7 +500,7 @@
       {
         "path": "sync gateway",
         "displayPath": "/sync-gateway/",
-        "totalViews": 2905,
+        "totalViews": 2908,
         "bounceRate": "0.5",
         "avgSessionDuration": "3:38",
         "trafficBalance": {
