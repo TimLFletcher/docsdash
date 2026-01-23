@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-23T11:22:03.841Z",
+  "lastUpdated": "2026-01-23T11:33:32.062Z",
   "analytics": {
     "pageViews": {
       "total": 28008,
@@ -39,56 +39,51 @@
         }
       ]
     },
-    "topPages": [
+    "topPagesByPath": [
       {
-        "page": "/home/index.html",
-        "views": 24565,
-        "avgTime": "0:30"
+        "path": "cloud",
+        "displayPath": "/cloud/",
+        "pages": []
       },
       {
-        "page": "/home/server.html",
-        "views": 890,
-        "avgTime": "1:34"
+        "path": "analytics",
+        "displayPath": "/analytics/",
+        "pages": []
       },
       {
-        "page": "/home/cloud.html",
-        "views": 759,
-        "avgTime": "2:11"
+        "path": "ai",
+        "displayPath": "/ai/",
+        "pages": []
       },
       {
-        "page": "/java-sdk/current/project-docs/compatibility.html",
-        "views": 513,
-        "avgTime": "1:03"
+        "path": "server",
+        "displayPath": "/server/",
+        "pages": []
       },
       {
-        "page": "/server/current/install/install-ports.html",
-        "views": 407,
-        "avgTime": "2:52"
+        "path": "operator",
+        "displayPath": "/operator/",
+        "pages": []
       },
       {
-        "page": "/home/mobile.html",
-        "views": 396,
-        "avgTime": "1:08"
+        "path": "enterprise analytics",
+        "displayPath": "/enterprise-analytics/",
+        "pages": []
       },
       {
-        "page": "/couchbase-lite/current/index.html",
-        "views": 387,
-        "avgTime": "1:17"
+        "path": "couchbase lite",
+        "displayPath": "/couchbase-lite/",
+        "pages": []
       },
       {
-        "page": "/home/sdk.html",
-        "views": 366,
-        "avgTime": "1:37"
+        "path": "sync gateway",
+        "displayPath": "/sync-gateway/",
+        "pages": []
       },
       {
-        "page": "/server/current/release-notes/relnotes.html",
-        "views": 330,
-        "avgTime": "2:08"
-      },
-      {
-        "page": "/operator/current/overview.html",
-        "views": 319,
-        "avgTime": "0:51"
+        "path": "couchbase edge server",
+        "displayPath": "/couchbase-edge-server/",
+        "pages": []
       }
     ],
     "searchTerms": [
@@ -144,7 +139,7 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54061,
+      "uniqueVisitors": 54084,
       "avgSessionDuration": "2:14",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
@@ -162,12 +157,12 @@
       },
       {
         "source": "Referral",
-        "sessions": 3170,
+        "sessions": 3171,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2361,
+        "sessions": 2370,
         "percentage": 4
       },
       {
@@ -243,7 +238,7 @@
         "avgSessionDuration": "2:48",
         "trafficBalance": {
           "direct": 50,
-          "search": 35
+          "search": 36
         }
       },
       {
