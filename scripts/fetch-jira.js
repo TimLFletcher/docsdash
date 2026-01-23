@@ -48,8 +48,7 @@ export async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `project = DOC AND status IN ("In Progress", "In Review", Reopened, Open) ORDER BY priority DESC`,
-          maxResults: 3000,
+          jql: `project = DOC AND status IN ("In Progress", "In Review", Reopened, Open)`,
           fields: ['summary', 'priority', 'status', 'created'],
         }),
       }
@@ -149,7 +148,6 @@ export async function fetchJiraData() {
         headers,
         body: JSON.stringify({
           jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND created >= -30d`,
-          maxResults: 3000,
         }),
       }
     )
@@ -190,7 +188,6 @@ export async function fetchJiraData() {
         headers,
         body: JSON.stringify({
           jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND resolved >= -30d`,
-          maxResults: 3000,
         }),
       }
     )
@@ -231,7 +228,6 @@ export async function fetchJiraData() {
         headers,
         body: JSON.stringify({
           jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND created >= -60d AND created <= -30d`,
-          maxResults: 3000,
         }),
       }
     )
@@ -272,7 +268,6 @@ export async function fetchJiraData() {
         headers,
         body: JSON.stringify({
           jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND resolved >= -60d AND resolved <= -30d`,
-          maxResults: 3000,
         }),
       }
     )
@@ -293,7 +288,6 @@ export async function fetchJiraData() {
         headers,
         body: JSON.stringify({
           jql: `project = DOC AND resolved >= -60d AND resolved <= -30d AND resolutiondate IS NOT NULL`,
-          maxResults: 3000,
           fields: ['created', 'resolutiondate'],
         }),
       }
@@ -324,7 +318,6 @@ export async function fetchJiraData() {
         headers,
         body: JSON.stringify({
           jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND resolved >= -60d AND resolved <= -30d AND resolutiondate IS NOT NULL`,
-          maxResults: 3000,
           fields: ['created', 'resolutiondate'],
         }),
       }
@@ -440,7 +433,6 @@ export async function fetchJiraData() {
         headers,
         body: JSON.stringify({
           jql: `project = DOC AND resolved >= -30d AND resolutiondate IS NOT NULL`,
-          maxResults: 3000,
           fields: ['created', 'resolutiondate'],
         }),
       }
@@ -471,7 +463,6 @@ export async function fetchJiraData() {
         headers,
         body: JSON.stringify({
           jql: `project = AV AND type IN ("Documentation", "Documentation Sub-Task") AND resolved >= -30d AND resolutiondate IS NOT NULL`,
-          maxResults: 3000,
           fields: ['created', 'resolutiondate'],
         }),
       }
