@@ -14,9 +14,20 @@ export function TopPagesTable({ data }) {
     )
   }
 
+  // Filter out paths with no pages and ensure pages array exists
+  const pathsWithPages = data.filter(pathData => pathData && pathData.pages && Array.isArray(pathData.pages) && pathData.pages.length > 0)
+
+  if (pathsWithPages.length === 0) {
+    return (
+      <ChartCard title="Top Pages by Path" subtitle="Top 5 pages from each documentation section">
+        <p className="text-sm text-slate-500 text-center py-8">No page data available for any path</p>
+      </ChartCard>
+    )
+  }
+
   // Calculate max views across all pages for progress bars
-  const allPages = data.flatMap(path => path.pages)
-  const maxViews = allPages.length > 0 ? Math.max(...allPages.map(p => p.views)) : 1
+  const allPages = pathsWithPages.flatMap(path => path.pages || [])
+  const maxViews = allPages.length > 0 ? Math.max(...allPages.map(p => p && p.views ? p.views : 0)) : 1
 
   const formatPath = (path) => {
     return path.replace(/\//g, '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
@@ -27,8 +38,8 @@ export function TopPagesTable({ data }) {
       title="Top Pages by Path" 
       subtitle="Top 5 pages from each documentation section (Last 30 Days)"
     >
-      <div className="space-y-6">
-        {data.map((pathData, pathIndex) => {
+      <div className="space-y-6 max-h-[800px] overflow-y-auto">
+        {pathsWithPages.map((pathData, pathIndex) => {
           if (!pathData.pages || pathData.pages.length === 0) return null
           
           return (

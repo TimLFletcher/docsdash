@@ -67,6 +67,13 @@ async function fetchGoogleAnalyticsData() {
       orderBys: [{ dimension: { dimensionName: 'date' } }],
     })
 
+    // Helper function to format duration
+    const formatDuration = (seconds) => {
+      const mins = Math.floor(seconds / 60)
+      const secs = Math.floor(seconds % 60)
+      return `${mins}:${secs.toString().padStart(2, '0')}`
+    }
+
     // Fetch top 5 pages for each documentation path
     const documentationPaths = [
       '/cloud/',
@@ -200,13 +207,6 @@ async function fetchGoogleAnalyticsData() {
       orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
       limit: 5,
     })
-
-    // Helper function to format duration
-    const formatDuration = (seconds) => {
-      const mins = Math.floor(seconds / 60)
-      const secs = Math.floor(seconds % 60)
-      return `${mins}:${secs.toString().padStart(2, '0')}`
-    }
 
     // Fetch metrics for each documentation path (reuse paths array)
     const pathMetrics = await Promise.all(
