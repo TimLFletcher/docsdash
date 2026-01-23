@@ -5,7 +5,7 @@ import { ExternalLink } from 'lucide-react'
 /**
  * Table showing recent Jira issues
  */
-export function RecentIssuesTable({ data, jiraBaseUrl = 'https://your-org.atlassian.net/browse' }) {
+export function RecentIssuesTable({ data, jiraBaseUrl = 'https://jira.issues.couchbase.com/browse' }) {
   const getPriorityColor = (priority) => {
     switch (priority.toLowerCase()) {
       case 'critical': return 'bg-red-100 text-red-700'

@@ -247,16 +247,18 @@ async function fetchJiraData() {
     const headers = {
       'Authorization': `Basic ${auth}`,
       'Content-Type': 'application/json',
+      'Accept-Language': 'en', // Force English responses
     }
 
     // Fetch open issues using new /search/jql endpoint
+    // Using status IN filter to match only active statuses
     const openIssuesResponse = await fetch(
       `${baseUrl}/rest/api/3/search/jql`,
       {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `project=${projectKey} AND status != Done ORDER BY priority DESC`,
+          jql: `project=${projectKey} AND status IN ("In Progress", "In Review", Reopened, Open) ORDER BY priority DESC`,
           maxResults: 100,
           fields: ['summary', 'priority', 'status', 'created'],
         }),
@@ -279,7 +281,7 @@ async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `project=${projectKey} AND status != Done`,
+          jql: `project=${projectKey} AND status IN ("In Progress", "In Review", Reopened, Open)`,
         }),
       }
     )
@@ -314,7 +316,7 @@ async function fetchJiraData() {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          jql: `project=${projectKey} ORDER BY created DESC`,
+          jql: `project=${projectKey} AND status IN ("In Progress", "In Review", Reopened, Open) ORDER BY created DESC`,
           maxResults: 5,
           fields: ['summary', 'priority', 'status', 'created'],
         }),
