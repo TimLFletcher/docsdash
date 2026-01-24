@@ -13,7 +13,7 @@ import {
 
 // Components
 import { MetricCard } from './components/MetricCard'
-import { SearchTermsTable } from './charts/SearchTermsTable'
+import { SearchTermsTable } from './components/charts/SearchTermsTable'
 import { PageViewsChart } from './components/charts/PageViewsChart'
 import { TopPagesTable } from './components/charts/TopPagesTable'
 import { JiraLabelsChart } from './components/charts/JiraLabelsChart'
