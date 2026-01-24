@@ -35,6 +35,7 @@ import { PasswordProtection } from './components/PasswordProtection'
      returningVisitors: 0,
      bounceRate: 0,
      avgSessionDuration: '0:00',
+     avgSessionDurationTrend: 0,
    },
    topPages: [],
    topPagesByPath: [],
@@ -48,12 +49,15 @@ import { PasswordProtection } from './components/PasswordProtection'
      total: 0,
      byPriority: [],
    },
-   recentIssues: [],
-   velocityTrend: [],
-   avgResolutionDays: 0,
    monthlyOpened: 0,
    monthlyResolved: 0,
    burnRate: 0,
+   burnRateTrend: 0,
+   avgResolutionDays: 0,
+   avgResolutionDaysTrend: 0,
+   velocityTrend: [],
+   recentIssues: [],
+   topLabels: [],
    previousMonthOpened: 0,
    previousMonthResolved: 0,
    previousMonthBurnRate: 0,
@@ -231,16 +235,19 @@ function App() {
               <MetricCard
                 title="Avg. Session (Last 30 Days)"
                 value={analytics.userMetrics.avgSessionDuration}
+                trend={parseFloat(analytics.userMetrics.avgSessionDurationTrend || 0)}
                 icon={<Clock className="w-6 h-6" />}
               />
               <MetricCard
                 title="Jira Burn Rate"
                 value={parseFloat(jira.burnRate || 0).toFixed(2)}
+                trend={parseFloat(jira.burnRateTrend || 0)}
                 icon={<TrendingUp className="w-6 h-6" />}
               />
               <MetricCard
                 title="Avg Resolution (Days)"
                 value={Math.round(jira.avgResolutionDays || 0)}
+                trend={parseFloat(jira.avgResolutionDaysTrend || 0)}
                 icon={<Clock className="w-6 h-6" />}
               />
             </div>

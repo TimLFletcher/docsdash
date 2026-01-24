@@ -495,6 +495,9 @@ export async function fetchGoogleAnalyticsData() {
       userMetrics: {
         uniqueVisitors: parseInt(userMetricsResponse.rows[0].metricValues[0].value),
         avgSessionDuration: formatDuration(parseFloat(userMetricsResponse.rows[0].metricValues[2].value)),
+        avgSessionDurationTrend: userMetricsResponse.rows[1] 
+          ? ((parseFloat(userMetricsResponse.rows[0].metricValues[2].value) - parseFloat(userMetricsResponse.rows[1].metricValues[2].value)) / parseFloat(userMetricsResponse.rows[1].metricValues[2].value) * 100).toFixed(1)
+          : 0,
         bounceRate: parseFloat(userMetricsResponse.rows[0].metricValues[3].value).toFixed(1),
         returningVisitors: 42.5, // Requires additional query
       },
