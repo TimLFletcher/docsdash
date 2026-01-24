@@ -28,7 +28,7 @@ async function getDashboardData() {
 /**
  * Calls OpenAI API with structured prompt
  */
-async function callOpenAI(apiKey, prompt, data) {
+export async function callOpenAI(apiKey, prompt, data) {
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -63,7 +63,7 @@ async function callOpenAI(apiKey, prompt, data) {
 /**
  * Analyzes web traffic trends
  */
-async function analyzeTrafficTrends(apiKey, data) {
+export async function analyzeTrafficTrends(apiKey, data) {
   const prompt = `
 Analyze the following web traffic data and provide insights on:
 1. Overall traffic trends (increasing/decreasing/stable)
@@ -88,7 +88,7 @@ Focus on actionable insights that would help improve documentation effectiveness
 /**
  * Analyzes Jira ticket trends
  */
-async function analyzeJiraTrends(apiKey, data) {
+export async function analyzeJiraTrends(apiKey, data) {
   const prompt = `
 Analyze the following Jira data and provide insights on:
 1. Ticket creation vs resolution trends (are we keeping up?)
@@ -118,7 +118,7 @@ Provide specific recommendations for improving process efficiency.
 /**
  * Detects potential duplicate tickets from last 30 days
  */
-async function detectDuplicates(apiKey, data) {
+export async function detectDuplicates(apiKey, data) {
   const prompt = `
 Review these recent Jira tickets from the last 30 days and identify potential duplicates. Look for:
 1. Similar titles or summaries

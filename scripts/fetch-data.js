@@ -79,61 +79,52 @@ async function fetchAIInsights(analyticsData, jiraData) {
   }
 
   try {
-    // Import the insights API handler
-    const { default: insightsHandler } = await import('./insights-api.js')
+    // Import the insights functions directly
+    const { analyzeTrafficTrends, analyzeJiraTrends, detectDuplicates } = await import('./insights-api.js')
     
-    // Create a mock request object with the dashboard data
-    const mockReq = {
-      method: 'POST',
-      body: {
-        apiKey: process.env.OPENAI_API_KEY,
-        analysisTypes: ['traffic', 'jira', 'duplicates']
-      }
-    }
-
-    // Create a mock response object
-    let responseData = null
-    const mockRes = {
-      status: (code) => ({
-        json: (data) => {
-          responseData = data
-          return Promise.resolve()
-        }
-      })
-    }
-
-    // Temporarily override the getDashboardData function in insights-api.js
-    const originalGetDashboardData = (await import('./insights-api.js')).getDashboardData
-    // We need to patch this to use our current data instead of reading from file
-    const insightsApiModule = await import('./insights-api.js')
-    
-    // Create a temporary file with our data for the insights API to read
-    const tempDataPath = path.join(__dirname, '..', 'temp-dashboard-data.json')
-    const tempDashboardData = {
+    // Create dashboard data object
+    const dashboardData = {
       analytics: analyticsData,
       jira: jiraData
     }
-    fs.writeFileSync(tempDataPath, JSON.stringify(tempDashboardData, null, 2))
-    
-    // Override the data path in the insights API
-    const originalFilename = insightsApiModule.__filename
-    insightsApiModule.__filename = tempDataPath
 
-    // Call the insights handler
-    await insightsHandler(mockReq, mockRes)
+    const results = {}
 
-    // Clean up temp file
-    if (fs.existsSync(tempDataPath)) {
-      fs.unlinkSync(tempDataPath)
-    }
+    // Run analyses in parallel
+    const analyses = []
 
-    if (responseData && responseData.success) {
-      console.log('   ✅ AI insights generated successfully')
-      return responseData.results
-    } else {
-      console.log('⚠️  Failed to generate AI insights')
-      return null
-    }
+    analyses.push(
+      analyzeTrafficTrends(process.env.OPENAI_API_KEY, dashboardData)
+        .then(result => { results.traffic = result })
+        .catch(error => { 
+          console.log('⚠️  Traffic analysis failed:', error.message)
+          results.traffic = null 
+        })
+    )
+
+    analyses.push(
+      analyzeJiraTrends(process.env.OPENAI_API_KEY, dashboardData)
+        .then(result => { results.jira = result })
+        .catch(error => { 
+          console.log('⚠️  Jira analysis failed:', error.message)
+          results.jira = null 
+        })
+    )
+
+    analyses.push(
+      detectDuplicates(process.env.OPENAI_API_KEY, dashboardData)
+        .then(result => { results.duplicates = result })
+        .catch(error => { 
+          console.log('⚠️  Duplicate detection failed:', error.message)
+          results.duplicates = null 
+        })
+    )
+
+    await Promise.all(analyses)
+
+    console.log('   ✅ AI insights generated successfully')
+    return results
+
   } catch (error) {
     console.error('❌ Error fetching AI insights:', error.message)
     return null
