@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-24T11:39:22.347Z",
+  "lastUpdated": "2026-01-24T11:42:02.225Z",
   "analytics": {
     "pageViews": {
       "total": 28238,
@@ -1030,17 +1030,129 @@
       }
     ]
   },
-  "jira": null,
+  "jira": {
+    "openIssues": {
+      "total": 1219,
+      "byPriority": [
+        {
+          "priority": "Major",
+          "count": 46,
+          "color": "#6b7280"
+        },
+        {
+          "priority": "Medium",
+          "count": 4,
+          "color": "#eab308"
+        }
+      ]
+    },
+    "recentIssues": [
+      {
+        "key": "DOC-13935",
+        "summary": "Add new capella-type for AI and app-services",
+        "priority": "Major",
+        "status": "Open",
+        "created": "2026-01-23"
+      },
+      {
+        "key": "DOC-13934",
+        "summary": "Standardize RBAC Role String Syntax Documentation",
+        "priority": "Major",
+        "status": "Open",
+        "created": "2026-01-22"
+      },
+      {
+        "key": "DOC-13933",
+        "summary": "Installing Couchbase Lite JavaScript — specify browser-only",
+        "priority": "Medium",
+        "status": "Open",
+        "created": "2026-01-22"
+      },
+      {
+        "key": "DOC-13932",
+        "summary": "Couchbase Operator - Prerequisites and System Requirements Updates",
+        "priority": "Major",
+        "status": "Open",
+        "created": "2026-01-22"
+      },
+      {
+        "key": "DOC-13930",
+        "summary": "Feedback on Sync Gateway | Couchbase Docs",
+        "priority": "Medium",
+        "status": "Open",
+        "created": "2026-01-21"
+      }
+    ],
+    "velocityTrend": [
+      {
+        "sprint": "Sprint 18",
+        "completed": 12,
+        "planned": 15
+      },
+      {
+        "sprint": "Sprint 19",
+        "completed": 14,
+        "planned": 14
+      },
+      {
+        "sprint": "Sprint 20",
+        "completed": 11,
+        "planned": 16
+      },
+      {
+        "sprint": "Sprint 21",
+        "completed": 15,
+        "planned": 15
+      },
+      {
+        "sprint": "Sprint 22",
+        "completed": 8,
+        "planned": 14
+      }
+    ],
+    "avgResolutionDays": 216.19,
+    "monthlyOpened": 63,
+    "monthlyResolved": 85,
+    "burnRate": 0.74,
+    "burnRateTrend": "34.5",
+    "avgResolutionDaysTrend": "1301.1",
+    "previousMonthOpened": 110,
+    "previousMonthResolved": 200,
+    "previousMonthBurnRate": 0.55,
+    "previousMonthAvgResolutionDays": 15.43,
+    "monthlyOpenedAV": 0,
+    "monthlyResolvedAV": 0,
+    "burnRateAV": 0,
+    "previousMonthOpenedAV": 0,
+    "previousMonthResolvedAV": 0,
+    "previousMonthBurnRateAV": 0,
+    "avgResolutionDaysAV": 0,
+    "previousMonthAvgResolutionDaysAV": 0,
+    "topLabels": [
+      {
+        "label": "No Labels",
+        "count": 346,
+        "color": "#6b7280"
+      },
+      {
+        "label": "Totoro",
+        "count": 8,
+        "color": "#ef4444"
+      },
+      {
+        "label": "Other Labels",
+        "count": 839,
+        "color": "#3b82f6"
+      }
+    ]
+  },
   "insights": {
     "contentGaps": [],
     "performanceNotes": [],
     "aiInsights": {
-      "jira": "To provide actionable insights, please input the Jira data in a structured format, such as a table or a list, detailing key metrics like ticket creation/resolution dates, sprint velocities, resolution times, burn rates, priority levels, and team capacity metrics. Once provided, I can analyze and offer recommendations based on the data.",
-      "duplicates": "# Jira Ticket Analysis\n\n## Overview\nBased on the provided data, there are no recent Jira issues available for analysis. Therefore, no potential duplicates can be identified at this time.\n\n## Conclusion\n- **No Duplicates Found**: Since there are no recent issues in the dataset, no duplicate tickets can be flagged.\n\n## Recommendations\n- Ensure that future data submissions include recent issues for a comprehensive analysis.\n- Regularly review and update the Jira ticket database to maintain data integrity and avoid potential duplicates.",
-      "traffic": "## Web Traffic Analysis\n\n### 1. Overall Traffic Trends\n- **Trend**: The overall page views show a **6.7% increase**.\n- **Pattern**: There is a noticeable spike in views around specific dates, such as January 19-21, 2026, and a significant drop on January 24, 2026.\n\n### 2. Notable Patterns in User Behavior\n- **Session Duration**: The average session duration is **2:11**, which has decreased by **12.1%**. This indicates users might be finding information quicker or leaving earlier.\n- **Bounce Rate**: Extremely low at **0.7%**, suggesting users are engaging with multiple pages per session.\n- **Returning Visitors**: **42.5%** of visitors are returning, indicating a strong interest or need for repeated access to the documentation.\n\n### 3. Top Performing Pages\n- **/cloud/management-api-reference/index.html**: High views and engagement time (3:23), indicating valuable content.\n- **/server/current/install/install-ports.html**: Most viewed in the server section, likely due to essential installation information.\n- **/couchbase-lite/current/index.html**: High views with moderate engagement time, suggesting it's a key entry point.\n\n### 4. Areas for Improvement\n- **Low Engagement Pages**: \n  - **/enterprise-analytics/current/install/system-requirements.html**: Very low average time (0:18), suggesting content might not be engaging or detailed enough.\n  - **/couchbase-edge-server/current/product-notes/release-notes.html**: High views but very low engagement time (0:05), indicating users might not find the content useful or it's too brief.\n\n### 5. Anomalies or Concerning Patterns\n- **Traffic Drop on January 24, 2026**: Only 58 views, a significant drop from previous days. Investigate potential causes such as server issues or incorrect tracking.\n- **Search Terms**: The top search terms appear to be nonsensical or testing inputs, indicating potential misuse or testing of the search functionality.\n\n## Actionable Insights\n\n- **Enhance Content Engagement**: Focus on pages with low average time spent to improve content quality and engagement.\n- **Investigate Traffic Drop**: Analyze potential technical issues or external factors that could have caused the traffic drop on January 24, 2026.\n- **Optimize Search Functionality**: Review and improve the search feature to ensure it meets user needs and filters out irrelevant or test inputs.\n- **Leverage Top Pages**: Use insights from top-performing pages to replicate successful elements across other documentation areas.\n- **Monitor Session Duration**: Investigate the reasons for decreasing session durations and adjust content strategy to retain user attention longer."
+      "duplicates": "Based on the provided data, I have reviewed the recent Jira tickets for potential duplicates. Here are the findings:\n\n### No Duplicates Found\n\nAfter analyzing the recent issues, no clear duplicates were identified. The tickets have distinct summaries, priorities, and appear to address different aspects of documentation or product features. Here's a brief overview:\n\n- **DOC-13935**: Focuses on adding a new capella-type for AI and app-services.\n- **DOC-13934**: Concerns standardizing RBAC role string syntax documentation.\n- **DOC-13933**: Addresses the installation specifics of Couchbase Lite JavaScript for browser-only environments.\n- **DOC-13932**: Involves updates to prerequisites and system requirements for Couchbase Operator.\n- **DOC-13930**: Relates to feedback on Sync Gateway documentation.\n\n### Conclusion\n\n- **No Action Required**: Each ticket appears to address a unique issue or documentation aspect. No tickets should be merged or marked as duplicates at this time.\n\nIf further analysis is needed or additional data becomes available, a re-evaluation can be conducted.",
+      "jira": "## Insights\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 63 tickets opened, 85 resolved.\n- **Previous Month**: 110 tickets opened, 200 resolved.\n- **Trend**: The team is resolving more tickets than are being created, indicating a positive trend in managing backlog.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**:\n  - Sprint 18: 12/15 completed\n  - Sprint 19: 14/14 completed\n  - Sprint 20: 11/16 completed\n  - Sprint 21: 15/15 completed\n  - Sprint 22: 8/14 completed\n- **Trend**: Velocity is inconsistent, with a notable drop in Sprint 22. This suggests potential issues with planning or execution.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 216.19 days.\n- **Insight**: The resolution time is lengthy, indicating potential inefficiencies in the process.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.74\n- **Previous Burn Rate**: 0.55\n- **Insight**: An increase in burn rate suggests higher resource consumption relative to output, which may not be sustainable long-term.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Issues**:\n  - Major: 46\n  - Medium: 4\n- **Recent Major Issues**: 3 new major issues opened recently.\n- **Insight**: Major issues form a significant portion of open tickets, requiring prioritized attention.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Observation**: The team is resolving more tickets than are opened, but the inconsistency in sprint completion and increased burn rate suggests potential capacity issues.\n\n## Recommendations\n\n- **Improve Planning**: Analyze the causes of incomplete sprints, particularly Sprint 22, to enhance future sprint planning and execution.\n- **Focus on Major Issues**: Prioritize resolving major issues to prevent backlog growth and potential bottlenecks.\n- **Reduce Resolution Time**: Investigate and address factors contributing to the long average resolution time to improve efficiency.\n- **Monitor Burn Rate**: Evaluate resource allocation and task prioritization to ensure sustainable work practices.\n- **Capacity Management**: Consider re-evaluating team capacity and workload distribution to maintain consistent velocity and reduce burn rate.",
+      "traffic": "## Web Traffic Analysis\n\n### 1. Overall Traffic Trends\n- **Trend**: Decreasing\n  - **Recent Daily Views**: Significant drop on January 24, 2026, with only 58 views.\n  - **3-Month Trend**: Fluctuations with a general decline in average daily views from October 2025 to January 2026.\n\n### 2. Notable Patterns in User Behavior\n- **Session Duration**: Decreasing trend (-12.1%), indicating users are spending less time per session.\n- **Bounce Rate**: Extremely low at 0.7%, suggesting users are engaging with multiple pages per session.\n- **Returning Visitors**: 42.5% of visitors are returning, indicating a strong base of repeat users.\n\n### 3. Top Performing Pages\n- **/server/current/install/install-ports.html**: Highest views (405) with a decent average time (2:53), likely due to its relevance and utility.\n- **/cloud/management-api-reference/index.html**: High engagement (3:23 average time), indicating valuable content.\n- **/analytics/intro/intro.html**: Long average time (6:34), suggesting in-depth content that retains user attention.\n\n### 4. Areas for Improvement\n- **Low Engagement Pages**: \n  - **/enterprise-analytics/current/install/system-requirements.html**: Short average time (0:18), indicating possible content irrelevance or clarity issues.\n  - **/couchbase-edge-server/current/product-notes/release-notes.html**: Very low average time (0:05), suggesting users are not finding the information useful or engaging.\n- **Session Duration**: Focus on improving content engagement to increase average session duration.\n\n### 5. Anomalies or Concerning Patterns\n- **January 24, 2026**: Drastic drop in page views (58), potentially indicating a technical issue or error in data collection.\n- **Search Terms**: Unusual search terms like \"sssieddqxsx\" with results found, suggesting potential spam or irrelevant searches.\n\n## Actionable Insights\n- **Content Optimization**: \n  - Enhance content on pages with low average time to improve user engagement.\n  - Regularly update and optimize high-performing pages to maintain their relevance.\n- **Technical Check**: Investigate the significant drop in views on January 24, 2026, for potential technical issues.\n- **User Engagement**: Develop strategies to increase session duration, such as interactive content or related article suggestions.\n- **Search Term Analysis**: Review and refine search functionality to ensure relevant results and reduce spammy searches.\n- **Traffic Source Strategy**: Leverage direct and organic search channels to maintain and grow user base, considering the high percentage of sessions from these sources."
     }
-  },
-  "errors": [
-    "Failed to fetch Jira data"
-  ]
+  }
 }
