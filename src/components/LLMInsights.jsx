@@ -5,9 +5,9 @@ export function LLMInsights({ dashboardData }) {
   const [isRefreshing, setIsRefreshing] = useState(false)
   const [error, setError] = useState(null)
   const [expandedSections, setExpandedSections] = useState({
-    traffic: true,
-    jira: true,
-    duplicates: true,
+    traffic: false,
+    jira: false,
+    duplicates: false,
   })
 
   const toggleSection = (section) => {
@@ -61,35 +61,31 @@ export function LLMInsights({ dashboardData }) {
   const renderMarkdown = (content) => {
     if (!content) return null
 
-    // Simple markdown rendering (basic support)
-    return content.split('\n').map((line, index) => {
+    // Process the content line by line with better bold handling
+    const lines = content.split('\n')
+    const elements = []
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i]
+      
       if (line.startsWith('## ')) {
-        return <h3 key={index} className="text-lg font-semibold text-slate-900 mt-4 mb-2">{line.slice(3)}</h3>
+        elements.push(<h3 key={i} className="text-lg font-semibold text-slate-900 mt-4 mb-2">{line.slice(3)}</h3>)
       } else if (line.startsWith('### ')) {
-        return <h4 key={index} className="text-md font-medium text-slate-800 mt-3 mb-1">{line.slice(4)}</h4>
+        elements.push(<h4 key={i} className="text-md font-medium text-slate-800 mt-3 mb-1">{line.slice(4)}</h4>)
       } else if (line.startsWith('- ')) {
-        return <li key={index} className="ml-4 text-sm text-slate-600">{line.slice(2)}</li>
-      } else if (line.includes('**')) {
-        // Handle bold text with **text** - more robust parsing
-        const parts = line.split(/(\*\*.*?\*\*)/)
-        const elements = []
-        for (let i = 0; i < parts.length; i++) {
-          const part = parts[i]
-          if (part.startsWith('**') && part.endsWith('**')) {
-            // Bold text
-            elements.push(<strong key={i} className="font-semibold text-slate-700">{part.slice(2, -2)}</strong>)
-          } else if (part) {
-            // Regular text
-            elements.push(<span key={i}>{part}</span>)
-          }
-        }
-        return <p key={index} className="text-sm text-slate-600 mt-1">{elements}</p>
+        elements.push(<li key={i} className="ml-4 text-sm text-slate-600">{line.slice(2)}</li>)
       } else if (line.trim() === '') {
-        return <br key={index} />
+        elements.push(<br key={i} />)
       } else {
-        return <p key={index} className="text-sm text-slate-600 mt-1">{line}</p>
+        // Handle bold text within the line
+        const processedLine = line.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-slate-700">$1</strong>')
+        elements.push(
+          <p key={i} className="text-sm text-slate-600 mt-1" dangerouslySetInnerHTML={{ __html: processedLine }} />
+        )
       }
-    })
+    }
+    
+    return elements
   }
 
   // Get AI insights from dashboard data
@@ -147,7 +143,7 @@ export function LLMInsights({ dashboardData }) {
         <div className="space-y-6">
           {/* Traffic Trends */}
           {aiInsights.traffic && (
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div key="traffic-insights" className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
               <button
                 onClick={() => toggleSection('traffic')}
                 className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-50 transition-colors"
@@ -173,7 +169,7 @@ export function LLMInsights({ dashboardData }) {
                 </div>
               </button>
               {expandedSections.traffic && (
-                <div className="px-6 pb-6">
+                <div key="traffic-content" className="px-6 pb-6">
                   <div className="prose prose-sm max-w-none">
                     {renderMarkdown(aiInsights.traffic)}
                   </div>
@@ -184,7 +180,7 @@ export function LLMInsights({ dashboardData }) {
 
           {/* Jira Trends */}
           {aiInsights.jira && (
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div key="jira-insights" className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
               <button
                 onClick={() => toggleSection('jira')}
                 className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-50 transition-colors"
@@ -210,7 +206,7 @@ export function LLMInsights({ dashboardData }) {
                 </div>
               </button>
               {expandedSections.jira && (
-                <div className="px-6 pb-6">
+                <div key="jira-content" className="px-6 pb-6">
                   <div className="prose prose-sm max-w-none">
                     {renderMarkdown(aiInsights.jira)}
                   </div>
@@ -221,7 +217,7 @@ export function LLMInsights({ dashboardData }) {
 
           {/* Duplicate Detection */}
           {aiInsights.duplicates && (
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div key="duplicates-insights" className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
               <button
                 onClick={() => toggleSection('duplicates')}
                 className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-50 transition-colors"
@@ -247,7 +243,7 @@ export function LLMInsights({ dashboardData }) {
                 </div>
               </button>
               {expandedSections.duplicates && (
-                <div className="px-6 pb-6">
+                <div key="duplicates-content" className="px-6 pb-6">
                   <div className="prose prose-sm max-w-none">
                     {renderMarkdown(aiInsights.duplicates)}
                   </div>
@@ -257,7 +253,7 @@ export function LLMInsights({ dashboardData }) {
           )}
 
           {/* Last Updated */}
-          <div className="text-center text-xs text-slate-500">
+          <div key="last-updated" className="text-center text-xs text-slate-500">
             Insights generated on {dashboardData?.lastUpdated ? new Date(dashboardData.lastUpdated).toLocaleString() : new Date().toLocaleString()}
           </div>
         </div>
