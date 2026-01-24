@@ -13,7 +13,6 @@ import {
 
 // Components
 import { MetricCard } from './components/MetricCard'
-import { SearchTermsTable } from './components/charts/SearchTermsTable'
 import { PageViewsChart } from './components/charts/PageViewsChart'
 import { TopPagesTable } from './components/charts/TopPagesTable'
 import { JiraLabelsChart } from './components/charts/JiraLabelsChart'
@@ -21,6 +20,7 @@ import { VelocityChart } from './components/charts/VelocityChart'
 import { RecentIssuesTable } from './components/charts/RecentIssuesTable'
 import { TrafficSourcesChart } from './components/charts/TrafficSourcesChart'
 import { PathComparisonTable } from './components/charts/PathComparisonTable'
+import { SDKComparisonTable } from './components/charts/SDKComparisonTable'
 import { AIAssistant } from './components/AIAssistant'
 import { LLMInsights } from './components/LLMInsights'
 import { PasswordProtection } from './components/PasswordProtection'
@@ -313,9 +313,10 @@ function App() {
               </div>
             </div>
 
-            <PathComparisonTable data={analytics.pathComparison || []} />
-
-            <SearchTermsTable data={analytics.searchTerms || []} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <PathComparisonTable data={analytics.pathComparison || []} />
+              <SDKComparisonTable data={analytics.sdkComparison || []} />
+            </div>
           </div>
         )}
 

@@ -82,6 +82,24 @@ export async function fetchGoogleAnalyticsData() {
       '/couchbase-edge-server/',
     ]
 
+    // SDK paths for comparison
+    const sdkPaths = [
+      '/dotnet-sdk/',
+      '/efcore-provider/',
+      '/c-sdk/',
+      '/cxx-sdk/',
+      '/go-sdk/',
+      '/java-sdk/',
+      '/quarkus-extension/',
+      '/kotlin-sdk/',
+      '/nodejs-sdk/',
+      '/php-sdk/',
+      '/python-sdk/',
+      '/ruby-sdk/',
+      '/rust-sdk/',
+      '/scala-sdk/',
+    ]
+
     const topPagesByPath = await Promise.all(
       documentationPaths.map(async (path) => {
         try {
@@ -354,6 +372,93 @@ export async function fetchGoogleAnalyticsData() {
 
     console.log(`   ✅ Fetched metrics for ${pathMetrics.length} documentation paths`)
 
+    // Fetch metrics for each SDK path
+    const sdkMetrics = await Promise.all(
+      sdkPaths.map(async (path) => {
+        try {
+          // Fetch page views for this SDK path
+          const [pathViewsResponse] = await analyticsDataClient.runReport({
+            property: `properties/${propertyId}`,
+            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            dimensions: [{ name: 'pagePath' }],
+            metrics: [{ name: 'screenPageViews' }],
+            dimensionFilter: {
+              filter: {
+                fieldName: 'pagePath',
+                stringFilter: { matchType: 'BEGINS_WITH', value: path },
+              },
+            },
+          })
+
+          // Fetch session metrics for this SDK path
+          const [pathSessionResponse] = await analyticsDataClient.runReport({
+            property: `properties/${propertyId}`,
+            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            metrics: [
+              { name: 'sessions' },
+              { name: 'bounceRate' },
+              { name: 'averageSessionDuration' },
+            ],
+            dimensionFilter: {
+              filter: {
+                fieldName: 'pagePath',
+                stringFilter: { matchType: 'BEGINS_WITH', value: path },
+              },
+            },
+          })
+
+          // Fetch traffic sources for this SDK path
+          const [pathTrafficResponse] = await analyticsDataClient.runReport({
+            property: `properties/${propertyId}`,
+            dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+            dimensions: [{ name: 'sessionDefaultChannelGroup' }],
+            metrics: [{ name: 'sessions' }],
+            dimensionFilter: {
+              filter: {
+                fieldName: 'pagePath',
+                stringFilter: { matchType: 'BEGINS_WITH', value: path },
+              },
+            },
+          })
+
+          const totalViews = pathViewsResponse.rows?.reduce((sum, row) => sum + parseInt(row.metricValues[0].value), 0) || 0
+          const bounceRate = pathSessionResponse.rows?.[0]?.metricValues[1]?.value || '0'
+          const avgSessionDuration = pathSessionResponse.rows?.[0]?.metricValues[2]?.value || '0'
+          
+          // Calculate traffic balance
+          const trafficData = pathTrafficResponse.rows || []
+          const totalSessions = trafficData.reduce((sum, row) => sum + parseInt(row.metricValues[0].value), 0)
+          const directSessions = trafficData.find(row => row.dimensionValues[0].value === 'Direct')?.metricValues[0]?.value || 0
+          const searchSessions = trafficData.find(row => row.dimensionValues[0].value === 'Organic Search')?.metricValues[0]?.value || 0
+          
+          const directPercentage = totalSessions > 0 ? Math.round((directSessions / totalSessions) * 100) : 0
+          const searchPercentage = totalSessions > 0 ? Math.round((searchSessions / totalSessions) * 100) : 0
+
+          return {
+            displayPath: path,
+            totalViews,
+            bounceRate: parseFloat(bounceRate).toFixed(1),
+            avgSessionDuration: formatDuration(parseFloat(avgSessionDuration)),
+            trafficBalance: {
+              direct: directPercentage,
+              search: searchPercentage,
+            },
+          }
+        } catch (error) {
+          console.warn(`   ⚠️  Failed to fetch metrics for ${path}:`, error.message)
+          return {
+            displayPath: path,
+            totalViews: 0,
+            bounceRate: 0,
+            avgSessionDuration: '0:00',
+            trafficBalance: { direct: 0, search: 0 },
+          }
+        }
+      })
+    )
+
+    console.log(`   ✅ Fetched metrics for ${sdkMetrics.length} SDK paths`)
+
     // Process responses into dashboard format
     const daily = pageViewsResponse.rows.map(row => ({
       date: row.dimensionValues[0].value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'),
@@ -410,6 +515,7 @@ export async function fetchGoogleAnalyticsData() {
         { device: 'Tablet', percentage: 6 },
       ], // Requires additional query
       pathComparison: pathMetrics,
+      sdkComparison: sdkMetrics,
     }
   } catch (error) {
     console.error('❌ Error fetching GA data:', error.message)
