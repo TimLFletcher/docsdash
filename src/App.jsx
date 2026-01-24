@@ -305,9 +305,7 @@ function App() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="lg:col-span-1">
-                <TopPagesTable data={analytics.topPagesByPath || []} />
-              </div>
+              <TopPagesTable data={analytics.topPagesByPath || []} />
               <div className="space-y-6">
                 <TrafficSourcesChart data={analytics.trafficSources} />
                 <PageViewsChart data={analytics.pageViews.daily} />

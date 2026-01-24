@@ -75,31 +75,58 @@ Based on this data, provide actionable insights and recommendations. Be specific
     setIsLoading(true)
 
     try {
-      const response = await fetch('/api/ai-assistant', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: input,
-          context: buildContext(),
-        }),
-      })
+      // Check if we have pre-generated AI insights from the build process
+      const aiInsights = dashboardData?.insights?.aiInsights
+      
+      if (aiInsights) {
+        // Use pre-generated insights to provide context-aware responses
+        const context = buildContext()
+        
+        // Simple rule-based responses based on the input and available data
+        let response = ''
+        
+        if (input.toLowerCase().includes('traffic') || input.toLowerCase().includes('analytics')) {
+          response = aiInsights.traffic || "I don't have specific traffic insights available right now. The analytics data shows current metrics in the dashboard."
+        } else if (input.toLowerCase().includes('jira') || input.toLowerCase().includes('ticket')) {
+          response = aiInsights.jira || "I don't have specific Jira insights available right now. The Jira data shows current ticket metrics in the dashboard."
+        } else if (input.toLowerCase().includes('duplicate')) {
+          response = aiInsights.duplicates || "I don't have duplicate analysis available right now. Check the Insights tab for the latest duplicate detection results."
+        } else {
+          // General response based on available data
+          response = `Based on the dashboard data I can see:
 
-      if (!response.ok) {
-        throw new Error(response.status === 503 ? 'AI service unavailable' : 'API request failed')
-      }
+${context}
 
-      const data = await response.json()
-      const assistantMessage = {
-        role: 'assistant',
-        content: data.message,
+For more specific insights, check the Insights tab which contains detailed AI analysis of your metrics. The insights are generated during each data fetch and provide actionable recommendations for improving your documentation.
+
+Is there something specific about the metrics you'd like me to explain further?`
+        }
+        
+        const assistantMessage = {
+          role: 'assistant',
+          content: response,
+        }
+        setMessages(prev => [...prev, assistantMessage])
+      } else {
+        // No AI insights available - provide helpful message
+        const assistantMessage = {
+          role: 'assistant',
+          content: `I can help you understand your dashboard data, but AI-powered insights aren't currently available. 
+
+Here's what I can tell you from your current metrics:
+
+${buildContext()}
+
+For detailed AI analysis, make sure the OPENAI_API_KEY secret is configured in your GitHub repository. The insights are generated during scheduled data fetches and appear in the Insights tab.
+
+What specific aspect of your metrics would you like to understand better?`,
+        }
+        setMessages(prev => [...prev, assistantMessage])
       }
-      setMessages(prev => [...prev, assistantMessage])
     } catch (error) {
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: `Error: ${error.message}. The AI assistant uses a server-side API key for security.`,
+        content: `Error: ${error.message}. I can still help you understand your dashboard data based on the available metrics.`,
         isError: true,
       }])
     } finally {
@@ -211,7 +238,7 @@ Based on this data, provide actionable insights and recommendations. Be specific
           </button>
         </div>
         <p className="text-xs text-slate-500 mt-2">
-          Powered by OpenAI • Uses server-side API key for security
+          Powered by pre-generated AI insights • Uses data from scheduled analysis
         </p>
       </div>
     </div>

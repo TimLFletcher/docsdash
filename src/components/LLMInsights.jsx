@@ -69,8 +69,22 @@ export function LLMInsights({ dashboardData }) {
         return <h4 key={index} className="text-md font-medium text-slate-800 mt-3 mb-1">{line.slice(4)}</h4>
       } else if (line.startsWith('- ')) {
         return <li key={index} className="ml-4 text-sm text-slate-600">{line.slice(2)}</li>
-      } else if (line.startsWith('**') && line.endsWith('**')) {
-        return <p key={index} className="text-sm font-medium text-slate-700 mt-2">{line.slice(2, -2)}</p>
+      } else if (line.includes('**')) {
+        // Handle bold text with **text**
+        const parts = line.split('**')
+        const elements = []
+        for (let i = 0; i < parts.length; i++) {
+          if (i % 2 === 0) {
+            // Regular text
+            if (parts[i]) {
+              elements.push(<span key={i}>{parts[i]}</span>)
+            }
+          } else {
+            // Bold text
+            elements.push(<strong key={i} className="font-semibold text-slate-700">{parts[i]}</strong>)
+          }
+        }
+        return <p key={index} className="text-sm text-slate-600 mt-1">{elements}</p>
       } else if (line.trim() === '') {
         return <br key={index} />
       } else {

@@ -33,7 +33,10 @@ export default async function handler(req, res) {
     const apiKey = process.env.OPENAI_API_KEY
 
     if (!apiKey) {
-      return res.status(503).json({ error: 'AI service unavailable - OpenAI API key not configured' })
+      return res.status(503).json({ 
+        error: 'AI service unavailable - OpenAI API key not configured',
+        message: 'Please set OPENAI_API_KEY environment variable in development'
+      })
     }
 
     // Build the full prompt with context
