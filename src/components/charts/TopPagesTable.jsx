@@ -38,7 +38,7 @@ export function TopPagesTable({ data }) {
       title="Top Pages by Path" 
       subtitle="Top 5 pages from each documentation section (Last 30 Days)"
     >
-      <div className="space-y-6 max-h-[800px] overflow-y-auto">
+      <div className="space-y-6 max-h-[600px] overflow-y-auto">
         {pathsWithPages.map((pathData, pathIndex) => {
           if (!pathData.pages || pathData.pages.length === 0) return null
           

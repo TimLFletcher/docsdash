@@ -11,7 +11,7 @@ import {
 import { ChartCard } from '../ChartCard'
 
 /**
- * Page views area chart showing daily traffic trends
+ * Page views area chart showing 3-month traffic trends
  */
 export function PageViewsChart({ data }) {
   const formatDate = (dateStr) => {
@@ -19,15 +19,16 @@ export function PageViewsChart({ data }) {
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
   }
 
-  const chartData = data.map(item => ({
+  // Use 3-month data if available, otherwise fall back to daily data
+  const chartData = (data?.daily3Months || data || []).map(item => ({
     ...item,
     formattedDate: formatDate(item.date),
   }))
 
   return (
     <ChartCard 
-      title="Page Views" 
-      subtitle="Daily documentation traffic over time"
+      title="Page Views (Last 3 Months)" 
+      subtitle="Daily documentation traffic trends"
     >
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">

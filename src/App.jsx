@@ -13,6 +13,7 @@ import {
 
 // Components
 import { MetricCard } from './components/MetricCard'
+import { SearchTermsTable } from './charts/SearchTermsTable'
 import { PageViewsChart } from './components/charts/PageViewsChart'
 import { TopPagesTable } from './components/charts/TopPagesTable'
 import { JiraLabelsChart } from './components/charts/JiraLabelsChart'
@@ -282,23 +283,23 @@ function App() {
           <div className="space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <MetricCard
-                title="Page Views"
+                title="Page Views (Last 30 Days)"
                 value={analytics.pageViews.total.toLocaleString()}
                 trend={analytics.pageViews.trend}
                 icon={<Eye className="w-6 h-6" />}
               />
               <MetricCard
-                title="Unique Visitors"
+                title="Unique Visitors (Last 30 Days)"
                 value={analytics.userMetrics.uniqueVisitors.toLocaleString()}
                 icon={<Users className="w-6 h-6" />}
               />
               <MetricCard
-                title="Bounce Rate"
+                title="Bounce Rate (Last 30 Days)"
                 value={`${analytics.userMetrics.bounceRate}%`}
                 icon={<ArrowUpRight className="w-6 h-6" />}
               />
               <MetricCard
-                title="Avg. Session"
+                title="Avg. Session (Last 30 Days)"
                 value={analytics.userMetrics.avgSessionDuration}
                 icon={<Clock className="w-6 h-6" />}
               />
@@ -308,11 +309,13 @@ function App() {
               <TopPagesTable data={analytics.topPagesByPath || []} />
               <div className="space-y-6">
                 <TrafficSourcesChart data={analytics.trafficSources} />
-                <PageViewsChart data={analytics.pageViews.daily} />
+                <PageViewsChart data={analytics.pageViews} />
               </div>
             </div>
 
             <PathComparisonTable data={analytics.pathComparison || []} />
+
+            <SearchTermsTable data={analytics.searchTerms || []} />
           </div>
         )}
 

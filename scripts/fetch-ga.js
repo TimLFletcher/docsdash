@@ -47,6 +47,21 @@ export async function fetchGoogleAnalyticsData() {
       orderBys: [{ dimension: { dimensionName: 'date' } }],
     })
 
+    // Fetch page views for last 3 months (filtered to docs.couchbase.com)
+    const [pageViews3MonthsResponse] = await analyticsDataClient.runReport({
+      property: `properties/${propertyId}`,
+      dateRanges: [{ startDate: '90daysAgo', endDate: 'today' }],
+      dimensions: [{ name: 'date' }],
+      metrics: [{ name: 'screenPageViews' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'hostName',
+          stringFilter: { matchType: 'EXACT', value: 'docs.couchbase.com' },
+        },
+      },
+      orderBys: [{ dimension: { dimensionName: 'date' } }],
+    })
+
     // Helper function to format duration
     const formatDuration = (seconds) => {
       const mins = Math.floor(seconds / 60)
@@ -345,6 +360,11 @@ export async function fetchGoogleAnalyticsData() {
       views: parseInt(row.metricValues[0].value),
     }))
 
+    const daily3Months = pageViews3MonthsResponse.rows.map(row => ({
+      date: row.dimensionValues[0].value.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'),
+      views: parseInt(row.metricValues[0].value),
+    }))
+
     const totalViews = daily.reduce((sum, d) => sum + d.views, 0)
     const currentPeriodViews = parseInt(userMetricsResponse.rows[0].metricValues[4].value)
     const previousPeriodViews = userMetricsResponse.rows[1] 
@@ -359,6 +379,7 @@ export async function fetchGoogleAnalyticsData() {
         total: totalViews,
         trend: parseFloat(trend),
         daily,
+        daily3Months,
       },
       topPagesByPath: topPagesByPath,
       searchTerms: searchTermsResponse.rows?.map(row => ({
