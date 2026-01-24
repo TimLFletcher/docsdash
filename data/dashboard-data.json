@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-24T10:16:54.995Z",
+  "lastUpdated": "2026-01-24T10:21:46.541Z",
   "analytics": {
     "pageViews": {
       "total": 28238,
@@ -76,19 +76,19 @@
         "displayPath": "/analytics/",
         "pages": [
           {
-            "page": "/analytics/sources/external-s3.html",
-            "views": 37,
-            "avgTime": "3:06"
-          },
-          {
             "page": "/analytics/intro/intro.html",
             "views": 36,
             "avgTime": "6:34"
           },
           {
+            "page": "/analytics/sources/external-s3.html",
+            "views": 35,
+            "avgTime": "3:17"
+          },
+          {
             "page": "/analytics/sources/manage-external.html",
-            "views": 29,
-            "avgTime": "0:45"
+            "views": 28,
+            "avgTime": "0:44"
           },
           {
             "page": "/analytics/sqlpp/5_ddl_external.html",
@@ -139,23 +139,23 @@
         "pages": [
           {
             "page": "/server/current/install/install-ports.html",
-            "views": 405,
-            "avgTime": "2:53"
+            "views": 403,
+            "avgTime": "2:54"
           },
           {
             "page": "/server/current/release-notes/relnotes.html",
-            "views": 339,
-            "avgTime": "2:31"
+            "views": 334,
+            "avgTime": "2:32"
           },
           {
             "page": "/server/current/learn/buckets-memory-and-storage/memory.html",
-            "views": 301,
+            "views": 299,
             "avgTime": "1:37"
           },
           {
             "page": "/server/current/introduction/whats-new.html",
-            "views": 279,
-            "avgTime": "2:22"
+            "views": 274,
+            "avgTime": "2:23"
           },
           {
             "page": "/server/current/install/rhel-suse-install-intro.html",
@@ -170,7 +170,7 @@
         "pages": [
           {
             "page": "/operator/current/overview.html",
-            "views": 316,
+            "views": 313,
             "avgTime": "0:50"
           },
           {
@@ -180,8 +180,8 @@
           },
           {
             "page": "/operator/current/install-kubernetes.html",
-            "views": 80,
-            "avgTime": "4:29"
+            "views": 79,
+            "avgTime": "4:33"
           },
           {
             "page": "/operator/current/resource/couchbasecluster.html",
@@ -381,27 +381,27 @@
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 48735,
+        "sessions": 47497,
         "percentage": 72
       },
       {
         "source": "Organic Search",
-        "sessions": 13098,
-        "percentage": 19
+        "sessions": 12889,
+        "percentage": 20
       },
       {
         "source": "Referral",
-        "sessions": 3200,
+        "sessions": 3146,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2065,
+        "sessions": 2058,
         "percentage": 3
       },
       {
         "source": "Paid Search",
-        "sessions": 295,
+        "sessions": 292,
         "percentage": 0
       }
     ],
@@ -450,7 +450,7 @@
         "avgSessionDuration": "4:40",
         "trafficBalance": {
           "direct": 17,
-          "search": 51
+          "search": 50
         }
       },
       {
@@ -480,7 +480,7 @@
         "displayPath": "/enterprise-analytics/",
         "totalViews": 1462,
         "bounceRate": "0.4",
-        "avgSessionDuration": "2:06",
+        "avgSessionDuration": "2:03",
         "trafficBalance": {
           "direct": 62,
           "search": 29
@@ -639,9 +639,9 @@
     "contentGaps": [],
     "performanceNotes": [],
     "aiInsights": {
-      "duplicates": "Based on the provided Jira ticket data, I have reviewed the recent issues to identify potential duplicates. Here are the findings:\n\n### No Duplicates Found\n\n- **Titles/Summaries**: Each ticket has a distinct title and summary, indicating different documentation tasks or updates.\n- **Issue Type and Priority**: While some tickets share the same priority level (e.g., \"Major\"), their content and focus areas differ significantly.\n- **Components/Labels**: The data provided does not include specific components or labels, but based on the summaries, the issues pertain to different documentation aspects.\n- **Underlying Problems**: The issues address separate documentation needs, such as adding new types, standardizing syntax, installation specifications, prerequisites updates, and feedback handling.\n\n### Conclusion\n\n- **No Clear Duplicates**: The tickets reviewed do not appear to describe the same underlying problem or task. Each issue seems to focus on a distinct aspect of documentation that requires attention.\n\nIf further data or context (such as components, labels, or detailed descriptions) becomes available, a more thorough analysis could be conducted.",
-      "jira": "## Insights and Recommendations\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 63 tickets opened, 85 resolved.\n- **Previous Month**: 110 tickets opened, 201 resolved.\n- **Trend**: There is a positive trend in resolving more tickets than are being opened, indicating a backlog reduction.\n\n**Recommendation**: Continue focusing on maintaining or improving the resolution rate to further decrease backlog.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**:\n  - Sprint 18: 12/15 completed\n  - Sprint 19: 14/14 completed\n  - Sprint 20: 11/16 completed\n  - Sprint 21: 15/15 completed\n  - Sprint 22: 8/14 completed\n- **Trend**: Velocity shows variability, with a dip in Sprint 22.\n\n**Recommendation**: Analyze the causes of reduced completion in Sprint 22 to ensure consistent sprint planning and execution.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 216.19 days.\n- **Trend**: The average resolution time is high, indicating a need for process improvement.\n\n**Recommendation**: Implement strategies to prioritize and expedite the resolution of older tickets to reduce average resolution time.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.74\n- **Previous Burn Rate**: 0.55\n- **Trend**: Increase in burn rate, suggesting higher resource consumption relative to output.\n\n**Recommendation**: Evaluate resource allocation and optimize processes to maintain a sustainable burn rate.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Issues**:\n  - Major: 46\n  - Medium: 4\n- **Recent Major Issues**: 3 new major issues opened recently.\n\n**Recommendation**: Prioritize the resolution of major issues to prevent escalation and potential impact on project timelines.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Capacity**: Variability in sprint completion suggests potential capacity issues.\n- **Workload Balance**: The team is generally keeping up with ticket resolution but needs to address variability in sprint performance.\n\n**Recommendation**: Conduct a capacity planning session to align team workload with available resources and capabilities.\n\n## Summary\n- **Positive Trends**: More tickets resolved than opened, indicating backlog reduction.\n- **Areas for Improvement**: High resolution time and inconsistent sprint completion.\n- **Action Items**: Focus on reducing resolution time, maintaining a sustainable burn rate, and addressing capacity issues to improve overall efficiency.",
-      "traffic": "## Insights on Web Traffic Data\n\n### 1. Overall Traffic Trends\n- **Trend:** The overall page views show a positive trend with a 6.6% increase.\n- **Daily Views:** There is a noticeable peak on January 20th with 6,776 views, followed by a decline to 58 views on January 24th. This suggests a potential issue or anomaly on January 24th.\n\n### 2. Notable Patterns in User Behavior\n- **High Returning Visitors:** 42.5% of visitors are returning, indicating strong engagement or reliance on the documentation.\n- **Traffic Sources:** Direct traffic constitutes 72% of sessions, suggesting users are accessing documentation directly, possibly through bookmarks or direct links from other platforms.\n\n### 3. Top Performing Pages\n- **Top Pages:** \n  - `/cloud/management-api-reference/index.html` with 265 views and an average time of 3:23.\n  - `/server/current/install/install-ports.html` with 405 views and an average time of 2:53.\n- **Reasons for Success:** These pages likely provide critical information or are frequently referenced in user workflows, contributing to their high performance.\n\n### 4. Areas for Improvement\n- **Bounce Rate:** At 0.7, the bounce rate is exceptionally low, indicating users are finding relevant content quickly.\n- **Session Duration:** Average session duration is 2:11. Pages with lower engagement times, such as `/enterprise-analytics/current/install/system-requirements.html` (0:18), may need more engaging or comprehensive content.\n- **Improvement Opportunities:** Focus on pages with lower average times, such as `/cloud/get-started/intro.html` (0:46), to enhance content depth and user engagement.\n\n### 5. Anomalies or Concerning Patterns\n- **Search Terms:** The search terms appear to be nonsensical or potentially spammy, suggesting a need to review search functionality or filter out irrelevant queries.\n- **Traffic Drop on January 24th:** A drastic drop in views on this day suggests a potential technical issue or external factor affecting accessibility.\n\n### Actionable Recommendations\n- **Content Enhancement:** Review and enhance content on pages with low average time to increase engagement.\n- **Technical Review:** Investigate the cause of the traffic drop on January 24th to prevent future occurrences.\n- **Search Functionality:** Improve search term filtering to ensure relevant results and enhance user experience.\n- **Promotion of High-Value Content:** Consider promoting top-performing pages through organic and paid channels to maximize reach and engagement."
+      "jira": "## Insights\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 63 tickets opened vs. 85 resolved.\n- **Previous Month**: 110 tickets opened vs. 201 resolved.\n- **Trend**: The team is resolving more tickets than are being opened, indicating a positive trend in managing backlog.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**:\n  - Sprint 18: 12/15 completed\n  - Sprint 19: 14/14 completed\n  - Sprint 20: 11/16 completed\n  - Sprint 21: 15/15 completed\n  - Sprint 22: 8/14 completed\n- **Trend**: Velocity is inconsistent, with a notable drop in Sprint 22. This suggests potential issues with planning or execution.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 216.19 days.\n- **Trend**: The resolution time is significantly high, indicating a need for process improvements to expedite ticket resolution.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.74\n- **Previous Month Burn Rate**: 0.55\n- **Trend**: Increasing burn rate suggests higher resource consumption relative to output, which may not be sustainable long-term.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Major Issues**: 46\n- **Open Medium Issues**: 4\n- **Recent Major Issues**: 3 new major issues opened recently.\n- **Critical Attention**: The high number of major issues requires prioritization to prevent escalation.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Workload**: The team is resolving more issues than are being opened, but the high average resolution time and inconsistent velocity indicate potential capacity constraints or inefficiencies.\n\n## Recommendations\n\n- **Improve Planning**: Analyze the causes of the drop in Sprint 22 completion and adjust planning to better match capacity.\n- **Prioritize Major Issues**: Implement a triage process to focus on resolving major issues more quickly.\n- **Reduce Resolution Time**: Identify bottlenecks in the resolution process and implement strategies to reduce average resolution time.\n- **Monitor Burn Rate**: Investigate the causes of the increased burn rate and adjust resource allocation to ensure sustainability.\n- **Capacity Management**: Reassess team capacity and workload distribution to improve balance and efficiency. Consider additional resources if necessary.\n\nBy addressing these areas, the team can improve process efficiency, maintain a sustainable workload, and enhance overall productivity.",
+      "duplicates": "## Duplicate Analysis\n\nAfter reviewing the recent Jira tickets, no clear duplicates were identified based on the provided criteria. Each ticket appears to address distinct issues or documentation updates. Below is a summary of the analysis:\n\n### Summary of Tickets\n\n- **DOC-13935:** Focuses on adding a new capella-type for AI and app-services.\n- **DOC-13934:** Aims to standardize RBAC Role String Syntax Documentation.\n- **DOC-13933:** Concerns specifying browser-only for Couchbase Lite JavaScript installation.\n- **DOC-13932:** Involves updates to prerequisites and system requirements for Couchbase Operator.\n- **DOC-13930:** Relates to feedback on Sync Gateway documentation.\n\n### Analysis Criteria\n\n- **Similar Titles or Summaries:** No titles or summaries are sufficiently similar to suggest duplication.\n- **Same Issue Type and Priority:** While some tickets share the same priority, their issue types and content differ.\n- **Similar Components or Labels:** No information on components or labels was provided, but summaries indicate distinct topics.\n- **Underlying Problem:** Each ticket addresses a unique aspect of documentation or product feature.\n\n### Conclusion\n\n- **No Duplicates Found:** Each ticket should remain active as they address separate documentation needs or issues.\n\nIf further details or additional data (such as components or labels) become available, a re-evaluation can be conducted.",
+      "traffic": "## Insights from Web Traffic Data\n\n### 1. Overall Traffic Trends\n- **Trend**: The overall traffic is increasing, with a positive trend of 6.6%.\n- **Daily Views**: There is a noticeable peak on January 20th with 6776 views, followed by a decline.\n\n### 2. Notable Patterns in User Behavior\n- **Direct Traffic Dominance**: 72% of sessions are from direct traffic, indicating strong brand recognition or habitual visits.\n- **High Returning Visitors**: 42.5% of visitors are returning, suggesting good user engagement and content relevance.\n\n### 3. Top Performing Pages\n- **/server/current/install/install-ports.html**: Highest views (403) with a good average time (2:54), indicating high interest and engagement.\n- **/cloud/management-api-reference/index.html**: High views (265) and engagement (3:23), likely due to technical relevance.\n- **/operator/current/overview.html**: High views (313) but low average time (0:50), indicating quick information retrieval.\n\n### 4. Areas for Improvement\n- **Bounce Rate**: At 0.7, this is exceptionally low, suggesting potential tracking issues or very high engagement.\n- **Session Duration**: Average session duration of 2:11 is moderate; consider enhancing content depth to increase engagement time.\n- **Low Engagement Pages**: \n  - **/cloud/get-started/intro.html**: Low average time (0:46) suggests content may not be engaging enough.\n  - **/enterprise-analytics/current/install/system-requirements.html**: Very low average time (0:18) indicates potential content clarity issues.\n\n### 5. Anomalies or Concerning Patterns\n- **Sudden Drop on January 24th**: Only 58 views, which is a significant drop and may indicate a data collection issue or external factors affecting traffic.\n- **Unusual Search Terms**: The search terms appear nonsensical, which could indicate bot activity or data entry errors.\n\n### Actionable Recommendations\n- **Enhance Content for Low Engagement Pages**: Revise and enrich content on pages with low average time to improve user retention.\n- **Investigate Bounce Rate**: Verify tracking setup to ensure bounce rate accuracy.\n- **Analyze Traffic Drop**: Investigate the cause of the traffic drop on January 24th to prevent future occurrences.\n- **Optimize for Organic Search**: With 20% of traffic from organic search, optimizing SEO could further increase this channel's contribution.\n- **Review Search Term Data**: Address potential bot activity or errors in search term data to improve search functionality."
     }
   }
 }
