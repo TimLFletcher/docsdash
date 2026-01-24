@@ -1,39 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { MessageSquare, Send, Settings, X, Loader2, Sparkles, Key, Trash2 } from 'lucide-react'
+import { MessageSquare, Send, Settings, X, Loader2, Sparkles } from 'lucide-react'
 
 /**
  * AI Assistant component that uses OpenAI to provide insights
- * User provides their own API key (stored in localStorage)
+ * Uses server-side API key for security
  */
 export function AIAssistant({ dashboardData }) {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [showSettings, setShowSettings] = useState(false)
-  const [apiKey, setApiKey] = useState('')
   const messagesEndRef = useRef(null)
-
-  useEffect(() => {
-    const savedKey = localStorage.getItem('openai_api_key')
-    if (savedKey) {
-      setApiKey(savedKey)
-    }
-  }, [])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
-
-  const saveApiKey = () => {
-    localStorage.setItem('openai_api_key', apiKey)
-    setShowSettings(false)
-  }
-
-  const clearApiKey = () => {
-    localStorage.removeItem('openai_api_key')
-    setApiKey('')
-  }
 
   const buildContext = () => {
     const analytics = dashboardData?.analytics || {
@@ -87,10 +68,6 @@ Based on this data, provide actionable insights and recommendations. Be specific
 
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return
-    if (!apiKey) {
-      setShowSettings(true)
-      return
-    }
 
     const userMessage = { role: 'user', content: input }
     setMessages(prev => [...prev, userMessage])
@@ -98,38 +75,31 @@ Based on this data, provide actionable insights and recommendations. Be specific
     setIsLoading(true)
 
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      const response = await fetch('/api/ai-assistant', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: 'gpt-4o',
-          messages: [
-            { role: 'system', content: buildContext() },
-            ...messages,
-            userMessage,
-          ],
-          max_tokens: 1000,
-          temperature: 0.7,
+          message: input,
+          context: buildContext(),
         }),
       })
 
       if (!response.ok) {
-        throw new Error(response.status === 401 ? 'Invalid API key' : 'API request failed')
+        throw new Error(response.status === 503 ? 'AI service unavailable' : 'API request failed')
       }
 
       const data = await response.json()
       const assistantMessage = {
         role: 'assistant',
-        content: data.choices[0].message.content,
+        content: data.message,
       }
       setMessages(prev => [...prev, assistantMessage])
     } catch (error) {
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: `Error: ${error.message}. Please check your API key and try again.`,
+        content: `Error: ${error.message}. The AI assistant uses a server-side API key for security.`,
         isError: true,
       }])
     } finally {
@@ -164,58 +134,13 @@ Based on this data, provide actionable insights and recommendations. Be specific
           <Sparkles className="w-5 h-5 text-primary-600" />
           <h3 className="font-semibold text-slate-900">AI Assistant</h3>
         </div>
-        <div className="flex items-center gap-1">
-          <button
-            onClick={() => setShowSettings(!showSettings)}
-            className="p-2 hover:bg-slate-100 rounded-lg transition-colors"
-            title="API Settings"
-          >
-            <Key className="w-4 h-4 text-slate-500" />
-          </button>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="p-2 hover:bg-slate-100 rounded-lg transition-colors"
-          >
-            <X className="w-4 h-4 text-slate-500" />
-          </button>
-        </div>
+        <button
+          onClick={() => setIsOpen(false)}
+          className="p-2 hover:bg-slate-100 rounded-lg transition-colors"
+        >
+          <X className="w-4 h-4 text-slate-500" />
+        </button>
       </div>
-
-      {/* Settings Panel */}
-      {showSettings && (
-        <div className="p-4 bg-slate-50 border-b border-slate-100">
-          <label className="block text-sm font-medium text-slate-700 mb-2">
-            OpenAI API Key
-          </label>
-          <div className="flex gap-2">
-            <input
-              type="password"
-              value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-              placeholder="sk-..."
-              className="flex-1 px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-            />
-            <button
-              onClick={saveApiKey}
-              className="px-3 py-2 bg-primary-600 text-white text-sm rounded-lg hover:bg-primary-700"
-            >
-              Save
-            </button>
-            {apiKey && (
-              <button
-                onClick={clearApiKey}
-                className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
-                title="Clear key"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-          <p className="text-xs text-slate-500 mt-2">
-            Your API key is stored locally in your browser.
-          </p>
-        </div>
-      )}
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[200px]">
@@ -285,6 +210,9 @@ Based on this data, provide actionable insights and recommendations. Be specific
             <Send className="w-4 h-4" />
           </button>
         </div>
+        <p className="text-xs text-slate-500 mt-2">
+          Powered by OpenAI • Uses server-side API key for security
+        </p>
       </div>
     </div>
   )

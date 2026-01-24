@@ -7,6 +7,7 @@ import express from 'express'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import insightsHandler from './scripts/insights-api.js'
+import aiAssistantHandler from './scripts/ai-assistant-api.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -32,6 +33,9 @@ app.use((req, res, next) => {
 // Insights API endpoint
 app.post('/api/insights', insightsHandler)
 
+// AI Assistant API endpoint
+app.post('/api/ai-assistant', aiAssistantHandler)
+
 // Serve static files from public directory
 app.use(express.static(join(__dirname, 'public')))
 
@@ -39,5 +43,6 @@ app.use(express.static(join(__dirname, 'public')))
 app.listen(PORT, () => {
   console.log(`🚀 API server running on http://localhost:${PORT}`)
   console.log(`📊 Insights endpoint available at http://localhost:${PORT}/api/insights`)
+  console.log(`🤖 AI Assistant endpoint available at http://localhost:${PORT}/api/ai-assistant`)
   console.log(`🔑 Using OPENAI_API_KEY from environment: ${process.env.OPENAI_API_KEY ? '✅' : '❌ Not set'}`)
 })
