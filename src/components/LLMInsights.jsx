@@ -70,18 +70,17 @@ export function LLMInsights({ dashboardData }) {
       } else if (line.startsWith('- ')) {
         return <li key={index} className="ml-4 text-sm text-slate-600">{line.slice(2)}</li>
       } else if (line.includes('**')) {
-        // Handle bold text with **text**
-        const parts = line.split('**')
+        // Handle bold text with **text** - more robust parsing
+        const parts = line.split(/(\*\*.*?\*\*)/)
         const elements = []
         for (let i = 0; i < parts.length; i++) {
-          if (i % 2 === 0) {
-            // Regular text
-            if (parts[i]) {
-              elements.push(<span key={i}>{parts[i]}</span>)
-            }
-          } else {
+          const part = parts[i]
+          if (part.startsWith('**') && part.endsWith('**')) {
             // Bold text
-            elements.push(<strong key={i} className="font-semibold text-slate-700">{parts[i]}</strong>)
+            elements.push(<strong key={i} className="font-semibold text-slate-700">{part.slice(2, -2)}</strong>)
+          } else if (part) {
+            // Regular text
+            elements.push(<span key={i}>{part}</span>)
           }
         }
         return <p key={index} className="text-sm text-slate-600 mt-1">{elements}</p>

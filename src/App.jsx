@@ -21,7 +21,6 @@ import { RecentIssuesTable } from './components/charts/RecentIssuesTable'
 import { TrafficSourcesChart } from './components/charts/TrafficSourcesChart'
 import { PathComparisonTable } from './components/charts/PathComparisonTable'
 import { SDKComparisonTable } from './components/charts/SDKComparisonTable'
-import { AIAssistant } from './components/AIAssistant'
 import { LLMInsights } from './components/LLMInsights'
 import { PasswordProtection } from './components/PasswordProtection'
 
@@ -77,7 +76,7 @@ import { PasswordProtection } from './components/PasswordProtection'
 
 function App() {
   const [data, setData] = useState(null)
-  const [activeTab, setActiveTab] = useState('overview')
+  const [activeTab, setActiveTab] = useState('insights')
   const [isLoading, setIsLoading] = useState(true)
   const [isRefreshing, setIsRefreshing] = useState(false)
   const [error, setError] = useState(null)
@@ -153,10 +152,12 @@ function App() {
   const lastUpdated = data.lastUpdated || new Date().toISOString()
 
   const tabs = [
-    { id: 'overview', label: 'Overview' },
+    { id: 'insights', label: 'Insights' },
     { id: 'analytics', label: 'Analytics' },
     { id: 'jira', label: 'Jira' },
-    { id: 'insights', label: 'Insights' },
+    { id: 'docsbot', label: 'DocsBot' },
+    { id: 'github', label: 'GitHub' },
+    { id: 'search', label: 'Search' },
   ]
 
   return (
@@ -216,65 +217,60 @@ function App() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Overview Tab */}
-        {activeTab === 'overview' && (
+        {/* Insights Tab (merged Overview + Insights) */}
+        {activeTab === 'insights' && (
           <div className="space-y-8">
             {/* Key Metrics */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <MetricCard
-                title="Page Views"
+                title="Page Views (Last 30 Days)"
                 value={analytics.pageViews.total.toLocaleString()}
                 trend={analytics.pageViews.trend}
                 icon={<Eye className="w-6 h-6" />}
               />
               <MetricCard
-                title="Unique Visitors"
-                value={analytics.userMetrics.uniqueVisitors.toLocaleString()}
-                subtitle={`${analytics.userMetrics.returningVisitors}% returning`}
-                icon={<Users className="w-6 h-6" />}
-              />
-              <MetricCard
-                title="Avg. Session"
+                title="Avg. Session (Last 30 Days)"
                 value={analytics.userMetrics.avgSessionDuration}
-                subtitle={`${analytics.userMetrics.bounceRate}% bounce rate`}
                 icon={<Clock className="w-6 h-6" />}
               />
               <MetricCard
-                title="Open Issues"
-                value={jira.openIssues.total}
-                subtitle={`${jira.openIssues.byPriority.find(p => p.priority === 'Critical')?.count || 0} critical`}
-                icon={<AlertTriangle className="w-6 h-6" />}
+                title="Jira Burn Rate"
+                value={parseFloat(jira.burnRate || 0).toFixed(2)}
+                icon={<TrendingUp className="w-6 h-6" />}
+              />
+              <MetricCard
+                title="Avg Resolution (Days)"
+                value={Math.round(jira.avgResolutionDays || 0)}
+                icon={<Clock className="w-6 h-6" />}
               />
             </div>
 
-            {/* Charts Row 1 */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <PageViewsChart data={analytics.pageViews.daily} />
-              <TopPagesTable data={analytics.topPagesByPath || []} />
-            </div>
+            {/* LLM-Powered Insights */}
+            <LLMInsights dashboardData={data} />
+          </div>
+        )}
 
-            {/* Charts Row 2 */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <JiraLabelsChart data={jira.topLabels || []} />
-            </div>
+        {/* DocsBot Tab - Placeholder */}
+        {activeTab === 'docsbot' && (
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">DocsBot</h3>
+            <p className="text-sm text-slate-500">Coming soon - AI-powered documentation assistant</p>
+          </div>
+        )}
 
-            {/* Quick Insights */}
-            <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-6 text-white">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5" />
-                Quick Insights
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {insights.contentGaps.slice(0, 3).map((gap, i) => (
-                  <div key={i} className="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
-                    <div className="flex items-start gap-2">
-                      <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                      <p className="text-sm">{gap}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        {/* GitHub Tab - Placeholder */}
+        {activeTab === 'github' && (
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">GitHub</h3>
+            <p className="text-sm text-slate-500">Coming soon - Repository insights and activity</p>
+          </div>
+        )}
+
+        {/* Search Tab - Placeholder */}
+        {activeTab === 'search' && (
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">Search</h3>
+            <p className="text-sm text-slate-500">Coming soon - Advanced search and content discovery</p>
           </div>
         )}
 
@@ -391,57 +387,9 @@ function App() {
           <div className="space-y-8">
             {/* LLM-Powered Insights */}
             <LLMInsights dashboardData={data} />
-
-            {/* Legacy Content Gaps */}
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-amber-500" />
-                Legacy Content Gaps
-              </h3>
-              <p className="text-sm text-slate-500 mb-4">
-                Search terms that return no results - users are looking for content that doesn't exist yet.
-              </p>
-              <div className="space-y-3">
-                {insights.contentGaps.map((gap, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 bg-amber-50 border border-amber-100 rounded-lg">
-                    <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 font-semibold text-sm">
-                      {i + 1}
-                    </div>
-                    <p className="text-sm text-amber-800">{gap}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Legacy Performance Notes */}
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-primary-500" />
-                Legacy Performance Notes
-              </h3>
-              <p className="text-sm text-slate-500 mb-4">
-                Observations and recommendations based on current metrics.
-              </p>
-              <div className="space-y-3">
-                {insights.performanceNotes.map((note, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 bg-primary-50 border border-primary-100 rounded-lg">
-                    <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 font-semibold text-sm flex-shrink-0">
-                      {i + 1}
-                    </div>
-                    <p className="text-sm text-primary-800">{note}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Velocity Analysis */}
-            <VelocityChart data={jira.velocityTrend} />
           </div>
         )}
       </main>
-
-        {/* AI Assistant */}
-        <AIAssistant dashboardData={data} />
       </div>
     </PasswordProtection>
   )
