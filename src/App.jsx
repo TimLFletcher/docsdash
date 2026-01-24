@@ -21,6 +21,7 @@ import { RecentIssuesTable } from './components/charts/RecentIssuesTable'
 import { TrafficSourcesChart } from './components/charts/TrafficSourcesChart'
 import { PathComparisonTable } from './components/charts/PathComparisonTable'
 import { AIAssistant } from './components/AIAssistant'
+import { LLMInsights } from './components/LLMInsights'
 import { PasswordProtection } from './components/PasswordProtection'
 
  const DEFAULT_ANALYTICS = {
@@ -326,26 +327,22 @@ function App() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <MetricCard
                   title="Monthly Opened"
-                  docValue={jira.monthlyOpened || 0}
-                  avValue={jira.monthlyOpenedAV || 0}
+                  value={jira.monthlyOpened || 0}
                   icon={<ArrowUpRight className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Monthly Resolved"
-                  docValue={jira.monthlyResolved || 0}
-                  avValue={jira.monthlyResolvedAV || 0}
+                  value={jira.monthlyResolved || 0}
                   icon={<CheckCircle className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Burn Rate"
-                  docValue={parseFloat(jira.burnRate || 0).toFixed(2)}
-                  avValue={parseFloat(jira.burnRateAV || 0).toFixed(2)}
+                  value={parseFloat(jira.burnRate || 0).toFixed(2)}
                   icon={<TrendingUp className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Avg. Resolution (Days)"
-                  docValue={Math.round(jira.avgResolutionDays || 0)}
-                  avValue={Math.round(jira.avgResolutionDaysAV || 0)}
+                  value={Math.round(jira.avgResolutionDays || 0)}
                   icon={<Clock className="w-6 h-6" />}
                 />
               </div>
@@ -357,26 +354,22 @@ function App() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <MetricCard
                   title="Previous Month Opened"
-                  docValue={jira.previousMonthOpened || 0}
-                  avValue={jira.previousMonthOpenedAV || 0}
+                  value={jira.previousMonthOpened || 0}
                   icon={<ArrowUpRight className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Previous Month Resolved"
-                  docValue={jira.previousMonthResolved || 0}
-                  avValue={jira.previousMonthResolvedAV || 0}
+                  value={jira.previousMonthResolved || 0}
                   icon={<CheckCircle className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Previous Month Burn Rate"
-                  docValue={parseFloat(jira.previousMonthBurnRate || 0).toFixed(2)}
-                  avValue={parseFloat(jira.previousMonthBurnRateAV || 0).toFixed(2)}
+                  value={parseFloat(jira.previousMonthBurnRate || 0).toFixed(2)}
                   icon={<TrendingUp className="w-6 h-6" />}
                 />
                 <MetricCard
                   title="Previous Month Avg. Resolution (Days)"
-                  docValue={Math.round(jira.previousMonthAvgResolutionDays || 0)}
-                  avValue={Math.round(jira.previousMonthAvgResolutionDaysAV || 0)}
+                  value={Math.round(jira.previousMonthAvgResolutionDays || 0)}
                   icon={<Clock className="w-6 h-6" />}
                 />
               </div>
@@ -394,11 +387,14 @@ function App() {
         {/* Insights Tab */}
         {activeTab === 'insights' && (
           <div className="space-y-8">
-            {/* Content Gaps */}
+            {/* LLM-Powered Insights */}
+            <LLMInsights />
+
+            {/* Legacy Content Gaps */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-amber-500" />
-                Content Gaps
+                Legacy Content Gaps
               </h3>
               <p className="text-sm text-slate-500 mb-4">
                 Search terms that return no results - users are looking for content that doesn't exist yet.
@@ -415,11 +411,11 @@ function App() {
               </div>
             </div>
 
-            {/* Performance Notes */}
+            {/* Legacy Performance Notes */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-primary-500" />
-                Performance Notes
+                Legacy Performance Notes
               </h3>
               <p className="text-sm text-slate-500 mb-4">
                 Observations and recommendations based on current metrics.

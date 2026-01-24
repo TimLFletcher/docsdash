@@ -45,11 +45,8 @@ export function AIAssistant({ dashboardData }) {
     const jira = dashboardData?.jira || {
       openIssues: { total: 0, byPriority: [] },
       monthlyOpened: 0,
-      monthlyOpenedAV: 0,
       monthlyResolved: 0,
-      monthlyResolvedAV: 0,
       burnRate: 0,
-      burnRateAV: 0,
       avgResolutionDays: 0,
       velocityTrend: [],
     }
@@ -71,9 +68,9 @@ ${(analytics.searchTerms || []).map(s => `- "${s.term}": ${s.count} searches${!s
 
 ## Jira Summary
 - Open Issues: ${jira.openIssues.total} (${jira.openIssues.byPriority.find(p => p.priority === 'Critical')?.count || 0} critical, ${jira.openIssues.byPriority.find(p => p.priority === 'High')?.count || 0} high)
-- Monthly Opened (DOC): ${jira.monthlyOpened}, (AV): ${jira.monthlyOpenedAV || 0}
-- Monthly Resolved (DOC): ${jira.monthlyResolved}, (AV): ${jira.monthlyResolvedAV || 0}
-- Burn Rate (DOC): ${jira.burnRate}, (AV): ${jira.burnRateAV || 0}
+- Monthly Opened: ${jira.monthlyOpened}
+- Monthly Resolved: ${jira.monthlyResolved}
+- Burn Rate: ${jira.burnRate}
 - Avg Resolution Time: ${jira.avgResolutionDays} days
 
 ## Recent Velocity
