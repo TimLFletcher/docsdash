@@ -39,4 +39,5 @@ app.use(express.static(join(__dirname, 'public')))
 app.listen(PORT, () => {
   console.log(`🚀 API server running on http://localhost:${PORT}`)
   console.log(`📊 Insights endpoint available at http://localhost:${PORT}/api/insights`)
+  console.log(`🔑 Using OPENAI_API_KEY from environment: ${process.env.OPENAI_API_KEY ? '✅' : '❌ Not set'}`)
 })

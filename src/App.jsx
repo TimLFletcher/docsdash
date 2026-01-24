@@ -388,7 +388,7 @@ function App() {
         {activeTab === 'insights' && (
           <div className="space-y-8">
             {/* LLM-Powered Insights */}
-            <LLMInsights />
+            <LLMInsights dashboardData={data} />
 
             {/* Legacy Content Gaps */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">

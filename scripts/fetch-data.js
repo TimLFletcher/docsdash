@@ -69,6 +69,77 @@ function generateInsights(analytics, jira) {
   return insights
 }
 
+// Fetch insights using OpenAI
+async function fetchAIInsights(analyticsData, jiraData) {
+  console.log('🧠 Fetching AI-powered insights...')
+  
+  if (!process.env.OPENAI_API_KEY) {
+    console.log('⚠️  OPENAI_API_KEY not found, skipping AI insights generation')
+    return null
+  }
+
+  try {
+    // Import the insights API handler
+    const { default: insightsHandler } = await import('./insights-api.js')
+    
+    // Create a mock request object with the dashboard data
+    const mockReq = {
+      method: 'POST',
+      body: {
+        apiKey: process.env.OPENAI_API_KEY,
+        analysisTypes: ['traffic', 'jira', 'duplicates']
+      }
+    }
+
+    // Create a mock response object
+    let responseData = null
+    const mockRes = {
+      status: (code) => ({
+        json: (data) => {
+          responseData = data
+          return Promise.resolve()
+        }
+      })
+    }
+
+    // Temporarily override the getDashboardData function in insights-api.js
+    const originalGetDashboardData = (await import('./insights-api.js')).getDashboardData
+    // We need to patch this to use our current data instead of reading from file
+    const insightsApiModule = await import('./insights-api.js')
+    
+    // Create a temporary file with our data for the insights API to read
+    const tempDataPath = path.join(__dirname, '..', 'temp-dashboard-data.json')
+    const tempDashboardData = {
+      analytics: analyticsData,
+      jira: jiraData
+    }
+    fs.writeFileSync(tempDataPath, JSON.stringify(tempDashboardData, null, 2))
+    
+    // Override the data path in the insights API
+    const originalFilename = insightsApiModule.__filename
+    insightsApiModule.__filename = tempDataPath
+
+    // Call the insights handler
+    await insightsHandler(mockReq, mockRes)
+
+    // Clean up temp file
+    if (fs.existsSync(tempDataPath)) {
+      fs.unlinkSync(tempDataPath)
+    }
+
+    if (responseData && responseData.success) {
+      console.log('   ✅ AI insights generated successfully')
+      return responseData.results
+    } else {
+      console.log('⚠️  Failed to generate AI insights')
+      return null
+    }
+  } catch (error) {
+    console.error('❌ Error fetching AI insights:', error.message)
+    return null
+  }
+}
+
 /**
  * Main execution
  */
@@ -102,6 +173,12 @@ async function main() {
   }
 
   const insights = generateInsights(analyticsData, jiraData)
+  
+  // Fetch AI insights if OpenAI API key is available
+  const aiInsights = await fetchAIInsights(analyticsData, jiraData)
+  if (aiInsights) {
+    insights.aiInsights = aiInsights
+  }
 
   // Combine into dashboard data
   const dashboardData = {

@@ -1,70 +1,14 @@
 import React, { useState } from 'react'
-import { Loader2, Key, Trash2, TrendingUp, AlertTriangle, Copy, RefreshCw } from 'lucide-react'
+import { Loader2, RefreshCw, TrendingUp, AlertTriangle, Copy } from 'lucide-react'
 
-export function LLMInsights() {
-  const [apiKey, setApiKey] = useState('')
-  const [insights, setInsights] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
+export function LLMInsights({ dashboardData }) {
+  const [isRefreshing, setIsRefreshing] = useState(false)
   const [error, setError] = useState(null)
   const [expandedSections, setExpandedSections] = useState({
     traffic: true,
     jira: true,
     duplicates: true,
   })
-
-  // Load API key from localStorage on mount
-  React.useEffect(() => {
-    const savedKey = localStorage.getItem('openai_insights_key')
-    if (savedKey) {
-      setApiKey(savedKey)
-    }
-  }, [])
-
-  const saveApiKey = () => {
-    localStorage.setItem('openai_insights_key', apiKey)
-  }
-
-  const clearApiKey = () => {
-    localStorage.removeItem('openai_insights_key')
-    setApiKey('')
-  }
-
-  const generateInsights = async () => {
-    if (!apiKey.trim()) {
-      setError('Please provide an OpenAI API key')
-      return
-    }
-
-    setIsLoading(true)
-    setError(null)
-    setInsights(null)
-
-    try {
-      const response = await fetch('/api/insights', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          apiKey: apiKey.trim(),
-          analysisTypes: ['traffic', 'jira', 'duplicates'],
-        }),
-      })
-
-      if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.message || `HTTP ${response.status}`)
-      }
-
-      const data = await response.json()
-      setInsights(data.results)
-      saveApiKey()
-    } catch (err) {
-      setError(err.message || 'Failed to generate insights')
-    } finally {
-      setIsLoading(false)
-    }
-  }
 
   const toggleSection = (section) => {
     setExpandedSections(prev => ({
@@ -75,6 +19,43 @@ export function LLMInsights() {
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text)
+  }
+
+  const regenerateInsights = async () => {
+    setIsRefreshing(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/insights', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          analysisTypes: ['traffic', 'jira', 'duplicates'],
+        }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.message || `HTTP ${response.status}`)
+      }
+
+      const data = await response.json()
+      
+      // Update the dashboard data with new insights
+      // This would typically be handled by a state management system
+      // For now, we'll just show a success message
+      console.log('Insights regenerated:', data.results)
+      
+      // Trigger a page refresh to show new data
+      window.location.reload()
+      
+    } catch (err) {
+      setError(err.message || 'Failed to regenerate insights')
+    } finally {
+      setIsRefreshing(false)
+    }
   }
 
   const renderMarkdown = (content) => {
@@ -98,53 +79,40 @@ export function LLMInsights() {
     })
   }
 
+  // Get AI insights from dashboard data
+  const aiInsights = dashboardData?.insights?.aiInsights
+
   return (
     <div className="space-y-6">
-      {/* API Key Section */}
+      {/* Header with Regenerate Button */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
-          <Key className="w-5 h-5 text-primary-600" />
-          OpenAI API Configuration
-        </h3>
-        <div className="space-y-3">
-          <div className="flex gap-2">
-            <input
-              type="password"
-              value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-              placeholder="sk-..."
-              className="flex-1 px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-            />
-            <button
-              onClick={generateInsights}
-              disabled={isLoading || !apiKey.trim()}
-              className="px-4 py-2 bg-primary-600 text-white text-sm rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Analyzing...
-                </>
-              ) : (
-                <>
-                  <TrendingUp className="w-4 h-4" />
-                  Generate Insights
-                </>
-              )}
-            </button>
-            {apiKey && (
-              <button
-                onClick={clearApiKey}
-                className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
-                title="Clear key"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
-            )}
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-primary-600" />
+              AI-Powered Insights
+            </h3>
+            <p className="text-sm text-slate-500 mt-1">
+              Automated analysis of your documentation metrics
+            </p>
           </div>
-          <p className="text-xs text-slate-500">
-            Your API key is stored locally in your browser and used only for generating insights.
-          </p>
+          <button
+            onClick={regenerateInsights}
+            disabled={isRefreshing}
+            className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white text-sm rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            {isRefreshing ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Regenerating...
+              </>
+            ) : (
+              <>
+                <RefreshCw className="w-4 h-4" />
+                Regenerate
+              </>
+            )}
+          </button>
         </div>
       </div>
 
@@ -161,11 +129,11 @@ export function LLMInsights() {
         </div>
       )}
 
-      {/* Insights Display */}
-      {insights && (
+      {/* AI Insights Display */}
+      {aiInsights ? (
         <div className="space-y-6">
           {/* Traffic Trends */}
-          {insights.traffic && (
+          {aiInsights.traffic && (
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
               <button
                 onClick={() => toggleSection('traffic')}
@@ -179,7 +147,7 @@ export function LLMInsights() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation()
-                      copyToClipboard(insights.traffic)
+                      copyToClipboard(aiInsights.traffic)
                     }}
                     className="p-1 hover:bg-slate-100 rounded"
                     title="Copy to clipboard"
@@ -194,7 +162,7 @@ export function LLMInsights() {
               {expandedSections.traffic && (
                 <div className="px-6 pb-6">
                   <div className="prose prose-sm max-w-none">
-                    {renderMarkdown(insights.traffic)}
+                    {renderMarkdown(aiInsights.traffic)}
                   </div>
                 </div>
               )}
@@ -202,7 +170,7 @@ export function LLMInsights() {
           )}
 
           {/* Jira Trends */}
-          {insights.jira && (
+          {aiInsights.jira && (
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
               <button
                 onClick={() => toggleSection('jira')}
@@ -216,7 +184,7 @@ export function LLMInsights() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation()
-                      copyToClipboard(insights.jira)
+                      copyToClipboard(aiInsights.jira)
                     }}
                     className="p-1 hover:bg-slate-100 rounded"
                     title="Copy to clipboard"
@@ -231,7 +199,7 @@ export function LLMInsights() {
               {expandedSections.jira && (
                 <div className="px-6 pb-6">
                   <div className="prose prose-sm max-w-none">
-                    {renderMarkdown(insights.jira)}
+                    {renderMarkdown(aiInsights.jira)}
                   </div>
                 </div>
               )}
@@ -239,7 +207,7 @@ export function LLMInsights() {
           )}
 
           {/* Duplicate Detection */}
-          {insights.duplicates && (
+          {aiInsights.duplicates && (
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
               <button
                 onClick={() => toggleSection('duplicates')}
@@ -253,7 +221,7 @@ export function LLMInsights() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation()
-                      copyToClipboard(insights.duplicates)
+                      copyToClipboard(aiInsights.duplicates)
                     }}
                     className="p-1 hover:bg-slate-100 rounded"
                     title="Copy to clipboard"
@@ -268,7 +236,7 @@ export function LLMInsights() {
               {expandedSections.duplicates && (
                 <div className="px-6 pb-6">
                   <div className="prose prose-sm max-w-none">
-                    {renderMarkdown(insights.duplicates)}
+                    {renderMarkdown(aiInsights.duplicates)}
                   </div>
                 </div>
               )}
@@ -277,8 +245,33 @@ export function LLMInsights() {
 
           {/* Last Updated */}
           <div className="text-center text-xs text-slate-500">
-            Insights generated on {new Date().toLocaleString()}
+            Insights generated on {dashboardData?.lastUpdated ? new Date(dashboardData.lastUpdated).toLocaleString() : new Date().toLocaleString()}
           </div>
+        </div>
+      ) : (
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
+          <TrendingUp className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+          <h3 className="text-lg font-medium text-slate-900 mb-2">No AI Insights Available</h3>
+          <p className="text-sm text-slate-500 mb-4">
+            AI insights are generated during data fetching. Configure your OPENAI_API_KEY secret to enable this feature.
+          </p>
+          <button
+            onClick={regenerateInsights}
+            disabled={isRefreshing}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 text-white text-sm rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            {isRefreshing ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Generating...
+              </>
+            ) : (
+              <>
+                <TrendingUp className="w-4 h-4" />
+                Generate Insights
+              </>
+            )}
+          </button>
         </div>
       )}
     </div>

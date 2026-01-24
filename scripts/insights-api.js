@@ -163,7 +163,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { apiKey, analysisTypes = ['traffic', 'jira', 'duplicates'] } = req.body
+    const { analysisTypes = ['traffic', 'jira', 'duplicates'] } = req.body
+
+    // Use API key from environment variable (server-side) or from request (development)
+    const apiKey = process.env.OPENAI_API_KEY || req.body.apiKey
 
     if (!apiKey) {
       return res.status(400).json({ error: 'OpenAI API key is required' })
