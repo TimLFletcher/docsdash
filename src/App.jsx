@@ -389,13 +389,6 @@ function App() {
           </div>
         )}
 
-        {/* Insights Tab */}
-        {activeTab === 'insights' && (
-          <div className="space-y-8">
-            {/* LLM-Powered Insights */}
-            <LLMInsights dashboardData={data} />
-          </div>
-        )}
       </main>
       </div>
     </PasswordProtection>
