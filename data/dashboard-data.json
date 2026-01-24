@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-24T10:21:46.541Z",
+  "lastUpdated": "2026-01-24T10:46:56.641Z",
   "analytics": {
     "pageViews": {
       "total": 28238,
@@ -76,19 +76,19 @@
         "displayPath": "/analytics/",
         "pages": [
           {
+            "page": "/analytics/sources/external-s3.html",
+            "views": 37,
+            "avgTime": "3:06"
+          },
+          {
             "page": "/analytics/intro/intro.html",
             "views": 36,
             "avgTime": "6:34"
           },
           {
-            "page": "/analytics/sources/external-s3.html",
-            "views": 35,
-            "avgTime": "3:17"
-          },
-          {
             "page": "/analytics/sources/manage-external.html",
-            "views": 28,
-            "avgTime": "0:44"
+            "views": 29,
+            "avgTime": "0:45"
           },
           {
             "page": "/analytics/sqlpp/5_ddl_external.html",
@@ -139,23 +139,23 @@
         "pages": [
           {
             "page": "/server/current/install/install-ports.html",
-            "views": 403,
-            "avgTime": "2:54"
+            "views": 405,
+            "avgTime": "2:53"
           },
           {
             "page": "/server/current/release-notes/relnotes.html",
-            "views": 334,
-            "avgTime": "2:32"
+            "views": 339,
+            "avgTime": "2:31"
           },
           {
             "page": "/server/current/learn/buckets-memory-and-storage/memory.html",
-            "views": 299,
+            "views": 301,
             "avgTime": "1:37"
           },
           {
             "page": "/server/current/introduction/whats-new.html",
-            "views": 274,
-            "avgTime": "2:23"
+            "views": 279,
+            "avgTime": "2:22"
           },
           {
             "page": "/server/current/install/rhel-suse-install-intro.html",
@@ -170,7 +170,7 @@
         "pages": [
           {
             "page": "/operator/current/overview.html",
-            "views": 313,
+            "views": 317,
             "avgTime": "0:50"
           },
           {
@@ -180,8 +180,8 @@
           },
           {
             "page": "/operator/current/install-kubernetes.html",
-            "views": 79,
-            "avgTime": "4:33"
+            "views": 80,
+            "avgTime": "4:29"
           },
           {
             "page": "/operator/current/resource/couchbasecluster.html",
@@ -252,7 +252,7 @@
           },
           {
             "page": "/couchbase-lite/current/swift/quickstart.html",
-            "views": 161,
+            "views": 162,
             "avgTime": "0:43"
           }
         ]
@@ -373,7 +373,7 @@
       }
     ],
     "userMetrics": {
-      "uniqueVisitors": 54691,
+      "uniqueVisitors": 54719,
       "avgSessionDuration": "2:11",
       "bounceRate": "0.7",
       "returningVisitors": 42.5
@@ -381,27 +381,27 @@
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 47497,
+        "sessions": 48773,
         "percentage": 72
       },
       {
         "source": "Organic Search",
-        "sessions": 12889,
-        "percentage": 20
+        "sessions": 13098,
+        "percentage": 19
       },
       {
         "source": "Referral",
-        "sessions": 3146,
+        "sessions": 3200,
         "percentage": 5
       },
       {
         "source": "Unassigned",
-        "sessions": 2058,
+        "sessions": 2097,
         "percentage": 3
       },
       {
         "source": "Paid Search",
-        "sessions": 292,
+        "sessions": 295,
         "percentage": 0
       }
     ],
@@ -450,7 +450,7 @@
         "avgSessionDuration": "4:40",
         "trafficBalance": {
           "direct": 17,
-          "search": 50
+          "search": 51
         }
       },
       {
@@ -480,7 +480,7 @@
         "displayPath": "/enterprise-analytics/",
         "totalViews": 1462,
         "bounceRate": "0.4",
-        "avgSessionDuration": "2:03",
+        "avgSessionDuration": "2:06",
         "trafficBalance": {
           "direct": 62,
           "search": 29
@@ -502,7 +502,7 @@
         "displayPath": "/sync-gateway/",
         "totalViews": 2946,
         "bounceRate": "0.5",
-        "avgSessionDuration": "3:30",
+        "avgSessionDuration": "3:32",
         "trafficBalance": {
           "direct": 42,
           "search": 40
@@ -639,9 +639,9 @@
     "contentGaps": [],
     "performanceNotes": [],
     "aiInsights": {
-      "jira": "## Insights\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 63 tickets opened vs. 85 resolved.\n- **Previous Month**: 110 tickets opened vs. 201 resolved.\n- **Trend**: The team is resolving more tickets than are being opened, indicating a positive trend in managing backlog.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**:\n  - Sprint 18: 12/15 completed\n  - Sprint 19: 14/14 completed\n  - Sprint 20: 11/16 completed\n  - Sprint 21: 15/15 completed\n  - Sprint 22: 8/14 completed\n- **Trend**: Velocity is inconsistent, with a notable drop in Sprint 22. This suggests potential issues with planning or execution.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 216.19 days.\n- **Trend**: The resolution time is significantly high, indicating a need for process improvements to expedite ticket resolution.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.74\n- **Previous Month Burn Rate**: 0.55\n- **Trend**: Increasing burn rate suggests higher resource consumption relative to output, which may not be sustainable long-term.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Major Issues**: 46\n- **Open Medium Issues**: 4\n- **Recent Major Issues**: 3 new major issues opened recently.\n- **Critical Attention**: The high number of major issues requires prioritization to prevent escalation.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Workload**: The team is resolving more issues than are being opened, but the high average resolution time and inconsistent velocity indicate potential capacity constraints or inefficiencies.\n\n## Recommendations\n\n- **Improve Planning**: Analyze the causes of the drop in Sprint 22 completion and adjust planning to better match capacity.\n- **Prioritize Major Issues**: Implement a triage process to focus on resolving major issues more quickly.\n- **Reduce Resolution Time**: Identify bottlenecks in the resolution process and implement strategies to reduce average resolution time.\n- **Monitor Burn Rate**: Investigate the causes of the increased burn rate and adjust resource allocation to ensure sustainability.\n- **Capacity Management**: Reassess team capacity and workload distribution to improve balance and efficiency. Consider additional resources if necessary.\n\nBy addressing these areas, the team can improve process efficiency, maintain a sustainable workload, and enhance overall productivity.",
-      "duplicates": "## Duplicate Analysis\n\nAfter reviewing the recent Jira tickets, no clear duplicates were identified based on the provided criteria. Each ticket appears to address distinct issues or documentation updates. Below is a summary of the analysis:\n\n### Summary of Tickets\n\n- **DOC-13935:** Focuses on adding a new capella-type for AI and app-services.\n- **DOC-13934:** Aims to standardize RBAC Role String Syntax Documentation.\n- **DOC-13933:** Concerns specifying browser-only for Couchbase Lite JavaScript installation.\n- **DOC-13932:** Involves updates to prerequisites and system requirements for Couchbase Operator.\n- **DOC-13930:** Relates to feedback on Sync Gateway documentation.\n\n### Analysis Criteria\n\n- **Similar Titles or Summaries:** No titles or summaries are sufficiently similar to suggest duplication.\n- **Same Issue Type and Priority:** While some tickets share the same priority, their issue types and content differ.\n- **Similar Components or Labels:** No information on components or labels was provided, but summaries indicate distinct topics.\n- **Underlying Problem:** Each ticket addresses a unique aspect of documentation or product feature.\n\n### Conclusion\n\n- **No Duplicates Found:** Each ticket should remain active as they address separate documentation needs or issues.\n\nIf further details or additional data (such as components or labels) become available, a re-evaluation can be conducted.",
-      "traffic": "## Insights from Web Traffic Data\n\n### 1. Overall Traffic Trends\n- **Trend**: The overall traffic is increasing, with a positive trend of 6.6%.\n- **Daily Views**: There is a noticeable peak on January 20th with 6776 views, followed by a decline.\n\n### 2. Notable Patterns in User Behavior\n- **Direct Traffic Dominance**: 72% of sessions are from direct traffic, indicating strong brand recognition or habitual visits.\n- **High Returning Visitors**: 42.5% of visitors are returning, suggesting good user engagement and content relevance.\n\n### 3. Top Performing Pages\n- **/server/current/install/install-ports.html**: Highest views (403) with a good average time (2:54), indicating high interest and engagement.\n- **/cloud/management-api-reference/index.html**: High views (265) and engagement (3:23), likely due to technical relevance.\n- **/operator/current/overview.html**: High views (313) but low average time (0:50), indicating quick information retrieval.\n\n### 4. Areas for Improvement\n- **Bounce Rate**: At 0.7, this is exceptionally low, suggesting potential tracking issues or very high engagement.\n- **Session Duration**: Average session duration of 2:11 is moderate; consider enhancing content depth to increase engagement time.\n- **Low Engagement Pages**: \n  - **/cloud/get-started/intro.html**: Low average time (0:46) suggests content may not be engaging enough.\n  - **/enterprise-analytics/current/install/system-requirements.html**: Very low average time (0:18) indicates potential content clarity issues.\n\n### 5. Anomalies or Concerning Patterns\n- **Sudden Drop on January 24th**: Only 58 views, which is a significant drop and may indicate a data collection issue or external factors affecting traffic.\n- **Unusual Search Terms**: The search terms appear nonsensical, which could indicate bot activity or data entry errors.\n\n### Actionable Recommendations\n- **Enhance Content for Low Engagement Pages**: Revise and enrich content on pages with low average time to improve user retention.\n- **Investigate Bounce Rate**: Verify tracking setup to ensure bounce rate accuracy.\n- **Analyze Traffic Drop**: Investigate the cause of the traffic drop on January 24th to prevent future occurrences.\n- **Optimize for Organic Search**: With 20% of traffic from organic search, optimizing SEO could further increase this channel's contribution.\n- **Review Search Term Data**: Address potential bot activity or errors in search term data to improve search functionality."
+      "duplicates": "Based on the provided Jira tickets, I have reviewed the recent issues for potential duplicates. Here are the findings:\n\n### No Duplicates Found\n\n- **Titles and Summaries**: Each ticket has a distinct title and summary that addresses different documentation aspects.\n- **Issue Type and Priority**: All tickets are of similar priority but do not overlap in issue type or description.\n- **Components or Labels**: No information on components or labels was provided, but based on summaries, the issues appear to cover different topics.\n- **Underlying Problems**: Each ticket seems to address a unique documentation need or update.\n\n### Conclusion\n\n- **No Clear Duplicates**: After reviewing the provided data, there are no clear duplicates among the listed Jira tickets. Each ticket addresses a separate issue or documentation requirement.\n\nIf further information on components or labels becomes available, a more detailed analysis could be conducted.",
+      "traffic": "## Web Traffic Analysis\n\n### 1. Overall Traffic Trends\n- **Trend**: Increasing\n  - The total page views are 28,238 with a positive trend of 6.6%.\n  - Daily views show a peak on January 20th (6,776 views) and a significant drop on January 24th (58 views).\n\n### 2. Notable Patterns in User Behavior\n- **High Direct Traffic**: 72% of sessions are from direct sources, indicating strong brand recognition or direct access by users.\n- **Returning Visitors**: 42.5% of visitors are returning, suggesting good user retention.\n- **Low Bounce Rate**: At 0.7%, the bounce rate is exceptionally low, indicating that users are engaging with the content.\n\n### 3. Top Performing Pages\n- **/server/current/install/install-ports.html**: Highest views (405) with a decent average time spent (2:53). Likely due to its relevance in setup processes.\n- **/cloud/management-api-reference/index.html**: High engagement (265 views, 3:23 avg time), indicating users find the API reference valuable.\n- **/couchbase-lite/current/index.html**: High views (396) but lower average time (1:06), suggesting users are quickly finding the information they need.\n\n### 4. Areas for Improvement\n- **Low Engagement Pages**:\n  - **/enterprise-analytics/current/install/system-requirements.html**: Low average time (0:18) suggests users might not find the content useful or engaging.\n  - **/couchbase-edge-server/current/product-notes/release-notes.html**: High views (111) but very low average time (0:05), indicating users might not find the content valuable.\n\n- **Session Duration**: Average session duration is 2:11, which is relatively short. Consider enhancing content depth and interactivity to increase engagement time.\n\n### 5. Anomalies or Concerning Patterns\n- **Search Terms**: The top search terms appear to be nonsensical or potentially spam-related (e.g., \"sssieddqxsx\"), which could indicate a need to review search functionality or address potential spam issues.\n- **Traffic Drop**: The significant drop in views on January 24th (58 views) is unusual and may require investigation into potential technical issues or external factors affecting access.\n\n## Actionable Insights\n- **Enhance Content for Low Engagement Pages**: Revise and enrich content on pages with low average time spent to improve user engagement.\n- **Investigate Search Functionality**: Review search logs and functionality to ensure relevant results are being returned and address any spam issues.\n- **Monitor Traffic Fluctuations**: Investigate the cause of the sharp decline in views on January 24th to prevent future occurrences.\n- **Leverage High-Performing Content**: Use insights from top-performing pages to replicate success across other documentation areas, focusing on detailed, practical information.",
+      "jira": "## Insights\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 63 tickets opened, 85 resolved.\n- **Previous Month**: 110 tickets opened, 201 resolved.\n- **Trend**: The team is resolving more tickets than are being opened, indicating a positive trend in backlog reduction.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**:\n  - Sprint 18: 12/15 completed\n  - Sprint 19: 14/14 completed\n  - Sprint 20: 11/16 completed\n  - Sprint 21: 15/15 completed\n  - Sprint 22: 8/14 completed\n- **Trend**: Inconsistent completion rates, with noticeable drop in Sprint 22. Overall, the team is struggling to consistently meet planned work.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 216.19 days.\n- **Trend**: This is a high average resolution time, indicating potential bottlenecks or inefficiencies in the process.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.74\n- **Previous Burn Rate**: 0.55\n- **Trend**: Increase in burn rate suggests higher resource consumption relative to output, which may not be sustainable long-term.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Issues**: \n  - Major: 46\n  - Medium: 4\n- **Recent Major Issues**: 4 new major issues opened recently.\n- **Insight**: Majority of open issues are of Major priority, indicating a need for focused attention to prevent escalation.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Capacity Challenges**: Inconsistent sprint completion and high average resolution time suggest potential overloading or misallocation of resources.\n\n## Recommendations\n\n- **Improve Resolution Time**: \n  - Conduct a root cause analysis to identify bottlenecks.\n  - Implement process improvements or automation where possible.\n\n- **Enhance Sprint Planning**:\n  - Reassess capacity planning to better align planned work with team capabilities.\n  - Consider reducing planned work to improve completion rates.\n\n- **Monitor Burn Rate**:\n  - Evaluate resource allocation to ensure efficiency.\n  - Consider process optimization to reduce resource consumption.\n\n- **Focus on Major Issues**:\n  - Prioritize resolution of Major priority issues to prevent escalation.\n  - Implement a triage system to quickly address high-priority tickets.\n\n- **Capacity and Workload Balance**:\n  - Reevaluate team roles and responsibilities to ensure balanced workload.\n  - Consider additional resources or training to address capacity gaps."
     }
   }
 }
