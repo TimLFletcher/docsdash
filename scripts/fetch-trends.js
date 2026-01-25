@@ -76,16 +76,39 @@ export async function fetchTrendsData() {
       fetchTrendsForKeyword('couchbase server')
     ])
 
+    // Validate that we got data for both
+    if (!couchbaseData.timelineData || couchbaseData.timelineData.length === 0) {
+      throw new Error('No timeline data for "couchbase"')
+    }
+    
+    if (!couchbaseServerData.timelineData || couchbaseServerData.timelineData.length === 0) {
+      console.warn('⚠️  No timeline data for "couchbase server", using fallback')
+      // Create fallback data with zeros
+      couchbaseServerData.timelineData = couchbaseData.timelineData.map(item => ({
+        ...item,
+        value: 0
+      }))
+    }
+
     // Combine timeline data for comparison
-    const combinedTimeline = couchbaseData.timelineData.map((item, index) => ({
-      date: item.date,
-      formattedTime: item.formattedTime,
-      couchbase: item.value,
-      couchbaseServer: couchbaseServerData.timelineData[index]?.value || 0
-    }))
+    const combinedTimeline = couchbaseData.timelineData.map((item, index) => {
+      const serverData = couchbaseServerData.timelineData[index]
+      return {
+        date: item.date,
+        formattedTime: item.formattedTime,
+        couchbase: item.value,
+        couchbaseServer: serverData ? serverData.value : 0
+      }
+    })
 
     console.log(`   ✅ Successfully fetched trends data for both keywords`)
     console.log(`   📊 Combined timeline points: ${combinedTimeline.length}`)
+    console.log(`   📊 Couchbase timeline points: ${couchbaseData.timelineData.length}`)
+    console.log(`   📊 Couchbase Server timeline points: ${couchbaseServerData.timelineData.length}`)
+    
+    // Log first few points for debugging
+    console.log(`   📊 First combined point:`, combinedTimeline[0])
+    console.log(`   📊 Last combined point:`, combinedTimeline[combinedTimeline.length - 1])
 
     return {
       lastUpdated: new Date().toISOString(),

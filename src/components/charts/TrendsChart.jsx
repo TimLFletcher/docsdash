@@ -14,15 +14,20 @@ export function TrendsChart({ data }) {
   }
 
   // Format the data for the chart
-  const chartData = data.map(item => ({
-    date: new Date(item.date).toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric' 
-    }),
-    couchbase: item.couchbase,
-    couchbaseServer: item.couchbaseServer,
-    fullDate: item.formattedTime || item.date
-  }))
+  const chartData = data.map(item => {
+    const date = new Date(item.date)
+    const isValidDate = !isNaN(date.getTime())
+    
+    return {
+      date: isValidDate 
+        ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+        : 'Invalid Date',
+      couchbase: item.couchbase || 0,
+      couchbaseServer: item.couchbaseServer || 0,
+      fullDate: item.formattedTime || item.date,
+      timestamp: isValidDate ? date.getTime() : 0
+    }
+  }).filter(item => item.timestamp > 0) // Filter out invalid dates
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 lg:col-span-2">
