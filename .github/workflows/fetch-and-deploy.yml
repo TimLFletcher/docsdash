@@ -46,6 +46,10 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: npm run fetch-data
 
+      - name: Create config file with secrets
+        run: |
+          echo "export const SITE_PASSWORD = '${{ secrets.SITE_PASS }}';" > src/config.js
+
       - name: Build dashboard
         run: npm run build
 

@@ -67,6 +67,8 @@ The dashboard will run at `http://localhost:5173` with sample data.
 |--------|-------------|
 | `GA_PROPERTY_ID` | Your GA4 property ID (e.g., `123456789`) |
 | `GOOGLE_SERVICE_ACCOUNT_KEY` | Service account JSON key (entire JSON content) |
+| `OPENAI_API_KEY` | OpenAI API key for AI insights (optional) |
+| `SITE_PASS` | Password to protect access to the dashboard (required) |
 
 **Setting up Google Analytics:**
 
@@ -82,6 +84,19 @@ The dashboard will run at `http://localhost:5173` with sample data.
    - Add the service account email with "Viewer" role
 6. Add the entire JSON key content as `GOOGLE_SERVICE_ACCOUNT_KEY` secret
 7. Add your property ID as `GA_PROPERTY_ID` secret
+
+#### Site Password
+
+| Secret | Description |
+|--------|-------------|
+| `SITE_PASS` | Password to protect access to the dashboard (required) |
+
+**Setting up Site Password:**
+
+1. Choose a secure password for your dashboard
+2. Add the password as `SITE_PASS` secret in GitHub
+3. The password will be injected during build and used to protect access
+4. For local development, the default password is `docsdash2024`
 
 #### Jira
 

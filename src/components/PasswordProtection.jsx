@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Lock } from 'lucide-react'
+import { SITE_PASSWORD } from '../config'
 
 const PASSWORD_KEY = 'docsdash_auth'
-const CORRECT_PASSWORD = 'docsdash2024' // Change this to your desired password
 
 export function PasswordProtection({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -23,7 +23,7 @@ export function PasswordProtection({ children }) {
     e.preventDefault()
     setError('')
 
-    if (password === CORRECT_PASSWORD) {
+    if (password === SITE_PASSWORD) {
       localStorage.setItem(PASSWORD_KEY, 'authenticated')
       setIsAuthenticated(true)
     } else {
