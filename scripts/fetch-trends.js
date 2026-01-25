@@ -10,13 +10,13 @@ function createMockData(keyword, existingTimeline = null) {
   const timelineData = existingTimeline || generateMockTimeline()
   
   // Generate mock queries based on keyword
-  const mockTopQueries = keyword.includes('server') 
+  const mockTopQueries = keyword.includes('database') 
     ? [
-        { query: 'couchbase server download', value: '45', hasData: true },
-        { query: 'couchbase server installation', value: '38', hasData: true },
-        { query: 'couchbase server vs mongodb', value: '32', hasData: true },
-        { query: 'couchbase server pricing', value: '28', hasData: true },
-        { query: 'couchbase server docker', value: '25', hasData: true }
+        { query: 'couchbase database download', value: '42', hasData: true },
+        { query: 'couchbase database tutorial', value: '38', hasData: true },
+        { query: 'couchbase database vs mongodb', value: '35', hasData: true },
+        { query: 'couchbase database pricing', value: '30', hasData: true },
+        { query: 'couchbase database docker', value: '28', hasData: true }
       ]
     : [
         { query: 'couchbase', value: '100', hasData: true },
@@ -26,13 +26,13 @@ function createMockData(keyword, existingTimeline = null) {
         { query: 'couchbase vs mongodb', value: '38', hasData: true }
       ]
   
-  const mockRisingQueries = keyword.includes('server')
+  const mockRisingQueries = keyword.includes('database')
     ? [
-        { query: 'couchbase server 7.0', value: '+250%', hasData: true },
-        { query: 'couchbase server backup', value: '+180%', hasData: true },
-        { query: 'couchbase server cluster', value: '+150%', hasData: true },
-        { query: 'couchbase server monitoring', value: '+120%', hasData: true },
-        { query: 'couchbase server performance', value: '+95%', hasData: true }
+        { query: 'couchbase database 7.0', value: '+220%', hasData: true },
+        { query: 'couchbase database backup', value: '+180%', hasData: true },
+        { query: 'couchbase database cluster', value: '+150%', hasData: true },
+        { query: 'couchbase database monitoring', value: '+120%', hasData: true },
+        { query: 'couchbase database performance', value: '+95%', hasData: true }
       ]
     : [
         { query: 'couchbase ai', value: '+450%', hasData: true },
@@ -193,10 +193,10 @@ export async function fetchTrendsData() {
     }
     
     try {
-      couchbaseServerData = await fetchTrendsForKeyword('couchbase server')
+      couchbaseServerData = await fetchTrendsForKeyword('couchbase database')
     } catch (error) {
-      console.warn('⚠️  Failed to fetch couchbase server data, using fallback:', error.message)
-      couchbaseServerData = createMockData('couchbase server', couchbaseData.timelineData)
+      console.warn('⚠️  Failed to fetch couchbase database data, using fallback:', error.message)
+      couchbaseServerData = createMockData('couchbase database', couchbaseData.timelineData)
     }
 
     // Combine timeline data for comparison
@@ -227,7 +227,7 @@ export async function fetchTrendsData() {
         risingQueries: couchbaseData.risingQueries,
         summary: couchbaseData.summary
       },
-      couchbaseServer: {
+      couchbaseDatabase: {
         keyword: couchbaseServerData.keyword,
         topQueries: couchbaseServerData.topQueries,
         risingQueries: couchbaseServerData.risingQueries,

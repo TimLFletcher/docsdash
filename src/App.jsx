@@ -302,13 +302,13 @@ function App() {
                     type="rising" 
                   />
                   <QueriesTable 
-                    title="Top Queries - Couchbase Server" 
-                    data={trends.couchbaseServer.topQueries} 
+                    title="Top Queries - Couchbase Database" 
+                    data={trends.couchbaseDatabase.topQueries} 
                     type="top" 
                   />
                   <QueriesTable 
-                    title="Rising Queries - Couchbase Server" 
-                    data={trends.couchbaseServer.risingQueries} 
+                    title="Rising Queries - Couchbase Database" 
+                    data={trends.couchbaseDatabase.risingQueries} 
                     type="rising" 
                   />
                 </div>

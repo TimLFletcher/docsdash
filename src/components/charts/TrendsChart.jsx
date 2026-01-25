@@ -15,7 +15,9 @@ export function TrendsChart({ data }) {
 
   // Format the data for the chart
   const chartData = data.map(item => {
-    const date = new Date(item.date)
+    // Handle Unix timestamp (convert to milliseconds)
+    const timestamp = item.date.includes('.') ? parseFloat(item.date) * 1000 : parseInt(item.date)
+    const date = new Date(timestamp)
     const isValidDate = !isNaN(date.getTime())
     
     return {
@@ -59,7 +61,7 @@ export function TrendsChart({ data }) {
               }}
               formatter={(value, name) => [
                 value, 
-                name === 'couchbase' ? 'Couchbase' : 'Couchbase Server'
+                name === 'couchbase' ? 'Couchbase' : 'Couchbase Database'
               ]}
               labelFormatter={(label) => `Date: ${label}`}
             />
@@ -83,7 +85,7 @@ export function TrendsChart({ data }) {
               dataKey="couchbaseServer" 
               stroke="#10b981" 
               strokeWidth={2}
-              name="Couchbase Server"
+              name="Couchbase Database"
               dot={false}
               activeDot={{
                 r: 4,
