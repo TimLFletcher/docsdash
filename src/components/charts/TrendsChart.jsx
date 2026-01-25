@@ -24,8 +24,10 @@ export function TrendsChart({ data }) {
       date: isValidDate 
         ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
         : 'Invalid Date',
-      couchbase: item.couchbase || 0,
-      couchbaseServer: item.couchbaseServer || 0,
+      nosql: item.nosql || 0,
+      documentoriented: item.documentoriented || 0,
+      clouddatabase: item.clouddatabase || 0,
+      couchbaseserver: item.couchbaseserver || 0,
       fullDate: item.formattedTime || item.date,
       timestamp: isValidDate ? date.getTime() : 0
     }
@@ -33,7 +35,7 @@ export function TrendsChart({ data }) {
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 lg:col-span-2">
-      <h3 className="text-lg font-semibold text-slate-900 mb-4">Interest Over Time - Comparison</h3>
+      <h3 className="text-lg font-semibold text-slate-900 mb-4">Database Trends - Worldwide</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
@@ -61,17 +63,20 @@ export function TrendsChart({ data }) {
               }}
               formatter={(value, name) => [
                 value, 
-                name === 'couchbase' ? 'Couchbase' : 'Couchbase Database'
+                name === 'nosql' ? 'NoSQL' :
+                name === 'documentoriented' ? 'Document-oriented Database' :
+                name === 'clouddatabase' ? 'Cloud Database' :
+                name === 'couchbaseserver' ? 'Couchbase Server' : name
               ]}
               labelFormatter={(label) => `Date: ${label}`}
             />
             <Legend />
             <Line 
               type="monotone" 
-              dataKey="couchbase" 
+              dataKey="nosql" 
               stroke="#3b82f6" 
               strokeWidth={2}
-              name="Couchbase"
+              name="NoSQL"
               dot={false}
               activeDot={{
                 r: 4,
@@ -82,14 +87,42 @@ export function TrendsChart({ data }) {
             />
             <Line 
               type="monotone" 
-              dataKey="couchbaseServer" 
+              dataKey="documentoriented" 
               stroke="#10b981" 
               strokeWidth={2}
-              name="Couchbase Database"
+              name="Document-oriented Database"
               dot={false}
               activeDot={{
                 r: 4,
                 fill: '#10b981',
+                stroke: 'white',
+                strokeWidth: 2
+              }}
+            />
+            <Line 
+              type="monotone" 
+              dataKey="clouddatabase" 
+              stroke="#f59e0b" 
+              strokeWidth={2}
+              name="Cloud Database"
+              dot={false}
+              activeDot={{
+                r: 4,
+                fill: '#f59e0b',
+                stroke: 'white',
+                strokeWidth: 2
+              }}
+            />
+            <Line 
+              type="monotone" 
+              dataKey="couchbaseserver" 
+              stroke="#ef4444" 
+              strokeWidth={2}
+              name="Couchbase Server"
+              dot={false}
+              activeDot={{
+                r: 4,
+                fill: '#ef4444',
                 stroke: 'white',
                 strokeWidth: 2
               }}

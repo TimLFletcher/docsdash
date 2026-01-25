@@ -101,11 +101,11 @@ export function SEOSummary({ data }) {
           </div>
         </div>
         <div className="text-2xl font-bold text-slate-900">
-          2
+          4
         </div>
-        <div className="text-sm text-slate-600">Keywords Tracked</div>
+        <div className="text-sm text-slate-600">Database Categories</div>
         <div className="text-xs mt-1 text-slate-500">
-          Couchbase & Server
+          Worldwide trends
         </div>
       </div>
     </div>

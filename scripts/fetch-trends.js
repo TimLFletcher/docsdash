@@ -10,36 +10,84 @@ function createMockData(keyword, existingTimeline = null) {
   const timelineData = existingTimeline || generateMockTimeline()
   
   // Generate mock queries based on keyword
-  const mockTopQueries = keyword.includes('database') 
+  const mockTopQueries = keyword.includes('NoSQL') 
     ? [
-        { query: 'couchbase database download', value: '42', hasData: true },
-        { query: 'couchbase database tutorial', value: '38', hasData: true },
-        { query: 'couchbase database vs mongodb', value: '35', hasData: true },
-        { query: 'couchbase database pricing', value: '30', hasData: true },
-        { query: 'couchbase database docker', value: '28', hasData: true }
+        { query: 'nosql database', value: '100', hasData: true },
+        { query: 'nosql vs sql', value: '85', hasData: true },
+        { query: 'best nosql database', value: '72', hasData: true },
+        { query: 'nosql examples', value: '58', hasData: true },
+        { query: 'nosql tutorial', value: '45', hasData: true }
+      ]
+    : keyword.includes('Document-oriented')
+    ? [
+        { query: 'document database', value: '95', hasData: true },
+        { query: 'document oriented nosql', value: '78', hasData: true },
+        { query: 'mongodb document database', value: '65', hasData: true },
+        { query: 'document database vs relational', value: '52', hasData: true },
+        { query: 'document database example', value: '41', hasData: true }
+      ]
+    : keyword.includes('Cloud database')
+    ? [
+        { query: 'cloud database services', value: '88', hasData: true },
+        { query: 'aws cloud database', value: '76', hasData: true },
+        { query: 'azure cloud database', value: '64', hasData: true },
+        { query: 'google cloud database', value: '55', hasData: true },
+        { query: 'cloud database pricing', value: '43', hasData: true }
+      ]
+    : keyword.includes('Couchbase Server')
+    ? [
+        { query: 'couchbase server download', value: '82', hasData: true },
+        { query: 'couchbase server tutorial', value: '68', hasData: true },
+        { query: 'couchbase server vs mongodb', value: '56', hasData: true },
+        { query: 'couchbase server cluster', value: '44', hasData: true },
+        { query: 'couchbase server docker', value: '35', hasData: true }
       ]
     : [
-        { query: 'couchbase', value: '100', hasData: true },
-        { query: 'couchbase capella', value: '65', hasData: true },
-        { query: 'couchbase tutorial', value: '48', hasData: true },
-        { query: 'couchbase documentation', value: '42', hasData: true },
-        { query: 'couchbase vs mongodb', value: '38', hasData: true }
+        { query: keyword, value: '100', hasData: true },
+        { query: `${keyword} tutorial`, value: '65', hasData: true },
+        { query: `${keyword} examples`, value: '48', hasData: true },
+        { query: `${keyword} vs`, value: '42', hasData: true },
+        { query: `best ${keyword}`, value: '38', hasData: true }
       ]
   
-  const mockRisingQueries = keyword.includes('database')
+  const mockRisingQueries = keyword.includes('NoSQL')
     ? [
-        { query: 'couchbase database 7.0', value: '+220%', hasData: true },
-        { query: 'couchbase database backup', value: '+180%', hasData: true },
-        { query: 'couchbase database cluster', value: '+150%', hasData: true },
-        { query: 'couchbase database monitoring', value: '+120%', hasData: true },
-        { query: 'couchbase database performance', value: '+95%', hasData: true }
+        { query: 'nosql graph database', value: '+450%', hasData: true },
+        { query: 'nosql time series database', value: '+380%', hasData: true },
+        { query: 'nosql key value store', value: '+320%', hasData: true },
+        { query: 'nosql column family', value: '+280%', hasData: true },
+        { query: 'nosql use cases', value: '+240%', hasData: true }
+      ]
+    : keyword.includes('Document-oriented')
+    ? [
+        { query: 'document database schema', value: '+420%', hasData: true },
+        { query: 'document database indexing', value: '+360%', hasData: true },
+        { query: 'document database query language', value: '+310%', hasData: true },
+        { query: 'document database scalability', value: '+270%', hasData: true },
+        { query: 'document database consistency', value: '+230%', hasData: true }
+      ]
+    : keyword.includes('Cloud database')
+    ? [
+        { query: 'multi cloud database', value: '+480%', hasData: true },
+        { query: 'cloud native database', value: '+410%', hasData: true },
+        { query: 'cloud database migration', value: '+350%', hasData: true },
+        { query: 'cloud database security', value: '+290%', hasData: true },
+        { query: 'cloud database backup', value: '+250%', hasData: true }
+      ]
+    : keyword.includes('Couchbase Server')
+    ? [
+        { query: 'couchbase server 7.0', value: '+520%', hasData: true },
+        { query: 'couchbase server backup', value: '+440%', hasData: true },
+        { query: 'couchbase server monitoring', value: '+380%', hasData: true },
+        { query: 'couchbase server performance tuning', value: '+330%', hasData: true },
+        { query: 'couchbase server high availability', value: '+290%', hasData: true }
       ]
     : [
-        { query: 'couchbase ai', value: '+450%', hasData: true },
-        { query: 'couchbase vector search', value: '+320%', hasData: true },
-        { query: 'couchbase analytics', value: '+280%', hasData: true },
-        { query: 'couchbase cloud', value: '+220%', hasData: true },
-        { query: 'couchbase sync gateway', value: '+180%', hasData: true }
+        { query: `${keyword} 2024`, value: '+450%', hasData: true },
+        { query: `${keyword} tutorial`, value: '+320%', hasData: true },
+        { query: `${keyword} examples`, value: '+280%', hasData: true },
+        { query: `${keyword} best practices`, value: '+220%', hasData: true },
+        { query: `${keyword} vs alternatives`, value: '+180%', hasData: true }
       ]
   
   return {
@@ -85,7 +133,7 @@ function generateMockTimeline() {
   return timeline
 }
 
-async function fetchTrendsForKeyword(keyword) {
+async function fetchTrendsForKeyword(keyword, isCategory = false) {
   console.log(`   🔍 Fetching trends for "${keyword}"...`)
   
   const endDate = new Date()
@@ -98,8 +146,9 @@ async function fetchTrendsForKeyword(keyword) {
       keyword: keyword,
       startTime: startDate,
       endTime: endDate,
-      geo: 'US',
-      granularTimeResolution: true
+      geo: 'WORLDWIDE', // Worldwide instead of US
+      granularTimeResolution: true,
+      category: isCategory ? 0 : undefined // Use category if it's a category code
     })
 
     // Check if response is valid JSON
@@ -130,7 +179,8 @@ async function fetchTrendsForKeyword(keyword) {
         keyword: keyword,
         startTime: startDate,
         endTime: endDate,
-        geo: 'US'
+        geo: 'WORLDWIDE', // Worldwide instead of US
+        category: isCategory ? 0 : undefined
       })
 
       if (typeof relatedQueriesResponse === 'string' && 
@@ -182,65 +232,83 @@ export async function fetchTrendsData() {
   console.log('🔍 Fetching Google Trends data...')
   
   try {
-    // Fetch data for both keywords with error handling
-    let couchbaseData, couchbaseServerData
-    
-    try {
-      couchbaseData = await fetchTrendsForKeyword('couchbase')
-    } catch (error) {
-      console.warn('⚠️  Failed to fetch couchbase data, using fallback:', error.message)
-      couchbaseData = createMockData('couchbase')
-    }
-    
-    try {
-      couchbaseServerData = await fetchTrendsForKeyword('couchbase database')
-    } catch (error) {
-      console.warn('⚠️  Failed to fetch couchbase database data, using fallback:', error.message)
-      couchbaseServerData = createMockData('couchbase database', couchbaseData.timelineData)
+    // Define the categories from the URLs
+    const categories = [
+      { name: 'NoSQL', code: '/m/076tfwq' },
+      { name: 'Document-oriented database', code: '/m/03h4bkz' },
+      { name: 'Cloud database', code: '/m/0h7m73m' },
+      { name: 'Couchbase Server', code: '/m/0crh5qh' }
+    ]
+
+    // Fetch data for all categories
+    const categoryData = await Promise.allSettled(
+      categories.map(async (category) => {
+        try {
+          const data = await fetchTrendsForKeyword(category.code, true)
+          return { ...data, displayName: category.name }
+        } catch (error) {
+          console.warn(`⚠️  Failed to fetch ${category.name}, using fallback:`, error.message)
+          const mockData = createMockData(category.name)
+          return { ...mockData, displayName: category.name }
+        }
+      })
+    )
+
+    // Extract the data and combine timelines
+    const successfulData = categoryData.map(result => 
+      result.status === 'fulfilled' ? result.value : null
+    ).filter(Boolean)
+
+    if (successfulData.length === 0) {
+      throw new Error('No category data could be fetched')
     }
 
-    // Combine timeline data for comparison
-    const combinedTimeline = couchbaseData.timelineData.map((item, index) => {
-      const serverData = couchbaseServerData.timelineData[index]
-      return {
+    // Create combined timeline using the first successful data as base
+    const baseTimeline = successfulData[0].timelineData
+    const combinedTimeline = baseTimeline.map((item, index) => {
+      const timelinePoint = {
         date: item.date,
-        formattedTime: item.formattedTime,
-        couchbase: item.value,
-        couchbaseServer: serverData ? serverData.value : 0
+        formattedTime: item.formattedTime
       }
+      
+      // Add each category's data
+      successfulData.forEach((data, i) => {
+        const key = data.displayName.toLowerCase().replace(/\s+/g, '').replace(/-/g, '')
+        timelinePoint[key] = data.timelineData[index]?.value || 0
+      })
+      
+      return timelinePoint
     })
 
-    console.log(`   ✅ Successfully fetched trends data for both keywords`)
+    console.log(`   ✅ Successfully fetched trends data for ${successfulData.length} categories`)
     console.log(`   📊 Combined timeline points: ${combinedTimeline.length}`)
-    console.log(`   📊 Couchbase timeline points: ${couchbaseData.timelineData.length}`)
-    console.log(`   📊 Couchbase Server timeline points: ${couchbaseServerData.timelineData.length}`)
     
     // Log first few points for debugging
     console.log(`   📊 First combined point:`, combinedTimeline[0])
     console.log(`   📊 Last combined point:`, combinedTimeline[combinedTimeline.length - 1])
 
-    return {
+    // Create the response structure
+    const response = {
       lastUpdated: new Date().toISOString(),
-      couchbase: {
-        keyword: couchbaseData.keyword,
-        topQueries: couchbaseData.topQueries,
-        risingQueries: couchbaseData.risingQueries,
-        summary: couchbaseData.summary
-      },
-      couchbaseDatabase: {
-        keyword: couchbaseServerData.keyword,
-        topQueries: couchbaseServerData.topQueries,
-        risingQueries: couchbaseServerData.risingQueries,
-        summary: couchbaseServerData.summary
-      },
       interestOverTime: combinedTimeline,
-      summary: {
-        avgInterest: couchbaseData.summary.avgInterest,
-        peakInterest: couchbaseData.summary.peakInterest,
-        currentInterest: couchbaseData.summary.currentInterest,
-        trendDirection: couchbaseData.summary.trendDirection
-      }
+      summary: successfulData[0].summary, // Use first category's summary
+      categories: {}
     }
+
+    // Add each category's data
+    successfulData.forEach(data => {
+      if (data && data.displayName) {
+        const key = data.displayName.toLowerCase().replace(/\s+/g, '').replace(/-/g, '')
+        response.categories[key] = {
+          name: data.displayName,
+          topQueries: data.topQueries || [],
+          risingQueries: data.risingQueries || [],
+          summary: data.summary || {}
+        }
+      }
+    })
+
+    return response
 
   } catch (error) {
     console.error('❌ Error fetching Google Trends data:', error.message)

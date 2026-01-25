@@ -289,26 +289,46 @@ function App() {
                 {/* Full-width Trends Chart */}
                 <TrendsChart data={trends.interestOverTime} />
 
-                {/* Queries Tables - 2x2 Grid */}
+                {/* Queries Tables - 4x2 Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <QueriesTable 
-                    title="Top Queries - Couchbase" 
-                    data={trends.couchbase.topQueries} 
+                    title="Top Queries - NoSQL" 
+                    data={trends.categories.nosql.topQueries} 
                     type="top" 
                   />
                   <QueriesTable 
-                    title="Rising Queries - Couchbase" 
-                    data={trends.couchbase.risingQueries} 
+                    title="Rising Queries - NoSQL" 
+                    data={trends.categories.nosql.risingQueries} 
                     type="rising" 
                   />
                   <QueriesTable 
-                    title="Top Queries - Couchbase Database" 
-                    data={trends.couchbaseDatabase.topQueries} 
+                    title="Top Queries - Document-oriented Database" 
+                    data={trends.categories.documentoriented.topQueries} 
                     type="top" 
                   />
                   <QueriesTable 
-                    title="Rising Queries - Couchbase Database" 
-                    data={trends.couchbaseDatabase.risingQueries} 
+                    title="Rising Queries - Document-oriented Database" 
+                    data={trends.categories.documentoriented.risingQueries} 
+                    type="rising" 
+                  />
+                  <QueriesTable 
+                    title="Top Queries - Cloud Database" 
+                    data={trends.categories.clouddatabase.topQueries} 
+                    type="top" 
+                  />
+                  <QueriesTable 
+                    title="Rising Queries - Cloud Database" 
+                    data={trends.categories.clouddatabase.risingQueries} 
+                    type="rising" 
+                  />
+                  <QueriesTable 
+                    title="Top Queries - Couchbase Server" 
+                    data={trends.categories.couchbaseserver.topQueries} 
+                    type="top" 
+                  />
+                  <QueriesTable 
+                    title="Rising Queries - Couchbase Server" 
+                    data={trends.categories.couchbaseserver.risingQueries} 
                     type="rising" 
                   />
                 </div>
