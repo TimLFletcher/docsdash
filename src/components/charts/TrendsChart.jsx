@@ -25,7 +25,7 @@ export function TrendsChart({ data }) {
         ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
         : 'Invalid Date',
       nosql: item.nosql || 0,
-      documentoriented: item.documentoriented || 0,
+      documentorienteddatabase: item.documentorienteddatabase || 0,
       clouddatabase: item.clouddatabase || 0,
       couchbaseserver: item.couchbaseserver || 0,
       fullDate: item.formattedTime || item.date,
@@ -64,7 +64,7 @@ export function TrendsChart({ data }) {
               formatter={(value, name) => [
                 value, 
                 name === 'nosql' ? 'NoSQL' :
-                name === 'documentoriented' ? 'Document-oriented Database' :
+                name === 'documentorienteddatabase' ? 'Document-oriented Database' :
                 name === 'clouddatabase' ? 'Cloud Database' :
                 name === 'couchbaseserver' ? 'Couchbase Server' : name
               ]}
@@ -87,7 +87,7 @@ export function TrendsChart({ data }) {
             />
             <Line 
               type="monotone" 
-              dataKey="documentoriented" 
+              dataKey="documentorienteddatabase" 
               stroke="#10b981" 
               strokeWidth={2}
               name="Document-oriented Database"

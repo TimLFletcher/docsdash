@@ -282,6 +282,7 @@ export async function fetchTrendsData() {
 
     console.log(`   ✅ Successfully fetched trends data for ${successfulData.length} categories`)
     console.log(`   📊 Combined timeline points: ${combinedTimeline.length}`)
+    console.log(`   📊 Category keys:`, successfulData.map(d => d.displayName.toLowerCase().replace(/\s+/g, '').replace(/-/g, '')))
     
     // Log first few points for debugging
     console.log(`   📊 First combined point:`, combinedTimeline[0])

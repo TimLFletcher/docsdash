@@ -293,42 +293,42 @@ function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <QueriesTable 
                     title="Top Queries - NoSQL" 
-                    data={trends.categories.nosql.topQueries} 
+                    data={trends.categories.nosql?.topQueries || []} 
                     type="top" 
                   />
                   <QueriesTable 
                     title="Rising Queries - NoSQL" 
-                    data={trends.categories.nosql.risingQueries} 
+                    data={trends.categories.nosql?.risingQueries || []} 
                     type="rising" 
                   />
                   <QueriesTable 
                     title="Top Queries - Document-oriented Database" 
-                    data={trends.categories.documentoriented.topQueries} 
+                    data={trends.categories.documentorienteddatabase?.topQueries || []} 
                     type="top" 
                   />
                   <QueriesTable 
                     title="Rising Queries - Document-oriented Database" 
-                    data={trends.categories.documentoriented.risingQueries} 
+                    data={trends.categories.documentorienteddatabase?.risingQueries || []} 
                     type="rising" 
                   />
                   <QueriesTable 
                     title="Top Queries - Cloud Database" 
-                    data={trends.categories.clouddatabase.topQueries} 
+                    data={trends.categories.clouddatabase?.topQueries || []} 
                     type="top" 
                   />
                   <QueriesTable 
                     title="Rising Queries - Cloud Database" 
-                    data={trends.categories.clouddatabase.risingQueries} 
+                    data={trends.categories.clouddatabase?.risingQueries || []} 
                     type="rising" 
                   />
                   <QueriesTable 
                     title="Top Queries - Couchbase Server" 
-                    data={trends.categories.couchbaseserver.topQueries} 
+                    data={trends.categories.couchbaseserver?.topQueries || []} 
                     type="top" 
                   />
                   <QueriesTable 
                     title="Rising Queries - Couchbase Server" 
-                    data={trends.categories.couchbaseserver.risingQueries} 
+                    data={trends.categories.couchbaseserver?.risingQueries || []} 
                     type="rising" 
                   />
                 </div>
