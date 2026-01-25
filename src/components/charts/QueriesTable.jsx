@@ -33,7 +33,12 @@ export function QueriesTable({ title, data, type = 'top' }) {
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-      <h3 className="text-lg font-semibold text-slate-900 mb-4">{title}</h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
+        <span className="px-2 py-1 bg-amber-100 text-amber-800 text-xs font-medium rounded-full">
+          Sample
+        </span>
+      </div>
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>

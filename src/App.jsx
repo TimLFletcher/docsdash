@@ -334,8 +334,22 @@ function App() {
                 </div>
 
                 {/* Last Updated */}
-                <div className="text-center text-xs text-slate-500">
-                  Google Trends data updated on {new Date(trends.lastUpdated).toLocaleString()}
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-center">
+                  <div className="flex items-center justify-center gap-2 text-amber-800 mb-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="font-medium">Sample Data Display</span>
+                  </div>
+                  <p className="text-sm text-amber-700 mb-1">
+                    This is sample data demonstrating the dashboard functionality.
+                  </p>
+                  <p className="text-xs text-amber-600">
+                    Real Google Trends data will be displayed when the API becomes available.
+                  </p>
+                  <div className="text-xs text-slate-500 mt-2">
+                    Generated: {new Date(trends.lastUpdated).toLocaleString()}
+                  </div>
                 </div>
               </>
             ) : (

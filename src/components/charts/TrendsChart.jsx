@@ -35,7 +35,12 @@ export function TrendsChart({ data }) {
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 lg:col-span-2">
-      <h3 className="text-lg font-semibold text-slate-900 mb-4">Database Trends - Worldwide</h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold text-slate-900">Database Trends - Worldwide</h3>
+        <span className="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-medium rounded-full">
+          Sample Data
+        </span>
+      </div>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>

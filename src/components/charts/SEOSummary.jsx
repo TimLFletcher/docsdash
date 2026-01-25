@@ -40,7 +40,13 @@ export function SEOSummary({ data }) {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="relative">
+      <div className="absolute top-2 right-2">
+        <span className="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-medium rounded-full">
+          Sample Data
+        </span>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {/* Current Interest - Couchbase */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
         <div className="flex items-center justify-between mb-2">
@@ -106,6 +112,7 @@ export function SEOSummary({ data }) {
         <div className="text-sm text-slate-600">Database Categories</div>
         <div className="text-xs mt-1 text-slate-500">
           Worldwide trends
+        </div>
         </div>
       </div>
     </div>
