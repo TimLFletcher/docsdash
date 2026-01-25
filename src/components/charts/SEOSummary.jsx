@@ -1,5 +1,5 @@
 import React from 'react'
-import { TrendingUp, TrendingDown, Minus, Search, MapPin, BarChart3 } from 'lucide-react'
+import { TrendingUp, TrendingDown, Minus, Search, BarChart3, Activity } from 'lucide-react'
 
 export function SEOSummary({ data }) {
   if (!data) {
@@ -41,7 +41,7 @@ export function SEOSummary({ data }) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {/* Current Interest */}
+      {/* Current Interest - Couchbase */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
         <div className="flex items-center justify-between mb-2">
           <div className="p-2 bg-blue-100 rounded-lg">
@@ -54,7 +54,7 @@ export function SEOSummary({ data }) {
         <div className="text-2xl font-bold text-slate-900">
           {data.summary?.currentInterest || 0}
         </div>
-        <div className="text-sm text-slate-600">Current Interest</div>
+        <div className="text-sm text-slate-600">Couchbase Interest</div>
         <div className={`text-xs mt-1 ${getTrendColor(data.summary?.trendDirection)}`}>
           {data.summary?.trendDirection === 'up' ? 'Rising' : 
            data.summary?.trendDirection === 'down' ? 'Declining' : 'Stable'}
@@ -93,19 +93,19 @@ export function SEOSummary({ data }) {
         </div>
       </div>
 
-      {/* Regional Coverage */}
+      {/* Comparison Metric */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
         <div className="flex items-center justify-between mb-2">
           <div className="p-2 bg-green-100 rounded-lg">
-            <MapPin className="w-5 h-5 text-green-600" />
+            <Activity className="w-5 h-5 text-green-600" />
           </div>
         </div>
         <div className="text-2xl font-bold text-slate-900">
-          {data.regionalInterest?.length || 0}
+          2
         </div>
-        <div className="text-sm text-slate-600">Regions</div>
+        <div className="text-sm text-slate-600">Keywords Tracked</div>
         <div className="text-xs mt-1 text-slate-500">
-          US states tracked
+          Couchbase & Server
         </div>
       </div>
     </div>

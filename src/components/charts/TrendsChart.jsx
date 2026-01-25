@@ -1,5 +1,5 @@
 import React from 'react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
 export function TrendsChart({ data }) {
   if (!data || data.length === 0) {
@@ -19,13 +19,14 @@ export function TrendsChart({ data }) {
       month: 'short', 
       day: 'numeric' 
     }),
-    value: item.value,
+    couchbase: item.couchbase,
+    couchbaseServer: item.couchbaseServer,
     fullDate: item.formattedTime || item.date
   }))
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-      <h3 className="text-lg font-semibold text-slate-900 mb-4">Interest Over Time</h3>
+    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 lg:col-span-2">
+      <h3 className="text-lg font-semibold text-slate-900 mb-4">Interest Over Time - Comparison</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
@@ -51,18 +52,37 @@ export function TrendsChart({ data }) {
                 borderRadius: '8px',
                 padding: '8px 12px'
               }}
-              formatter={(value) => [`${value}`, 'Interest']}
+              formatter={(value, name) => [
+                value, 
+                name === 'couchbase' ? 'Couchbase' : 'Couchbase Server'
+              ]}
               labelFormatter={(label) => `Date: ${label}`}
             />
+            <Legend />
             <Line 
               type="monotone" 
-              dataKey="value" 
+              dataKey="couchbase" 
               stroke="#3b82f6" 
               strokeWidth={2}
+              name="Couchbase"
               dot={false}
               activeDot={{
                 r: 4,
                 fill: '#3b82f6',
+                stroke: 'white',
+                strokeWidth: 2
+              }}
+            />
+            <Line 
+              type="monotone" 
+              dataKey="couchbaseServer" 
+              stroke="#10b981" 
+              strokeWidth={2}
+              name="Couchbase Server"
+              dot={false}
+              activeDot={{
+                r: 4,
+                fill: '#10b981',
                 stroke: 'white',
                 strokeWidth: 2
               }}

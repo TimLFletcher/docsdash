@@ -158,8 +158,8 @@ async function main() {
     console.warn('⚠️  Google Trends data not available')
   }
 
-  // If both failed, exit with error
-  if (!analyticsData && !jiraData) {
+  // If both failed, exit with error (but allow trends-only data)
+  if (!analyticsData && !jiraData && !trendsData) {
     console.error('\n❌ Failed to fetch any data:')
     errors.forEach(e => console.error(`   - ${e}`))
     process.exit(1)

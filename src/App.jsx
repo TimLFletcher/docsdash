@@ -286,29 +286,36 @@ function App() {
                 {/* SEO Summary Metrics */}
                 <SEOSummary data={trends} />
 
-                {/* Trends and Queries Row */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  <TrendsChart data={trends.interestOverTime} />
-                  <RegionalInterestChart data={trends.regionalInterest} />
-                </div>
+                {/* Full-width Trends Chart */}
+                <TrendsChart data={trends.interestOverTime} />
 
-                {/* Queries Tables */}
+                {/* Queries Tables - 2x2 Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <QueriesTable 
-                    title="Top Queries" 
-                    data={trends.topQueries} 
+                    title="Top Queries - Couchbase" 
+                    data={trends.couchbase.topQueries} 
                     type="top" 
                   />
                   <QueriesTable 
-                    title="Rising Queries" 
-                    data={trends.risingQueries} 
+                    title="Rising Queries - Couchbase" 
+                    data={trends.couchbase.risingQueries} 
+                    type="rising" 
+                  />
+                  <QueriesTable 
+                    title="Top Queries - Couchbase Server" 
+                    data={trends.couchbaseServer.topQueries} 
+                    type="top" 
+                  />
+                  <QueriesTable 
+                    title="Rising Queries - Couchbase Server" 
+                    data={trends.couchbaseServer.risingQueries} 
                     type="rising" 
                   />
                 </div>
 
                 {/* Last Updated */}
                 <div className="text-center text-xs text-slate-500">
-                  Google Trends data for "{trends.keyword}" updated on {new Date(trends.lastUpdated).toLocaleString()}
+                  Google Trends data updated on {new Date(trends.lastUpdated).toLocaleString()}
                 </div>
               </>
             ) : (
