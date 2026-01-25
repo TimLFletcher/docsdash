@@ -1,5 +1,8 @@
 import googleTrends from 'google-trends-api'
 
+// Disable SSL verification for this module (temporary workaround)
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
+
 export async function fetchTrendsData() {
   console.log('🔍 Fetching Google Trends data...')
   
@@ -19,10 +22,26 @@ export async function fetchTrendsData() {
       granularTimeResolution: true
     })
 
+    console.log('   📊 Parsing interest over time response...')
     const interestData = JSON.parse(interestOverTimeResponse)
+    console.log('   📊 Interest data keys:', Object.keys(interestData))
+    console.log('   📊 Default keys:', interestData.default ? Object.keys(interestData.default) : 'No default key')
+    
+    if (!interestData.default) {
+      console.log('   📊 Full response structure:', JSON.stringify(interestData, null, 2))
+      throw new Error('Invalid response structure: missing default')
+    }
+    
+    if (!interestData.default.timelineData) {
+      console.log('   📊 Default content:', JSON.stringify(interestData.default, null, 2))
+      throw new Error('Invalid response structure: missing default.timelineData')
+    }
+    
+    console.log('   📊 Timeline data sample:', interestData.default.timelineData[0])
+    
     const timelineData = interestData.default.timelineData.map(item => ({
       date: item.time,
-      value: item.value[0],
+      value: item.value ? item.value[0] : 0,
       formattedTime: item.formattedTime
     }))
 
@@ -35,18 +54,31 @@ export async function fetchTrendsData() {
       geo: 'US'
     })
 
+    console.log('   📊 Parsing related queries response...')
     const queriesData = JSON.parse(relatedQueriesResponse)
-    const topQueries = queriesData.default.rankedListList[0]?.rankedKeyword.map(item => ({
+    console.log('   📊 Queries data keys:', Object.keys(queriesData))
+    console.log('   📊 Has default:', !!queriesData.default)
+    console.log('   📊 Has rankedListList:', !!queriesData.default?.rankedListList)
+    
+    if (!queriesData.default || !queriesData.default.rankedList) {
+      console.log('   📊 Full response structure:', JSON.stringify(queriesData, null, 2).substring(0, 500) + '...')
+      throw new Error('Invalid queries response structure')
+    }
+    
+    // The structure is: rankedList[0].rankedKeyword is an array
+    const topQueries = queriesData.default.rankedList[0]?.rankedKeyword?.map(item => ({
       query: item.query,
       value: item.formattedValue || item.traffic,
       hasData: item.hasData
-    })) || []
+    })).slice(0, 10) || []
 
-    const risingQueries = queriesData.default.rankedListList[1]?.rankedKeyword.map(item => ({
+    const risingQueries = queriesData.default.rankedList[1]?.rankedKeyword?.map(item => ({
       query: item.query,
       value: item.formattedValue || item.traffic,
       hasData: item.hasData
-    })) || []
+    })).slice(0, 10) || []
+
+    console.log(`   ✅ Parsed ${topQueries.length} top queries and ${risingQueries.length} rising queries`)
 
     // Fetch interest by region
     console.log('   🗺️  Fetching interest by region...')
