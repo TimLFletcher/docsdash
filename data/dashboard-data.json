@@ -1,8 +1,8 @@
 {
-  "lastUpdated": "2026-01-25T09:16:26.047Z",
+  "lastUpdated": "2026-01-25T09:28:23.452Z",
   "analytics": {
     "pageViews": {
-      "total": 29294,
+      "total": 29297,
       "trend": 13.2,
       "daily": [
         {
@@ -35,7 +35,7 @@
         },
         {
           "date": "2026-01-25",
-          "views": 27
+          "views": 30
         }
       ],
       "daily3Months": [
@@ -53,7 +53,7 @@
         },
         {
           "date": "2025-10-30",
-          "views": 9519
+          "views": 9517
         },
         {
           "date": "2025-10-31",
@@ -65,7 +65,7 @@
         },
         {
           "date": "2025-11-02",
-          "views": 7811
+          "views": 7810
         },
         {
           "date": "2025-11-03",
@@ -81,7 +81,7 @@
         },
         {
           "date": "2025-11-06",
-          "views": 9490
+          "views": 9489
         },
         {
           "date": "2025-11-07",
@@ -97,7 +97,7 @@
         },
         {
           "date": "2025-11-10",
-          "views": 6482
+          "views": 6481
         },
         {
           "date": "2025-11-11",
@@ -121,7 +121,7 @@
         },
         {
           "date": "2025-11-16",
-          "views": 4801
+          "views": 4800
         },
         {
           "date": "2025-11-17",
@@ -165,7 +165,7 @@
         },
         {
           "date": "2025-11-27",
-          "views": 3345
+          "views": 3344
         },
         {
           "date": "2025-11-28",
@@ -177,7 +177,7 @@
         },
         {
           "date": "2025-11-30",
-          "views": 1343
+          "views": 1342
         },
         {
           "date": "2025-12-01",
@@ -197,7 +197,7 @@
         },
         {
           "date": "2025-12-05",
-          "views": 2709
+          "views": 2708
         },
         {
           "date": "2025-12-06",
@@ -221,7 +221,7 @@
         },
         {
           "date": "2025-12-11",
-          "views": 5893
+          "views": 5894
         },
         {
           "date": "2025-12-12",
@@ -241,7 +241,7 @@
         },
         {
           "date": "2025-12-16",
-          "views": 3116
+          "views": 3115
         },
         {
           "date": "2025-12-17",
@@ -253,11 +253,11 @@
         },
         {
           "date": "2025-12-19",
-          "views": 3253
+          "views": 3252
         },
         {
           "date": "2025-12-20",
-          "views": 4043
+          "views": 4041
         },
         {
           "date": "2025-12-21",
@@ -285,7 +285,7 @@
         },
         {
           "date": "2025-12-27",
-          "views": 6098
+          "views": 6096
         },
         {
           "date": "2025-12-28",
@@ -325,7 +325,7 @@
         },
         {
           "date": "2026-01-06",
-          "views": 4728
+          "views": 4730
         },
         {
           "date": "2026-01-07",
@@ -333,7 +333,7 @@
         },
         {
           "date": "2026-01-08",
-          "views": 3893
+          "views": 3892
         },
         {
           "date": "2026-01-09",
@@ -401,7 +401,7 @@
         },
         {
           "date": "2026-01-25",
-          "views": 29
+          "views": 31
         }
       ]
     },
@@ -748,8 +748,8 @@
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 49868,
-        "percentage": 73
+        "sessions": 49875,
+        "percentage": 72
       },
       {
         "source": "Organic Search",
@@ -763,7 +763,7 @@
       },
       {
         "source": "Unassigned",
-        "sessions": 2032,
+        "sessions": 2040,
         "percentage": 3
       },
       {
@@ -890,12 +890,12 @@
     "sdkComparison": [
       {
         "displayPath": "/dotnet-sdk/",
-        "totalViews": 0,
-        "bounceRate": 0,
-        "avgSessionDuration": "0:00",
+        "totalViews": 1647,
+        "bounceRate": "0.6",
+        "avgSessionDuration": "1:59",
         "trafficBalance": {
-          "direct": 0,
-          "search": 0
+          "direct": 62,
+          "search": 26
         }
       },
       {
@@ -980,52 +980,52 @@
       },
       {
         "displayPath": "/php-sdk/",
-        "totalViews": 643,
-        "bounceRate": "0.7",
-        "avgSessionDuration": "0:57",
+        "totalViews": 0,
+        "bounceRate": 0,
+        "avgSessionDuration": "0:00",
         "trafficBalance": {
-          "direct": 79,
-          "search": 15
+          "direct": 0,
+          "search": 0
         }
       },
       {
         "displayPath": "/python-sdk/",
-        "totalViews": 0,
-        "bounceRate": 0,
-        "avgSessionDuration": "0:00",
+        "totalViews": 1123,
+        "bounceRate": "0.5",
+        "avgSessionDuration": "2:11",
         "trafficBalance": {
-          "direct": 0,
-          "search": 0
+          "direct": 58,
+          "search": 33
         }
       },
       {
         "displayPath": "/ruby-sdk/",
-        "totalViews": 337,
-        "bounceRate": "0.5",
-        "avgSessionDuration": "1:00",
-        "trafficBalance": {
-          "direct": 77,
-          "search": 10
-        }
-      },
-      {
-        "displayPath": "/rust-sdk/",
-        "totalViews": 123,
-        "bounceRate": "0.4",
-        "avgSessionDuration": "1:46",
-        "trafficBalance": {
-          "direct": 56,
-          "search": 32
-        }
-      },
-      {
-        "displayPath": "/scala-sdk/",
         "totalViews": 0,
         "bounceRate": 0,
         "avgSessionDuration": "0:00",
         "trafficBalance": {
           "direct": 0,
           "search": 0
+        }
+      },
+      {
+        "displayPath": "/rust-sdk/",
+        "totalViews": 0,
+        "bounceRate": 0,
+        "avgSessionDuration": "0:00",
+        "trafficBalance": {
+          "direct": 0,
+          "search": 0
+        }
+      },
+      {
+        "displayPath": "/scala-sdk/",
+        "totalViews": 660,
+        "bounceRate": "0.5",
+        "avgSessionDuration": "1:25",
+        "trafficBalance": {
+          "direct": 79,
+          "search": 16
         }
       }
     ]
@@ -1147,731 +1147,445 @@
     ]
   },
   "trends": {
-    "keyword": "couchbase",
-    "lastUpdated": "2026-01-25T09:16:14.376Z",
+    "lastUpdated": "2026-01-25T09:28:13.316Z",
+    "couchbase": {
+      "keyword": "couchbase",
+      "topQueries": [
+        {
+          "query": "what is couchbase",
+          "value": "100",
+          "hasData": true
+        },
+        {
+          "query": "couchbase stock",
+          "value": "94",
+          "hasData": true
+        },
+        {
+          "query": "couchbase database",
+          "value": "81",
+          "hasData": true
+        },
+        {
+          "query": "couchbase news",
+          "value": "44",
+          "hasData": true
+        },
+        {
+          "query": "couchbase query",
+          "value": "41",
+          "hasData": true
+        },
+        {
+          "query": "couchbase server",
+          "value": "38",
+          "hasData": true
+        },
+        {
+          "query": "couchbase inc",
+          "value": "30",
+          "hasData": true
+        },
+        {
+          "query": "couchbase db",
+          "value": "26",
+          "hasData": true
+        },
+        {
+          "query": "couchbase lite",
+          "value": "25",
+          "hasData": true
+        },
+        {
+          "query": "couchbase mobile",
+          "value": "22",
+          "hasData": true
+        }
+      ],
+      "risingQueries": [
+        {
+          "query": "couchbase news",
+          "value": "+700%"
+        },
+        {
+          "query": "couchbase acquisition",
+          "value": "+700%"
+        },
+        {
+          "query": "couchbase ceo",
+          "value": "+350%"
+        },
+        {
+          "query": "couchbase pricing",
+          "value": "+200%"
+        },
+        {
+          "query": "couchbase revenue",
+          "value": "+200%"
+        },
+        {
+          "query": "couchbase inc",
+          "value": "+160%"
+        },
+        {
+          "query": "couchbase vs redis",
+          "value": "+100%"
+        },
+        {
+          "query": "what is couchbase",
+          "value": "+90%"
+        },
+        {
+          "query": "couchbase mobile",
+          "value": "+80%"
+        },
+        {
+          "query": "couchbase database",
+          "value": "+60%"
+        }
+      ],
+      "summary": {
+        "avgInterest": 55.7037037037037,
+        "peakInterest": 100,
+        "currentInterest": 16,
+        "trendDirection": "down"
+      }
+    },
+    "couchbaseServer": {
+      "keyword": "couchbase server",
+      "topQueries": [],
+      "risingQueries": [],
+      "summary": {
+        "avgInterest": 2.2037037037037037,
+        "peakInterest": 100,
+        "currentInterest": 0,
+        "trendDirection": "down"
+      }
+    },
     "interestOverTime": [
       {
         "date": "1737244800",
-        "value": 50,
-        "formattedTime": "Jan 19 – 25, 2025"
+        "formattedTime": "Jan 19 – 25, 2025",
+        "couchbase": 50,
+        "couchbaseServer": 0
       },
       {
         "date": "1737849600",
-        "value": 61,
-        "formattedTime": "Jan 26 – Feb 1, 2025"
+        "formattedTime": "Jan 26 – Feb 1, 2025",
+        "couchbase": 61,
+        "couchbaseServer": 0
       },
       {
         "date": "1738454400",
-        "value": 57,
-        "formattedTime": "Feb 2 – 8, 2025"
+        "formattedTime": "Feb 2 – 8, 2025",
+        "couchbase": 57,
+        "couchbaseServer": 0
       },
       {
         "date": "1739059200",
-        "value": 58,
-        "formattedTime": "Feb 9 – 15, 2025"
+        "formattedTime": "Feb 9 – 15, 2025",
+        "couchbase": 58,
+        "couchbaseServer": 0
       },
       {
         "date": "1739664000",
-        "value": 53,
-        "formattedTime": "Feb 16 – 22, 2025"
+        "formattedTime": "Feb 16 – 22, 2025",
+        "couchbase": 53,
+        "couchbaseServer": 0
       },
       {
         "date": "1740268800",
-        "value": 69,
-        "formattedTime": "Feb 23 – Mar 1, 2025"
+        "formattedTime": "Feb 23 – Mar 1, 2025",
+        "couchbase": 69,
+        "couchbaseServer": 0
       },
       {
         "date": "1740873600",
-        "value": 56,
-        "formattedTime": "Mar 2 – 8, 2025"
+        "formattedTime": "Mar 2 – 8, 2025",
+        "couchbase": 56,
+        "couchbaseServer": 0
       },
       {
         "date": "1741478400",
-        "value": 89,
-        "formattedTime": "Mar 9 – 15, 2025"
+        "formattedTime": "Mar 9 – 15, 2025",
+        "couchbase": 89,
+        "couchbaseServer": 0
       },
       {
         "date": "1742083200",
-        "value": 78,
-        "formattedTime": "Mar 16 – 22, 2025"
+        "formattedTime": "Mar 16 – 22, 2025",
+        "couchbase": 78,
+        "couchbaseServer": 0
       },
       {
         "date": "1742688000",
-        "value": 62,
-        "formattedTime": "Mar 23 – 29, 2025"
+        "formattedTime": "Mar 23 – 29, 2025",
+        "couchbase": 62,
+        "couchbaseServer": 0
       },
       {
         "date": "1743292800",
-        "value": 41,
-        "formattedTime": "Mar 30 – Apr 5, 2025"
+        "formattedTime": "Mar 30 – Apr 5, 2025",
+        "couchbase": 41,
+        "couchbaseServer": 0
       },
       {
         "date": "1743897600",
-        "value": 41,
-        "formattedTime": "Apr 6 – 12, 2025"
+        "formattedTime": "Apr 6 – 12, 2025",
+        "couchbase": 41,
+        "couchbaseServer": 0
       },
       {
         "date": "1744502400",
-        "value": 92,
-        "formattedTime": "Apr 13 – 19, 2025"
+        "formattedTime": "Apr 13 – 19, 2025",
+        "couchbase": 92,
+        "couchbaseServer": 0
       },
       {
         "date": "1745107200",
-        "value": 69,
-        "formattedTime": "Apr 20 – 26, 2025"
+        "formattedTime": "Apr 20 – 26, 2025",
+        "couchbase": 69,
+        "couchbaseServer": 0
       },
       {
         "date": "1745712000",
-        "value": 64,
-        "formattedTime": "Apr 27 – May 3, 2025"
+        "formattedTime": "Apr 27 – May 3, 2025",
+        "couchbase": 64,
+        "couchbaseServer": 0
       },
       {
         "date": "1746316800",
-        "value": 59,
-        "formattedTime": "May 4 – 10, 2025"
+        "formattedTime": "May 4 – 10, 2025",
+        "couchbase": 59,
+        "couchbaseServer": 0
       },
       {
         "date": "1746921600",
-        "value": 55,
-        "formattedTime": "May 11 – 17, 2025"
+        "formattedTime": "May 11 – 17, 2025",
+        "couchbase": 55,
+        "couchbaseServer": 0
       },
       {
         "date": "1747526400",
-        "value": 61,
-        "formattedTime": "May 18 – 24, 2025"
+        "formattedTime": "May 18 – 24, 2025",
+        "couchbase": 61,
+        "couchbaseServer": 0
       },
       {
         "date": "1748131200",
-        "value": 45,
-        "formattedTime": "May 25 – 31, 2025"
+        "formattedTime": "May 25 – 31, 2025",
+        "couchbase": 45,
+        "couchbaseServer": 0
       },
       {
         "date": "1748736000",
-        "value": 68,
-        "formattedTime": "Jun 1 – 7, 2025"
+        "formattedTime": "Jun 1 – 7, 2025",
+        "couchbase": 68,
+        "couchbaseServer": 0
       },
       {
         "date": "1749340800",
-        "value": 73,
-        "formattedTime": "Jun 8 – 14, 2025"
+        "formattedTime": "Jun 8 – 14, 2025",
+        "couchbase": 73,
+        "couchbaseServer": 0
       },
       {
         "date": "1749945600",
-        "value": 100,
-        "formattedTime": "Jun 15 – 21, 2025"
+        "formattedTime": "Jun 15 – 21, 2025",
+        "couchbase": 100,
+        "couchbaseServer": 0
       },
       {
         "date": "1750550400",
-        "value": 99,
-        "formattedTime": "Jun 22 – 28, 2025"
+        "formattedTime": "Jun 22 – 28, 2025",
+        "couchbase": 99,
+        "couchbaseServer": 0
       },
       {
         "date": "1751155200",
-        "value": 60,
-        "formattedTime": "Jun 29 – Jul 5, 2025"
+        "formattedTime": "Jun 29 – Jul 5, 2025",
+        "couchbase": 60,
+        "couchbaseServer": 0
       },
       {
         "date": "1751760000",
-        "value": 74,
-        "formattedTime": "Jul 6 – 12, 2025"
+        "formattedTime": "Jul 6 – 12, 2025",
+        "couchbase": 74,
+        "couchbaseServer": 0
       },
       {
         "date": "1752364800",
-        "value": 64,
-        "formattedTime": "Jul 13 – 19, 2025"
+        "formattedTime": "Jul 13 – 19, 2025",
+        "couchbase": 64,
+        "couchbaseServer": 0
       },
       {
         "date": "1752969600",
-        "value": 72,
-        "formattedTime": "Jul 20 – 26, 2025"
+        "formattedTime": "Jul 20 – 26, 2025",
+        "couchbase": 72,
+        "couchbaseServer": 0
       },
       {
         "date": "1753574400",
-        "value": 73,
-        "formattedTime": "Jul 27 – Aug 2, 2025"
+        "formattedTime": "Jul 27 – Aug 2, 2025",
+        "couchbase": 73,
+        "couchbaseServer": 0
       },
       {
         "date": "1754179200",
-        "value": 68,
-        "formattedTime": "Aug 3 – 9, 2025"
+        "formattedTime": "Aug 3 – 9, 2025",
+        "couchbase": 68,
+        "couchbaseServer": 0
       },
       {
         "date": "1754784000",
-        "value": 79,
-        "formattedTime": "Aug 10 – 16, 2025"
+        "formattedTime": "Aug 10 – 16, 2025",
+        "couchbase": 79,
+        "couchbaseServer": 0
       },
       {
         "date": "1755388800",
-        "value": 41,
-        "formattedTime": "Aug 17 – 23, 2025"
+        "formattedTime": "Aug 17 – 23, 2025",
+        "couchbase": 41,
+        "couchbaseServer": 0
       },
       {
         "date": "1755993600",
-        "value": 46,
-        "formattedTime": "Aug 24 – 30, 2025"
+        "formattedTime": "Aug 24 – 30, 2025",
+        "couchbase": 46,
+        "couchbaseServer": 0
       },
       {
         "date": "1756598400",
-        "value": 42,
-        "formattedTime": "Aug 31 – Sep 6, 2025"
+        "formattedTime": "Aug 31 – Sep 6, 2025",
+        "couchbase": 42,
+        "couchbaseServer": 0
       },
       {
         "date": "1757203200",
-        "value": 47,
-        "formattedTime": "Sep 7 – 13, 2025"
+        "formattedTime": "Sep 7 – 13, 2025",
+        "couchbase": 47,
+        "couchbaseServer": 0
       },
       {
         "date": "1757808000",
-        "value": 64,
-        "formattedTime": "Sep 14 – 20, 2025"
+        "formattedTime": "Sep 14 – 20, 2025",
+        "couchbase": 64,
+        "couchbaseServer": 0
       },
       {
         "date": "1758412800",
-        "value": 63,
-        "formattedTime": "Sep 21 – 27, 2025"
+        "formattedTime": "Sep 21 – 27, 2025",
+        "couchbase": 63,
+        "couchbaseServer": 0
       },
       {
         "date": "1759017600",
-        "value": 53,
-        "formattedTime": "Sep 28 – Oct 4, 2025"
+        "formattedTime": "Sep 28 – Oct 4, 2025",
+        "couchbase": 53,
+        "couchbaseServer": 0
       },
       {
         "date": "1759622400",
-        "value": 57,
-        "formattedTime": "Oct 5 – 11, 2025"
+        "formattedTime": "Oct 5 – 11, 2025",
+        "couchbase": 57,
+        "couchbaseServer": 0
       },
       {
         "date": "1760227200",
-        "value": 41,
-        "formattedTime": "Oct 12 – 18, 2025"
+        "formattedTime": "Oct 12 – 18, 2025",
+        "couchbase": 41,
+        "couchbaseServer": 0
       },
       {
         "date": "1760832000",
-        "value": 43,
-        "formattedTime": "Oct 19 – 25, 2025"
+        "formattedTime": "Oct 19 – 25, 2025",
+        "couchbase": 43,
+        "couchbaseServer": 0
       },
       {
         "date": "1761436800",
-        "value": 54,
-        "formattedTime": "Oct 26 – Nov 1, 2025"
+        "formattedTime": "Oct 26 – Nov 1, 2025",
+        "couchbase": 54,
+        "couchbaseServer": 0
       },
       {
         "date": "1762041600",
-        "value": 58,
-        "formattedTime": "Nov 2 – 8, 2025"
+        "formattedTime": "Nov 2 – 8, 2025",
+        "couchbase": 58,
+        "couchbaseServer": 0
       },
       {
         "date": "1762646400",
-        "value": 48,
-        "formattedTime": "Nov 9 – 15, 2025"
+        "formattedTime": "Nov 9 – 15, 2025",
+        "couchbase": 48,
+        "couchbaseServer": 0
       },
       {
         "date": "1763251200",
-        "value": 55,
-        "formattedTime": "Nov 16 – 22, 2025"
+        "formattedTime": "Nov 16 – 22, 2025",
+        "couchbase": 55,
+        "couchbaseServer": 0
       },
       {
         "date": "1763856000",
-        "value": 42,
-        "formattedTime": "Nov 23 – 29, 2025"
+        "formattedTime": "Nov 23 – 29, 2025",
+        "couchbase": 42,
+        "couchbaseServer": 100
       },
       {
         "date": "1764460800",
-        "value": 35,
-        "formattedTime": "Nov 30 – Dec 6, 2025"
+        "formattedTime": "Nov 30 – Dec 6, 2025",
+        "couchbase": 35,
+        "couchbaseServer": 0
       },
       {
         "date": "1765065600",
-        "value": 32,
-        "formattedTime": "Dec 7 – 13, 2025"
+        "formattedTime": "Dec 7 – 13, 2025",
+        "couchbase": 32,
+        "couchbaseServer": 0
       },
       {
         "date": "1765670400",
-        "value": 37,
-        "formattedTime": "Dec 14 – 20, 2025"
+        "formattedTime": "Dec 14 – 20, 2025",
+        "couchbase": 37,
+        "couchbaseServer": 0
       },
       {
         "date": "1766275200",
-        "value": 28,
-        "formattedTime": "Dec 21 – 27, 2025"
+        "formattedTime": "Dec 21 – 27, 2025",
+        "couchbase": 28,
+        "couchbaseServer": 0
       },
       {
         "date": "1766880000",
-        "value": 18,
-        "formattedTime": "Dec 28, 2025 – Jan 3, 2026"
+        "formattedTime": "Dec 28, 2025 – Jan 3, 2026",
+        "couchbase": 18,
+        "couchbaseServer": 0
       },
       {
         "date": "1767484800",
-        "value": 38,
-        "formattedTime": "Jan 4 – 10, 2026"
+        "formattedTime": "Jan 4 – 10, 2026",
+        "couchbase": 38,
+        "couchbaseServer": 0
       },
       {
         "date": "1768089600",
-        "value": 30,
-        "formattedTime": "Jan 11 – 17, 2026"
+        "formattedTime": "Jan 11 – 17, 2026",
+        "couchbase": 30,
+        "couchbaseServer": 10
       },
       {
         "date": "1768694400",
-        "value": 30,
-        "formattedTime": "Jan 18 – 24, 2026"
+        "formattedTime": "Jan 18 – 24, 2026",
+        "couchbase": 30,
+        "couchbaseServer": 9
       },
       {
         "date": "1769299200",
-        "value": 16,
-        "formattedTime": "Jan 25 – 31, 2026"
-      }
-    ],
-    "topQueries": [
-      {
-        "query": "what is couchbase",
-        "value": "100",
-        "hasData": true
-      },
-      {
-        "query": "couchbase stock",
-        "value": "94",
-        "hasData": true
-      },
-      {
-        "query": "couchbase database",
-        "value": "81",
-        "hasData": true
-      },
-      {
-        "query": "couchbase news",
-        "value": "44",
-        "hasData": true
-      },
-      {
-        "query": "mongodb",
-        "value": "43",
-        "hasData": true
-      },
-      {
-        "query": "couchbase query",
-        "value": "41",
-        "hasData": true
-      },
-      {
-        "query": "couchbase server",
-        "value": "38",
-        "hasData": true
-      },
-      {
-        "query": "couchbase inc",
-        "value": "30",
-        "hasData": true
-      },
-      {
-        "query": "couchbase db",
-        "value": "26",
-        "hasData": true
-      },
-      {
-        "query": "couchbase lite",
-        "value": "25",
-        "hasData": true
-      }
-    ],
-    "risingQueries": [
-      {
-        "query": "haveli investments",
-        "value": "Breakout"
-      },
-      {
-        "query": "couchbase news",
-        "value": "+700%"
-      },
-      {
-        "query": "couchbase acquisition",
-        "value": "+700%"
-      },
-      {
-        "query": "couchbase ceo",
-        "value": "+350%"
-      },
-      {
-        "query": "couchbase pricing",
-        "value": "+200%"
-      },
-      {
-        "query": "couchbase revenue",
-        "value": "+200%"
-      },
-      {
-        "query": "couchbase inc",
-        "value": "+160%"
-      },
-      {
-        "query": "couchbase vs redis",
-        "value": "+100%"
-      },
-      {
-        "query": "what is couchbase",
-        "value": "+90%"
-      },
-      {
-        "query": "couchbase mobile",
-        "value": "+80%"
-      }
-    ],
-    "regionalInterest": [
-      {
-        "region": "California",
-        "value": 100,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Arizona",
-        "value": 77,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "District of Columbia",
-        "value": 66,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "New York",
-        "value": 61,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Texas",
-        "value": 55,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Utah",
-        "value": 50,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Hawaii",
-        "value": 50,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Illinois",
-        "value": 44,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "New Jersey",
-        "value": 44,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Colorado",
-        "value": 44,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Massachusetts",
-        "value": 38,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Virginia",
-        "value": 38,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Maryland",
-        "value": 38,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Washington",
-        "value": 38,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Oregon",
-        "value": 38,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Oklahoma",
-        "value": 38,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "New Hampshire",
-        "value": 38,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Georgia",
-        "value": 33,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Florida",
-        "value": 33,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Pennsylvania",
-        "value": 27,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Minnesota",
-        "value": 27,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Kansas",
-        "value": 27,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Iowa",
-        "value": 22,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Nevada",
-        "value": 22,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Tennessee",
-        "value": 22,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Missouri",
-        "value": 22,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Michigan",
-        "value": 22,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "North Carolina",
-        "value": 16,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Connecticut",
-        "value": 16,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Ohio",
-        "value": 16,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Louisiana",
-        "value": 16,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Wisconsin",
-        "value": 16,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Indiana",
-        "value": 11,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "South Carolina",
-        "value": 11,
-        "hasData": [
-          true
-        ]
-      },
-      {
-        "region": "Alaska",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "New Mexico",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Nebraska",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "North Dakota",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Montana",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Rhode Island",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Mississippi",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "South Dakota",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Maine",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Kentucky",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Idaho",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Delaware",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Vermont",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Arkansas",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Alabama",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "West Virginia",
-        "value": 0,
-        "hasData": [
-          false
-        ]
-      },
-      {
-        "region": "Wyoming",
-        "value": 0,
-        "hasData": [
-          false
-        ]
+        "formattedTime": "Jan 25 – 31, 2026",
+        "couchbase": 16,
+        "couchbaseServer": 0
       }
     ],
     "summary": {
@@ -1885,9 +1599,9 @@
     "contentGaps": [],
     "performanceNotes": [],
     "aiInsights": {
-      "duplicates": "Based on the provided data, I have reviewed the recent Jira tickets from the last 30 days. Here are the findings:\n\n### Potential Duplicate Groups\n\n**No clear duplicates found.**\n\n### Analysis\n\n- **Similar Titles or Summaries**: None of the tickets have similar titles or summaries that suggest they are addressing the same issue.\n  \n- **Same Issue Type and Priority**: While some tickets share the same priority (e.g., \"Major\"), they pertain to different topics and components, indicating distinct issues.\n\n- **Similar Components or Labels**: The summaries suggest different components or areas of focus, such as AI, RBAC, Couchbase Lite, Couchbase Operator, and Sync Gateway. There is no overlap in components or labels that would suggest duplication.\n\n- **Underlying Problems**: Each ticket appears to address a unique aspect of documentation or system requirements, with no indication of overlapping problems.\n\n### Conclusion\n\n- **No Duplicates**: Based on the criteria provided, there are no clear duplicates among the recent Jira tickets. Each ticket seems to address a distinct issue or documentation update.\n\nIf further analysis or additional data is required, please provide more context or specific criteria for identifying duplicates.",
-      "jira": "## Insights\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 63 tickets opened, 85 resolved.\n- **Previous Month**: 108 tickets opened, 195 resolved.\n- **Trend**: The team is resolving more tickets than are being opened, indicating a positive trend in managing backlog.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**:\n  - Sprint 18: 12 completed / 15 planned\n  - Sprint 19: 14 completed / 14 planned\n  - Sprint 20: 11 completed / 16 planned\n  - Sprint 21: 15 completed / 15 planned\n  - Sprint 22: 8 completed / 14 planned\n- **Observation**: Velocity is inconsistent, with a notable drop in Sprint 22. This suggests potential issues in planning or execution.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 216.19 days.\n- **Observation**: High average resolution time indicates a need for process improvement to reduce delays.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.74\n- **Previous Burn Rate**: 0.55\n- **Observation**: An increasing burn rate suggests higher resource consumption relative to output, potentially unsustainable if the trend continues.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Issues**:\n  - Major: 46\n  - Medium: 4\n- **Recent Major Issues**: 3 new major issues opened recently.\n- **Observation**: Major issues constitute a significant portion of open tickets, requiring prioritization.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Capacity**: Inconsistent sprint completion suggests potential capacity issues or misalignment in planning.\n- **Workload Balance**: The team may be overcommitting, as seen in Sprint 22's performance.\n\n## Recommendations\n\n- **Improve Planning**: Align sprint goals with realistic team capacity to avoid overcommitting.\n- **Focus on Major Issues**: Prioritize resolving major issues to reduce backlog and improve critical issue handling.\n- **Reduce Resolution Time**: Implement process improvements or additional resources to address long resolution times.\n- **Monitor Burn Rate**: Investigate causes of increased burn rate and adjust resource allocation to ensure sustainability.\n- **Enhance Sprint Retrospectives**: Use retrospectives to identify and address root causes of velocity fluctuations.\n\nBy addressing these areas, the team can improve efficiency, maintain a sustainable workload, and enhance overall productivity.",
-      "traffic": "## Web Traffic Analysis\n\n### 1. Overall Traffic Trends\n- **Trend**: Decreasing\n  - Recent data shows a significant drop in page views, particularly from January 22 to January 25, 2026, with a sharp decline to just 27 views on January 25.\n  - Compared to previous months, the daily views have generally decreased, indicating a downward trend.\n\n### 2. Notable Patterns in User Behavior\n- **Session Duration**: Decreasing\n  - The average session duration has decreased by 14.4%, indicating users are spending less time per session.\n- **Bounce Rate**: Low\n  - A bounce rate of 0.7% suggests that users are engaging with multiple pages per session.\n- **Returning Visitors**: Moderate\n  - 42.5% of visitors are returning, which is healthy but could be improved to increase loyalty.\n\n### 3. Top Performing Pages\n- **Pages**:\n  - `/server/current/install/install-ports.html`: 403 views, avg time 2:47\n  - `/cloud/management-api-reference/index.html`: 265 views, avg time 3:31\n- **Reasons for Performance**:\n  - These pages likely provide critical information or are frequently referenced in other documentation or external links.\n  - Longer average time on page suggests users find the content valuable and engaging.\n\n### 4. Areas for Improvement\n- **Bounce Rates & Session Duration**:\n  - Focus on pages with high views but low average time, such as `/couchbase-lite/current/index.html` (avg time 1:00) to enhance content depth and engagement.\n  - Improve content on pages with high drop-off rates to increase session duration.\n\n### 5. Anomalies or Concerning Patterns\n- **Sharp Decline in Views**:\n  - The drastic drop in views on January 25, 2026, to 27 views is unusual and may indicate a technical issue or data reporting error.\n- **Search Terms**:\n  - The search terms appear to be nonsensical or test inputs, suggesting potential misuse or errors in search functionality.\n\n## Actionable Insights\n- **Content Optimization**:\n  - Enhance content on top-performing pages to maintain engagement and improve on pages with lower average time.\n  - Review and update content on pages with high bounce rates or low session durations to increase user retention.\n  \n- **Technical Review**:\n  - Investigate the cause of the sharp decline in page views around January 25, 2026, to ensure there are no technical issues affecting traffic.\n  \n- **Search Functionality**:\n  - Examine search logs and refine search algorithms to ensure relevant results are provided, reducing nonsensical search terms.\n\n- **Traffic Source Strategy**:\n  - Increase efforts in organic and referral traffic to diversify traffic sources, reducing reliance on direct traffic.\n  \n- **User Engagement**:\n  - Implement strategies to increase returning visitor rates, such as newsletters or personalized content recommendations.\n\nBy addressing these areas, documentation effectiveness can be significantly improved, leading to better user engagement and satisfaction."
+      "duplicates": "### Duplicate Analysis\n\nAfter reviewing the recent Jira tickets, no clear duplicates were identified based on the provided criteria. Each ticket appears to address distinct documentation issues with unique summaries, priorities, and components. Below is a brief analysis of each ticket to support this conclusion:\n\n- **DOC-13935**: Focuses on adding a new capella-type for AI and app-services, which is specific to a new feature or documentation update.\n- **DOC-13934**: Concerns standardizing RBAC Role String Syntax, indicating a focus on consistency and standardization in documentation.\n- **DOC-13933**: Addresses installation specifics for Couchbase Lite JavaScript, particularly for browser-only environments, which is a distinct technical documentation issue.\n- **DOC-13932**: Involves updating prerequisites and system requirements for Couchbase Operator, suggesting a focus on system documentation.\n- **DOC-13930**: Relates to feedback on Sync Gateway documentation, which is a feedback-driven task rather than a content creation or update task.\n\n### Conclusion\n\n- **No Duplicates Found**: Each ticket addresses a unique aspect of documentation, and there is no overlap that suggests duplication.\n- **Action**: Continue to monitor for any new tickets that may overlap with these existing issues.",
+      "jira": "## Insights\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 63 tickets opened, 85 resolved.\n- **Previous Month**: 108 tickets opened, 195 resolved.\n- **Trend**: The number of resolved tickets exceeds the number of opened tickets, indicating a positive trend in keeping up with the workload.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**:\n  - Sprint 18: 12/15 completed\n  - Sprint 19: 14/14 completed\n  - Sprint 20: 11/16 completed\n  - Sprint 21: 15/15 completed\n  - Sprint 22: 8/14 completed\n- **Observation**: Sprint 22 shows a significant drop in completion rate, indicating potential issues with capacity or planning.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 216.19 days.\n- **Insight**: The resolution time is considerably high, suggesting inefficiencies in the resolution process that need addressing.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.74\n- **Previous Month Burn Rate**: 0.55\n- **Observation**: The burn rate has increased, indicating a higher consumption of resources relative to the output. This could impact long-term sustainability.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Issues**:\n  - Major: 46\n  - Medium: 4\n- **Recent Major Issues**: 3 new major issues opened recently.\n- **Insight**: The majority of open issues are of major priority, which may require immediate attention to prevent escalation.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Capacity**: Recent sprints show fluctuations in completion rates, suggesting potential capacity imbalances.\n- **Workload**: The team is resolving more tickets than are being opened, but the high resolution time indicates potential bottlenecks.\n\n## Recommendations\n\n1. **Improve Resolution Processes**:\n   - Analyze the causes of high resolution times and implement process improvements.\n   - Consider additional training or resources to expedite ticket resolution.\n\n2. **Sprint Planning**:\n   - Reassess sprint planning to ensure realistic goals, especially in light of Sprint 22's performance.\n   - Consider capacity planning exercises to better align workload with team capacity.\n\n3. **Burn Rate Management**:\n   - Investigate the causes of the increased burn rate and implement strategies to optimize resource usage.\n   - Monitor resource allocation closely to maintain sustainability.\n\n4. **Priority Management**:\n   - Prioritize resolving major issues to prevent potential escalations.\n   - Implement a triage system to ensure critical issues are addressed promptly.\n\n5. **Capacity and Workload Balance**:\n   - Conduct regular reviews of team capacity and adjust workloads accordingly.\n   - Consider hiring or reallocating resources if capacity issues persist.\n\nBy addressing these areas, the team can improve process efficiency, reduce resolution times, and maintain a sustainable workload balance.",
+      "traffic": "## Web Traffic Analysis\n\n### 1. Overall Traffic Trends\n- **Trend**: The overall traffic shows a **13.2% increase**.\n- **Observation**: Despite the increase, daily views fluctuate significantly, with a notable drop on January 25th (31 views).\n\n### 2. Notable Patterns in User Behavior\n- **Session Duration**: The average session duration is **2:04**, with a decreasing trend of **-14.4%**.\n- **Bounce Rate**: Extremely low at **0.7%**, indicating that users are engaging with multiple pages per session.\n- **Returning Visitors**: **42.5%** of visitors are returning, suggesting a strong user base.\n\n### 3. Top Performing Pages\n- **Top Pages**:\n  - `/server/current/install/install-ports.html` (403 views, 2:47 avg time)\n  - `/cloud/management-api-reference/index.html` (265 views, 3:31 avg time)\n  - `/couchbase-lite/current/index.html` (394 views, 1:00 avg time)\n- **Reasons for Performance**:\n  - High relevance and utility of content.\n  - Possibly well-optimized for search engines or linked from popular sources.\n\n### 4. Areas for Improvement\n- **Bounce Rates & Session Duration**:\n  - Pages with lower average time (e.g., `/cloud/get-started/intro.html` with 0:53) could benefit from more engaging content or clearer calls to action.\n  - Pages with high views but low engagement time (e.g., `/couchbase-edge-server/current/product-notes/release-notes.html` with 0:05) should be reviewed for content depth and relevance.\n\n### 5. Anomalies or Concerning Patterns\n- **Traffic Drop**: The significant drop in views on January 25th (31 views) is an anomaly that needs investigation.\n- **Search Terms**: The search terms listed appear to be nonsensical, indicating potential issues with search functionality or spam.\n\n### Actionable Insights\n- **Content Enhancement**: Focus on improving content engagement for pages with low average time.\n- **Investigate Anomalies**: Analyze the cause of the traffic drop on January 25th and address any technical or content-related issues.\n- **Search Functionality**: Review and optimize the search functionality to ensure relevant results are being returned for user queries.\n- **Traffic Source Optimization**: With 72% of traffic being direct, explore opportunities to increase organic and referral traffic through SEO and partnerships.\n\n### Conclusion\nThe documentation site shows positive traffic growth, but there are opportunities to enhance user engagement and address potential issues with search functionality and traffic anomalies. Implementing these insights can improve the overall effectiveness of the documentation."
     }
   }
 }
