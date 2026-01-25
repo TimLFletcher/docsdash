@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-25T10:15:03.368Z",
+  "lastUpdated": "2026-01-25T10:20:00.861Z",
   "analytics": {
     "pageViews": {
       "total": 29294,
@@ -1147,7 +1147,7 @@
     ]
   },
   "trends": {
-    "lastUpdated": "2026-01-25T10:14:50.880Z",
+    "lastUpdated": "2026-01-25T10:19:35.732Z",
     "couchbase": {
       "keyword": "couchbase",
       "topQueries": [
@@ -1245,18 +1245,18 @@
         }
       ],
       "summary": {
-        "avgInterest": 55.94444444444444,
+        "avgInterest": 55.833333333333336,
         "peakInterest": 100,
-        "currentInterest": 23,
+        "currentInterest": 17,
         "trendDirection": "down"
       }
     },
-    "couchbaseServer": {
-      "keyword": "couchbase server",
+    "couchbaseDatabase": {
+      "keyword": "couchbase database",
       "topQueries": [],
       "risingQueries": [],
       "summary": {
-        "avgInterest": 2.2037037037037037,
+        "avgInterest": 5.351851851851852,
         "peakInterest": 100,
         "currentInterest": 0,
         "trendDirection": "down"
@@ -1309,13 +1309,13 @@
         "date": "1741478400",
         "formattedTime": "Mar 9 – 15, 2025",
         "couchbase": 89,
-        "couchbaseServer": 0
+        "couchbaseServer": 78
       },
       {
         "date": "1742083200",
         "formattedTime": "Mar 16 – 22, 2025",
         "couchbase": 78,
-        "couchbaseServer": 0
+        "couchbaseServer": 48
       },
       {
         "date": "1742688000",
@@ -1339,7 +1339,7 @@
         "date": "1744502400",
         "formattedTime": "Apr 13 – 19, 2025",
         "couchbase": 92,
-        "couchbaseServer": 0
+        "couchbaseServer": 100
       },
       {
         "date": "1745107200",
@@ -1435,7 +1435,7 @@
         "date": "1754179200",
         "formattedTime": "Aug 3 – 9, 2025",
         "couchbase": 68,
-        "couchbaseServer": 0
+        "couchbaseServer": 55
       },
       {
         "date": "1754784000",
@@ -1531,7 +1531,7 @@
         "date": "1763856000",
         "formattedTime": "Nov 23 – 29, 2025",
         "couchbase": 42,
-        "couchbaseServer": 100
+        "couchbaseServer": 0
       },
       {
         "date": "1764460800",
@@ -1573,25 +1573,25 @@
         "date": "1768089600",
         "formattedTime": "Jan 11 – 17, 2026",
         "couchbase": 31,
-        "couchbaseServer": 11
+        "couchbaseServer": 4
       },
       {
         "date": "1768694400",
         "formattedTime": "Jan 18 – 24, 2026",
         "couchbase": 30,
-        "couchbaseServer": 8
+        "couchbaseServer": 4
       },
       {
         "date": "1769299200",
         "formattedTime": "Jan 25 – 31, 2026",
-        "couchbase": 23,
+        "couchbase": 17,
         "couchbaseServer": 0
       }
     ],
     "summary": {
-      "avgInterest": 55.94444444444444,
+      "avgInterest": 55.833333333333336,
       "peakInterest": 100,
-      "currentInterest": 23,
+      "currentInterest": 17,
       "trendDirection": "down"
     }
   },
@@ -1599,9 +1599,9 @@
     "contentGaps": [],
     "performanceNotes": [],
     "aiInsights": {
-      "duplicates": "Based on the provided data, I have reviewed the recent Jira tickets for potential duplicates. Here are the findings:\n\n### Analysis of Potential Duplicates\n\n- **Group 1: No Clear Duplicates Found**\n  - **DOC-13935**: \"Add new capella-type for AI and app-services\"\n  - **DOC-13934**: \"Standardize RBAC Role String Syntax Documentation\"\n  - **DOC-13933**: \"Installing Couchbase Lite JavaScript — specify browser-only\"\n  - **DOC-13932**: \"Couchbase Operator - Prerequisites and System Requirements Updates\"\n  - **DOC-13930**: \"Feedback on Sync Gateway | Couchbase Docs\"\n\n### Reasoning\n- **Titles/Summaries**: Each ticket has a distinct focus area, with no overlapping themes or objectives.\n- **Issue Type and Priority**: All tickets are marked as \"Open\" with varying priorities, but this does not indicate duplication.\n- **Components/Labels**: The summaries suggest different components or documentation areas, implying separate issues.\n- **Underlying Problems**: No tickets describe the same underlying problem or goal.\n\n### Conclusion\n- **No Duplicates Identified**: Based on the criteria of similar titles, priorities, components, and underlying issues, there are no clear duplicates among the provided Jira tickets. Each ticket appears to address a unique documentation need or update.\n\nIf further analysis or additional data becomes available, a re-evaluation can be conducted to ensure comprehensive coverage.",
-      "traffic": "### 1. Overall Traffic Trends\n- **Trend**: The overall trend shows a **13.2% increase** in page views.\n- **Observation**: Despite the increase, recent daily views have shown a decline, particularly noticeable on January 25th with only 29 views.\n\n### 2. Notable Patterns in User Behavior\n- **Session Duration**: The average session duration is **2:04**, with a **14.4% decrease**. This suggests users are spending less time per session.\n- **Bounce Rate**: At **0.7%**, the bounce rate is exceptionally low, indicating users are engaging with multiple pages per visit.\n- **Returning Visitors**: **42.5%** of visitors are returning, which is a positive indicator of user retention.\n\n### 3. Top Performing Pages\n- **Top Pages**:\n  - `/server/current/install/install-ports.html` with 403 views and an average time of 2:47.\n  - `/couchbase-lite/current/index.html` with 394 views and an average time of 1:00.\n- **Reasons for Performance**:\n  - These pages likely address common user needs or frequently searched topics, such as installation guides and product overviews.\n\n### 4. Areas for Improvement\n- **Pages with Low Engagement**:\n  - `/couchbase-edge-server/current/product-notes/release-notes.html` has a high view count but a very low average time of 0:05, indicating users may not find the content useful or engaging.\n- **Session Duration**: Efforts should be made to increase the average session duration, possibly by enhancing content quality or linking to related articles to encourage further reading.\n\n### 5. Anomalies or Concerning Patterns\n- **Sharp Decline**: The drastic drop in page views on January 25th (29 views) is concerning and should be investigated for potential technical issues or external factors affecting traffic.\n- **Search Terms**: The top search terms appear to be nonsensical or potentially spammy, which could indicate issues with search functionality or data integrity.\n\n### Actionable Insights\n- **Content Optimization**: Focus on improving content for pages with high views but low engagement times, such as release notes.\n- **Investigate Traffic Drop**: Analyze the cause of the sharp decline in traffic on January 25th to prevent future occurrences.\n- **Enhance User Engagement**: Consider strategies to increase session duration, such as interactive content or improved navigation to related topics.\n- **Search Functionality**: Review and optimize search functionality to ensure relevant results and improve user experience.",
-      "jira": "## Insights\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 63 tickets opened, 85 resolved.\n- **Previous Month**: 108 tickets opened, 195 resolved.\n- **Trend**: The team is resolving more tickets than are being opened, indicating a positive trend in managing the backlog.\n\n### 2. Velocity Patterns and Sprint Health\n- **Sprints Overview**:\n  - Sprint 18: 12/15 completed\n  - Sprint 19: 14/14 completed\n  - Sprint 20: 11/16 completed\n  - Sprint 21: 15/15 completed\n  - Sprint 22: 8/14 completed\n- **Trend**: Consistent completion of planned work in most sprints, except Sprint 22, which shows a significant drop in completion rate.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 216.19 days.\n- **Insight**: The resolution time is quite high, indicating potential bottlenecks or inefficiencies in the process.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.74\n- **Previous Month Burn Rate**: 0.55\n- **Insight**: The burn rate has increased, suggesting a higher rate of resource consumption relative to work completed. This could impact long-term sustainability if not addressed.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Issues**:\n  - Major: 46\n  - Medium: 4\n- **Recent Major Issues**: 3 new major issues opened recently.\n- **Insight**: A significant number of major priority issues remain open, indicating potential risk areas that need prioritization.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Capacity**: The team is generally keeping up with ticket resolutions, but the high average resolution time and recent drop in sprint completion suggest potential capacity issues or misalignment in workload distribution.\n\n## Recommendations\n\n- **Improve Resolution Time**: Investigate the causes of high resolution times and implement strategies to streamline processes, such as better prioritization or resource allocation.\n- **Address Sprint 22 Issues**: Analyze the factors leading to the low completion rate in Sprint 22 and adjust planning or resource allocation accordingly.\n- **Monitor Burn Rate**: Keep a close eye on the increasing burn rate and adjust project scopes or timelines to ensure sustainable workload management.\n- **Prioritize Major Issues**: Focus on resolving major priority issues to mitigate risks and improve overall project health.\n- **Capacity Planning**: Reassess team capacity and workload distribution to ensure balanced and efficient task management across sprints. Consider additional resources if necessary."
+      "duplicates": "Based on the provided Jira ticket data, I have reviewed the recent issues for potential duplicates. Here are the findings:\n\n### No Duplicates Found\n\n- **DOC-13935**: \"Add new capella-type for AI and app-services\"\n- **DOC-13934**: \"Standardize RBAC Role String Syntax Documentation\"\n- **DOC-13933**: \"Installing Couchbase Lite JavaScript — specify browser-only\"\n- **DOC-13932**: \"Couchbase Operator - Prerequisites and System Requirements Updates\"\n- **DOC-13930**: \"Feedback on Sync Gateway | Couchbase Docs\"\n\n### Analysis\n\n- **Titles/Summaries**: Each ticket has a distinct title and summary that addresses different aspects of documentation or product features.\n- **Issue Type and Priority**: Although some tickets share the same priority level (Major), they do not overlap in content or purpose.\n- **Components/Labels**: The data does not provide specific components or labels, but based on summaries, the focus areas differ significantly.\n- **Underlying Problems**: No tickets appear to describe the same underlying problem or request.\n\n### Conclusion\n\nThere are no clear duplicates among the recent Jira tickets. Each ticket addresses a unique issue or documentation need. No action is required to consolidate or close any of the tickets based on duplication.",
+      "traffic": "## Web Traffic Analysis\n\n### 1. Overall Traffic Trends\n- **Trend**: Decreasing. The recent daily page views show a decline compared to the previous months.\n- **Recent Spike**: A notable increase on January 20, 2026, with 7055 views, followed by a sharp drop.\n\n### 2. Notable Patterns in User Behavior\n- **High Direct Traffic**: 72% of sessions are direct, indicating strong brand recognition or direct access to documentation.\n- **Returning Visitors**: 42.5% are returning, suggesting user engagement and reliance on documentation.\n- **Session Duration**: Average session duration decreased by 14.4%, indicating potential issues with content engagement or user satisfaction.\n\n### 3. Top Performing Pages\n- **/server/current/install/install-ports.html**: High views (403) and decent engagement time (2:47), likely due to essential setup information.\n- **/cloud/management-api-reference/index.html**: High engagement time (3:31), indicating detailed and useful content.\n- **/couchbase-lite/current/index.html**: High views (394), possibly due to its role as an entry point for Couchbase Lite users.\n\n### 4. Areas for Improvement\n- **Bounce Rate**: Extremely low at 0.7%, which may indicate a tracking issue or misconfiguration.\n- **Low Engagement Pages**: \n  - **/enterprise-analytics/current/install/system-requirements.html**: Very low avg time (0:18), suggesting content may not be engaging or necessary.\n  - **/couchbase-edge-server/current/product-notes/release-notes.html**: Low avg time (0:05), indicating potential for improvement in content detail or relevance.\n\n### 5. Anomalies or Concerning Patterns\n- **January 25, 2026**: Extremely low views (29), suggesting a potential data collection issue or significant drop in interest.\n- **Search Terms**: Unusual terms like \"sssieddqxsx\" suggest potential spam or bot activity affecting search analytics.\n\n## Actionable Insights\n- **Enhance Content Engagement**: Focus on improving content for pages with low average time, ensuring they provide value and engage users effectively.\n- **Investigate Bounce Rate**: Verify tracking setup to ensure accurate bounce rate measurement.\n- **Address Anomalies**: Investigate the cause of the low traffic on January 25, 2026, and the unusual search terms.\n- **Optimize for Organic Search**: Increase efforts to improve SEO, as organic search accounts for only 19% of traffic, indicating potential growth opportunities.\n\nBy addressing these areas, the documentation's effectiveness and user engagement can be significantly improved.",
+      "jira": "## Insights and Recommendations\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 63 tickets opened, 85 resolved.\n- **Previous Month**: 108 tickets opened, 195 resolved.\n- **Trend**: The team is resolving more tickets than are being opened, indicating a reduction in backlog.\n\n**Recommendation**: \n- Continue monitoring to ensure this trend is maintained. Consider analyzing the types of tickets resolved to ensure high-priority issues are prioritized.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**: \n  - Sprint 18: 12/15 completed\n  - Sprint 19: 14/14 completed\n  - Sprint 20: 11/16 completed\n  - Sprint 21: 15/15 completed\n  - Sprint 22: 8/14 completed\n- **Trend**: Velocity is inconsistent, with a notable drop in Sprint 22.\n\n**Recommendation**: \n- Investigate the causes of the drop in Sprint 22. Consider conducting a retrospective to identify blockers or resource constraints.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 216.19 days\n- **Trend**: No comparative data provided, but the high average suggests room for improvement.\n\n**Recommendation**: \n- Implement strategies to reduce resolution time, such as prioritizing older tickets or increasing team capacity.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.74\n- **Previous Month Burn Rate**: 0.55\n- **Trend**: Increase in burn rate, indicating potential over-utilization of resources.\n\n**Recommendation**: \n- Evaluate resource allocation and workload distribution to ensure sustainability. Consider adjusting sprint goals to align with team capacity.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Issues by Priority**:\n  - Major: 46\n  - Medium: 4\n- **Recent Major Issues**: 3 new major issues opened recently.\n\n**Recommendation**: \n- Focus on resolving major priority issues to prevent escalation. Regularly review and adjust priorities as needed.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Observation**: Inconsistent sprint completion and increased burn rate suggest potential capacity issues.\n\n**Recommendation**: \n- Conduct a capacity planning session to better align workload with team capacity. Consider hiring or redistributing tasks if necessary.\n\n### General Recommendations for Process Efficiency\n- **Retrospectives**: Conduct regular retrospectives to identify process inefficiencies and areas for improvement.\n- **Automation**: Explore automation tools to streamline repetitive tasks and reduce manual workload.\n- **Training**: Provide training sessions to improve team skills and efficiency, particularly in areas with high resolution times.\n- **Communication**: Enhance communication channels to ensure clear understanding of priorities and expectations."
     }
   }
 }
