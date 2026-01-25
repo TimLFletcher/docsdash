@@ -20,6 +20,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { fetchGoogleAnalyticsData } from './fetch-ga.js'
 import { fetchJiraData } from './fetch-jira.js'
+import { fetchTrendsData } from './fetch-trends.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -150,6 +151,13 @@ async function main() {
     errors.push('Failed to fetch Jira data')
   }
 
+  // Fetch Google Trends data (optional - won't fail if it errors)
+  console.log('\n')
+  const trendsData = await fetchTrendsData()
+  if (!trendsData) {
+    console.warn('⚠️  Google Trends data not available')
+  }
+
   // If both failed, exit with error
   if (!analyticsData && !jiraData) {
     console.error('\n❌ Failed to fetch any data:')
@@ -176,6 +184,7 @@ async function main() {
     lastUpdated: new Date().toISOString(),
     analytics: analyticsData || null,
     jira: jiraData || null,
+    trends: trendsData, // Can be null
     insights: insights,
     errors: errors.length > 0 ? errors : undefined,
   }

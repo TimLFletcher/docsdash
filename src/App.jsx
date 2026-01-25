@@ -23,6 +23,10 @@ import { PathComparisonTable } from './components/charts/PathComparisonTable'
 import { SDKComparisonTable } from './components/charts/SDKComparisonTable'
 import { LLMInsights } from './components/LLMInsights'
 import { PasswordProtection } from './components/PasswordProtection'
+import { SEOSummary } from './components/charts/SEOSummary'
+import { TrendsChart } from './components/charts/TrendsChart'
+import { QueriesTable } from './components/charts/QueriesTable'
+import { RegionalInterestChart } from './components/charts/RegionalInterestChart'
 
  const DEFAULT_ANALYTICS = {
    pageViews: {
@@ -71,6 +75,21 @@ import { PasswordProtection } from './components/PasswordProtection'
    avgResolutionDaysAV: 0,
    previousMonthAvgResolutionDaysAV: 0,
    topLabels: [],
+ }
+
+ const DEFAULT_TRENDS = {
+   keyword: 'couchbase',
+   lastUpdated: new Date().toISOString(),
+   interestOverTime: [],
+   topQueries: [],
+   risingQueries: [],
+   regionalInterest: [],
+   summary: {
+     avgInterest: 0,
+     peakInterest: 0,
+     currentInterest: 0,
+     trendDirection: 'stable'
+   }
  }
 
  const DEFAULT_INSIGHTS = {
@@ -152,6 +171,7 @@ function App() {
 
   const analytics = data.analytics || DEFAULT_ANALYTICS
   const jira = data.jira || DEFAULT_JIRA
+  const trends = data.trends // Can be null
   const insights = data.insights || DEFAULT_INSIGHTS
   const lastUpdated = data.lastUpdated || new Date().toISOString()
 
@@ -159,6 +179,7 @@ function App() {
     { id: 'insights', label: 'Insights' },
     { id: 'analytics', label: 'Analytics' },
     { id: 'jira', label: 'Jira' },
+    { id: 'seo', label: 'SEO' },
     { id: 'docsbot', label: 'DocsBot' },
     { id: 'github', label: 'GitHub' },
     { id: 'search', label: 'Search' },
@@ -254,6 +275,58 @@ function App() {
 
             {/* LLM-Powered Insights */}
             <LLMInsights dashboardData={data} />
+          </div>
+        )}
+
+        {/* SEO Tab */}
+        {activeTab === 'seo' && (
+          <div className="space-y-8">
+            {trends ? (
+              <>
+                {/* SEO Summary Metrics */}
+                <SEOSummary data={trends} />
+
+                {/* Trends and Queries Row */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <TrendsChart data={trends.interestOverTime} />
+                  <RegionalInterestChart data={trends.regionalInterest} />
+                </div>
+
+                {/* Queries Tables */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <QueriesTable 
+                    title="Top Queries" 
+                    data={trends.topQueries} 
+                    type="top" 
+                  />
+                  <QueriesTable 
+                    title="Rising Queries" 
+                    data={trends.risingQueries} 
+                    type="rising" 
+                  />
+                </div>
+
+                {/* Last Updated */}
+                <div className="text-center text-xs text-slate-500">
+                  Google Trends data for "{trends.keyword}" updated on {new Date(trends.lastUpdated).toLocaleString()}
+                </div>
+              </>
+            ) : (
+              <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
+                <div className="text-red-600 mb-4">
+                  <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-medium text-slate-900 mb-2">SEO Data Unavailable</h3>
+                <p className="text-sm text-slate-500 mb-4">
+                  Google Trends data could not be retrieved. This may be due to API limitations or network issues.
+                </p>
+                <p className="text-xs text-slate-400">
+                  Check the GitHub Actions logs for more details.
+                </p>
+              </div>
+            )}
           </div>
         )}
 
