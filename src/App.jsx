@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { 
-  BookOpen, 
-  Eye, 
-  Users, 
-  Clock, 
-  ArrowUpRight,
-  RefreshCw,
-  AlertTriangle,
-  CheckCircle,
-  TrendingUp
-} from 'lucide-react'
+import { Clock, Users, FileText, AlertTriangle, CheckCircle, TrendingUp, BookOpen } from 'lucide-react'
 
 // Components
 import { MetricCard } from './components/MetricCard'
@@ -105,15 +95,10 @@ function App() {
   const [data, setData] = useState(null)
   const [activeTab, setActiveTab] = useState('insights')
   const [isLoading, setIsLoading] = useState(true)
-  const [isRefreshing, setIsRefreshing] = useState(false)
   const [error, setError] = useState(null)
 
-  const loadData = async (showRefreshing = false) => {
-    if (showRefreshing) {
-      setIsRefreshing(true)
-    } else {
-      setIsLoading(true)
-    }
+  const loadData = async () => {
+    setIsLoading(true)
     setError(null)
 
     try {
@@ -131,7 +116,6 @@ function App() {
       setData(null)
     } finally {
       setIsLoading(false)
-      setIsRefreshing(false)
     }
   }
 
@@ -139,15 +123,11 @@ function App() {
     loadData()
   }, [])
 
-  const handleRefresh = () => {
-    loadData(true)
-  }
-
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="text-center">
-          <RefreshCw className="w-8 h-8 text-primary-600 animate-spin mx-auto mb-4" />
+          <Clock className="w-8 h-8 text-primary-600 animate-pulse mx-auto mb-4" />
           <p className="text-slate-600">Loading dashboard...</p>
         </div>
       </div>
@@ -158,16 +138,12 @@ function App() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="text-center max-w-md mx-auto p-6">
-          <AlertTriangle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <AlertTriangle className="w-12 h-12 text-orange-500 mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-slate-900 mb-2">Failed to Load Dashboard</h2>
           <p className="text-slate-600 mb-4">{error || 'No data available'}</p>
-          <button
-            onClick={handleRefresh}
-            className="flex items-center gap-2 px-4 py-2 mx-auto text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
-          >
-            <RefreshCw className="w-4 h-4" />
-            Try Again
-          </button>
+          <p className="text-sm text-slate-500">
+            Data refreshes automatically every 6 hours
+          </p>
         </div>
       </div>
     )
@@ -206,18 +182,14 @@ function App() {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-sm text-slate-500">
-                  Last updated: {new Date(lastUpdated).toLocaleString()}
-                </span>
-                <button
-                  onClick={handleRefresh}
-                  disabled={isRefreshing}
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 hover:border-slate-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  title="Refresh data"
-                >
-                  <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-                  {isRefreshing ? 'Refreshing...' : 'Refresh'}
-                </button>
+                <div className="text-right">
+                  <div className="text-sm font-medium text-slate-700">
+                    Auto-updates every 6 hours
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    Last updated: {new Date(lastUpdated).toLocaleString()}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -388,14 +360,6 @@ function App() {
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
             <h3 className="text-lg font-semibold text-slate-900 mb-2">GitHub</h3>
             <p className="text-sm text-slate-500">Coming soon - Repository insights and activity</p>
-          </div>
-        )}
-
-        {/* DocsBot Tab - Placeholder */}
-        {activeTab === 'docsbot' && (
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
-            <h3 className="text-lg font-semibold text-slate-900 mb-2">DocsBot</h3>
-            <p className="text-sm text-slate-500">Coming soon - AI-powered documentation assistant</p>
           </div>
         )}
 
