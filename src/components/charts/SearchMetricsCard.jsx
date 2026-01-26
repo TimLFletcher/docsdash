@@ -1,5 +1,5 @@
 import React from 'react'
-import { Search, TrendingUp, AlertTriangle, MousePointer } from 'lucide-react'
+import { Search, TrendingUp, AlertTriangle, BarChart3 } from 'lucide-react'
 
 export function SearchMetricsCard({ algoliaData }) {
   if (!algoliaData) {
@@ -32,12 +32,12 @@ export function SearchMetricsCard({ algoliaData }) {
       <div className="bg-white rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-gray-600">Click-Through Rate</p>
+            <p className="text-sm font-medium text-gray-600">Avg Searches/Day</p>
             <p className="text-2xl font-bold text-gray-900">
-              {(searchMetrics.clickThroughRate * 100).toFixed(1)}%
+              {searchMetrics.avgSearchesPerDay.toLocaleString()}
             </p>
           </div>
-          <MousePointer className="h-8 w-8 text-green-500" />
+          <BarChart3 className="h-8 w-8 text-green-500" />
         </div>
       </div>
 
@@ -56,9 +56,9 @@ export function SearchMetricsCard({ algoliaData }) {
       <div className="bg-white rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-gray-600">Avg Results/Search</p>
+            <p className="text-sm font-medium text-gray-600">Peak Day</p>
             <p className="text-2xl font-bold text-gray-900">
-              {searchMetrics.avgResultsPerSearch.toFixed(1)}
+              {searchMetrics.peakDay.toLocaleString()}
             </p>
           </div>
           <TrendingUp className="h-8 w-8 text-purple-500" />

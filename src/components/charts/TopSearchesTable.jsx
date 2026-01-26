@@ -1,5 +1,5 @@
 import React from 'react'
-import { Search, TrendingUp, TrendingDown } from 'lucide-react'
+import { Search, TrendingUp, TrendingDown, FileText } from 'lucide-react'
 
 export function TopSearchesTable({ algoliaData }) {
   if (!algoliaData || !algoliaData.topSearches || algoliaData.topSearches.length === 0) {
@@ -39,10 +39,10 @@ export function TopSearchesTable({ algoliaData }) {
                 Searches
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Avg Clicks
+                Results Found
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                CTR
+                Results/Search
               </th>
             </tr>
           </thead>
@@ -62,13 +62,13 @@ export function TopSearchesTable({ algoliaData }) {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <span className="text-sm text-gray-900">
-                      {search.avgClicks.toFixed(1)}
+                      {search.avgResults.toLocaleString()}
                     </span>
-                    {search.avgClicks > 2 && (
-                      <TrendingUp className="h-4 w-4 text-green-500 ml-2" />
+                    {search.avgResults > 5000 && (
+                      <FileText className="h-4 w-4 text-green-500 ml-2" />
                     )}
-                    {search.avgClicks < 1 && (
-                      <TrendingDown className="h-4 w-4 text-red-500 ml-2" />
+                    {search.avgResults < 100 && (
+                      <TrendingDown className="h-4 w-4 text-orange-500 ml-2" />
                     )}
                   </div>
                 </td>
@@ -77,11 +77,13 @@ export function TopSearchesTable({ algoliaData }) {
                     <div className="flex-1 bg-gray-200 rounded-full h-2 mr-2">
                       <div
                         className="bg-blue-500 h-2 rounded-full"
-                        style={{ width: `${Math.min(search.clickThroughRate * 100, 100)}%` }}
+                        style={{ 
+                          width: `${Math.min((search.resultsPerSearch / 100) * 100, 100)}%` 
+                        }}
                       ></div>
                     </div>
                     <span className="text-sm text-gray-900">
-                      {(search.clickThroughRate * 100).toFixed(1)}%
+                      {search.resultsPerSearch}
                     </span>
                   </div>
                 </td>

@@ -100,8 +100,8 @@ async function fetchTopSearches(indexName, limit = 20) {
     return data.searches?.map(search => ({
       query: search.search,
       count: search.count,
-      avgClicks: search.avgClicks || 0,
-      clickThroughRate: search.clickThroughRate || 0
+      avgResults: search.nbHits || 0, // Number of results found
+      resultsPerSearch: search.nbHits ? (search.nbHits / search.count).toFixed(1) : 0
     })) || []
   } catch (error) {
     console.error('   ⚠️  Error fetching top searches:', error.message)
@@ -144,17 +144,17 @@ async function fetchSearchMetrics(indexName) {
 
     return {
       totalSearches: data.count || 0,
-      avgClicksPerSearch: data.avgClicksPerSearch || 0,
-      clickThroughRate: data.clickThroughRate || 0,
-      avgResultsPerSearch: data.avgResultsPerSearch || 0
+      avgSearchesPerDay: data.dates?.length > 0 ? Math.round(data.count / data.dates.length) : 0,
+      peakDay: data.dates?.length > 0 ? Math.max(...data.dates.map(d => d.count)) : 0,
+      lowestDay: data.dates?.length > 0 ? Math.min(...data.dates.map(d => d.count)) : 0
     }
   } catch (error) {
     console.error('   ⚠️  Error fetching search metrics:', error.message)
     return {
       totalSearches: 0,
-      avgClicksPerSearch: 0,
-      clickThroughRate: 0,
-      avgResultsPerSearch: 0
+      avgSearchesPerDay: 0,
+      peakDay: 0,
+      lowestDay: 0
     }
   }
 }
@@ -164,33 +164,17 @@ async function fetchSearchMetrics(indexName) {
  */
 async function fetchSearchTrends(indexName) {
   try {
-    // Try without granularity first, as it might not be supported
     const data = await fetchAnalyticsData('/2/searches/count', {
       index: indexName,
       startDate: '2025-12-27', // 30 days ago from today (2026-01-26)
       endDate: '2026-01-25'    // Yesterday
     })
 
-    // If we get a single count, create a simple trend
-    if (data.count !== undefined) {
-      // Create a simple trend with the total count distributed over the period
-      const days = 30
-      const avgPerDay = Math.floor(data.count / days)
-      const trends = []
-      
-      for (let i = 0; i < days; i++) {
-        const date = new Date()
-        date.setDate(date.getDate() - (days - i))
-        trends.push({
-          date: date.toISOString().split('T')[0],
-          searches: avgPerDay + Math.floor(Math.random() * 10) // Add some variation
-        })
-      }
-      
-      return trends
-    }
-
-    return []
+    // Use the actual daily data from the API
+    return data.dates?.map(item => ({
+      date: item.date,
+      searches: item.count
+    })) || []
   } catch (error) {
     console.error('   ⚠️  Error fetching search trends:', error.message)
     return []
