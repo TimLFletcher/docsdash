@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Clock, Users, FileText, AlertTriangle, CheckCircle, TrendingUp, BookOpen, Eye } from 'lucide-react'
+import { Clock, Users, FileText, AlertTriangle, CheckCircle, TrendingUp, BookOpen, Eye, ArrowUpRight } from 'lucide-react'
 
 // Components
 import { MetricCard } from './components/MetricCard'
