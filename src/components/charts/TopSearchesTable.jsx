@@ -27,6 +27,9 @@ export function TopSearchesTable({ algoliaData }) {
           <Search className="h-5 w-5 mr-2 text-blue-500" />
           Top Search Queries
         </h3>
+        <p className="text-sm text-gray-600 mt-1">
+          Top 20 most popular searches (30 days)
+        </p>
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">

@@ -31,7 +31,6 @@ import { SearchMetricsCard } from './components/charts/SearchMetricsCard'
 import { TopSearchesTable } from './components/charts/TopSearchesTable'
 import { NoResultsTable } from './components/charts/NoResultsTable'
 import { SearchTrendsChart } from './components/charts/SearchTrendsChart'
-import { CategoryClicksTable } from './components/charts/CategoryClicksTable'
 
  const DEFAULT_ANALYTICS = {
    pageViews: {
@@ -416,9 +415,6 @@ function App() {
             
             {/* Search Trends */}
             <SearchTrendsChart algoliaData={data.algolia} />
-            
-            {/* Category Clicks */}
-            <CategoryClicksTable algoliaData={data.algolia} />
           </div>
         )}
 

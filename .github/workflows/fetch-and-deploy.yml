@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Fetch data from GA and Jira
+      - name: Fetch data
         env:
           # Google Analytics
           GA_PROPERTY_ID: ${{ secrets.GA_PROPERTY_ID }}

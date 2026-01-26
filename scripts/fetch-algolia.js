@@ -28,33 +28,6 @@ const hasAlgoliaCredentials = process.env.ALGOLIA_APP_ID &&
                               process.env.ALGOLIA_ANALYTICS_API_KEY && 
                               process.env.ALGOLIA_INDEX_NAME
 
-// Site path categories matching GA metrics
-const siteCategories = [
-  { name: 'Cloud', path: '/cloud/' },
-  { name: 'Analytics', path: '/analytics/' },
-  { name: 'AI', path: '/ai/' },
-  { name: 'Server', path: '/server/' },
-  { name: 'Operator', path: '/operator/' },
-  { name: 'Enterprise Analytics', path: '/enterprise-analytics/' },
-  { name: 'Couchbase Lite', path: '/couchbase-lite/' },
-  { name: 'Sync Gateway', path: '/sync-gateway/' },
-  { name: 'Couchbase Edge Server', path: '/couchbase-edge-server/' },
-  { name: '.NET SDK', path: '/dotnet-sdk/' },
-  { name: 'EF Core Provider', path: '/efcore-provider/' },
-  { name: 'C SDK', path: '/c-sdk/' },
-  { name: 'C++ SDK', path: '/cxx-sdk/' },
-  { name: 'Go SDK', path: '/go-sdk/' },
-  { name: 'Java SDK', path: '/java-sdk/' },
-  { name: 'Quarkus Extension', path: '/quarkus-extension/' },
-  { name: 'Kotlin SDK', path: '/kotlin-sdk/' },
-  { name: 'Node.js SDK', path: '/nodejs-sdk/' },
-  { name: 'PHP SDK', path: '/php-sdk/' },
-  { name: 'Python SDK', path: '/python-sdk/' },
-  { name: 'Ruby SDK', path: '/ruby-sdk/' },
-  { name: 'Rust SDK', path: '/rust-sdk/' },
-  { name: 'Scala SDK', path: '/scala-sdk/' }
-]
-
 /**
  * Helper function to make authenticated requests to Algolia Analytics API
  */
@@ -142,9 +115,13 @@ async function fetchSearchMetrics(indexName) {
       endDate: '2026-01-25'    // Yesterday
     })
 
+    const totalSearches = data.count || 0
+    const daysWithData = data.dates?.length || 0
+    const avgSearchesPerDay = daysWithData > 0 ? Math.round(totalSearches / daysWithData) : 0
+
     return {
-      totalSearches: data.count || 0,
-      avgSearchesPerDay: data.dates?.length > 0 ? Math.round(data.count / data.dates.length) : 0,
+      totalSearches,
+      avgSearchesPerDay,
       peakDay: data.dates?.length > 0 ? Math.max(...data.dates.map(d => d.count)) : 0,
       lowestDay: data.dates?.length > 0 ? Math.min(...data.dates.map(d => d.count)) : 0
     }
@@ -182,37 +159,6 @@ async function fetchSearchTrends(indexName) {
 }
 
 /**
- * Fetch click counts by site category (simplified approach)
- */
-async function fetchClicksByCategory(indexName) {
-  const categoryClicks = []
-
-  for (const category of siteCategories) {
-    try {
-      // Since Algolia Analytics API doesn't directly support filtering by result URL,
-      // we'll use a placeholder approach that shows the category structure
-      // In a real implementation, this would require custom tracking or search API analysis
-      
-      // For now, return placeholder data that can be enhanced later
-      categoryClicks.push({
-        category: category.name,
-        path: category.path,
-        clicks: 0 // Placeholder - would need custom implementation
-      })
-    } catch (error) {
-      console.error(`   ⚠️  Error fetching clicks for ${category.name}:`, error.message)
-      categoryClicks.push({
-        category: category.name,
-        path: category.path,
-        clicks: 0
-      })
-    }
-  }
-
-  return categoryClicks
-}
-
-/**
  * Main function to fetch all Algolia analytics data
  */
 export async function fetchAlgoliaData() {
@@ -231,14 +177,12 @@ export async function fetchAlgoliaData() {
       topSearches,
       noResultSearches,
       searchMetrics,
-      searchTrends,
-      categoryClicks
+      searchTrends
     ] = await Promise.all([
       fetchTopSearches(indexName),
       fetchNoResultSearches(indexName),
       fetchSearchMetrics(indexName),
-      fetchSearchTrends(indexName),
-      fetchClicksByCategory(indexName)
+      fetchSearchTrends(indexName)
     ])
 
     // Calculate no results percentage
@@ -251,7 +195,6 @@ export async function fetchAlgoliaData() {
     console.log(`   ✅ Fetched ${noResultSearches.length} no-result searches`)
     console.log(`   ✅ Fetched search metrics: ${searchMetrics.totalSearches} total searches`)
     console.log(`   ✅ Fetched ${searchTrends.length} days of trend data`)
-    console.log(`   ✅ Fetched click data for ${categoryClicks.length} categories`)
     console.log(`   📊 No results rate: ${noResultsPercentage}%`)
 
     return {
@@ -259,7 +202,6 @@ export async function fetchAlgoliaData() {
       noResultSearches,
       searchMetrics,
       searchTrends,
-      categoryClicks,
       noResultsPercentage: parseFloat(noResultsPercentage),
       lastUpdated: new Date().toISOString()
     }
