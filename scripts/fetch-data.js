@@ -21,6 +21,7 @@ import { fileURLToPath } from 'url'
 import { fetchGoogleAnalyticsData } from './fetch-ga.js'
 import { fetchJiraData } from './fetch-jira.js'
 import { fetchTrendsData } from './fetch-trends.js'
+import { fetchAlgoliaData } from './fetch-algolia.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -158,8 +159,15 @@ async function main() {
     console.warn('⚠️  Google Trends data not available')
   }
 
-  // If both failed, exit with error (but allow trends-only data)
-  if (!analyticsData && !jiraData && !trendsData) {
+  // Fetch Algolia search analytics data (optional - won't fail if it errors)
+  console.log('\n')
+  const algoliaData = await fetchAlgoliaData()
+  if (!algoliaData) {
+    console.warn('⚠️  Algolia search data not available')
+  }
+
+  // If all failed, exit with error (but allow trends-only data)
+  if (!analyticsData && !jiraData && !trendsData && !algoliaData) {
     console.error('\n❌ Failed to fetch any data:')
     errors.forEach(e => console.error(`   - ${e}`))
     process.exit(1)
@@ -185,6 +193,7 @@ async function main() {
     analytics: analyticsData || null,
     jira: jiraData || null,
     trends: trendsData, // Can be null
+    algolia: algoliaData, // Can be null
     insights: insights,
     errors: errors.length > 0 ? errors : undefined,
   }

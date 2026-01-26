@@ -27,6 +27,11 @@ import { SEOSummary } from './components/charts/SEOSummary'
 import { TrendsChart } from './components/charts/TrendsChart'
 import { QueriesTable } from './components/charts/QueriesTable'
 import { RegionalInterestChart } from './components/charts/RegionalInterestChart'
+import { SearchMetricsCard } from './components/charts/SearchMetricsCard'
+import { TopSearchesTable } from './components/charts/TopSearchesTable'
+import { NoResultsTable } from './components/charts/NoResultsTable'
+import { SearchTrendsChart } from './components/charts/SearchTrendsChart'
+import { CategoryClicksTable } from './components/charts/CategoryClicksTable'
 
  const DEFAULT_ANALYTICS = {
    pageViews: {
@@ -181,8 +186,8 @@ function App() {
     { id: 'jira', label: 'Jira' },
     { id: 'seo', label: 'SEO' },
     { id: 'docsbot', label: 'DocsBot' },
-    { id: 'github', label: 'GitHub' },
     { id: 'search', label: 'Search' },
+    { id: 'github', label: 'GitHub' },
   ]
 
   return (
@@ -387,11 +392,33 @@ function App() {
           </div>
         )}
 
-        {/* Search Tab - Placeholder */}
-        {activeTab === 'search' && (
+        {/* DocsBot Tab - Placeholder */}
+        {activeTab === 'docsbot' && (
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 text-center">
-            <h3 className="text-lg font-semibold text-slate-900 mb-2">Search</h3>
-            <p className="text-sm text-slate-500">Coming soon - Advanced search and content discovery</p>
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">DocsBot</h3>
+            <p className="text-sm text-slate-500">Coming soon - AI-powered documentation assistant</p>
+          </div>
+        )}
+
+        {/* Search Tab */}
+        {activeTab === 'search' && (
+          <div className="space-y-8">
+            {/* Search Metrics */}
+            <SearchMetricsCard algoliaData={data.algolia} />
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Top Searches */}
+              <TopSearchesTable algoliaData={data.algolia} />
+              
+              {/* No Results Searches */}
+              <NoResultsTable algoliaData={data.algolia} />
+            </div>
+            
+            {/* Search Trends */}
+            <SearchTrendsChart algoliaData={data.algolia} />
+            
+            {/* Category Clicks */}
+            <CategoryClicksTable algoliaData={data.algolia} />
           </div>
         )}
 
