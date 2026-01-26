@@ -50,10 +50,10 @@ export async function fetchGoogleAnalyticsData() {
     
     const propertyId = process.env.GA_PROPERTY_ID
 
-    // Fetch page views for last 7 days (filtered to docs.couchbase.com)
+    // Fetch page views for last 30 days (filtered to docs.couchbase.com)
     const [pageViewsResponse] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
-      dateRanges: [{ startDate: '7daysAgo', endDate: 'today' }],
+      dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
       dimensions: [{ name: 'date' }],
       metrics: [{ name: 'screenPageViews' }],
       dimensionFilter: {
@@ -119,7 +119,12 @@ export async function fetchGoogleAnalyticsData() {
     ]
 
     const topPagesByPath = await Promise.all(
-      documentationPaths.map(async (path) => {
+      documentationPaths.map(async (path, index) => {
+        // Add delay to avoid rate limiting (wait 100ms between requests)
+        if (index > 0) {
+          await new Promise(resolve => setTimeout(resolve, 100))
+        }
+        
         try {
           const [pathPagesResponse] = await analyticsDataClient.runReport({
             property: `properties/${propertyId}`,
@@ -241,7 +246,12 @@ export async function fetchGoogleAnalyticsData() {
 
     // Fetch metrics for each documentation path (reuse paths array)
     const pathMetrics = await Promise.all(
-      documentationPaths.map(async (path) => {
+      documentationPaths.map(async (path, index) => {
+        // Add delay to avoid rate limiting (wait 150ms between path requests)
+        if (index > 0) {
+          await new Promise(resolve => setTimeout(resolve, 150))
+        }
+        
         try {
           // Fetch page views for this path
           const [pathViewsResponse] = await analyticsDataClient.runReport({
@@ -268,6 +278,9 @@ export async function fetchGoogleAnalyticsData() {
               },
             },
           })
+
+          // Add small delay between requests for the same path
+          await new Promise(resolve => setTimeout(resolve, 50))
 
           // Fetch session metrics for this path
           const [pathSessionResponse] = await analyticsDataClient.runReport({
@@ -297,6 +310,9 @@ export async function fetchGoogleAnalyticsData() {
               },
             },
           })
+
+          // Add small delay between requests for the same path
+          await new Promise(resolve => setTimeout(resolve, 50))
 
           // Fetch traffic sources for this path
           const [pathTrafficResponse] = await analyticsDataClient.runReport({
@@ -392,7 +408,12 @@ export async function fetchGoogleAnalyticsData() {
 
     // Fetch metrics for each SDK path
     const sdkMetrics = await Promise.all(
-      sdkPaths.map(async (path) => {
+      sdkPaths.map(async (path, index) => {
+        // Add delay to avoid rate limiting (wait 200ms between SDK requests)
+        if (index > 0) {
+          await new Promise(resolve => setTimeout(resolve, 200))
+        }
+        
         try {
           // Fetch page views for this SDK path
           const [pathViewsResponse] = await analyticsDataClient.runReport({
@@ -407,6 +428,9 @@ export async function fetchGoogleAnalyticsData() {
               },
             },
           })
+
+          // Add small delay between requests for the same SDK
+          await new Promise(resolve => setTimeout(resolve, 50))
 
           // Fetch session metrics for this SDK path
           const [pathSessionResponse] = await analyticsDataClient.runReport({
@@ -424,6 +448,9 @@ export async function fetchGoogleAnalyticsData() {
               },
             },
           })
+
+          // Add small delay between requests for the same SDK
+          await new Promise(resolve => setTimeout(resolve, 50))
 
           // Fetch traffic sources for this SDK path
           const [pathTrafficResponse] = await analyticsDataClient.runReport({
@@ -488,14 +515,30 @@ export async function fetchGoogleAnalyticsData() {
       views: parseInt(row.metricValues[0].value),
     }))
 
-    const totalViews = daily.reduce((sum, d) => sum + d.views, 0)
     const currentPeriodViews = parseInt(userMetricsResponse.rows[0].metricValues[4].value)
+    const currentPeriodUsers = parseInt(userMetricsResponse.rows[0].metricValues[0].value)
     const previousPeriodViews = userMetricsResponse.rows[1] 
       ? parseInt(userMetricsResponse.rows[1].metricValues[4].value)
       : currentPeriodViews
     const trend = previousPeriodViews > 0 
       ? ((currentPeriodViews - previousPeriodViews) / previousPeriodViews * 100).toFixed(1)
       : 0
+
+    const totalViews = currentPeriodViews // Use consistent data from userMetricsResponse
+
+    // Debug: Log the metrics to verify consistency
+    console.log(`   📊 GA Metrics (30 days):`)
+    console.log(`      Page Views: ${totalViews.toLocaleString()}`)
+    console.log(`      Unique Visitors: ${currentPeriodUsers.toLocaleString()}`)
+    console.log(`      Views per Visitor: ${(totalViews / currentPeriodUsers).toFixed(2)}`)
+    console.log(`      Date Range: 30daysAgo to today`)
+    
+    // Sanity check: visitors should not exceed page views
+    if (currentPeriodUsers > totalViews) {
+      console.log(`   ⚠️  Warning: More visitors (${currentPeriodUsers.toLocaleString()}) than page views (${totalViews.toLocaleString()})`)
+    } else {
+      console.log(`   ✅ Data consistency check passed`)
+    }
 
     return {
       pageViews: {
