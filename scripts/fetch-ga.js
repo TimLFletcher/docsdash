@@ -10,9 +10,27 @@
  * Required Environment Variables:
  * - GA_PROPERTY_ID: Google Analytics 4 property ID
  * - GOOGLE_SERVICE_ACCOUNT_KEY: JSON key for GCP service account
+ * 
+ * Local Development:
+ * Create .env.local file with your credentials (won't be committed to git)
  */
 
-// Check if we're in a CI environment with real credentials
+// Load environment variables from .env.local for local development
+import { config } from 'dotenv'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+// Try to load .env.local first (for local development)
+try {
+  config({ path: join(__dirname, '../.env.local') })
+} catch (error) {
+  // .env.local doesn't exist, will use environment variables (GitHub Actions)
+}
+
+// Check if we have credentials (either from .env.local or environment)
 const hasGACredentials = process.env.GA_PROPERTY_ID && process.env.GOOGLE_SERVICE_ACCOUNT_KEY
 
 export async function fetchGoogleAnalyticsData() {

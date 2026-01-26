@@ -184,18 +184,6 @@ Add the new data to `src/data/sample-data.json` and update `scripts/fetch-data.j
 | `RecentIssuesTable` | Table with status badges |
 | `TrafficSourcesChart` | Pie chart |
 
-## AI Assistant
-
-The AI assistant uses OpenAI's API to provide insights. Users provide their own API key, which is stored in their browser's localStorage (never sent to your servers).
-
-### Customizing the AI Context
-
-Edit the `buildContext()` function in `src/components/AIAssistant.jsx` to change what data is sent to the AI.
-
-### Using a Different LLM
-
-Replace the OpenAI API call with any other provider (Anthropic, Google, etc.) by modifying the `sendMessage()` function.
-
 ## Data Refresh Schedule
 
 The GitHub Action runs every 6 hours by default. To change this, edit `.github/workflows/fetch-and-deploy.yml`:
@@ -221,7 +209,6 @@ docsdash/
 ├── src/
 │   ├── components/
 │   │   ├── charts/                 # Chart components
-│   │   ├── AIAssistant.jsx         # LLM integration
 │   │   ├── ChartCard.jsx           # Chart wrapper
 │   │   └── MetricCard.jsx          # Metric display
 │   ├── data/

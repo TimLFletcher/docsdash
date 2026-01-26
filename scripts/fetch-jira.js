@@ -1,5 +1,5 @@
 /**
- * Fetch Jira Data
+ * Fetch JIRA Data
  * 
  * Uses the Jira REST API to fetch:
  * - Open issues by priority
@@ -13,9 +13,27 @@
  * - JIRA_EMAIL: Jira account email
  * - JIRA_API_TOKEN: Jira API token
  * - JIRA_PROJECT_KEY: Jira project key (e.g., DOC)
+ * 
+ * Local Development:
+ * Create .env.local file with your credentials (won't be committed to git)
  */
 
-// Check if we're in a CI environment with real credentials
+// Load environment variables from .env.local for local development
+import { config } from 'dotenv'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+// Try to load .env.local first (for local development)
+try {
+  config({ path: join(__dirname, '.env.local') })
+} catch (error) {
+  // .env.local doesn't exist, will use environment variables (GitHub Actions)
+}
+
+// Check if we have credentials (either from .env.local or environment)
 const hasJiraCredentials = process.env.JIRA_BASE_URL && process.env.JIRA_EMAIL && process.env.JIRA_API_TOKEN
 
 export async function fetchJiraData() {
