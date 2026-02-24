@@ -120,9 +120,9 @@ export async function fetchGoogleAnalyticsData() {
 
     const topPagesByPath = await Promise.all(
       documentationPaths.map(async (path, index) => {
-        // Add delay to avoid rate limiting (wait 100ms between requests)
+        // Add delay to avoid rate limiting (wait 50ms between requests)
         if (index > 0) {
-          await new Promise(resolve => setTimeout(resolve, 100))
+          await new Promise(resolve => setTimeout(resolve, 50))
         }
         
         try {
@@ -247,9 +247,9 @@ export async function fetchGoogleAnalyticsData() {
     // Fetch metrics for each documentation path (reuse paths array)
     const pathMetrics = await Promise.all(
       documentationPaths.map(async (path, index) => {
-        // Add delay to avoid rate limiting (wait 150ms between path requests)
+        // Add delay to avoid rate limiting (wait 75ms between path requests)
         if (index > 0) {
-          await new Promise(resolve => setTimeout(resolve, 150))
+          await new Promise(resolve => setTimeout(resolve, 75))
         }
         
         try {
@@ -280,7 +280,7 @@ export async function fetchGoogleAnalyticsData() {
           })
 
           // Add small delay between requests for the same path
-          await new Promise(resolve => setTimeout(resolve, 50))
+          await new Promise(resolve => setTimeout(resolve, 25))
 
           // Fetch session metrics for this path
           const [pathSessionResponse] = await analyticsDataClient.runReport({
@@ -312,7 +312,7 @@ export async function fetchGoogleAnalyticsData() {
           })
 
           // Add small delay between requests for the same path
-          await new Promise(resolve => setTimeout(resolve, 50))
+          await new Promise(resolve => setTimeout(resolve, 25))
 
           // Fetch traffic sources for this path
           const [pathTrafficResponse] = await analyticsDataClient.runReport({
@@ -409,9 +409,9 @@ export async function fetchGoogleAnalyticsData() {
     // Fetch metrics for each SDK path
     const sdkMetrics = await Promise.all(
       sdkPaths.map(async (path, index) => {
-        // Add delay to avoid rate limiting (wait 200ms between SDK requests)
+        // Add delay to avoid rate limiting (wait 100ms between SDK requests)
         if (index > 0) {
-          await new Promise(resolve => setTimeout(resolve, 200))
+          await new Promise(resolve => setTimeout(resolve, 100))
         }
         
         try {
@@ -430,7 +430,7 @@ export async function fetchGoogleAnalyticsData() {
           })
 
           // Add small delay between requests for the same SDK
-          await new Promise(resolve => setTimeout(resolve, 50))
+          await new Promise(resolve => setTimeout(resolve, 25))
 
           // Fetch session metrics for this SDK path
           const [pathSessionResponse] = await analyticsDataClient.runReport({
@@ -450,7 +450,7 @@ export async function fetchGoogleAnalyticsData() {
           })
 
           // Add small delay between requests for the same SDK
-          await new Promise(resolve => setTimeout(resolve, 50))
+          await new Promise(resolve => setTimeout(resolve, 25))
 
           // Fetch traffic sources for this SDK path
           const [pathTrafficResponse] = await analyticsDataClient.runReport({

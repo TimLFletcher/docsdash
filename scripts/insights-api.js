@@ -65,14 +65,14 @@ export async function callOpenAI(apiKey, prompt, data) {
  */
 export async function analyzeTrafficTrends(apiKey, data) {
   const prompt = `
-Analyze the following web traffic data and provide insights on:
-1. Overall traffic trends (increasing/decreasing/stable)
-2. Notable patterns in user behavior
-3. Top performing pages and why they might be doing well
-4. Areas for improvement based on bounce rates and session duration
-5. Any anomalies or concerning patterns
+Analyze the web traffic data and provide a brief summary in 2-3 sentences:
 
-Focus on actionable insights that would help improve documentation effectiveness.
+1. Overall traffic state: Are metrics trending up, down, or stable?
+2. Performance assessment: Is the current traffic level good, concerning, or needs improvement?
+
+Then add a short paragraph (2-3 sentences) with specific recommendations for the most important actions to take based on the data.
+
+Focus on clarity and actionable insights rather than detailed analysis.
 `
 
   return await callOpenAI(apiKey, prompt, {
