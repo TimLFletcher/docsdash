@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-07-31T13:41:34.004Z",
+  "lastUpdated": "2026-07-31T19:08:54.724Z",
   "analytics": {
     "pageViews": {
       "total": 99550,
-      "trend": 6.6,
+      "trend": 5.9,
       "daily": [
         {
           "date": "2026-07-01",
@@ -123,11 +123,11 @@
         },
         {
           "date": "2026-07-30",
-          "views": 3804
+          "views": 4311
         },
         {
           "date": "2026-07-31",
-          "views": 1642
+          "views": 2210
         }
       ],
       "daily3Months": [
@@ -489,11 +489,11 @@
         },
         {
           "date": "2026-07-30",
-          "views": 3804
+          "views": 3811
         },
         {
           "date": "2026-07-31",
-          "views": 1642
+          "views": 2204
         }
       ]
     },
@@ -504,23 +504,23 @@
         "pages": [
           {
             "page": "/cloud/management-api-reference/index.html",
-            "views": 276,
-            "avgTime": "2:50"
+            "views": 277,
+            "avgTime": "2:49"
           },
           {
             "page": "/cloud/release-notes/release-notes.html",
-            "views": 110,
-            "avgTime": "1:15"
+            "views": 113,
+            "avgTime": "1:21"
           },
           {
             "page": "/cloud/get-started/create-account.html",
             "views": 97,
-            "avgTime": "2:35"
+            "avgTime": "2:57"
           },
           {
             "page": "/cloud/reference/command-line-tools.html",
-            "views": 93,
-            "avgTime": "3:38"
+            "views": 94,
+            "avgTime": "3:35"
           },
           {
             "page": "/cloud/clusters/databases.html",
@@ -535,8 +535,8 @@
         "pages": [
           {
             "page": "/analytics/intro/intro.html",
-            "views": 40,
-            "avgTime": "1:03"
+            "views": 41,
+            "avgTime": "1:02"
           },
           {
             "page": "/analytics/sources/remote-kafka.html",
@@ -566,12 +566,12 @@
         "pages": [
           {
             "page": "/ai/get-started/intro.html",
-            "views": 372,
-            "avgTime": "1:29"
+            "views": 378,
+            "avgTime": "1:36"
           },
           {
             "page": "/ai/build/agent-memory/about-agent-mem.html",
-            "views": 165,
+            "views": 166,
             "avgTime": "1:21"
           },
           {
@@ -581,7 +581,7 @@
           },
           {
             "page": "/ai/build/integrate-agent-with-catalog.html",
-            "views": 116,
+            "views": 117,
             "avgTime": "1:49"
           },
           {
@@ -597,13 +597,13 @@
         "pages": [
           {
             "page": "/server/current/rest-api/rest-xdcr-adv-settings.html",
-            "views": 617,
+            "views": 618,
             "avgTime": "14:15"
           },
           {
             "page": "/server/current/release-notes/relnotes.html",
-            "views": 345,
-            "avgTime": "2:14"
+            "views": 348,
+            "avgTime": "2:13"
           },
           {
             "page": "/server/current/install/install-ports.html",
@@ -612,13 +612,13 @@
           },
           {
             "page": "/server/7.6/release-notes/relnotes.html",
-            "views": 193,
-            "avgTime": "2:48"
+            "views": 196,
+            "avgTime": "2:59"
           },
           {
             "page": "/server/current/install/upgrade.html",
-            "views": 191,
-            "avgTime": "3:29"
+            "views": 194,
+            "avgTime": "3:39"
           }
         ]
       },
@@ -628,17 +628,17 @@
         "pages": [
           {
             "page": "/operator/current/resource/couchbasecluster.html",
-            "views": 98,
-            "avgTime": "2:47"
+            "views": 99,
+            "avgTime": "2:45"
           },
           {
             "page": "/operator/current/install-kubernetes.html",
-            "views": 77,
+            "views": 78,
             "avgTime": "2:50"
           },
           {
             "page": "/operator/current/overview.html",
-            "views": 66,
+            "views": 69,
             "avgTime": "1:24"
           },
           {
@@ -649,7 +649,7 @@
           {
             "page": "/operator/current/release-notes.html",
             "views": 61,
-            "avgTime": "2:05"
+            "avgTime": "2:06"
           }
         ]
       },
@@ -695,7 +695,7 @@
           },
           {
             "page": "/couchbase-lite/current/cbl-whatsnew.html",
-            "views": 107,
+            "views": 108,
             "avgTime": "1:07"
           },
           {
@@ -704,14 +704,14 @@
             "avgTime": "0:56"
           },
           {
+            "page": "/couchbase-lite/current/csharp/quickstart.html",
+            "views": 67,
+            "avgTime": "2:41"
+          },
+          {
             "page": "/couchbase-lite/current/swift/gs-install.html",
             "views": 67,
             "avgTime": "1:54"
-          },
-          {
-            "page": "/couchbase-lite/current/csharp/quickstart.html",
-            "views": 65,
-            "avgTime": "2:32"
           }
         ]
       },
@@ -721,13 +721,18 @@
         "pages": [
           {
             "page": "/sync-gateway/current/introduction.html",
-            "views": 93,
-            "avgTime": "1:26"
+            "views": 94,
+            "avgTime": "1:25"
           },
           {
             "page": "/sync-gateway/current/rest-api/rest_api_admin.html",
-            "views": 88,
-            "avgTime": "2:04"
+            "views": 89,
+            "avgTime": "2:19"
+          },
+          {
+            "page": "/sync-gateway/current/product-notes/compatibility.html",
+            "views": 76,
+            "avgTime": "2:24"
           },
           {
             "page": "/sync-gateway/current/rest-api/rest_api_public.html",
@@ -735,14 +740,9 @@
             "avgTime": "2:07"
           },
           {
-            "page": "/sync-gateway/current/product-notes/compatibility.html",
-            "views": 75,
-            "avgTime": "2:24"
-          },
-          {
-            "page": "/sync-gateway/current/product-notes/release-notes.html",
-            "views": 61,
-            "avgTime": "1:54"
+            "page": "/sync-gateway/current/sync/sync-with-couchbase-server.html",
+            "views": 62,
+            "avgTime": "1:49"
           }
         ]
       },
@@ -782,34 +782,34 @@
     "userMetrics": {
       "uniqueVisitors": 43948,
       "avgSessionDuration": "1:53",
-      "avgSessionDurationTrend": "-28.1",
+      "avgSessionDurationTrend": "-28.0",
       "bounceRate": "0.8",
       "returningVisitors": 42.5
     },
     "trafficSources": [
       {
         "source": "Direct",
-        "sessions": 36811,
+        "sessions": 37090,
         "percentage": 66
       },
       {
         "source": "Organic Search",
-        "sessions": 10607,
+        "sessions": 10733,
         "percentage": 19
       },
       {
         "source": "Unassigned",
-        "sessions": 5265,
-        "percentage": 9
+        "sessions": 5547,
+        "percentage": 10
       },
       {
         "source": "Referral",
-        "sessions": 2266,
+        "sessions": 2285,
         "percentage": 4
       },
       {
         "source": "Paid Search",
-        "sessions": 570,
+        "sessions": 576,
         "percentage": 1
       }
     ],
@@ -831,7 +831,7 @@
       {
         "path": "cloud",
         "displayPath": "/cloud/",
-        "totalViews": 9495,
+        "totalViews": 9561,
         "bounceRate": "0.7",
         "avgSessionDuration": "2:13",
         "trafficBalance": {
@@ -842,20 +842,20 @@
       {
         "path": "analytics",
         "displayPath": "/analytics/",
-        "totalViews": 1756,
+        "totalViews": 1770,
         "bounceRate": "0.8",
-        "avgSessionDuration": "1:24",
+        "avgSessionDuration": "1:25",
         "trafficBalance": {
-          "direct": 82,
-          "search": 11
+          "direct": 81,
+          "search": 12
         }
       },
       {
         "path": "ai",
         "displayPath": "/ai/",
-        "totalViews": 1915,
+        "totalViews": 1939,
         "bounceRate": "0.5",
-        "avgSessionDuration": "2:30",
+        "avgSessionDuration": "2:33",
         "trafficBalance": {
           "direct": 40,
           "search": 33
@@ -864,20 +864,20 @@
       {
         "path": "server",
         "displayPath": "/server/",
-        "totalViews": 29085,
+        "totalViews": 29306,
         "bounceRate": "0.7",
-        "avgSessionDuration": "3:49",
+        "avgSessionDuration": "3:51",
         "trafficBalance": {
-          "direct": 54,
+          "direct": 53,
           "search": 34
         }
       },
       {
         "path": "operator",
         "displayPath": "/operator/",
-        "totalViews": 3238,
+        "totalViews": 3265,
         "bounceRate": "0.6",
-        "avgSessionDuration": "3:43",
+        "avgSessionDuration": "3:42",
         "trafficBalance": {
           "direct": 64,
           "search": 25
@@ -886,7 +886,7 @@
       {
         "path": "enterprise analytics",
         "displayPath": "/enterprise-analytics/",
-        "totalViews": 5315,
+        "totalViews": 5326,
         "bounceRate": "0.7",
         "avgSessionDuration": "2:53",
         "trafficBalance": {
@@ -897,9 +897,9 @@
       {
         "path": "couchbase lite",
         "displayPath": "/couchbase-lite/",
-        "totalViews": 9750,
+        "totalViews": 9876,
         "bounceRate": "0.8",
-        "avgSessionDuration": "1:14",
+        "avgSessionDuration": "1:15",
         "trafficBalance": {
           "direct": 64,
           "search": 12
@@ -908,9 +908,9 @@
       {
         "path": "sync gateway",
         "displayPath": "/sync-gateway/",
-        "totalViews": 3143,
+        "totalViews": 3210,
         "bounceRate": "0.7",
-        "avgSessionDuration": "1:54",
+        "avgSessionDuration": "1:55",
         "trafficBalance": {
           "direct": 56,
           "search": 23
@@ -919,9 +919,9 @@
       {
         "path": "couchbase edge server",
         "displayPath": "/couchbase-edge-server/",
-        "totalViews": 655,
+        "totalViews": 667,
         "bounceRate": "0.7",
-        "avgSessionDuration": "0:58",
+        "avgSessionDuration": "0:59",
         "trafficBalance": {
           "direct": 68,
           "search": 20
@@ -931,7 +931,7 @@
     "sdkComparison": [
       {
         "displayPath": "/dotnet-sdk/",
-        "totalViews": 1598,
+        "totalViews": 1611,
         "bounceRate": "0.7",
         "avgSessionDuration": "1:40",
         "trafficBalance": {
@@ -941,7 +941,7 @@
       },
       {
         "displayPath": "/efcore-provider/",
-        "totalViews": 87,
+        "totalViews": 89,
         "bounceRate": "0.9",
         "avgSessionDuration": "0:33",
         "trafficBalance": {
@@ -951,9 +951,9 @@
       },
       {
         "displayPath": "/c-sdk/",
-        "totalViews": 874,
+        "totalViews": 880,
         "bounceRate": "0.7",
-        "avgSessionDuration": "1:11",
+        "avgSessionDuration": "1:10",
         "trafficBalance": {
           "direct": 71,
           "search": 19
@@ -961,19 +961,19 @@
       },
       {
         "displayPath": "/cxx-sdk/",
-        "totalViews": 980,
+        "totalViews": 992,
         "bounceRate": "0.7",
         "avgSessionDuration": "1:09",
         "trafficBalance": {
-          "direct": 78,
+          "direct": 77,
           "search": 10
         }
       },
       {
         "displayPath": "/go-sdk/",
-        "totalViews": 1333,
+        "totalViews": 1357,
         "bounceRate": "0.7",
-        "avgSessionDuration": "1:36",
+        "avgSessionDuration": "1:35",
         "trafficBalance": {
           "direct": 77,
           "search": 8
@@ -981,9 +981,9 @@
       },
       {
         "displayPath": "/java-sdk/",
-        "totalViews": 2952,
+        "totalViews": 2997,
         "bounceRate": "0.6",
-        "avgSessionDuration": "2:55",
+        "avgSessionDuration": "2:56",
         "trafficBalance": {
           "direct": 46,
           "search": 29
@@ -991,17 +991,17 @@
       },
       {
         "displayPath": "/quarkus-extension/",
-        "totalViews": 97,
+        "totalViews": 99,
         "bounceRate": "0.5",
         "avgSessionDuration": "1:22",
         "trafficBalance": {
           "direct": 58,
-          "search": 22
+          "search": 21
         }
       },
       {
         "displayPath": "/kotlin-sdk/",
-        "totalViews": 466,
+        "totalViews": 471,
         "bounceRate": "0.8",
         "avgSessionDuration": "1:03",
         "trafficBalance": {
@@ -1011,9 +1011,9 @@
       },
       {
         "displayPath": "/nodejs-sdk/",
-        "totalViews": 1212,
+        "totalViews": 1238,
         "bounceRate": "0.7",
-        "avgSessionDuration": "1:28",
+        "avgSessionDuration": "1:29",
         "trafficBalance": {
           "direct": 67,
           "search": 10
@@ -1021,28 +1021,28 @@
       },
       {
         "displayPath": "/php-sdk/",
-        "totalViews": 0,
-        "bounceRate": 0,
-        "avgSessionDuration": "0:00",
+        "totalViews": 1137,
+        "bounceRate": "0.8",
+        "avgSessionDuration": "1:19",
         "trafficBalance": {
-          "direct": 0,
-          "search": 0
+          "direct": 79,
+          "search": 5
         }
       },
       {
         "displayPath": "/python-sdk/",
-        "totalViews": 0,
-        "bounceRate": 0,
-        "avgSessionDuration": "0:00",
+        "totalViews": 1574,
+        "bounceRate": "0.7",
+        "avgSessionDuration": "1:54",
         "trafficBalance": {
-          "direct": 0,
-          "search": 0
+          "direct": 68,
+          "search": 12
         }
       },
       {
         "displayPath": "/ruby-sdk/",
-        "totalViews": 995,
-        "bounceRate": "0.7",
+        "totalViews": 1003,
+        "bounceRate": "0.8",
         "avgSessionDuration": "1:20",
         "trafficBalance": {
           "direct": 80,
@@ -1051,7 +1051,7 @@
       },
       {
         "displayPath": "/rust-sdk/",
-        "totalViews": 433,
+        "totalViews": 440,
         "bounceRate": "0.9",
         "avgSessionDuration": "0:33",
         "trafficBalance": {
@@ -1061,19 +1061,19 @@
       },
       {
         "displayPath": "/scala-sdk/",
-        "totalViews": 0,
-        "bounceRate": 0,
-        "avgSessionDuration": "0:00",
+        "totalViews": 1495,
+        "bounceRate": "0.7",
+        "avgSessionDuration": "1:40",
         "trafficBalance": {
-          "direct": 0,
-          "search": 0
+          "direct": 76,
+          "search": 4
         }
       }
     ]
   },
   "jira": {
     "openIssues": {
-      "total": 1274,
+      "total": 1273,
       "byPriority": [
         {
           "priority": "Major",
@@ -1093,6 +1093,13 @@
       ]
     },
     "recentIssues": [
+      {
+        "key": "DOC-14539",
+        "summary": "Add details for number of readers and writers thready in data-service",
+        "priority": "Major",
+        "status": "Open",
+        "created": "2026-07-31"
+      },
       {
         "key": "DOC-14538",
         "summary": "CNG in 3.10 API docs",
@@ -1119,13 +1126,6 @@
         "summary": "FY27 Releases - SDK Docs",
         "priority": "Major",
         "status": "Open",
-        "created": "2026-07-30"
-      },
-      {
-        "key": "DOC-14532",
-        "summary": "C++  1.4 GA",
-        "priority": "Major",
-        "status": "In Progress",
         "created": "2026-07-30"
       }
     ],
@@ -1156,15 +1156,15 @@
         "planned": 14
       }
     ],
-    "avgResolutionDays": 79.42,
-    "monthlyOpened": 48,
-    "monthlyResolved": 61,
-    "burnRate": 0.79,
-    "burnRateTrend": "25.4",
-    "avgResolutionDaysTrend": "695.7",
+    "avgResolutionDays": 73.21,
+    "monthlyOpened": 49,
+    "monthlyResolved": 63,
+    "burnRate": 0.78,
+    "burnRateTrend": "21.9",
+    "avgResolutionDaysTrend": "633.5",
     "previousMonthOpened": 60,
-    "previousMonthResolved": 95,
-    "previousMonthBurnRate": 0.63,
+    "previousMonthResolved": 94,
+    "previousMonthBurnRate": 0.64,
     "previousMonthAvgResolutionDays": 9.98,
     "monthlyOpenedAV": 0,
     "monthlyResolvedAV": 0,
@@ -1177,7 +1177,7 @@
     "topLabels": [
       {
         "label": "No Labels",
-        "count": 377,
+        "count": 378,
         "color": "#6b7280"
       },
       {
@@ -1187,443 +1187,443 @@
       },
       {
         "label": "Other Labels",
-        "count": 793,
+        "count": 791,
         "color": "#3b82f6"
       }
     ]
   },
   "trends": {
-    "lastUpdated": "2026-07-31T13:41:24.960Z",
+    "lastUpdated": "2026-07-31T19:08:46.553Z",
     "interestOverTime": [
       {
-        "date": "1754055684.951",
+        "date": "1754075326.423",
         "formattedTime": "Aug 1, 25",
-        "nosql": 33,
-        "documentorienteddatabase": 36,
-        "clouddatabase": 42,
-        "couchbaseserver": 35
-      },
-      {
-        "date": "1754660484.951",
-        "formattedTime": "Aug 8, 25",
-        "nosql": 44,
-        "documentorienteddatabase": 39,
-        "clouddatabase": 39,
-        "couchbaseserver": 38
-      },
-      {
-        "date": "1755265284.951",
-        "formattedTime": "Aug 15, 25",
-        "nosql": 46,
-        "documentorienteddatabase": 41,
-        "clouddatabase": 39,
-        "couchbaseserver": 41
-      },
-      {
-        "date": "1755870084.951",
-        "formattedTime": "Aug 22, 25",
-        "nosql": 51,
-        "documentorienteddatabase": 49,
-        "clouddatabase": 48,
-        "couchbaseserver": 50
-      },
-      {
-        "date": "1756474884.951",
-        "formattedTime": "Aug 29, 25",
-        "nosql": 52,
-        "documentorienteddatabase": 52,
-        "clouddatabase": 51,
-        "couchbaseserver": 50
-      },
-      {
-        "date": "1757079684.951",
-        "formattedTime": "Sep 5, 25",
-        "nosql": 53,
-        "documentorienteddatabase": 52,
-        "clouddatabase": 59,
-        "couchbaseserver": 59
-      },
-      {
-        "date": "1757684484.951",
-        "formattedTime": "Sep 12, 25",
-        "nosql": 62,
-        "documentorienteddatabase": 62,
-        "clouddatabase": 59,
-        "couchbaseserver": 64
-      },
-      {
-        "date": "1758289284.951",
-        "formattedTime": "Sep 19, 25",
-        "nosql": 68,
-        "documentorienteddatabase": 67,
-        "clouddatabase": 64,
-        "couchbaseserver": 59
-      },
-      {
-        "date": "1758894084.951",
-        "formattedTime": "Sep 26, 25",
-        "nosql": 66,
-        "documentorienteddatabase": 68,
-        "clouddatabase": 62,
-        "couchbaseserver": 64
-      },
-      {
-        "date": "1759498884.951",
-        "formattedTime": "Oct 3, 25",
-        "nosql": 70,
-        "documentorienteddatabase": 68,
-        "clouddatabase": 71,
-        "couchbaseserver": 70
-      },
-      {
-        "date": "1760103684.951",
-        "formattedTime": "Oct 10, 25",
-        "nosql": 70,
-        "documentorienteddatabase": 75,
-        "clouddatabase": 71,
-        "couchbaseserver": 74
-      },
-      {
-        "date": "1760708484.951",
-        "formattedTime": "Oct 17, 25",
-        "nosql": 69,
-        "documentorienteddatabase": 70,
-        "clouddatabase": 73,
-        "couchbaseserver": 74
-      },
-      {
-        "date": "1761313284.951",
-        "formattedTime": "Oct 24, 25",
-        "nosql": 78,
-        "documentorienteddatabase": 76,
-        "clouddatabase": 78,
-        "couchbaseserver": 71
-      },
-      {
-        "date": "1761918084.951",
-        "formattedTime": "Oct 31, 25",
-        "nosql": 75,
-        "documentorienteddatabase": 73,
-        "clouddatabase": 71,
-        "couchbaseserver": 70
-      },
-      {
-        "date": "1762522884.951",
-        "formattedTime": "Nov 7, 25",
-        "nosql": 72,
-        "documentorienteddatabase": 72,
-        "clouddatabase": 71,
-        "couchbaseserver": 69
-      },
-      {
-        "date": "1763127684.951",
-        "formattedTime": "Nov 14, 25",
-        "nosql": 72,
-        "documentorienteddatabase": 69,
-        "clouddatabase": 69,
-        "couchbaseserver": 76
-      },
-      {
-        "date": "1763732484.951",
-        "formattedTime": "Nov 21, 25",
-        "nosql": 70,
-        "documentorienteddatabase": 71,
-        "clouddatabase": 69,
-        "couchbaseserver": 75
-      },
-      {
-        "date": "1764337284.951",
-        "formattedTime": "Nov 28, 25",
-        "nosql": 67,
-        "documentorienteddatabase": 69,
-        "clouddatabase": 69,
-        "couchbaseserver": 70
-      },
-      {
-        "date": "1764942084.951",
-        "formattedTime": "Dec 5, 25",
-        "nosql": 70,
-        "documentorienteddatabase": 69,
-        "clouddatabase": 60,
-        "couchbaseserver": 65
-      },
-      {
-        "date": "1765546884.951",
-        "formattedTime": "Dec 12, 25",
-        "nosql": 63,
-        "documentorienteddatabase": 66,
-        "clouddatabase": 62,
-        "couchbaseserver": 59
-      },
-      {
-        "date": "1766151684.951",
-        "formattedTime": "Dec 19, 25",
-        "nosql": 53,
-        "documentorienteddatabase": 54,
-        "clouddatabase": 61,
-        "couchbaseserver": 61
-      },
-      {
-        "date": "1766756484.951",
-        "formattedTime": "Dec 26, 25",
-        "nosql": 58,
-        "documentorienteddatabase": 53,
-        "clouddatabase": 58,
-        "couchbaseserver": 49
-      },
-      {
-        "date": "1767361284.951",
-        "formattedTime": "Jan 2, 26",
-        "nosql": 53,
-        "documentorienteddatabase": 48,
-        "clouddatabase": 47,
-        "couchbaseserver": 54
-      },
-      {
-        "date": "1767966084.951",
-        "formattedTime": "Jan 9, 26",
-        "nosql": 42,
-        "documentorienteddatabase": 49,
-        "clouddatabase": 47,
-        "couchbaseserver": 42
-      },
-      {
-        "date": "1768570884.951",
-        "formattedTime": "Jan 16, 26",
-        "nosql": 45,
-        "documentorienteddatabase": 44,
-        "clouddatabase": 44,
-        "couchbaseserver": 44
-      },
-      {
-        "date": "1769175684.951",
-        "formattedTime": "Jan 23, 26",
-        "nosql": 36,
+        "nosql": 34,
         "documentorienteddatabase": 35,
-        "clouddatabase": 35,
-        "couchbaseserver": 44
+        "clouddatabase": 39,
+        "couchbaseserver": 40
       },
       {
-        "date": "1769780484.951",
-        "formattedTime": "Jan 30, 26",
-        "nosql": 37,
-        "documentorienteddatabase": 40,
-        "clouddatabase": 37,
-        "couchbaseserver": 41
-      },
-      {
-        "date": "1770385284.951",
-        "formattedTime": "Feb 6, 26",
+        "date": "1754680126.423",
+        "formattedTime": "Aug 8, 25",
         "nosql": 40,
-        "documentorienteddatabase": 33,
-        "clouddatabase": 40,
-        "couchbaseserver": 35
-      },
-      {
-        "date": "1770990084.951",
-        "formattedTime": "Feb 13, 26",
-        "nosql": 32,
-        "documentorienteddatabase": 38,
+        "documentorienteddatabase": 39,
         "clouddatabase": 38,
-        "couchbaseserver": 40
-      },
-      {
-        "date": "1771594884.951",
-        "formattedTime": "Feb 20, 26",
-        "nosql": 33,
-        "documentorienteddatabase": 33,
-        "clouddatabase": 37,
-        "couchbaseserver": 40
-      },
-      {
-        "date": "1772199684.951",
-        "formattedTime": "Feb 27, 26",
-        "nosql": 39,
-        "documentorienteddatabase": 37,
-        "clouddatabase": 40,
-        "couchbaseserver": 36
-      },
-      {
-        "date": "1772804484.951",
-        "formattedTime": "Mar 6, 26",
-        "nosql": 38,
-        "documentorienteddatabase": 37,
-        "clouddatabase": 35,
-        "couchbaseserver": 34
-      },
-      {
-        "date": "1773409284.951",
-        "formattedTime": "Mar 13, 26",
-        "nosql": 41,
-        "documentorienteddatabase": 37,
-        "clouddatabase": 41,
         "couchbaseserver": 45
       },
       {
-        "date": "1774014084.951",
-        "formattedTime": "Mar 20, 26",
-        "nosql": 38,
+        "date": "1755284926.423",
+        "formattedTime": "Aug 15, 25",
+        "nosql": 43,
         "documentorienteddatabase": 41,
-        "clouddatabase": 43,
-        "couchbaseserver": 38
+        "clouddatabase": 48,
+        "couchbaseserver": 48
       },
       {
-        "date": "1774618884.951",
-        "formattedTime": "Mar 27, 26",
-        "nosql": 51,
-        "documentorienteddatabase": 51,
-        "clouddatabase": 42,
-        "couchbaseserver": 43
-      },
-      {
-        "date": "1775223684.951",
-        "formattedTime": "Apr 3, 26",
-        "nosql": 55,
-        "documentorienteddatabase": 51,
-        "clouddatabase": 50,
-        "couchbaseserver": 52
-      },
-      {
-        "date": "1775828484.951",
-        "formattedTime": "Apr 10, 26",
-        "nosql": 49,
+        "date": "1755889726.423",
+        "formattedTime": "Aug 22, 25",
+        "nosql": 47,
         "documentorienteddatabase": 50,
-        "clouddatabase": 56,
-        "couchbaseserver": 58
+        "clouddatabase": 45,
+        "couchbaseserver": 48
       },
       {
-        "date": "1776433284.951",
-        "formattedTime": "Apr 17, 26",
-        "nosql": 55,
-        "documentorienteddatabase": 57,
+        "date": "1756494526.423",
+        "formattedTime": "Aug 29, 25",
+        "nosql": 48,
+        "documentorienteddatabase": 55,
         "clouddatabase": 54,
+        "couchbaseserver": 55
+      },
+      {
+        "date": "1757099326.423",
+        "formattedTime": "Sep 5, 25",
+        "nosql": 56,
+        "documentorienteddatabase": 51,
+        "clouddatabase": 60,
         "couchbaseserver": 60
       },
       {
-        "date": "1777038084.951",
-        "formattedTime": "Apr 24, 26",
-        "nosql": 63,
-        "documentorienteddatabase": 65,
+        "date": "1757704126.423",
+        "formattedTime": "Sep 12, 25",
+        "nosql": 58,
+        "documentorienteddatabase": 60,
         "clouddatabase": 61,
-        "couchbaseserver": 58
+        "couchbaseserver": 63
       },
       {
-        "date": "1777642884.951",
-        "formattedTime": "May 1, 26",
-        "nosql": 62,
+        "date": "1758308926.423",
+        "formattedTime": "Sep 19, 25",
+        "nosql": 64,
+        "documentorienteddatabase": 62,
+        "clouddatabase": 58,
+        "couchbaseserver": 61
+      },
+      {
+        "date": "1758913726.423",
+        "formattedTime": "Sep 26, 25",
+        "nosql": 67,
         "documentorienteddatabase": 68,
+        "clouddatabase": 70,
+        "couchbaseserver": 63
+      },
+      {
+        "date": "1759518526.423",
+        "formattedTime": "Oct 3, 25",
+        "nosql": 65,
+        "documentorienteddatabase": 67,
+        "clouddatabase": 72,
+        "couchbaseserver": 74
+      },
+      {
+        "date": "1760123326.423",
+        "formattedTime": "Oct 10, 25",
+        "nosql": 75,
+        "documentorienteddatabase": 74,
+        "clouddatabase": 77,
+        "couchbaseserver": 69
+      },
+      {
+        "date": "1760728126.423",
+        "formattedTime": "Oct 17, 25",
+        "nosql": 77,
+        "documentorienteddatabase": 75,
+        "clouddatabase": 78,
+        "couchbaseserver": 72
+      },
+      {
+        "date": "1761332926.423",
+        "formattedTime": "Oct 24, 25",
+        "nosql": 75,
+        "documentorienteddatabase": 71,
+        "clouddatabase": 74,
+        "couchbaseserver": 74
+      },
+      {
+        "date": "1761937726.423",
+        "formattedTime": "Oct 31, 25",
+        "nosql": 74,
+        "documentorienteddatabase": 71,
+        "clouddatabase": 77,
+        "couchbaseserver": 74
+      },
+      {
+        "date": "1762542526.423",
+        "formattedTime": "Nov 7, 25",
+        "nosql": 75,
+        "documentorienteddatabase": 73,
+        "clouddatabase": 76,
+        "couchbaseserver": 74
+      },
+      {
+        "date": "1763147326.423",
+        "formattedTime": "Nov 14, 25",
+        "nosql": 72,
+        "documentorienteddatabase": 68,
+        "clouddatabase": 69,
+        "couchbaseserver": 73
+      },
+      {
+        "date": "1763752126.423",
+        "formattedTime": "Nov 21, 25",
+        "nosql": 73,
+        "documentorienteddatabase": 68,
+        "clouddatabase": 75,
+        "couchbaseserver": 68
+      },
+      {
+        "date": "1764356926.423",
+        "formattedTime": "Nov 28, 25",
+        "nosql": 68,
+        "documentorienteddatabase": 71,
+        "clouddatabase": 70,
+        "couchbaseserver": 67
+      },
+      {
+        "date": "1764961726.423",
+        "formattedTime": "Dec 5, 25",
+        "nosql": 61,
+        "documentorienteddatabase": 60,
+        "clouddatabase": 67,
+        "couchbaseserver": 68
+      },
+      {
+        "date": "1765566526.423",
+        "formattedTime": "Dec 12, 25",
+        "nosql": 60,
+        "documentorienteddatabase": 66,
+        "clouddatabase": 63,
+        "couchbaseserver": 60
+      },
+      {
+        "date": "1766171326.423",
+        "formattedTime": "Dec 19, 25",
+        "nosql": 61,
+        "documentorienteddatabase": 61,
+        "clouddatabase": 60,
+        "couchbaseserver": 53
+      },
+      {
+        "date": "1766776126.423",
+        "formattedTime": "Dec 26, 25",
+        "nosql": 53,
+        "documentorienteddatabase": 50,
+        "clouddatabase": 56,
+        "couchbaseserver": 55
+      },
+      {
+        "date": "1767380926.423",
+        "formattedTime": "Jan 2, 26",
+        "nosql": 51,
+        "documentorienteddatabase": 47,
+        "clouddatabase": 53,
+        "couchbaseserver": 45
+      },
+      {
+        "date": "1767985726.423",
+        "formattedTime": "Jan 9, 26",
+        "nosql": 44,
+        "documentorienteddatabase": 49,
+        "clouddatabase": 49,
+        "couchbaseserver": 50
+      },
+      {
+        "date": "1768590526.423",
+        "formattedTime": "Jan 16, 26",
+        "nosql": 39,
+        "documentorienteddatabase": 40,
+        "clouddatabase": 40,
+        "couchbaseserver": 44
+      },
+      {
+        "date": "1769195326.423",
+        "formattedTime": "Jan 23, 26",
+        "nosql": 37,
+        "documentorienteddatabase": 39,
+        "clouddatabase": 42,
+        "couchbaseserver": 36
+      },
+      {
+        "date": "1769800126.423",
+        "formattedTime": "Jan 30, 26",
+        "nosql": 41,
+        "documentorienteddatabase": 37,
+        "clouddatabase": 37,
+        "couchbaseserver": 37
+      },
+      {
+        "date": "1770404926.423",
+        "formattedTime": "Feb 6, 26",
+        "nosql": 38,
+        "documentorienteddatabase": 32,
+        "clouddatabase": 31,
+        "couchbaseserver": 34
+      },
+      {
+        "date": "1771009726.423",
+        "formattedTime": "Feb 13, 26",
+        "nosql": 37,
+        "documentorienteddatabase": 37,
+        "clouddatabase": 33,
+        "couchbaseserver": 32
+      },
+      {
+        "date": "1771614526.423",
+        "formattedTime": "Feb 20, 26",
+        "nosql": 31,
+        "documentorienteddatabase": 35,
+        "clouddatabase": 36,
+        "couchbaseserver": 35
+      },
+      {
+        "date": "1772219326.423",
+        "formattedTime": "Feb 27, 26",
+        "nosql": 33,
+        "documentorienteddatabase": 38,
+        "clouddatabase": 35,
+        "couchbaseserver": 39
+      },
+      {
+        "date": "1772824126.423",
+        "formattedTime": "Mar 6, 26",
+        "nosql": 42,
+        "documentorienteddatabase": 40,
+        "clouddatabase": 42,
+        "couchbaseserver": 33
+      },
+      {
+        "date": "1773428926.423",
+        "formattedTime": "Mar 13, 26",
+        "nosql": 39,
+        "documentorienteddatabase": 37,
+        "clouddatabase": 43,
+        "couchbaseserver": 44
+      },
+      {
+        "date": "1774033726.423",
+        "formattedTime": "Mar 20, 26",
+        "nosql": 44,
+        "documentorienteddatabase": 41,
+        "clouddatabase": 40,
+        "couchbaseserver": 46
+      },
+      {
+        "date": "1774638526.423",
+        "formattedTime": "Mar 27, 26",
+        "nosql": 51,
+        "documentorienteddatabase": 50,
+        "clouddatabase": 47,
+        "couchbaseserver": 44
+      },
+      {
+        "date": "1775243326.423",
+        "formattedTime": "Apr 3, 26",
+        "nosql": 52,
+        "documentorienteddatabase": 45,
+        "clouddatabase": 48,
+        "couchbaseserver": 49
+      },
+      {
+        "date": "1775848126.423",
+        "formattedTime": "Apr 10, 26",
+        "nosql": 54,
+        "documentorienteddatabase": 57,
+        "clouddatabase": 54,
+        "couchbaseserver": 52
+      },
+      {
+        "date": "1776452926.423",
+        "formattedTime": "Apr 17, 26",
+        "nosql": 61,
+        "documentorienteddatabase": 53,
+        "clouddatabase": 57,
+        "couchbaseserver": 53
+      },
+      {
+        "date": "1777057726.423",
+        "formattedTime": "Apr 24, 26",
+        "nosql": 60,
+        "documentorienteddatabase": 61,
+        "clouddatabase": 62,
+        "couchbaseserver": 61
+      },
+      {
+        "date": "1777662526.423",
+        "formattedTime": "May 1, 26",
+        "nosql": 64,
+        "documentorienteddatabase": 60,
         "clouddatabase": 62,
         "couchbaseserver": 67
       },
       {
-        "date": "1778247684.951",
+        "date": "1778267326.423",
         "formattedTime": "May 8, 26",
-        "nosql": 67,
-        "documentorienteddatabase": 67,
-        "clouddatabase": 72,
-        "couchbaseserver": 72
-      },
-      {
-        "date": "1778852484.951",
-        "formattedTime": "May 15, 26",
-        "nosql": 73,
-        "documentorienteddatabase": 69,
-        "clouddatabase": 70,
-        "couchbaseserver": 76
-      },
-      {
-        "date": "1779457284.951",
-        "formattedTime": "May 22, 26",
-        "nosql": 76,
-        "documentorienteddatabase": 77,
-        "clouddatabase": 77,
+        "nosql": 70,
+        "documentorienteddatabase": 68,
+        "clouddatabase": 64,
         "couchbaseserver": 71
       },
       {
-        "date": "1780062084.951",
-        "formattedTime": "May 29, 26",
-        "nosql": 77,
-        "documentorienteddatabase": 73,
-        "clouddatabase": 75,
-        "couchbaseserver": 70
-      },
-      {
-        "date": "1780666884.951",
-        "formattedTime": "Jun 5, 26",
-        "nosql": 79,
-        "documentorienteddatabase": 77,
-        "clouddatabase": 77,
-        "couchbaseserver": 76
-      },
-      {
-        "date": "1781271684.951",
-        "formattedTime": "Jun 12, 26",
-        "nosql": 70,
-        "documentorienteddatabase": 71,
-        "clouddatabase": 79,
-        "couchbaseserver": 76
-      },
-      {
-        "date": "1781876484.951",
-        "formattedTime": "Jun 19, 26",
-        "nosql": 75,
-        "documentorienteddatabase": 72,
-        "clouddatabase": 74,
-        "couchbaseserver": 76
-      },
-      {
-        "date": "1782481284.951",
-        "formattedTime": "Jun 26, 26",
+        "date": "1778872126.423",
+        "formattedTime": "May 15, 26",
         "nosql": 68,
-        "documentorienteddatabase": 67,
+        "documentorienteddatabase": 68,
         "clouddatabase": 71,
+        "couchbaseserver": 69
+      },
+      {
+        "date": "1779476926.423",
+        "formattedTime": "May 22, 26",
+        "nosql": 71,
+        "documentorienteddatabase": 77,
+        "clouddatabase": 78,
+        "couchbaseserver": 76
+      },
+      {
+        "date": "1780081726.423",
+        "formattedTime": "May 29, 26",
+        "nosql": 78,
+        "documentorienteddatabase": 70,
+        "clouddatabase": 75,
         "couchbaseserver": 73
       },
       {
-        "date": "1783086084.951",
+        "date": "1780686526.423",
+        "formattedTime": "Jun 5, 26",
+        "nosql": 74,
+        "documentorienteddatabase": 72,
+        "clouddatabase": 75,
+        "couchbaseserver": 78
+      },
+      {
+        "date": "1781291326.423",
+        "formattedTime": "Jun 12, 26",
+        "nosql": 79,
+        "documentorienteddatabase": 77,
+        "clouddatabase": 74,
+        "couchbaseserver": 72
+      },
+      {
+        "date": "1781896126.423",
+        "formattedTime": "Jun 19, 26",
+        "nosql": 76,
+        "documentorienteddatabase": 75,
+        "clouddatabase": 71,
+        "couchbaseserver": 77
+      },
+      {
+        "date": "1782500926.423",
+        "formattedTime": "Jun 26, 26",
+        "nosql": 67,
+        "documentorienteddatabase": 76,
+        "clouddatabase": 68,
+        "couchbaseserver": 75
+      },
+      {
+        "date": "1783105726.423",
         "formattedTime": "Jul 3, 26",
-        "nosql": 72,
+        "nosql": 68,
         "documentorienteddatabase": 69,
-        "clouddatabase": 64,
+        "clouddatabase": 71,
+        "couchbaseserver": 69
+      },
+      {
+        "date": "1783710526.423",
+        "formattedTime": "Jul 10, 26",
+        "nosql": 69,
+        "documentorienteddatabase": 64,
+        "clouddatabase": 69,
         "couchbaseserver": 70
       },
       {
-        "date": "1783690884.951",
-        "formattedTime": "Jul 10, 26",
-        "nosql": 63,
-        "documentorienteddatabase": 69,
-        "clouddatabase": 64,
-        "couchbaseserver": 64
-      },
-      {
-        "date": "1784295684.951",
+        "date": "1784315326.423",
         "formattedTime": "Jul 17, 26",
         "nosql": 60,
-        "documentorienteddatabase": 64,
-        "clouddatabase": 58,
-        "couchbaseserver": 63
+        "documentorienteddatabase": 63,
+        "clouddatabase": 61,
+        "couchbaseserver": 62
       },
       {
-        "date": "1784900484.951",
+        "date": "1784920126.423",
         "formattedTime": "Jul 24, 26",
-        "nosql": 55,
-        "documentorienteddatabase": 62,
-        "clouddatabase": 62,
-        "couchbaseserver": 60
+        "nosql": 54,
+        "documentorienteddatabase": 63,
+        "clouddatabase": 57,
+        "couchbaseserver": 59
       },
       {
-        "date": "1785505284.951",
+        "date": "1785524926.423",
         "formattedTime": "Jul 31, 26",
-        "nosql": 58,
-        "documentorienteddatabase": 53,
-        "clouddatabase": 52,
-        "couchbaseserver": 55
+        "nosql": 59,
+        "documentorienteddatabase": 52,
+        "clouddatabase": 56,
+        "couchbaseserver": 53
       }
     ],
     "summary": {
       "avgInterest": 58,
       "peakInterest": 79,
-      "currentInterest": 58,
+      "currentInterest": 59,
       "trendDirection": "up"
     },
     "categories": {
@@ -1686,7 +1686,7 @@
         "summary": {
           "avgInterest": 58,
           "peakInterest": 79,
-          "currentInterest": 58,
+          "currentInterest": 59,
           "trendDirection": "up"
         }
       },
@@ -1747,9 +1747,9 @@
           }
         ],
         "summary": {
-          "avgInterest": 58,
+          "avgInterest": 57,
           "peakInterest": 77,
-          "currentInterest": 53,
+          "currentInterest": 52,
           "trendDirection": "down"
         }
       },
@@ -1811,8 +1811,8 @@
         ],
         "summary": {
           "avgInterest": 58,
-          "peakInterest": 79,
-          "currentInterest": 52,
+          "peakInterest": 78,
+          "currentInterest": 56,
           "trendDirection": "down"
         }
       },
@@ -1874,8 +1874,8 @@
         ],
         "summary": {
           "avgInterest": 58,
-          "peakInterest": 76,
-          "currentInterest": 55,
+          "peakInterest": 78,
+          "currentInterest": 53,
           "trendDirection": "down"
         }
       }
@@ -1892,15 +1892,15 @@
     },
     "searchTrends": [],
     "noResultsPercentage": 0,
-    "lastUpdated": "2026-07-31T13:41:25.391Z"
+    "lastUpdated": "2026-07-31T19:08:47.242Z"
   },
   "insights": {
     "contentGaps": [],
     "performanceNotes": [],
     "aiInsights": {
-      "traffic": "### Web Traffic Summary\n\n- **Overall Traffic State**: The metrics are trending upwards with a 6.6% increase in page views.\n- **Performance Assessment**: The current traffic level is good, indicating a healthy growth in user engagement.\n\n### Recommendations\n\n1. **Enhance Organic Search**: With organic search contributing 19% of sessions, optimizing SEO strategies could further boost traffic. Consider revising meta tags and improving content relevance to capture more search traffic.\n2. **Improve Session Duration**: The average session duration has decreased by 28.1%. Implementing engaging content and interactive elements on key pages could retain users longer.\n3. **Focus on High-Performing Pages**: Pages like `/server/current/rest-api/rest-xdcr-adv-settings.html` with high average time spent should be leveraged to understand user interest and replicate successful elements across other pages.",
-      "duplicates": "### Potential Duplicate Groups\n\nAfter reviewing the recent Jira tickets, no clear duplicates were identified based on the provided criteria. Each ticket appears to address distinct issues or documentation updates:\n\n- **DOC-14538**: Focuses on API documentation updates for version 3.10.\n- **DOC-14537**: Concerns the implementation of a new Docsearch UI.\n- **DOC-14536**: Describes documentation for new sub-document, index, and scope/collection tools.\n- **DOC-14534**: Pertains to SDK documentation for FY27 releases.\n- **DOC-14532**: Relates to the C++ 1.4 GA release.\n\n### Conclusion\n\n- **No Duplicates Found**: Each ticket addresses a unique aspect of documentation or feature update, with no overlapping summaries, components, or labels that suggest duplication. Continue to monitor for any future tickets that may overlap with these existing issues.",
-      "jira": "## Insights\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 48 tickets opened vs 61 resolved.\n- **Previous Month**: 60 tickets opened vs 95 resolved.\n- **Trend**: The team is resolving more tickets than are being opened, indicating a positive trend in managing backlog.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**:\n  - Sprint 18: Completed 12/15\n  - Sprint 19: Completed 14/14\n  - Sprint 20: Completed 11/16\n  - Sprint 21: Completed 15/15\n  - Sprint 22: Completed 8/14\n- **Trend**: Inconsistent completion rates with a noticeable dip in Sprint 22. Indicates potential issues with planning or execution.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 79.42 days.\n- **Trend**: No historical data provided for comparison, but the current average is relatively high, suggesting room for improvement.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.79\n- **Previous Month Burn Rate**: 0.63\n- **Trend**: Increasing burn rate, indicating higher resource consumption relative to capacity. This could impact sustainability if not addressed.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Issues by Priority**:\n  - Major: 41\n  - Medium: 7\n  - Minor: 2\n- **Critical Issues**: High number of Major priority issues (41) suggests a need for focused attention to prevent escalation.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Capacity Utilization**: Inconsistent sprint completion suggests potential capacity planning issues.\n- **Workload Balance**: High number of unresolved Major issues indicates possible workload imbalance or prioritization challenges.\n\n## Recommendations\n\n- **Improve Sprint Planning**: Analyze the causes of incomplete sprints, particularly Sprint 22, and adjust planning to better match team capacity.\n- **Focus on Major Issues**: Prioritize resolution of Major priority issues to prevent backlog growth and potential project risks.\n- **Reduce Resolution Time**: Implement strategies to streamline processes and reduce the average resolution time from 79.42 days.\n- **Monitor Burn Rate**: Investigate the causes of the increasing burn rate and adjust resource allocation to ensure long-term sustainability.\n- **Enhance Capacity Planning**: Reevaluate team capacity and workload distribution to ensure balanced and achievable sprint goals."
+      "duplicates": "## Duplicate Analysis\n\nAfter reviewing the recent Jira tickets, no clear duplicates were identified based on the provided criteria. Each ticket has a distinct summary and appears to address different documentation issues or updates.\n\n### Summary of Findings\n\n- **DOC-14539**: Focuses on adding details about readers and writers in the data-service.\n- **DOC-14538**: Pertains to changes in the 3.10 API documentation.\n- **DOC-14537**: Concerns the implementation of a new Docsearch UI.\n- **DOC-14536**: Involves documentation of new tools related to sub-documents, indexes, and scopes/collections.\n- **DOC-14534**: Relates to SDK documentation for FY27 releases.\n\n### Conclusion\n\n- **No Duplicates Found**: Each ticket addresses a unique aspect of documentation, with no overlapping summaries or components that suggest duplication. Continue processing each ticket individually.",
+      "traffic": "### Summary\n\n1. **Overall Traffic State**: The web traffic is trending upwards, with a notable 5.9% increase in page views.\n2. **Performance Assessment**: The current traffic level is good, with a substantial number of unique visitors and a low bounce rate, although the average session duration has decreased.\n\n### Recommendations\n\n- **Enhance Content Engagement**: Focus on improving the average session duration by optimizing content on high-traffic pages such as `/server/current/rest-api/rest-xdcr-adv-settings.html` and `/cloud/management-api-reference/index.html` to keep users engaged longer.\n- **SEO and Referral Strategies**: Increase efforts in organic search and referral channels to diversify traffic sources, as a significant portion currently comes from direct traffic.\n- **Monitor and Adjust**: Regularly analyze the pages with the highest bounce rates and shortest session durations to identify areas for content improvement or technical optimization.",
+      "jira": "## Insights\n\n### 1. Ticket Creation vs Resolution Trends\n- **Current Month**: 49 tickets opened vs 63 resolved.\n- **Previous Month**: 60 tickets opened vs 94 resolved.\n- **Trend**: The team is resolving more tickets than are being opened, indicating a positive trend in managing backlog.\n\n### 2. Velocity Patterns and Sprint Health\n- **Recent Sprints**:\n  - Sprint 18: 12 completed / 15 planned\n  - Sprint 19: 14 completed / 14 planned\n  - Sprint 20: 11 completed / 16 planned\n  - Sprint 21: 15 completed / 15 planned\n  - Sprint 22: 8 completed / 14 planned\n- **Observation**: There is inconsistency in meeting planned sprint goals, with a notable drop in Sprint 22.\n\n### 3. Resolution Time Trends\n- **Average Resolution Time**: 73.21 days\n- **Trend**: No historical data provided for comparison, but the current resolution time suggests potential inefficiencies.\n\n### 4. Burn Rate Analysis and Sustainability\n- **Current Burn Rate**: 0.78\n- **Previous Month Burn Rate**: 0.64\n- **Observation**: Increasing burn rate indicates higher resource consumption; sustainability may be at risk if this trend continues.\n\n### 5. Priority Distribution and Critical Issues\n- **Open Issues by Priority**:\n  - Major: 41\n  - Medium: 7\n  - Minor: 2\n- **Critical Issues**: High number of Major priority issues (41) suggests a need for focused attention.\n\n### 6. Overall Team Capacity and Workload Balance\n- **Capacity**: Team is generally resolving more issues than are opened, but inconsistency in sprint completion suggests potential capacity issues or planning inefficiencies.\n\n## Recommendations\n\n- **Improve Sprint Planning**: Analyze reasons for the drop in Sprint 22 completion and adjust planning to better align with team capacity.\n- **Focus on Major Issues**: Prioritize resolving Major priority issues to prevent backlog growth and potential project risks.\n- **Monitor Burn Rate**: Investigate factors contributing to the increased burn rate and implement measures to optimize resource usage.\n- **Reduce Resolution Time**: Implement process improvements or additional resources to decrease the average resolution time.\n- **Capacity Management**: Regularly review team workload and adjust resource allocation to ensure balanced distribution and prevent burnout."
     }
   }
 }
