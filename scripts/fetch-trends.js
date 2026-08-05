@@ -257,11 +257,11 @@ export async function fetchTrendsData() {
       categories.map(async (category) => {
         try {
           const data = await fetchTrendsForKeyword(category.code, true)
-          return { ...data, displayName: category.name }
+          return { ...data, displayName: category.name, isMock: false }
         } catch (error) {
           console.warn(`⚠️  Failed to fetch ${category.name}, using fallback:`, error.message)
           const mockData = createMockData(category.name)
-          return { ...mockData, displayName: category.name }
+          return { ...mockData, displayName: category.name, isMock: true }
         }
       })
     )
@@ -300,11 +300,29 @@ export async function fetchTrendsData() {
     console.log(`   📊 First combined point:`, combinedTimeline[0])
     console.log(`   📊 Last combined point:`, combinedTimeline[combinedTimeline.length - 1])
 
+    // Record which categories fell back to createMockData(). Without this the SEO tab cannot
+    // tell invented queries from real ones — the payload shape is identical either way — and a
+    // deploy gives no signal about whether the Trends request actually succeeded.
+    const mockCategories = successfulData.filter(d => d.isMock).map(d => d.displayName)
+    const realCategories = successfulData.filter(d => !d.isMock).map(d => d.displayName)
+
+    if (mockCategories.length > 0) {
+      console.warn(`   🎭 ${mockCategories.length}/${successfulData.length} categories are MOCK data: ${mockCategories.join(', ')}`)
+    }
+    if (realCategories.length > 0) {
+      console.log(`   ✅ ${realCategories.length}/${successfulData.length} categories are live Google Trends data`)
+    }
+
     // Create the response structure
     const response = {
       lastUpdated: new Date().toISOString(),
       interestOverTime: combinedTimeline,
       summary: successfulData[0].summary, // Use first category's summary
+      // Provenance: 'live' (all real), 'mock' (all fabricated), or 'mixed'.
+      dataSource: mockCategories.length === 0
+        ? 'live'
+        : realCategories.length === 0 ? 'mock' : 'mixed',
+      mockCategories,
       categories: {}
     }
 
@@ -314,6 +332,7 @@ export async function fetchTrendsData() {
         const key = data.displayName.toLowerCase().replace(/\s+/g, '').replace(/-/g, '')
         response.categories[key] = {
           name: data.displayName,
+          isMock: Boolean(data.isMock),
           topQueries: data.topQueries || [],
           risingQueries: data.risingQueries || [],
           summary: data.summary || {}

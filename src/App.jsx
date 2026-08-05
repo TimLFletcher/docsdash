@@ -163,10 +163,26 @@ function App() {
     ...(data.errors || []),
     ...(data.trends ? [] : ['Google Trends data unavailable (SEO tab)']),
     ...(data.algolia ? [] : ['Algolia search analytics unavailable (Search tab)']),
+    ...(data.trends?.dataSource === 'mock'
+      ? ['Google Trends fell back to fabricated sample data (SEO tab)']
+      : []),
+    ...(data.trends?.dataSource === 'mixed'
+      ? [`Google Trends partly fabricated — invented data for: ${(data.trends.mockCategories || []).join(', ')} (SEO tab)`]
+      : []),
   ]
 
   const hasAnalytics = Boolean(data.analytics)
   const hasJira = Boolean(data.jira)
+
+  // Trends provenance. fetch-trends.js substitutes createMockData() per category on failure and
+  // the payload shape is identical either way, so `dataSource` is the only way to tell. Payloads
+  // generated before that field existed are 'unknown' — don't claim they're either.
+  const trendsProvenance = trends ? trends.dataSource || 'unknown' : null
+  const trendsIsMock = trendsProvenance === 'mock' || trendsProvenance === 'mixed'
+
+  // Guard against a trends payload with no categories — the SEO tab dereferences
+  // trendCategories.<key> eight times and would otherwise throw and blank the page.
+  const trendCategories = trends?.categories || {}
 
   // Placeholder for a metric whose source failed. Rendering 0 instead would assert a real
   // measurement of zero, which is a stronger and quite different claim than "unknown".
@@ -292,64 +308,83 @@ function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <QueriesTable 
                     title="Top Queries - NoSQL" 
-                    data={trends.categories.nosql?.topQueries || []} 
+                    data={trendCategories.nosql?.topQueries || []} 
                     type="top" 
                   />
                   <QueriesTable 
                     title="Rising Queries - NoSQL" 
-                    data={trends.categories.nosql?.risingQueries || []} 
+                    data={trendCategories.nosql?.risingQueries || []} 
                     type="rising" 
                   />
                   <QueriesTable 
                     title="Top Queries - Document-oriented Database" 
-                    data={trends.categories.documentorienteddatabase?.topQueries || []} 
+                    data={trendCategories.documentorienteddatabase?.topQueries || []} 
                     type="top" 
                   />
                   <QueriesTable 
                     title="Rising Queries - Document-oriented Database" 
-                    data={trends.categories.documentorienteddatabase?.risingQueries || []} 
+                    data={trendCategories.documentorienteddatabase?.risingQueries || []} 
                     type="rising" 
                   />
                   <QueriesTable 
                     title="Top Queries - Cloud Database" 
-                    data={trends.categories.clouddatabase?.topQueries || []} 
+                    data={trendCategories.clouddatabase?.topQueries || []} 
                     type="top" 
                   />
                   <QueriesTable 
                     title="Rising Queries - Cloud Database" 
-                    data={trends.categories.clouddatabase?.risingQueries || []} 
+                    data={trendCategories.clouddatabase?.risingQueries || []} 
                     type="rising" 
                   />
                   <QueriesTable 
                     title="Top Queries - Couchbase Server" 
-                    data={trends.categories.couchbaseserver?.topQueries || []} 
+                    data={trendCategories.couchbaseserver?.topQueries || []} 
                     type="top" 
                   />
                   <QueriesTable 
                     title="Rising Queries - Couchbase Server" 
-                    data={trends.categories.couchbaseserver?.risingQueries || []} 
+                    data={trendCategories.couchbaseserver?.risingQueries || []} 
                     type="rising" 
                   />
                 </div>
 
-                {/* Last Updated */}
-                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-center">
-                  <div className="flex items-center justify-center gap-2 text-amber-800 mb-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="font-medium">Sample Data Display</span>
+                {/* Provenance — tells you whether these queries are real or fabricated.
+                    fetch-trends.js falls back to createMockData() per category, and the payload
+                    shape is identical either way, so this is the only signal available. */}
+                {trendsIsMock ? (
+                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-center">
+                    <div className="flex items-center justify-center gap-2 text-amber-800 mb-2">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="font-medium">
+                        {trends.dataSource === 'mixed' ? 'Partly Fabricated Data' : 'Fabricated Sample Data'}
+                      </span>
+                    </div>
+                    <p className="text-sm text-amber-700 mb-1">
+                      {trends.dataSource === 'mixed'
+                        ? `Google Trends failed for ${trends.mockCategories.join(', ')}. Those categories show invented queries; the rest are live.`
+                        : 'Google Trends could not be reached, so every query below is invented. Do not treat these as real search data.'}
+                    </p>
+                    <p className="text-xs text-amber-600">
+                      Check the "Fetch data" step in the GitHub Actions log for the Trends error.
+                    </p>
+                    <div className="text-xs text-slate-500 mt-2">
+                      Generated: {new Date(trends.lastUpdated).toLocaleString()}
+                    </div>
                   </div>
-                  <p className="text-sm text-amber-700 mb-1">
-                    This is sample data demonstrating the dashboard functionality.
-                  </p>
-                  <p className="text-xs text-amber-600">
-                    Real Google Trends data will be displayed when the API becomes available.
-                  </p>
-                  <div className="text-xs text-slate-500 mt-2">
-                    Generated: {new Date(trends.lastUpdated).toLocaleString()}
+                ) : (
+                  <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 text-center">
+                    <p className="text-sm text-slate-600">
+                      {trendsProvenance === 'live'
+                        ? `Live Google Trends data for all ${Object.keys(trendCategories).length} categories.`
+                        : 'Data provenance unknown — this payload predates provenance tracking, so it may contain fabricated queries. It will be resolved on the next data fetch.'}
+                    </p>
+                    <div className="text-xs text-slate-500 mt-1">
+                      Generated: {new Date(trends.lastUpdated).toLocaleString()}
+                    </div>
                   </div>
-                </div>
+                )}
               </>
             ) : (
               <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
