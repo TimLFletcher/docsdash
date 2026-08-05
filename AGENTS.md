@@ -79,8 +79,49 @@ npm run server
 run `fetch-data` first, or the app shows its "Failed to Load Dashboard" state. `npm run server`
 is only needed if you're working on the insights endpoint.
 
-There is **no lint, formatter, or test suite** yet (Planned Work #13). Verify changes by running
-`fetch-data` and eyeballing the JSON, plus `npm run dev`.
+There is **no lint, formatter, or test suite** yet (Planned Work #14).
+
+## Deploying and testing — the real loop
+
+**The dashboard is tested on GitHub Pages, not locally.** The owner pushes, the workflow fetches
+fresh data and deploys, and the deployed site is what gets looked at. Design accordingly: anything
+only observable in a local dev console is effectively invisible.
+
+Consequences worth internalising:
+
+- **Pushing a feature branch deploys nothing.** The workflow triggers on `schedule`,
+  `workflow_dispatch`, and `push` to **`main` only**. To see a branch on Pages without merging it,
+  run the workflow manually against that ref:
+
+```bash
+gh workflow run "Fetch Data and Deploy" --ref your-branch-name
+```
+
+  `actions/checkout@v4` checks out the triggering ref, so the branch's code is what gets built and
+  published.
+
+- **Every deploy regenerates the data.** `npm run fetch-data` runs before `npm run build`, so you
+  can never deploy new code against the old JSON snapshot — collector and UI changes always land
+  together. A collector that starts failing changes the deployed dashboard even with no UI edit.
+- **Make failures self-reporting in the UI.** The Actions log is a second place to look, so prefer
+  surfacing collector state on the page itself (`CollectorErrorBanner`, `DataUnavailable`, the
+  Trends `dataSource` field). A silent fallback is far worse here than in a locally-tested app.
+- **The password gate behaves differently locally.** CI overwrites `src/config.js` with the real
+  `SITE_PASS`; a local production build leaves `SITE_PASSWORD` as `''`. Don't infer anything about
+  the deployed gate from `npm run preview`.
+- **Pages must serve from the `gh-pages` branch.** The workflow publishes there via
+  `peaceiris/actions-gh-pages`. The README's instruction to set the Pages source to "GitHub
+  Actions" is wrong and would break the deploy — leave the Pages setting alone.
+- **`vite.config.js` hardcodes `base: '/docsdash/'`.** Verify production builds under that path
+  (`npm run preview` → `http://localhost:4173/docsdash/`), not at the root.
+
+### What to check on Pages after a collector change
+
+1. Top of any tab — is `CollectorErrorBanner` naming a source that should have worked?
+2. SEO tab footer — does it report live data, or name fabricated categories?
+3. Jira tab — the velocity chart is expected to be **absent** until the Agile API is wired up.
+4. Analytics tab — SDK figures are host-filtered as of this batch, so they read lower than the
+   pre-filter numbers. That is a correction, not a regression.
 
 ## Permissions
 
