@@ -131,13 +131,17 @@ Granted by the repo owner on 2026-08-05, scoped to this repository:
   `add`, `branch`, `checkout`, `stash`, `commit`, or similar.
 - **Full permission to read and edit all files** in the repo. No need to ask per-file.
 
-Judgment still applies for a few things, because they're either hard to reverse or reach
-outside the repo:
+Reaffirmed on 2026-08-05: **`git push` is included — do not ask for it.** Routine repo work
+should never generate a permission prompt.
 
-- **Confirm before `push`, and before history rewrites** (`reset --hard`, `push --force`,
-  `rebase` onto shared branches, `branch -D`). Pushing is outward-facing; the grant above
-  covers local work.
+A few practices still apply, as habits rather than gates:
+
+- **Still confirm before history rewrites** (`reset --hard`, `push --force`, `rebase` onto a
+  shared branch, `branch -D`). These can destroy work that isn't recoverable from the remote.
 - **Work on a branch, not `main`,** for anything beyond a trivial edit.
+- **Never prefix git with `cd`.** `cd <dir> && git ...` trips a hook-safety guard and prompts
+  every time, no matter what's allowlisted. Use `git -C <dir> ...` instead. Same for any tool:
+  prefer absolute paths over changing directory.
 - **Never commit secrets or live data.** `.env.local`, a real value in `src/config.js`, and
   `src/data/dashboard-data.json` / `public/data/dashboard-data.json` stay out of git — see
   Secrets and credentials below. Check `git status` before staging rather than using `git add -A`
