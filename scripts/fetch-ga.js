@@ -33,6 +33,37 @@ try {
 // Check if we have credentials (either from .env.local or environment)
 const hasGACredentials = process.env.GA_PROPERTY_ID && process.env.GOOGLE_SERVICE_ACCOUNT_KEY
 
+const DOCS_HOSTNAME = 'docs.couchbase.com'
+
+/**
+ * Builds a dimension filter scoped to a path prefix on the documentation host.
+ *
+ * Every report in this file MUST be scoped to DOCS_HOSTNAME. An unscoped query silently pulls
+ * in traffic from every other host in the GA property, which makes its numbers incomparable to
+ * the panels rendered beside it — that was exactly the SDK-vs-doc-path discrepancy this helper
+ * was introduced to fix. Use this for any new path-scoped report rather than hand-rolling the
+ * andGroup. (AGENTS.md planned work #12 will route every report through a shared runReport()
+ * helper and migrate the remaining hand-rolled filters below.)
+ */
+const docsPathFilter = (path) => ({
+  andGroup: {
+    expressions: [
+      {
+        filter: {
+          fieldName: 'hostName',
+          stringFilter: { matchType: 'EXACT', value: DOCS_HOSTNAME },
+        },
+      },
+      {
+        filter: {
+          fieldName: 'pagePath',
+          stringFilter: { matchType: 'BEGINS_WITH', value: path },
+        },
+      },
+    ],
+  },
+})
+
 export async function fetchGoogleAnalyticsData() {
   if (!hasGACredentials) {
     console.log('⚠️  No GA credentials found - skipping GA data fetch')
@@ -421,12 +452,7 @@ export async function fetchGoogleAnalyticsData() {
             dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
             dimensions: [{ name: 'pagePath' }],
             metrics: [{ name: 'screenPageViews' }],
-            dimensionFilter: {
-              filter: {
-                fieldName: 'pagePath',
-                stringFilter: { matchType: 'BEGINS_WITH', value: path },
-              },
-            },
+            dimensionFilter: docsPathFilter(path),
           })
 
           // Add small delay between requests for the same SDK
@@ -441,12 +467,7 @@ export async function fetchGoogleAnalyticsData() {
               { name: 'bounceRate' },
               { name: 'averageSessionDuration' },
             ],
-            dimensionFilter: {
-              filter: {
-                fieldName: 'pagePath',
-                stringFilter: { matchType: 'BEGINS_WITH', value: path },
-              },
-            },
+            dimensionFilter: docsPathFilter(path),
           })
 
           // Add small delay between requests for the same SDK
@@ -458,12 +479,7 @@ export async function fetchGoogleAnalyticsData() {
             dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
             dimensions: [{ name: 'sessionDefaultChannelGroup' }],
             metrics: [{ name: 'sessions' }],
-            dimensionFilter: {
-              filter: {
-                fieldName: 'pagePath',
-                stringFilter: { matchType: 'BEGINS_WITH', value: path },
-              },
-            },
+            dimensionFilter: docsPathFilter(path),
           })
 
           const totalViews = pathViewsResponse.rows?.reduce((sum, row) => sum + parseInt(row.metricValues[0].value), 0) || 0
@@ -560,7 +576,9 @@ export async function fetchGoogleAnalyticsData() {
           ? ((parseFloat(userMetricsResponse.rows[0].metricValues[2].value) - parseFloat(userMetricsResponse.rows[1].metricValues[2].value)) / parseFloat(userMetricsResponse.rows[1].metricValues[2].value) * 100).toFixed(1)
           : 0,
         bounceRate: parseFloat(userMetricsResponse.rows[0].metricValues[3].value).toFixed(1),
-        returningVisitors: 42.5, // Requires additional query
+        // returningVisitors intentionally omitted: it needs a newVsReturning query that isn't
+        // written yet. Do not substitute a placeholder — an absent field renders as an empty
+        // state, whereas an invented one renders as a real metric nobody can tell is fake.
       },
       trafficSources: trafficSourcesResponse.rows.map((row, i) => {
         const totalSessions = trafficSourcesResponse.rows.reduce(
@@ -573,11 +591,8 @@ export async function fetchGoogleAnalyticsData() {
           percentage: Math.round((sessions / totalSessions) * 100),
         }
       }),
-      deviceBreakdown: [
-        { device: 'Desktop', percentage: 72 },
-        { device: 'Mobile', percentage: 22 },
-        { device: 'Tablet', percentage: 6 },
-      ], // Requires additional query
+      // deviceBreakdown intentionally omitted: needs a deviceCategory query. It was previously
+      // hardcoded to 72/22/6 and nothing rendered it. See the note on returningVisitors above.
       pathComparison: pathMetrics,
       sdkComparison: sdkMetrics,
     }

@@ -588,16 +588,11 @@ export async function fetchJiraData() {
         status: issue.fields.status?.name || 'To Do',
         created: issue.fields.created.split('T')[0],
       })) || [],
-      velocityTrend: [
-        // This would require fetching sprint data from Jira Software
-        // Placeholder data - implement with your sprint board
-        { sprint: 'Sprint 18', completed: 12, planned: 15 },
-        { sprint: 'Sprint 19', completed: 14, planned: 14 },
-        { sprint: 'Sprint 20', completed: 11, planned: 16 },
-        { sprint: 'Sprint 21', completed: 15, planned: 15 },
-        { sprint: 'Sprint 22', completed: 8, planned: 14 },
-      ],
-      avgResolutionDays: parseFloat(avgResolutionDays.toFixed(2)),
+      // velocityTrend requires sprint data from the Jira Software board API (/rest/agile/1.0),
+      // which isn't wired up yet. It used to return five hardcoded "Sprint 18-22" rows that the
+      // dashboard rendered as a real velocity chart with no indication they were invented.
+      // Emit an empty array: App.jsx hides the chart when there's nothing to show.
+      velocityTrend: [],
       monthlyOpened: monthlyOpened,
       monthlyResolved: monthlyResolved,
       burnRate: parseFloat(burnRate),

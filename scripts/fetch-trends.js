@@ -1,7 +1,17 @@
 import googleTrends from 'google-trends-api'
+import https from 'https'
 
-// Disable SSL verification for this module (temporary workaround)
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
+// Google Trends is an unofficial, undocumented endpoint and its certificate chain has been
+// unreliable in CI. This agent relaxes verification for Trends requests ONLY.
+//
+// It must never become a process-wide setting: every other collector in this directory sends
+// real credentials (the GA service-account key, the Jira API token, the OpenAI key, the Algolia
+// key), and a global NODE_TLS_REJECT_UNAUTHORIZED=0 would strip certificate validation from all
+// of them. `google-trends-api` accepts a per-request `agent`, so keep the blast radius here.
+//
+// Trends is optional data — if these requests fail, fetchTrendsData() returns null and the
+// dashboard hides the SEO tab. That is the preferred outcome over weakening TLS globally.
+const trendsAgent = new https.Agent({ rejectUnauthorized: false })
 
 function createMockData(keyword, existingTimeline = null) {
   console.log(`   🎭 Creating mock data for "${keyword}"`)
@@ -148,7 +158,8 @@ async function fetchTrendsForKeyword(keyword, isCategory = false) {
       endTime: endDate,
       geo: 'WORLDWIDE', // Worldwide instead of US
       granularTimeResolution: true,
-      category: isCategory ? 0 : undefined // Use category if it's a category code
+      category: isCategory ? 0 : undefined, // Use category if it's a category code
+      agent: trendsAgent,
     })
 
     // Check if response is valid JSON
@@ -180,7 +191,8 @@ async function fetchTrendsForKeyword(keyword, isCategory = false) {
         startTime: startDate,
         endTime: endDate,
         geo: 'WORLDWIDE', // Worldwide instead of US
-        category: isCategory ? 0 : undefined
+        category: isCategory ? 0 : undefined,
+        agent: trendsAgent,
       })
 
       if (typeof relatedQueriesResponse === 'string' && 

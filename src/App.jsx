@@ -13,6 +13,7 @@ import { PathComparisonTable } from './components/charts/PathComparisonTable'
 import { SDKComparisonTable } from './components/charts/SDKComparisonTable'
 import { LLMInsights } from './components/LLMInsights'
 import { PasswordProtection } from './components/PasswordProtection'
+import { CollectorErrorBanner, DataUnavailable } from './components/DataStatus'
 import { SEOSummary } from './components/charts/SEOSummary'
 import { TrendsChart } from './components/charts/TrendsChart'
 import { QueriesTable } from './components/charts/QueriesTable'
@@ -30,7 +31,6 @@ import { SearchTrendsChart } from './components/charts/SearchTrendsChart'
    },
    userMetrics: {
      uniqueVisitors: 0,
-     returningVisitors: 0,
      bounceRate: 0,
      avgSessionDuration: '0:00',
      avgSessionDurationTrend: 0,
@@ -68,7 +68,6 @@ import { SearchTrendsChart } from './components/charts/SearchTrendsChart'
    previousMonthBurnRateAV: 0,
    avgResolutionDaysAV: 0,
    previousMonthAvgResolutionDaysAV: 0,
-   topLabels: [],
  }
 
  const DEFAULT_TRENDS = {
@@ -155,6 +154,28 @@ function App() {
   const insights = data.insights || DEFAULT_INSIGHTS
   const lastUpdated = data.lastUpdated || new Date().toISOString()
 
+  // Collector-level failures reported by scripts/fetch-data.js. Without this, a source that
+  // failed to fetch is indistinguishable from a source that genuinely returned zero.
+  //
+  // fetch-data.js only records `errors` for the two required sources, so derive the optional
+  // ones from a null payload to keep the banner complete.
+  const collectorErrors = [
+    ...(data.errors || []),
+    ...(data.trends ? [] : ['Google Trends data unavailable (SEO tab)']),
+    ...(data.algolia ? [] : ['Algolia search analytics unavailable (Search tab)']),
+  ]
+
+  const hasAnalytics = Boolean(data.analytics)
+  const hasJira = Boolean(data.jira)
+
+  // Placeholder for a metric whose source failed. Rendering 0 instead would assert a real
+  // measurement of zero, which is a stronger and quite different claim than "unknown".
+  const UNAVAILABLE = '—'
+
+  // Sprint velocity is only available once the Jira Agile board API is wired up. Hide the chart
+  // entirely rather than rendering an empty or invented one.
+  const hasVelocityData = (jira.velocityTrend?.length ?? 0) > 0
+
   const tabs = [
     { id: 'insights', label: 'Insights' },
     { id: 'analytics', label: 'Analytics' },
@@ -218,6 +239,8 @@ function App() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <CollectorErrorBanner errors={collectorErrors} />
+
         {/* Insights Tab (merged Overview + Insights) */}
         {activeTab === 'insights' && (
           <div className="space-y-8">
@@ -225,26 +248,26 @@ function App() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <MetricCard
                 title="Page Views (Last 30 Days)"
-                value={analytics.pageViews.total.toLocaleString()}
-                trend={analytics.pageViews.trend}
+                value={hasAnalytics ? analytics.pageViews.total.toLocaleString() : UNAVAILABLE}
+                trend={hasAnalytics ? analytics.pageViews.trend : undefined}
                 icon={<Eye className="w-6 h-6" />}
               />
               <MetricCard
                 title="Avg. Session (Last 30 Days)"
-                value={analytics.userMetrics.avgSessionDuration}
-                trend={parseFloat(analytics.userMetrics.avgSessionDurationTrend || 0)}
+                value={hasAnalytics ? analytics.userMetrics.avgSessionDuration : UNAVAILABLE}
+                trend={hasAnalytics ? parseFloat(analytics.userMetrics.avgSessionDurationTrend || 0) : undefined}
                 icon={<Clock className="w-6 h-6" />}
               />
               <MetricCard
                 title="Jira Burn Rate"
-                value={parseFloat(jira.burnRate || 0).toFixed(2)}
-                trend={parseFloat(jira.burnRateTrend || 0)}
+                value={hasJira ? parseFloat(jira.burnRate || 0).toFixed(2) : UNAVAILABLE}
+                trend={hasJira ? parseFloat(jira.burnRateTrend || 0) : undefined}
                 icon={<TrendingUp className="w-6 h-6" />}
               />
               <MetricCard
                 title="Avg Resolution (Days)"
-                value={Math.round(jira.avgResolutionDays || 0)}
-                trend={parseFloat(jira.avgResolutionDaysTrend || 0)}
+                value={hasJira ? Math.round(jira.avgResolutionDays || 0) : UNAVAILABLE}
+                trend={hasJira ? parseFloat(jira.avgResolutionDaysTrend || 0) : undefined}
                 icon={<Clock className="w-6 h-6" />}
               />
             </div>
@@ -383,7 +406,13 @@ function App() {
         )}
 
         {/* Analytics Tab */}
-        {activeTab === 'analytics' && (
+        {activeTab === 'analytics' && !hasAnalytics && (
+          <DataUnavailable
+            source="Google Analytics"
+            hint="Verify GA_PROPERTY_ID and GOOGLE_SERVICE_ACCOUNT_KEY, and that the service account still has Viewer access to the GA4 property."
+          />
+        )}
+        {activeTab === 'analytics' && hasAnalytics && (
           <div className="space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <MetricCard
@@ -425,7 +454,13 @@ function App() {
         )}
 
         {/* Jira Tab */}
-        {activeTab === 'jira' && (
+        {activeTab === 'jira' && !hasJira && (
+          <DataUnavailable
+            source="Jira"
+            hint="Verify JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN — Atlassian API tokens expire and are a common cause of this."
+          />
+        )}
+        {activeTab === 'jira' && hasJira && (
           <div className="space-y-8">
             {/* Current Month (Last 30 Days) */}
             <div>
@@ -481,9 +516,9 @@ function App() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className={`grid grid-cols-1 gap-6 ${hasVelocityData ? 'lg:grid-cols-2' : ''}`}>
               <JiraLabelsChart data={jira.topLabels || []} />
-              <VelocityChart data={jira.velocityTrend} />
+              {hasVelocityData && <VelocityChart data={jira.velocityTrend} />}
             </div>
 
             <RecentIssuesTable data={jira.recentIssues} />
